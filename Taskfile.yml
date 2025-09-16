@@ -1,0 +1,85 @@
+# https://taskfile.dev
+
+version: "3"
+
+# https://taskfile.dev/usage/#env-files
+dotenv: [".env.local", ".env"]
+
+vars:
+  DOCKER_COMPOSE: '{{.TASK_DOCKER_COMPOSE | default "docker compose" }}'
+  COMPOSER_INSTALL_ARGS: '{{.TASK_DOCKER_COMPOSE | default "" }}'
+
+tasks:
+  default:
+    - task: help
+
+  help:
+    desc: Outputs this help screen
+    cmds:
+      - task --list
+    silent: true
+
+  compose:
+    desc: Run docker compose
+    cmds:
+      - "{{.DOCKER_COMPOSE}} {{.TASK_ARGS}} {{.CLI_ARGS}}"
+
+  start:
+    desc: Pull images and start service
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: pull
+      - task: compose
+        vars:
+          TASK_ARGS: up --detach --wait
+      - task: composer
+        vars:
+          TASK_ARGS: install {{.COMPOSER_INSTALL_ARGS}}
+
+  logs:
+    desc: Show live logs
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: logs --tail=0 --follow
+
+  shell:
+    desc: Run shell command inside PHP service
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm bash
+
+  composer:
+    desc: "Run composer, example: task {{.TASK}} -- req symfony/orm-pack"
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm composer {{.TASK_ARGS}}
+
+  console:
+    desc: "Run Sumfony console command, example: task {{.TASK}} -- cache:clear"
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm bin/console {{.TASK_ARGS}}
+
+  site:update:
+    desc: Update site
+    deps: [start]
+    cmds:
+      - task: console
+        vars:
+          TASK_ARGS: doctrine:migrations:migrate
+      - task: console
+        vars:
+          TASK_ARGS: cache:clear
+
+  fixtures:load:
+    desc: Load fixtures
+    prompt: This will reset your database. Continue?
+    cmds:
+      - task: console
+        vars:
+          TASK_ARGS: hautelook:fixtures:load --no-interaction

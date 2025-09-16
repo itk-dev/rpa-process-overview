@@ -1,0 +1,86 @@
+{
+    "name": "itk-dev/rpa-process-overview",
+    "description": "RPA Process Overview",
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^8.4",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "doctrine/doctrine-bundle": "^2.16.2",
+        "doctrine/doctrine-migrations-bundle": "^3.4.2",
+        "doctrine/orm": "^3.5.2",
+        "easycorp/easyadmin-bundle": "^4.25.1",
+        "runtime/frankenphp-symfony": "^0.2.0",
+        "symfony/console": "~7.3.0",
+        "symfony/dotenv": "~7.3.0",
+        "symfony/flex": "^2.8.2",
+        "symfony/framework-bundle": "~7.3.0",
+        "symfony/mercure-bundle": "^0.3.9",
+        "symfony/runtime": "~7.3.0",
+        "symfony/yaml": "~7.3.0"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.48",
+        "friendsofphp/php-cs-fixer": "^3.87",
+        "hautelook/alice-bundle": "^2.15.1",
+        "symfony/maker-bundle": "^1.64",
+        "symfony/stopwatch": "~7.3.0",
+        "symfony/web-profiler-bundle": "~7.3.0",
+        "vincentlanglet/twig-cs-fixer": "^3.9"
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*",
+        "symfony/polyfill-php82": "*"
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "php-http/discovery": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
+        "bump-after-update": true,
+        "sort-packages": true
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": true,
+            "docker": true,
+            "require": "7.3.*"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
+    }
+}

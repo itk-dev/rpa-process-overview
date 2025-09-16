@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Controller\Admin;
+
+use App\Entity\ProcessOverview;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CodeEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+
+use function Symfony\Component\Translation\t;
+
+class ProcessOverviewCrudController extends AbstractCrudController
+{
+    public static function getEntityFqcn(): string
+    {
+        return ProcessOverview::class;
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return parent::configureActions($actions)
+            ->add(Crud::PAGE_INDEX, Action::new('show', t('Show process overview'))
+                ->linkToUrl(fn (ProcessOverview $overview) => $this->generateUrl('process_overview_show', ['id' => $overview->getId()])));
+    }
+
+    public function configureFields(string $pageName): iterable
+    {
+        yield IdField::new('id')->hideOnForm();
+        yield TextField::new('label');
+        yield AssociationField::new('group');
+        //        yield CollectionField::new('steps');
+        yield CodeEditorField::new('options')
+            ->setLanguage('yaml');
+    }
+}

@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Group {label}'|trans({name: group.label}) }}{% endblock %}
+
+{% block content %}
+    {% for overview in group.overviews %}
+        <a href="{{ path('process_overview_show', {id: overview.id}) }}">{{ overview.label }}</a>
+    {% endfor %}
+{% endblock %}

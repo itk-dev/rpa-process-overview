@@ -1,0 +1,84 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/v1/process"
+  },
+  "response": {
+    "body": {
+      "data": [
+        {
+          "id": "1",
+          "name": "Udskrivning 22 år",
+          "metadata": {
+              "cpr": "string",
+              "name": "string"
+          },
+          "steps": [
+            {
+              "id": "1",
+              "name": "Digital Post udsendt"
+            },
+            {
+              "id": "2",
+              "name": "Formular indsendt"
+            },
+            {
+              "id": "3",
+              "name": "Tandklinik registreret i Solteq"
+            },
+            {
+              "id": "4",
+              "name": "Formular journaliseret"
+            },
+            {
+              "id": "5",
+              "name": "Borger fyldt 22 år"
+            },
+            {
+              "id": "6",
+              "name": "Udskrivning godkendt"
+            },
+            {
+              "id": "7",
+              "name": "Journal og røntgen afleveret og journaliseret"
+            },
+            {
+              "id": "8",
+              "name": "Journal arkiveret"
+            }
+          ],
+          "links": {
+            "overview": "/v1/process/overview/1"
+          }
+        },
+        {
+          "id": "2",
+          "name": "Frit valg 0-15 år",
+          "steps": [],
+          "links": {
+            "overview": "/v1/process/overview/2"
+          }
+        },
+        {
+          "id": "3",
+          "name": "Frit valg +16 år",
+          "steps": [],
+          "links": {
+            "overview": "/v1/process/overview/3"
+          }
+        },
+        {
+          "id": "4",
+          "name": "Tilflytter til Aarhus Kommune",
+          "steps": [],
+          "links": {
+            "overview": "/v1/process/overview/4"
+          }
+        }
+      ],
+      "meta": {
+        "updated_at": "2025-09-14T09:40:00Z"
+      }
+    }
+  }
+}

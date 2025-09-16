@@ -1,0 +1,171 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/v1/process/overview/1"
+  },
+  "response": {
+    "body": [
+      {
+        "process_id": "1",
+        "person": {
+          "cpr": "0101011234",
+          "name": "Anna Hansen"
+        },
+        "metadata": {
+          "cpr": "0101011234",
+          "name": "Anna Hansen"
+        },
+        "steps": [
+          {
+            "id": "1",
+            "name": "Digital Post udsendt",
+            "status": "SUCCESS",
+            "started_at": "2025-09-15T10:00:00Z",
+            "finished_at": "2025-09-15T10:05:00Z",
+            "failure": null
+          },
+          {
+            "id": "2",
+            "name": "Formular indsendt",
+            "status": "FAILED",
+            "started_at": "2025-09-15T10:05:10Z",
+            "finished_at": "2025-09-15T10:10:00Z",
+            "failure": {
+              "code": "Fejlkode",
+              "message": "Fejlbesked",
+              "retryable": true,
+              "occurred_at": "2025-09-15T10:10:00Z"
+            }
+          },
+          {
+            "id": "3",
+            "name": "Tandklinik registreret i Solteq",
+            "status": "PENDING",
+            "started_at": null,
+            "finished_at": null,
+            "failure": null
+          },
+          {
+            "id": "4",
+            "name": "Formular journaliseret",
+            "status": "PENDING",
+            "started_at": null,
+            "finished_at": null,
+            "failure": null
+          },
+          {
+            "id": "5",
+            "name": "Borger fyldt 22 år",
+            "status": "PENDING",
+            "started_at": null,
+            "finished_at": null,
+            "failure": null
+          },
+          {
+            "id": "6",
+            "name": "Udskrivning godkendt",
+            "status": "PENDING",
+            "started_at": null,
+            "finished_at": null,
+            "failure": null
+          },
+          {
+            "id": "7",
+            "name": "Journal og røntgen afleveret og journaliseret",
+            "status": "PENDING",
+            "started_at": null,
+            "finished_at": null,
+            "failure": null
+          },
+          {
+            "id": "8",
+            "name": "Journal arkiveret",
+            "status": "PENDING",
+            "started_at": null,
+            "finished_at": null,
+            "failure": null
+          }
+        ],
+        "updated_at": "2025-09-15T10:10:00Z"
+      },
+      {
+        "process_id": "2",
+        "person": {
+          "cpr_masked": "0202025678",
+          "name": "Peter Nielsen"
+        },
+        "metadata": {
+          "cpr_masked": "0202025678",
+          "name": "Peter Nielsen"
+        },
+        "steps": [
+          {
+            "id": "1",
+            "name": "Digital Post udsendt",
+            "status": "SUCCESS",
+            "started_at": "2025-09-14T09:30:00Z",
+            "finished_at": "2025-09-14T09:35:00Z",
+            "failure": null
+          },
+          {
+            "id": "2",
+            "name": "Formular indsendt",
+            "status": "SUCCESS",
+            "started_at": "2025-09-14T09:35:10Z",
+            "finished_at": "2025-09-14T09:40:00Z",
+            "failure": null
+          },
+          {
+            "id": "3",
+            "name": "Tandklinik registreret i Solteq",
+            "status": "PENDING",
+            "started_at": null,
+            "finished_at": null,
+            "failure": null
+          },
+          {
+            "id": "4",
+            "name": "Formular journaliseret",
+            "status": "PENDING",
+            "started_at": null,
+            "finished_at": null,
+            "failure": null
+          },
+          {
+            "id": "5",
+            "name": "Borger fyldt 22 år",
+            "status": "PENDING",
+            "started_at": null,
+            "finished_at": null,
+            "failure": null
+          },
+          {
+            "id": "6",
+            "name": "Udskrivning godkendt",
+            "status": "PENDING",
+            "started_at": null,
+            "finished_at": null,
+            "failure": null
+          },
+          {
+            "id": "7",
+            "name": "Journal og røntgen afleveret og journaliseret",
+            "status": "PENDING",
+            "started_at": null,
+            "finished_at": null,
+            "failure": null
+          },
+          {
+            "id": "8",
+            "name": "Journal arkiveret",
+            "status": "PENDING",
+            "started_at": null,
+            "finished_at": null,
+            "failure": null
+          }
+        ],
+        "updated_at": "2025-09-14T09:40:00Z"
+      }
+    ]
+  }
+}

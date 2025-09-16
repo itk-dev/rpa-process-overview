@@ -1,0 +1,19 @@
+services:
+  phpfpm:
+    image: itkdev/php8.4-fpm:latest
+
+  nginx:
+    labels:
+      # HTTPS config - uncomment to enable redirect from :80 to :443
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+
+  # https://github.com/dotronglong/faker/wiki/Getting-Started-%5BDocker%5D
+  faker:
+    image: dotronglong/faker:stable
+    networks:
+      - app
+    volumes:
+      - ./mocks:/app/mocks
+    ports:
+      - "3030"
