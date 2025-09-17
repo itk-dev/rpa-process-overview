@@ -1,5 +1,5 @@
-import { autoEmbedWithTarget } from 'svelte-standalone'
+import { autoEmbedWithTarget } from 'svelte-standalone';
 
-import ProcessOverview from './index.svelte'
+import ProcessOverview from './index.svelte';
 
-autoEmbedWithTarget(ProcessOverview, 'ProcessOverview')
+autoEmbedWithTarget(ProcessOverview, 'ProcessOverview');

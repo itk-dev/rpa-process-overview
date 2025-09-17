@@ -11,6 +11,10 @@ vars:
 
 includes:
   coding-standards: ./task/Taskfile.coding-standards.yml
+  widgets:
+    # https://taskfile.dev/usage/#directory-of-included-taskfile
+    taskfile: ./assets/widgets/Taskfile.yml
+    dir: ./assets/widgets
 
 tasks:
   default:
@@ -96,29 +100,16 @@ tasks:
       - gsed --in-place='' 's/<target>__/<target state=\"needs-l10n\">__/' translations/*.da.*xlf
     silent: true
 
-  widgets:build:
-    desc: Build widgets for production
+  build:widgets:
+    desc: Build widgets for production and copy to public folder
     cmds:
-      # Build the widgets
-      - task: compose
-        vars:
-          TASK_ARGS: run --rm node npm --prefix assets/widgets/ install
-      - rm -fr assets/widgets/static/dist/ && mkdir -p assets/widgets/static/dist/
-      - task: compose
-        vars:
-          # https://standalone.brenoliradev.com/cli.html
-          # Using `--prefix` here does not work.
-          TASK_ARGS: run --rm node sh -c 'cd assets/widgets/ && npx standalone build --all --production'
-      - find assets/widgets/static/dist -type f
+      - task widgets:build
 
       # Copy result into public folder
-      # - rm -fr public/widgets
-      # Rsync is weird when it comes to including and excluding files …
-      - rsync -azv assets/widgets/static/dist/ --include '*/' --include '**/*.css' --include '**/*.js' --exclude '*' --delete public/widgets
-      - find public/widgets -type f
-
-  widget:dev:
-    desc: Start widget dev server
-    cmds:
-      - echo http://localhost:3000/ProcessOverview
-      - docker compose run --rm --publish 3000:3000 node npm --prefix assets/widgets run dev -- --port 3000 --host
+      - rm -fr {{.PUBLIC_DIR}}
+      # rsync is weird when it comes to including and excluding files …
+      - rsync -azv {{.BUILD_DIR}} --include '*/' --include '**/*.css' --include '**/*.js' --exclude '*' --delete {{.PUBLIC_DIR}}
+      - find {{.PUBLIC_DIR}} -type f
+    vars:
+      BUILD_DIR: assets/widgets/static/dist/
+      PUBLIC_DIR: public/widgets

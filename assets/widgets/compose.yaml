@@ -1,35 +1,18 @@
-include:
-  - docker-compose.api.yml
-
 services:
-  phpfpm:
-    image: itkdev/php8.4-fpm:latest
-
-  nginx:
-    labels:
-      # HTTPS config - uncomment to enable redirect from :80 to :443
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=redirect-to-https"
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-
-  # https://github.com/dotronglong/faker/wiki/Getting-Started-%5BDocker%5D
-  faker:
-    image: dotronglong/faker:stable
-    networks:
-      - app
-    volumes:
-      - ./mocks:/app/mocks
-    ports:
-      - "3030"
-
   node:
     image: node:24
-    profiles:
-      - dev
+    # https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#handling-kernel-signals
+    # https://docs.docker.com/reference/compose-file/services/#init
+    init: true
     working_dir: /app
     volumes:
       - .:/app
+    profiles:
+      - dev
+    ports:
+      - '3000:3000'
 
-  prettier: !reset
+  prettier:
     # Prettier does not (yet, fcf.
     # https://github.com/prettier/prettier/issues/15206) have an official
     # docker image.
