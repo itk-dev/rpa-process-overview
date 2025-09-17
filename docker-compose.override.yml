@@ -29,7 +29,7 @@ services:
     volumes:
       - .:/app
 
-  prettier: !reset
+  prettier:
     # Prettier does not (yet, fcf.
     # https://github.com/prettier/prettier/issues/15206) have an official
     # docker image.

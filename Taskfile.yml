@@ -13,8 +13,8 @@ includes:
   coding-standards: ./task/Taskfile.coding-standards.yml
   widgets:
     # https://taskfile.dev/usage/#directory-of-included-taskfile
-    taskfile: ./assets/widgets/Taskfile.yml
-    dir: ./assets/widgets
+    taskfile: ./widgets/Taskfile.yml
+    dir: ./widgets
 
 tasks:
   default:
@@ -111,5 +111,5 @@ tasks:
       - rsync -azv {{.BUILD_DIR}} --include '*/' --include '**/*.css' --include '**/*.js' --exclude '*' --delete {{.PUBLIC_DIR}}
       - find {{.PUBLIC_DIR}} -type f
     vars:
-      BUILD_DIR: assets/widgets/static/dist/
+      BUILD_DIR: widgets/static/dist/
       PUBLIC_DIR: public/widgets
