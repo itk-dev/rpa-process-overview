@@ -2,6 +2,9 @@ App\Entity\ProcessOverviewGroup:
   process_overview_group_1:
     label: Tandpleje - Udskrivningsprocesser
 
+  process_overview_group_2:
+    label: Nogle andre processer
+
 App\Entity\ProcessOverview:
   process_overview_1:
     label: Udskrivning 22 år
@@ -26,6 +29,23 @@ App\Entity\ProcessOverview:
     options: |-
       data_source:
           url: http://faker:3030/v1/process/overview/2
+          # auth:
+          #     basic: …
+      metadata_columns:
+          - label: Barn
+            data: metadata.cpr
+          - label: Name
+            data: metadata.name
+          # Missing
+          # - label: Klinik
+          #   data: metadata.klinik
+
+  process_overview_3:
+    label: En anden proces
+    group: "@process_overview_group_2"
+    options: |-
+      data_source:
+          url: http://faker:3030/v1/process/overview/3
           # auth:
           #     basic: …
       metadata_columns:

@@ -1,5 +1,9 @@
 framework:
-    default_locale: en
+    default_locale: '%env(DEFAULT_LOCALE)%'
+    # https://symfony.com/doc/current/reference/configuration/framework.html#enabled-locales
+    enabled_locales: ['da', 'en']
     translator:
         default_path: '%kernel.project_dir%/translations'
         providers:
+        fallbacks:
+            - en

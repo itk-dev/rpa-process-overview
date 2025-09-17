@@ -1,23 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'Overview {label}'|trans({name: overview.label}) }}{% endblock %}
+{% block title %}{{ 'Overview {label}'|trans({label: overview.label}) }}{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script>
         addEventListener('load', () => {
-            fetch({{ data_url|json_encode|raw }})
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                    const el = document.createElement('pre');
-                    el.innerText = JSON.stringify(data, null, 2);
-                    document.body.appendChild(el);
-                })
+                fetch({{ data_url|json_encode|raw }})
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        const el = document.getElementById('process-overview')
+                        el.innerText = JSON.stringify(data, null, 2);
+                    })
         })
     </script>
 {% endblock %}
 
 {% block content %}
+    {{ include('_partials/group_header.html.twig', {group: overview.group, overview: overview}) }}
+
+    <pre><code id="process-overview">{{ 'Loading data …'|trans }}</code></pre>
+    <div id="process-search">#process-search</div>
+
     <a href="{{ data_url }}">{{ data_url }}</a>
 {% endblock %}

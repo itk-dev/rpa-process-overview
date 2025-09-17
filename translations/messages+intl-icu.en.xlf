@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="Qg4MLJh" resname="Show process overview">
+        <source>Show process overview</source>
+        <target>Show process overview</target>
+      </trans-unit>
+      <trans-unit id="zSLE5ho" resname="Process overview">
+        <source>Process overview</source>
+        <target>Process overview</target>
+      </trans-unit>
+      <trans-unit id="ZqmQ97D" resname="Group">
+        <source>Group</source>
+        <target>Group</target>
+      </trans-unit>
+      <trans-unit id="5BaLM8U" resname="Overview {label}">
+        <source>Overview {label}</source>
+        <target>Overview {label}</target>
+      </trans-unit>
+      <trans-unit id="RNJQIxA" resname="Process overview groups">
+        <source>Process overview groups</source>
+        <target>Process overview groups</target>
+      </trans-unit>
+      <trans-unit id="uQW8fpJ" resname="Group {label}">
+        <source>Group {label}</source>
+        <target>Group {label}</target>
+      </trans-unit>
+      <trans-unit id="tfHGWb6" resname="Groups">
+        <source>Groups</source>
+        <target>Groups</target>
+      </trans-unit>
+      <trans-unit id=".uTfHVh" resname="Show group">
+        <source>Show group</source>
+        <target>Show group</target>
+      </trans-unit>
+      <trans-unit id="37wivZ3" resname="ID">
+        <source>ID</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="NJouBgC" resname="Label">
+        <source>Label</source>
+        <target>Label</target>
+      </trans-unit>
+      <trans-unit id="OneE1vG" resname="Process overviews">
+        <source>Process overviews</source>
+        <target>Process overviews</target>
+      </trans-unit>
+      <trans-unit id="IkIkCgL" resname="Options">
+        <source>Options</source>
+        <target>Options</target>
+      </trans-unit>
+      <trans-unit id="rjoPh2q" resname="RPA Process Overview">
+        <source>RPA Process Overview</source>
+        <target>RPA Process Overview</target>
+      </trans-unit>
+      <trans-unit id="ExFLJqx" resname="Home">
+        <source>Home</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="kIqhHtP" resname="Admin">
+        <source>Admin</source>
+        <target>Admin</target>
+      </trans-unit>
+      <trans-unit id="FC.YH9X" resname="Toggle navigation">
+        <source>Toggle navigation</source>
+        <target>Toggle navigation</target>
+      </trans-unit>
+      <trans-unit id="KXqovG." resname="Loading data …">
+        <source>Loading data …</source>
+        <target>Loading data …</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -12,13 +12,19 @@
         "doctrine/orm": "^3.5.2",
         "easycorp/easyadmin-bundle": "^4.25.1",
         "runtime/frankenphp-symfony": "^0.2.0",
+        "symfony/asset": "~7.3.0",
+        "symfony/asset-mapper": "~7.3.0",
         "symfony/console": "~7.3.0",
         "symfony/dotenv": "~7.3.0",
         "symfony/flex": "^2.8.2",
         "symfony/framework-bundle": "~7.3.0",
         "symfony/mercure-bundle": "^0.3.9",
         "symfony/runtime": "~7.3.0",
-        "symfony/yaml": "~7.3.0"
+        "symfony/translation": "~7.3.0",
+        "symfony/twig-bundle": "~7.3.0",
+        "symfony/yaml": "~7.3.0",
+        "twig/extra-bundle": "^2.12 || ^3.0",
+        "twig/twig": "^2.12 || ^3.0"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.48",
@@ -80,7 +86,8 @@
         ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "importmap:install": "symfony-cmd"
         }
     }
 }

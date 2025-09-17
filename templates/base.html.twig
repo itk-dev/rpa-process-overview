@@ -9,14 +9,18 @@
     {% endblock %}
 
     {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
 </head>
 <body>
 {% block body %}
-<div class="container-fluid">
+    {% block header %}
+        {{ include('_partials/main_header.html.twig') }}
+    {% endblock %}
+    <div class="container-fluid">
         {% block content %}
         {% endblock %}
-</div>
+    </div>
 {% endblock %}
-    </body>
+</body>
 </html>

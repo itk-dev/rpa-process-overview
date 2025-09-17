@@ -26,12 +26,14 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle(t('Process overview'));
+            ->setTitle(t('RPA Process Overview'));
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToCrud(t('Group'), 'fas fa-list', ProcessOverviewGroup::class);
-        yield MenuItem::linkToCrud(t('Process'), 'fas fa-list', ProcessOverview::class);
+        yield MenuItem::linkToCrud(t('Group'), null, ProcessOverviewGroup::class);
+        yield MenuItem::linkToCrud(t('Process overview'), null, ProcessOverview::class);
+        yield MenuItem::section();
+        yield MenuItem::linkToRoute(t('Home'), null, 'app_default');
     }
 }

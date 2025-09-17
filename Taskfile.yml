@@ -9,6 +9,9 @@ vars:
   DOCKER_COMPOSE: '{{.TASK_DOCKER_COMPOSE | default "docker compose" }}'
   COMPOSER_INSTALL_ARGS: '{{.TASK_DOCKER_COMPOSE | default "" }}'
 
+includes:
+  coding-standards: ./task/Taskfile.coding-standards.yml
+
 tasks:
   default:
     - task: help
@@ -83,3 +86,12 @@ tasks:
       - task: console
         vars:
           TASK_ARGS: hautelook:fixtures:load --no-interaction
+
+  translations:extract:
+    cmds:
+      # We need a translation from en to en (!) (without prefix) to be able to process placeholders in en.
+      - "DEFAULT_LOCALE=en task console -- translation:extract --clean --force en --prefix=''"
+      - "DEFAULT_LOCALE=en task console -- translation:extract --clean --force da"
+      # Mark default translations (prefixed with `__`) as “Needs work” in Danish translations
+      - gsed --in-place='' 's/<target>__/<target state=\"needs-l10n\">__/' translations/*.da.*xlf
+    silent: true

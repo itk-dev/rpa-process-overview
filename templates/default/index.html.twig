@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'RPA Process Overview'|trans }}{% endblock %}
+
+{% block content %}
+    <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('process_overview_admin') }}">{{ 'Admin'|trans }}</a>
+            </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('process_overview_group_index') }}">{{ 'Groups'|trans }}</a>
+        </li>
+    </ul>
+{% endblock %}
