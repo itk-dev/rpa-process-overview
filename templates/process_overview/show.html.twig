@@ -2,23 +2,12 @@
 
 {% block title %}{{ 'Overview {label}'|trans({label: overview.label}) }}{% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script>
-        addEventListener('load', () => {
-                fetch({{ data_url|json_encode|raw }})
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data)
-                        const el = document.getElementById('process-overview')
-                        el.innerText = JSON.stringify(data, null, 2);
-                    })
-        })
-    </script>
-{% endblock %}
-
 {% block content %}
     {{ include('_partials/group_header.html.twig', {group: overview.group, overview: overview}) }}
+
+    {# https://standalone.brenoliradev.com/embed.html#auto-embed-with-target #}
+    <div id="ProcessOverview" data-config="{{ {data_url: data_url}|json_encode }}"></div>
+    <script src="/widgets/ProcessOverview.min.js"></script>
 
     <pre><code id="process-overview">{{ 'Loading data …'|trans }}</code></pre>
     <div id="process-search">#process-search</div>

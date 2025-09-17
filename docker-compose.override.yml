@@ -20,3 +20,11 @@ services:
       - ./mocks:/app/mocks
     ports:
       - "3030"
+
+  node:
+    image: node:24
+    profiles:
+      - dev
+    working_dir: /app
+    volumes:
+      - .:/app
