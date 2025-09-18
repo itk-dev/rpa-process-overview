@@ -7,6 +7,8 @@
 		}
 	})();
 
+	const t = (text) => text;
+
 	const url = new URL(document.location.href);
 	let currentPage = $state(
 		(() => {
@@ -15,17 +17,20 @@
 		})()
 	);
 
-	const pages = [
-		1, 2, 3
-		// @todo Handle "prev" and "next"
-		// 'next',
-	];
+	//	let maxCurrentPage = currentPage;
+	let pages = $state({ length: currentPage });
+	// $effect(() => {
+	// 	maxCurrentPage = Math.max(maxCurrentPage, currentPage);
+	// });
 
 	const setPage = (page: number, event: Event): void => {
 		// @todo Is this really necessary?
 		event.preventDefault();
 
 		currentPage = page;
+		// maxCurrentPage =
+		pages = { length: Math.max(pages.length, currentPage) };
+
 		// Update page URL without adding history entry.
 		history.replaceState({}, '', getPageUrl(currentPage));
 	};
@@ -36,20 +41,35 @@
 		return url.toString();
 	};
 
-	let dataUrl: string | null = $state(null);
 	let data: any[] | null = $state(null);
+	let fetching = $state(true);
+	let header: any[] = $state(null);
 
-	// goto('?page=87')
+	const buildHeader = () => {
+		if (null === header) {
+			header = data.columns.map((cell) => cell);
+		}
+	};
 
 	$effect(() => {
+		const pageUrl = new URL(document.location.href);
+		pageUrl.searchParams.set('page', currentPage.toString());
+		history.replaceState({}, '', pageUrl);
+
 		const url = new URL(config.data_url, document.location.href);
 		url.searchParams.set('page', currentPage.toString());
-		console.log(url.toString());
-		dataUrl = url.toString();
-		data = null;
-		fetch(dataUrl)
-			.then((response) => response.json())
-			.then((result) => (data = result));
+
+		fetching = true;
+		//data = null;
+		setTimeout(() => {
+			fetch(url.toString())
+				.then((response) => response.json())
+				.then((result) => {
+					data = result;
+					buildHeader();
+					fetching = false;
+				});
+		}, 1000);
 	});
 </script>
 
@@ -59,43 +79,74 @@
 	<div class="alert alert-warning">No data</div>
 {:else}
 	<table class="table">
-		<thead>
-			<tr>
-				{#each data.columns as column}
-					<th scope="col">{column.label}</th>
-				{/each}
-			</tr>
-		</thead>
-		<tbody>
-			{#each data.rows as row}
+		{#if header}
+			<thead>
 				<tr>
-					{#each row as cell}
-						<td>
-							{cell.value ?? cell.status ?? '👻'}
-						</td>
+					{#each header as column}
+						<th scope="col">{column.label}</th>
 					{/each}
 				</tr>
-			{/each}
-		</tbody>
+			</thead>
+		{/if}
+		{#if data}
+			<tbody class={{ fetching }}>
+				{#if data.rows.length > 0}
+					{#each data.rows as row}
+						<tr>
+							{#each row as cell}
+								<td>
+									{cell.value ?? cell.status ?? '👻'}
+								</td>
+							{/each}
+						</tr>
+					{/each}
+				{:else}
+					<tr>
+						<td colspan={header.length}>empty</td>
+					</tr>
+				{/if}
+			</tbody>
+		{/if}
 	</table>
 
-	<nav aria-label="Page navigation example">
+	<pre>{JSON.stringify([currentPage, pages])}</pre>
+	<nav aria-label="Page navigation">
 		<ul class="pagination">
-			{#each pages as page}
-				<li class={['page-item', { stuff: true, active: page === currentPage }]}>
-					<a href={getPageUrl(page)} class="page-link" onclick={(event) => setPage(page, event)}
-						>{page}</a
+			<li class={['page-item', { disabled: 1 === currentPage }]}>
+				<a
+					href={getPageUrl(currentPage - 1)}
+					class="page-link"
+					onclick={(event) => setPage(currentPage - 1, event)}>{t('Prev')}</a
+				>
+			</li>
+			{#each pages, page}
+				<li class={['page-item', { active: page + 1 === currentPage }]}>
+					<a
+						href={getPageUrl(page + 1)}
+						class="page-link"
+						onclick={(event) => setPage(page + 1, event)}>{page + 1}</a
 					>
 				</li>
 			{/each}
+			<li class={['page-item', { disabled: 0 === data.rows.length }]}>
+				<a
+					href={getPageUrl(currentPage + 1)}
+					class="page-link"
+					onclick={(event) => setPage(currentPage + 1, event)}>{t('Next')}</a
+				>
+			</li>
 		</ul>
 	</nav>
-
-	<details>
-		<summary>Data</summary>
-
-		<a href={dataUrl}>{dataUrl}</a>
-
-		<code><pre>{JSON.stringify(data, null, 2)}</pre></code>
-	</details>
 {/if}
+
+<details>
+	<summary>Config and data</summary>
+
+	<code><pre>{JSON.stringify({ config, data }, null, 2)}</pre></code>
+</details>
+
+<style>
+	.fetching {
+		opacity: 0.5;
+	}
+</style>

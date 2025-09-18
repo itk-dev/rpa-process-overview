@@ -2,6 +2,6 @@
 
 <https://standalone.brenoliradev.com>
 
-``` shell
+```shell
 task
 ```

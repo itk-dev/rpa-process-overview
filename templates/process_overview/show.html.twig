@@ -9,8 +9,6 @@
     <div id="ProcessOverview" data-config="{{ {data_url: data_url}|json_encode }}"></div>
     <script src="/widgets/ProcessOverview.min.js"></script>
 
-    <pre><code id="process-overview">{{ 'Loading data …'|trans }}</code></pre>
-    <div id="process-search">#process-search</div>
-
-    <a href="{{ data_url }}">{{ data_url }}</a>
+    <div id="ProcessSearch" data-config="{{ {search_url: search_url}|json_encode }}"></div>
+    <script src="/widgets/ProcessSearch.min.js"></script>
 {% endblock %}

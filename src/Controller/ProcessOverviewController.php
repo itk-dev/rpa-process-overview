@@ -27,11 +27,23 @@ final class ProcessOverviewController extends AbstractController
                 'group' => $group->getId(),
                 'overview' => $overview->getId(),
             ]),
+            'search_url' => $this->generateUrl('process_overview_search', [
+                'group' => $group->getId(),
+                'overview' => $overview->getId(),
+            ]),
         ]);
     }
 
     #[Route('/{overview}/data', name: 'data')]
     public function data(ProcessOverview $overview, ProcessOverviewHelper $helper): Response
+    {
+        $data = $helper->getData($overview);
+
+        return new JsonResponse($data);
+    }
+
+    #[Route('/{overview}/search', name: 'search')]
+    public function search(ProcessOverview $overview, ProcessOverviewHelper $helper): Response
     {
         $data = $helper->getData($overview);
 

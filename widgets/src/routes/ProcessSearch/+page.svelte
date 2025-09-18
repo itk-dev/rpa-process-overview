@@ -3,7 +3,7 @@
 
 	onMount(() => {
 		const script = document.createElement('script');
-		script.src = '/src/_standalone/ProcessOverview/embed.ts';
+		script.src = '/src/_standalone/ProcessSearch/embed.ts';
 		script.async = true;
 		script.type = 'module';
 
@@ -11,13 +11,13 @@
 
 		return () => {
 			document.head.removeChild(script);
-			window.ProcessOverview.stop();
+			window.ProcessSearch.stop();
 		};
 	});
 
 	const config = {
-		data_url: '/api/data'
+		search_url: '/api/search'
 	};
 </script>
 
-<div id="ProcessOverview" data-config={JSON.stringify(config)}></div>
+<div id="ProcessSearch" data-config={JSON.stringify(config)}></div>
