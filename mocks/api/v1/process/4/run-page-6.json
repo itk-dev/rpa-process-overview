@@ -1,0 +1,260 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/4/run?page=6"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 4,
+                "id": 40051,
+                "name": "Ratione aliquam officia eum qui.",
+                "metadata": {
+                    "cpr": 98633695,
+                    "name": "Prof. Humberto Breitenberg",
+                    "branch": "Heathcote-Bailey"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 4,
+                "id": 40052,
+                "name": "Cum ducimus laboriosam doloremque placeat distinctio.",
+                "metadata": {
+                    "cpr": 1462,
+                    "name": "Etha Bogan DVM",
+                    "branch": "Lesch, Fahey and Nienow"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T22:54:35+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 4,
+                "id": 40053,
+                "name": "Voluptatem qui eum consequuntur.",
+                "metadata": {
+                    "cpr": 525198,
+                    "name": "Eleazar Heaney III",
+                    "branch": "Gerhold-Brakus"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T22:54:35+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 4,
+                "id": 40054,
+                "name": "Molestiae harum enim quaerat.",
+                "metadata": {
+                    "cpr": 1284824,
+                    "name": "Ellie Mayer",
+                    "branch": "Walsh, Williamson and Rath"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 4,
+                "id": 40055,
+                "name": "Cupiditate laboriosam inventore vel soluta.",
+                "metadata": {
+                    "cpr": 2319305,
+                    "name": "Bernadette Carroll",
+                    "branch": "Ortiz, Walter and Lueilwitz"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 4,
+                "id": 40056,
+                "name": "Consequatur possimus sit ut dignissimos sapiente.",
+                "metadata": {
+                    "cpr": 917,
+                    "name": "Prof. Moriah Adams IV",
+                    "branch": "Morissette-Mueller"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 4,
+                "id": 40057,
+                "name": "Ipsam adipisci modi vel.",
+                "metadata": {
+                    "cpr": 86824886,
+                    "name": "Chris Hermann I",
+                    "branch": "Prohaska-Kshlerin"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 4,
+                "id": 40058,
+                "name": "Recusandae sint hic minus molestiae impedit.",
+                "metadata": {
+                    "cpr": 481642065,
+                    "name": "Elyse Jerde",
+                    "branch": "McDermott, Ferry and Schimmel"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 4,
+                "id": 40059,
+                "name": "Qui harum reprehenderit nam commodi.",
+                "metadata": {
+                    "cpr": 606158,
+                    "name": "Frederic Johns II",
+                    "branch": "Kshlerin-Bartell"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 4,
+                "id": 40060,
+                "name": "Repellat qui quae amet numquam.",
+                "metadata": {
+                    "cpr": 251970,
+                    "name": "Dallas Lind",
+                    "branch": "Reilly, McDermott and Funk"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -6,6 +6,8 @@ services:
     image: itkdev/php8.4-fpm:latest
 
   nginx:
+    ports: !override
+      - "8787:8080"
     labels:
       # HTTPS config - uncomment to enable redirect from :80 to :443
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=redirect-to-https"
@@ -19,7 +21,7 @@ services:
     volumes:
       - ./mocks:/app/mocks
     ports:
-      - "3030"
+      - "8030:3030"
 
   node:
     image: node:24

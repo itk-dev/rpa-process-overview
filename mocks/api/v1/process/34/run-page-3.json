@@ -1,0 +1,465 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/34/run?page=3"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 34,
+                "id": 340021,
+                "name": "Nihil et quia repellat porro.",
+                "metadata": {
+                    "cpr": 59432,
+                    "name": "Prof. Murray Reinger IV",
+                    "branch": "Dickens-Blanda"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:01:46+02:00",
+                        "finished_at": "2025-09-20T23:02:00+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:03:47+02:00",
+                        "finished_at": "2025-09-20T23:04:16+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:05:04+02:00",
+                        "finished_at": "2025-09-20T23:05:44+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:06:32+02:00",
+                        "finished_at": "2025-09-20T23:06:47+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:06:44+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:20:56+02:00",
+                        "finished_at": "2025-09-20T23:21:22+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340022,
+                "name": "Est illum quia et saepe repellendus.",
+                "metadata": {
+                    "cpr": 950641,
+                    "name": "Carson Dicki",
+                    "branch": "Lueilwitz LLC"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:11:05+02:00",
+                        "finished_at": "2025-09-20T23:11:18+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:16:15+02:00",
+                        "finished_at": "2025-09-20T23:16:21+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:29:12+02:00",
+                        "finished_at": "2025-09-20T23:29:18+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:32:01+02:00",
+                        "finished_at": "2025-09-20T23:32:21+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:32:22+02:00",
+                        "finished_at": "2025-09-20T23:32:26+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340023,
+                "name": "Pariatur sunt molestiae labore.",
+                "metadata": {
+                    "cpr": 64120,
+                    "name": "Mr. Jacey Hansen",
+                    "branch": "Jacobi-Schmidt"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:11:32+02:00",
+                        "finished_at": "2025-09-20T23:11:47+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:11:46+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:23:17+02:00",
+                        "finished_at": "2025-09-20T23:23:20+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:29:40+02:00",
+                        "finished_at": "2025-09-20T23:30:19+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:32:01+02:00",
+                        "finished_at": "2025-09-20T23:32:43+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:37:40+02:00",
+                        "finished_at": "2025-09-20T23:38:16+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340024,
+                "name": "Sed aliquid inventore quasi voluptate.",
+                "metadata": {
+                    "cpr": 62037223,
+                    "name": "Kobe Muller PhD",
+                    "branch": "Senger PLC"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:14:06+02:00",
+                        "finished_at": "2025-09-20T23:14:22+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:26:20+02:00",
+                        "finished_at": "2025-09-20T23:26:28+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:33:00+02:00",
+                        "finished_at": "2025-09-20T23:33:20+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:37:02+02:00",
+                        "finished_at": "2025-09-20T23:37:30+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:37:15+02:00",
+                        "finished_at": "2025-09-20T23:37:43+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340025,
+                "name": "Omnis rem vel aspernatur.",
+                "metadata": {
+                    "cpr": 560398176,
+                    "name": "Maybell Lubowitz I",
+                    "branch": "Kuphal Ltd"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:13:26+02:00",
+                        "finished_at": "2025-09-20T23:13:39+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:13:36+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:22:13+02:00",
+                        "finished_at": "2025-09-20T23:22:40+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:26:06+02:00",
+                        "finished_at": "2025-09-20T23:26:45+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:34:38+02:00",
+                        "finished_at": "2025-09-20T23:35:01+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:40:29+02:00",
+                        "finished_at": "2025-09-20T23:40:36+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340026,
+                "name": "Sint dolorem autem placeat.",
+                "metadata": {
+                    "cpr": 1369845,
+                    "name": "Caitlyn Dare",
+                    "branch": "Medhurst, Quigley and Crona"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:15:52+02:00",
+                        "finished_at": "2025-09-20T23:16:29+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:19:35+02:00",
+                        "finished_at": "2025-09-20T23:20:00+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:20:00+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:24:10+02:00",
+                        "finished_at": "2025-09-20T23:24:47+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:36:19+02:00",
+                        "finished_at": "2025-09-20T23:36:44+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:51:05+02:00",
+                        "finished_at": "2025-09-20T23:51:09+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340027,
+                "name": "Minima quisquam molestias accusantium repudiandae impedit.",
+                "metadata": {
+                    "cpr": 953365056,
+                    "name": "Lea Jenkins PhD",
+                    "branch": "Kuhic, Russel and VonRueden"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:15:39+02:00",
+                        "finished_at": "2025-09-20T23:16:13+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:21:30+02:00",
+                        "finished_at": "2025-09-20T23:21:33+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:24:17+02:00",
+                        "finished_at": "2025-09-20T23:24:20+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:24:18+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:29:19+02:00",
+                        "finished_at": "2025-09-20T23:29:33+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:33:23+02:00",
+                        "finished_at": "2025-09-20T23:33:53+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340028,
+                "name": "Deserunt qui autem perspiciatis laborum.",
+                "metadata": {
+                    "cpr": 16,
+                    "name": "Julien Kiehn",
+                    "branch": "Bogan, Weissnat and Kovacek"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:06:17+02:00",
+                        "finished_at": "2025-09-20T23:06:28+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:21:30+02:00",
+                        "finished_at": "2025-09-20T23:21:49+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:24:29+02:00",
+                        "finished_at": "2025-09-20T23:25:02+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:25:02+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:32:39+02:00",
+                        "finished_at": "2025-09-20T23:32:54+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:49:04+02:00",
+                        "finished_at": "2025-09-20T23:49:29+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340029,
+                "name": "Et et assumenda.",
+                "metadata": {
+                    "cpr": 2121,
+                    "name": "Jameson Haley",
+                    "branch": "Kuvalis-Jerde"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:59:59+02:00",
+                        "finished_at": "2025-09-20T23:00:15+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:03:55+02:00",
+                        "finished_at": "2025-09-20T23:04:05+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:18:26+02:00",
+                        "finished_at": "2025-09-20T23:19:03+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:31:17+02:00",
+                        "finished_at": "2025-09-20T23:31:53+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:33:49+02:00",
+                        "finished_at": "2025-09-20T23:34:03+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340030,
+                "name": "Repellat sint sint ex occaecati suscipit.",
+                "metadata": {
+                    "cpr": 79547682,
+                    "name": "Dr. Eva Hammes",
+                    "branch": "Langworth, Christiansen and Abshire"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:03:00+02:00",
+                        "finished_at": "2025-09-20T23:03:34+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:13:45+02:00",
+                        "finished_at": "2025-09-20T23:14:12+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:24:59+02:00",
+                        "finished_at": "2025-09-20T23:25:40+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:25:37+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:33:49+02:00",
+                        "finished_at": "2025-09-20T23:34:22+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:46:00+02:00",
+                        "finished_at": "2025-09-20T23:46:14+02:00",
+                        "failure": null
+                    }
+                ]
+            }
+        ]
+    }
+}

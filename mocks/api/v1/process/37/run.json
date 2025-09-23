@@ -1,0 +1,585 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/37/run"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 37,
+                "id": 370001,
+                "name": "Nihil aut ea inventore neque qui.",
+                "metadata": {
+                    "cpr": 1580,
+                    "name": "Carroll Medhurst",
+                    "branch": "Erdman, Kling and Bartell"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:04:33+02:00",
+                        "finished_at": "2025-09-20T23:04:53+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:11:31+02:00",
+                        "finished_at": "2025-09-20T23:11:46+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:22:01+02:00",
+                        "finished_at": "2025-09-20T23:22:20+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:30:52+02:00",
+                        "finished_at": "2025-09-20T23:31:23+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:31:21+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:32:37+02:00",
+                        "finished_at": "2025-09-20T23:33:05+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:44:07+02:00",
+                        "finished_at": "2025-09-20T23:44:31+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:58:48+02:00",
+                        "finished_at": "2025-09-20T23:59:02+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 37,
+                "id": 370002,
+                "name": "Dicta molestias earum odit.",
+                "metadata": {
+                    "cpr": 961,
+                    "name": "Linda Kunze",
+                    "branch": "Lockman, Kuhic and Larson"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:11:33+02:00",
+                        "finished_at": "2025-09-20T23:11:59+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:18:09+02:00",
+                        "finished_at": "2025-09-20T23:18:49+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:26:35+02:00",
+                        "finished_at": "2025-09-20T23:27:14+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:33:00+02:00",
+                        "finished_at": "2025-09-20T23:33:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:43:38+02:00",
+                        "finished_at": "2025-09-20T23:43:59+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:59:04+02:00",
+                        "finished_at": "2025-09-20T23:59:40+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-21T00:00:07+02:00",
+                        "finished_at": "2025-09-21T00:00:23+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 37,
+                "id": 370003,
+                "name": "Illo quo ut.",
+                "metadata": {
+                    "cpr": 260207099,
+                    "name": "Kian Bauch",
+                    "branch": "Waelchi Ltd"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:00:42+02:00",
+                        "finished_at": "2025-09-20T23:01:16+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:16:33+02:00",
+                        "finished_at": "2025-09-20T23:16:51+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:26:11+02:00",
+                        "finished_at": "2025-09-20T23:26:36+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:26:35+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:37:52+02:00",
+                        "finished_at": "2025-09-20T23:38:21+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:50:06+02:00",
+                        "finished_at": "2025-09-20T23:50:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:59:34+02:00",
+                        "finished_at": "2025-09-20T23:59:48+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-21T00:01:29+02:00",
+                        "finished_at": "2025-09-21T00:01:32+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 37,
+                "id": 370004,
+                "name": "Earum incidunt consequuntur quos.",
+                "metadata": {
+                    "cpr": 4,
+                    "name": "Stanley Hettinger",
+                    "branch": "Treutel-Hauck"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:01:42+02:00",
+                        "finished_at": "2025-09-20T23:01:53+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:16:36+02:00",
+                        "finished_at": "2025-09-20T23:16:59+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:20:42+02:00",
+                        "finished_at": "2025-09-20T23:21:17+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:30:10+02:00",
+                        "finished_at": "2025-09-20T23:30:22+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:45:06+02:00",
+                        "finished_at": "2025-09-20T23:45:28+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:50:07+02:00",
+                        "finished_at": "2025-09-20T23:50:20+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:50:18+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:58:38+02:00",
+                        "finished_at": "2025-09-20T23:59:12+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 37,
+                "id": 370005,
+                "name": "Officia eveniet libero.",
+                "metadata": {
+                    "cpr": 67393,
+                    "name": "Justine Rogahn",
+                    "branch": "Armstrong, Sawayn and Lebsack"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:03:36+02:00",
+                        "finished_at": "2025-09-20T23:04:15+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:17:28+02:00",
+                        "finished_at": "2025-09-20T23:17:40+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:26:17+02:00",
+                        "finished_at": "2025-09-20T23:26:27+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:39:02+02:00",
+                        "finished_at": "2025-09-20T23:39:42+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:41:22+02:00",
+                        "finished_at": "2025-09-20T23:41:30+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:46:00+02:00",
+                        "finished_at": "2025-09-20T23:46:37+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:46:37+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:51:25+02:00",
+                        "finished_at": "2025-09-20T23:51:38+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 37,
+                "id": 370006,
+                "name": "Autem dolorem eum ut.",
+                "metadata": {
+                    "cpr": 7334,
+                    "name": "Aidan Donnelly",
+                    "branch": "Reichel Ltd"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:01:54+02:00",
+                        "finished_at": "2025-09-20T23:02:36+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:02:36+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:17:01+02:00",
+                        "finished_at": "2025-09-20T23:17:29+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:26:14+02:00",
+                        "finished_at": "2025-09-20T23:26:55+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:37:33+02:00",
+                        "finished_at": "2025-09-20T23:38:05+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:40:53+02:00",
+                        "finished_at": "2025-09-20T23:41:12+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:50:47+02:00",
+                        "finished_at": "2025-09-20T23:51:15+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-21T00:04:21+02:00",
+                        "finished_at": "2025-09-21T00:04:32+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 37,
+                "id": 370007,
+                "name": "Et et amet odit.",
+                "metadata": {
+                    "cpr": 76069222,
+                    "name": "Mr. Cornell Crist DVM",
+                    "branch": "Predovic, Stoltenberg and Schmeler"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:10:31+02:00",
+                        "finished_at": "2025-09-20T23:10:52+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:24:25+02:00",
+                        "finished_at": "2025-09-20T23:24:58+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:28:56+02:00",
+                        "finished_at": "2025-09-20T23:29:15+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:38:45+02:00",
+                        "finished_at": "2025-09-20T23:39:13+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:39:13+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:46:46+02:00",
+                        "finished_at": "2025-09-20T23:46:55+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:55:30+02:00",
+                        "finished_at": "2025-09-20T23:55:50+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-21T00:05:21+02:00",
+                        "finished_at": "2025-09-21T00:05:33+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 37,
+                "id": 370008,
+                "name": "Et dolores officia et voluptas facilis.",
+                "metadata": {
+                    "cpr": 209689,
+                    "name": "Miss Freida Gleason I",
+                    "branch": "Gutkowski PLC"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:11:35+02:00",
+                        "finished_at": "2025-09-20T23:12:12+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:21:48+02:00",
+                        "finished_at": "2025-09-20T23:21:51+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:33:42+02:00",
+                        "finished_at": "2025-09-20T23:34:12+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:39:35+02:00",
+                        "finished_at": "2025-09-20T23:40:00+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:41:20+02:00",
+                        "finished_at": "2025-09-20T23:41:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:45:45+02:00",
+                        "finished_at": "2025-09-20T23:46:09+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-21T00:00:13+02:00",
+                        "finished_at": "2025-09-21T00:00:19+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 37,
+                "id": 370009,
+                "name": "Ut omnis facere corrupti animi consequatur.",
+                "metadata": {
+                    "cpr": 173509,
+                    "name": "Donnell Pfeffer",
+                    "branch": "Williamson, Lynch and Muller"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:15:11+02:00",
+                        "finished_at": "2025-09-20T23:15:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:18:34+02:00",
+                        "finished_at": "2025-09-20T23:18:50+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:21:01+02:00",
+                        "finished_at": "2025-09-20T23:21:26+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:21:24+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:28:54+02:00",
+                        "finished_at": "2025-09-20T23:29:28+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:35:04+02:00",
+                        "finished_at": "2025-09-20T23:35:15+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:42:21+02:00",
+                        "finished_at": "2025-09-20T23:42:25+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:51:03+02:00",
+                        "finished_at": "2025-09-20T23:51:28+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 37,
+                "id": 370010,
+                "name": "Fugiat dignissimos amet.",
+                "metadata": {
+                    "cpr": 5123,
+                    "name": "Emie Hamill",
+                    "branch": "Stokes-Weissnat"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:06:22+02:00",
+                        "finished_at": "2025-09-20T23:06:56+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:09:40+02:00",
+                        "finished_at": "2025-09-20T23:10:04+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:17:09+02:00",
+                        "finished_at": "2025-09-20T23:17:26+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:24:21+02:00",
+                        "finished_at": "2025-09-20T23:24:42+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:33:12+02:00",
+                        "finished_at": "2025-09-20T23:33:43+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:49:06+02:00",
+                        "finished_at": "2025-09-20T23:49:23+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:49:23+02:00",
+                        "finished_at": "2025-09-20T23:49:59+02:00",
+                        "failure": null
+                    }
+                ]
+            }
+        ]
+    }
+}

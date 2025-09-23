@@ -1,0 +1,525 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/36/run?page=4"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 36,
+                "id": 360031,
+                "name": "Autem itaque non.",
+                "metadata": {
+                    "cpr": 10,
+                    "name": "Dr. Roy Leannon",
+                    "branch": "Hirthe, Bergnaum and Tremblay"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 36,
+                "id": 360032,
+                "name": "Ullam ut dicta non.",
+                "metadata": {
+                    "cpr": 55722654,
+                    "name": "Roosevelt Will",
+                    "branch": "Braun-Bauch"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T22:54:36+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 36,
+                "id": 360033,
+                "name": "Omnis laborum qui illo quisquam non.",
+                "metadata": {
+                    "cpr": 0,
+                    "name": "Elnora Kuphal",
+                    "branch": "Satterfield-Harvey"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T22:54:36+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 36,
+                "id": 360034,
+                "name": "Necessitatibus error et nihil et provident.",
+                "metadata": {
+                    "cpr": 1041045,
+                    "name": "Mr. Reggie Paucek III",
+                    "branch": "Runolfsson, Windler and Dare"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T22:54:36+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 36,
+                "id": 360035,
+                "name": "Laudantium cumque explicabo.",
+                "metadata": {
+                    "cpr": 621092995,
+                    "name": "Mrs. Eileen Bernier",
+                    "branch": "Wunsch LLC"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 36,
+                "id": 360036,
+                "name": "Neque sint deleniti ab doloribus.",
+                "metadata": {
+                    "cpr": 7238398,
+                    "name": "Hector Cormier",
+                    "branch": "Bahringer, Jakubowski and Becker"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T22:54:36+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 36,
+                "id": 360037,
+                "name": "Qui a rerum.",
+                "metadata": {
+                    "cpr": 51,
+                    "name": "Enola Fahey Jr.",
+                    "branch": "Metz-Baumbach"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T22:54:36+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 36,
+                "id": 360038,
+                "name": "Architecto expedita perspiciatis.",
+                "metadata": {
+                    "cpr": 63448,
+                    "name": "Eldora Trantow",
+                    "branch": "Ullrich-Eichmann"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 36,
+                "id": 360039,
+                "name": "Placeat eaque libero.",
+                "metadata": {
+                    "cpr": 975,
+                    "name": "Lew Daugherty",
+                    "branch": "White Group"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T22:54:36+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 36,
+                "id": 360040,
+                "name": "Vero ullam ea sed cum quaerat.",
+                "metadata": {
+                    "cpr": 12,
+                    "name": "Nina Cole",
+                    "branch": "Adams, Fahey and Runte"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T22:54:36+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:36+02:00",
+                        "finished_at": "2025-09-20T22:54:36+02:00",
+                        "failure": null
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,280 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/26/run"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 26,
+                "id": 260001,
+                "name": "Quis in est iure pariatur omnis.",
+                "metadata": {
+                    "cpr": 9522754,
+                    "name": "Prof. Marguerite Bayer",
+                    "branch": "Flatley-Balistreri"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:02:48+02:00",
+                        "finished_at": "2025-09-20T23:03:16+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:03:33+02:00",
+                        "finished_at": "2025-09-20T23:04:01+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 26,
+                "id": 260002,
+                "name": "Dolor itaque iure at laudantium.",
+                "metadata": {
+                    "cpr": 5571,
+                    "name": "Lilla King",
+                    "branch": "Stracke Ltd"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:00:28+02:00",
+                        "finished_at": "2025-09-20T23:01:09+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:11:10+02:00",
+                        "finished_at": "2025-09-20T23:11:36+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 26,
+                "id": 260003,
+                "name": "Aut unde magnam.",
+                "metadata": {
+                    "cpr": 37966,
+                    "name": "Dr. Harrison Rice",
+                    "branch": "White-Sawayn"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:13:43+02:00",
+                        "finished_at": "2025-09-20T23:14:19+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:22:53+02:00",
+                        "finished_at": "2025-09-20T23:23:32+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 26,
+                "id": 260004,
+                "name": "Veniam distinctio minus et sunt.",
+                "metadata": {
+                    "cpr": 901,
+                    "name": "Norris Hauck",
+                    "branch": "Emard, Cruickshank and Harber"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:12:55+02:00",
+                        "finished_at": "2025-09-20T23:13:30+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:13:29+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:27:48+02:00",
+                        "finished_at": "2025-09-20T23:28:23+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 26,
+                "id": 260005,
+                "name": "Magnam eius quia voluptatibus est ea.",
+                "metadata": {
+                    "cpr": 611298,
+                    "name": "Ewald Kris",
+                    "branch": "Hartmann LLC"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:02:16+02:00",
+                        "finished_at": "2025-09-20T23:02:28+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:06:13+02:00",
+                        "finished_at": "2025-09-20T23:06:52+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 26,
+                "id": 260006,
+                "name": "Consectetur vel est non.",
+                "metadata": {
+                    "cpr": 14627,
+                    "name": "Creola Zboncak",
+                    "branch": "Konopelski LLC"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:13:54+02:00",
+                        "finished_at": "2025-09-20T23:14:33+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:14:33+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:27:27+02:00",
+                        "finished_at": "2025-09-20T23:27:32+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 26,
+                "id": 260007,
+                "name": "Mollitia sed voluptas sed.",
+                "metadata": {
+                    "cpr": 2406,
+                    "name": "Kay Rau",
+                    "branch": "Harris Inc"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:10:19+02:00",
+                        "finished_at": "2025-09-20T23:10:54+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:10:53+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:16:01+02:00",
+                        "finished_at": "2025-09-20T23:16:33+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 26,
+                "id": 260008,
+                "name": "Iusto optio rerum.",
+                "metadata": {
+                    "cpr": 17789059,
+                    "name": "Queenie Stamm",
+                    "branch": "Welch, Muller and Hartmann"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:08:10+02:00",
+                        "finished_at": "2025-09-20T23:08:16+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:16:09+02:00",
+                        "finished_at": "2025-09-20T23:16:20+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:16:18+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 26,
+                "id": 260009,
+                "name": "Quaerat rerum veniam qui commodi.",
+                "metadata": {
+                    "cpr": 8650,
+                    "name": "Haven Tremblay",
+                    "branch": "Luettgen, Kulas and Jakubowski"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:09:09+02:00",
+                        "finished_at": "2025-09-20T23:09:51+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:09:48+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:20:33+02:00",
+                        "finished_at": "2025-09-20T23:20:57+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 26,
+                "id": 260010,
+                "name": "Eum nihil eligendi aliquam repellat nisi.",
+                "metadata": {
+                    "cpr": 98,
+                    "name": "Keven Denesik",
+                    "branch": "Feest and Sons"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:02:41+02:00",
+                        "finished_at": "2025-09-20T23:02:59+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:16:01+02:00",
+                        "finished_at": "2025-09-20T23:16:21+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:16:20+02:00"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

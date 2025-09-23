@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\DataSource;
 use App\Entity\ProcessOverview;
 use App\Entity\ProcessOverviewGroup;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
@@ -33,6 +34,8 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToCrud(t('Group'), null, ProcessOverviewGroup::class);
         yield MenuItem::linkToCrud(t('Process overview'), null, ProcessOverview::class);
+        yield MenuItem::linkToCrud(t('Data source'), null, DataSource::class);
+
         yield MenuItem::section();
         yield MenuItem::linkToRoute(t('Home'), null, 'app_default');
     }

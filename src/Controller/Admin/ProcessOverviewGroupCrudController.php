@@ -21,8 +21,8 @@ class ProcessOverviewGroupCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return parent::configureCrud($crud)
-            ->setEntityLabelInPlural(t('Groups'))
-            ->setEntityLabelInSingular(t('Group'));
+            ->setEntityLabelInSingular(t('Group'))
+            ->setEntityLabelInPlural(t('Groups'));
     }
 
     public function configureActions(Actions $actions): Actions

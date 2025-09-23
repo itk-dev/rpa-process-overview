@@ -1,0 +1,345 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/29/run?page=4"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 29,
+                "id": 290031,
+                "name": "Aut ipsam sed praesentium.",
+                "metadata": {
+                    "cpr": 6024,
+                    "name": "Garry Beier",
+                    "branch": "Maggio Group"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:13:35+02:00",
+                        "finished_at": "2025-09-20T23:13:56+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:29:23+02:00",
+                        "finished_at": "2025-09-20T23:29:52+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:35:16+02:00",
+                        "finished_at": "2025-09-20T23:35:50+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:35:49+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290032,
+                "name": "Quisquam maxime est excepturi.",
+                "metadata": {
+                    "cpr": 79971277,
+                    "name": "Bertha McCullough",
+                    "branch": "Halvorson PLC"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:15:14+02:00",
+                        "finished_at": "2025-09-20T23:15:50+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:27:14+02:00",
+                        "finished_at": "2025-09-20T23:27:37+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:31:04+02:00",
+                        "finished_at": "2025-09-20T23:31:31+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290033,
+                "name": "Ducimus qui et autem.",
+                "metadata": {
+                    "cpr": 35,
+                    "name": "Sean Balistreri",
+                    "branch": "Nikolaus, Rippin and Schmidt"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:04:24+02:00",
+                        "finished_at": "2025-09-20T23:04:51+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:20:58+02:00",
+                        "finished_at": "2025-09-20T23:21:38+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:21:38+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:34:03+02:00",
+                        "finished_at": "2025-09-20T23:34:07+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290034,
+                "name": "Distinctio voluptas minima ipsam.",
+                "metadata": {
+                    "cpr": 965230,
+                    "name": "Micah Padberg",
+                    "branch": "Schowalter, Kautzer and Monahan"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:01:22+02:00",
+                        "finished_at": "2025-09-20T23:02:03+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:11:50+02:00",
+                        "finished_at": "2025-09-20T23:12:04+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:12:03+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:15:15+02:00",
+                        "finished_at": "2025-09-20T23:15:48+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290035,
+                "name": "Non amet saepe qui alias.",
+                "metadata": {
+                    "cpr": 28520527,
+                    "name": "Prof. Marquis Kunde",
+                    "branch": "Collier Group"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:11:03+02:00",
+                        "finished_at": "2025-09-20T23:11:37+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:21:26+02:00",
+                        "finished_at": "2025-09-20T23:21:53+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:31:51+02:00",
+                        "finished_at": "2025-09-20T23:32:04+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:32:04+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290036,
+                "name": "Ut doloremque vero enim.",
+                "metadata": {
+                    "cpr": 3,
+                    "name": "Kaci Wyman",
+                    "branch": "Smith-Cummerata"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:59:46+02:00",
+                        "finished_at": "2025-09-20T23:00:05+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:00:05+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:01:18+02:00",
+                        "finished_at": "2025-09-20T23:01:45+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:05:40+02:00",
+                        "finished_at": "2025-09-20T23:05:59+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290037,
+                "name": "Eum provident saepe quae corrupti totam.",
+                "metadata": {
+                    "cpr": 895,
+                    "name": "Peggie Johns",
+                    "branch": "Kuhn, Grady and Weissnat"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:13:07+02:00",
+                        "finished_at": "2025-09-20T23:13:30+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:17:52+02:00",
+                        "finished_at": "2025-09-20T23:18:30+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:24:34+02:00",
+                        "finished_at": "2025-09-20T23:24:59+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290038,
+                "name": "Mollitia temporibus cupiditate aut ipsum.",
+                "metadata": {
+                    "cpr": 283,
+                    "name": "Lavada Pagac",
+                    "branch": "Daugherty Ltd"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:11:31+02:00",
+                        "finished_at": "2025-09-20T23:11:45+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:27:34+02:00",
+                        "finished_at": "2025-09-20T23:28:15+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:28:13+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:28:11+02:00",
+                        "finished_at": "2025-09-20T23:28:21+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290039,
+                "name": "Magni sapiente corporis.",
+                "metadata": {
+                    "cpr": 9,
+                    "name": "Bradly Bernier",
+                    "branch": "Barrows, Osinski and Sporer"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:13:50+02:00",
+                        "finished_at": "2025-09-20T23:14:10+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:21:06+02:00",
+                        "finished_at": "2025-09-20T23:21:09+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:36:33+02:00",
+                        "finished_at": "2025-09-20T23:36:51+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290040,
+                "name": "Excepturi dolorem veritatis.",
+                "metadata": {
+                    "cpr": 682,
+                    "name": "Dr. Greg Hagenes V",
+                    "branch": "Emmerich-Kris"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:05:07+02:00",
+                        "finished_at": "2025-09-20T23:05:28+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:21:15+02:00",
+                        "finished_at": "2025-09-20T23:21:44+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:21:44+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:35:25+02:00",
+                        "finished_at": "2025-09-20T23:35:41+02:00",
+                        "failure": null
+                    }
+                ]
+            }
+        ]
+    }
+}

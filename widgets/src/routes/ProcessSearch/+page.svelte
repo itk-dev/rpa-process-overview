@@ -16,7 +16,7 @@
 	});
 
 	const config = {
-		search_url: '/api/search'
+		search_url: 'http://127.0.0.1:8787/group/1/overview/1/search'
 	};
 </script>
 

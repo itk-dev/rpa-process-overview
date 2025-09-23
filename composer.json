@@ -28,8 +28,10 @@
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.48",
+        "fakerphp/faker": "^1.24",
         "friendsofphp/php-cs-fixer": "^3.87",
         "hautelook/alice-bundle": "^2.15.1",
+        "nelmio/cors-bundle": "^2.5",
         "symfony/maker-bundle": "^1.64",
         "symfony/stopwatch": "~7.3.0",
         "symfony/web-profiler-bundle": "~7.3.0",

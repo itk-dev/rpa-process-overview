@@ -1,0 +1,335 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/29/run?page=1"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 29,
+                "id": 290001,
+                "name": "Autem aperiam voluptatem deserunt.",
+                "metadata": {
+                    "cpr": 6,
+                    "name": "Eugene Bogisich",
+                    "branch": "Emard, Keebler and Barrows"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:04:14+02:00",
+                        "finished_at": "2025-09-20T23:04:42+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:13:00+02:00",
+                        "finished_at": "2025-09-20T23:13:29+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:26:35+02:00",
+                        "finished_at": "2025-09-20T23:26:45+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290002,
+                "name": "Et ut voluptatem voluptatibus id aut.",
+                "metadata": {
+                    "cpr": 651,
+                    "name": "Prof. Dolores Kulas",
+                    "branch": "Bogan-Reichel"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:10:28+02:00",
+                        "finished_at": "2025-09-20T23:11:01+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:16:06+02:00",
+                        "finished_at": "2025-09-20T23:16:14+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:16:20+02:00",
+                        "finished_at": "2025-09-20T23:16:44+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290003,
+                "name": "Quae veritatis qui dolor.",
+                "metadata": {
+                    "cpr": 8307644,
+                    "name": "Ollie O'Kon",
+                    "branch": "Medhurst-Becker"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:08:12+02:00",
+                        "finished_at": "2025-09-20T23:08:54+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:20:55+02:00",
+                        "finished_at": "2025-09-20T23:21:07+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:25:32+02:00",
+                        "finished_at": "2025-09-20T23:26:07+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:26:07+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290004,
+                "name": "Deleniti suscipit adipisci.",
+                "metadata": {
+                    "cpr": 135260923,
+                    "name": "Geovanni Zemlak",
+                    "branch": "DuBuque-Okuneva"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:00:13+02:00",
+                        "finished_at": "2025-09-20T23:00:22+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:00:57+02:00",
+                        "finished_at": "2025-09-20T23:01:19+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:17:10+02:00",
+                        "finished_at": "2025-09-20T23:17:30+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:17:27+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290005,
+                "name": "Aut reprehenderit delectus quos consequuntur.",
+                "metadata": {
+                    "cpr": 6548604,
+                    "name": "Ms. Lola King DVM",
+                    "branch": "Terry-Stanton"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:04:04+02:00",
+                        "finished_at": "2025-09-20T23:04:29+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:07:40+02:00",
+                        "finished_at": "2025-09-20T23:08:15+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:07:59+02:00",
+                        "finished_at": "2025-09-20T23:08:38+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290006,
+                "name": "Dolor voluptas repellendus vero cum.",
+                "metadata": {
+                    "cpr": 6309,
+                    "name": "Ms. Candice Wisoky I",
+                    "branch": "Nader, Muller and Nitzsche"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:10:16+02:00",
+                        "finished_at": "2025-09-20T23:10:19+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:18:45+02:00",
+                        "finished_at": "2025-09-20T23:18:59+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:32:07+02:00",
+                        "finished_at": "2025-09-20T23:32:21+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290007,
+                "name": "Blanditiis accusamus qui.",
+                "metadata": {
+                    "cpr": 51735776,
+                    "name": "Dr. Sabrina Morar",
+                    "branch": "Hudson, Daugherty and Hoppe"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:13:08+02:00",
+                        "finished_at": "2025-09-20T23:13:28+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:18:11+02:00",
+                        "finished_at": "2025-09-20T23:18:42+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:18:41+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:28:49+02:00",
+                        "finished_at": "2025-09-20T23:29:26+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290008,
+                "name": "Ut aut quia velit voluptas sequi.",
+                "metadata": {
+                    "cpr": 6,
+                    "name": "Hazle McDermott",
+                    "branch": "Gorczany-Fay"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:06:42+02:00",
+                        "finished_at": "2025-09-20T23:06:46+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:17:28+02:00",
+                        "finished_at": "2025-09-20T23:18:06+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:18:03+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:18:21+02:00",
+                        "finished_at": "2025-09-20T23:18:44+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290009,
+                "name": "Asperiores perferendis expedita non dolor soluta.",
+                "metadata": {
+                    "cpr": 331754169,
+                    "name": "Margie Kling",
+                    "branch": "Kris, Carroll and Stroman"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:59:31+02:00",
+                        "finished_at": "2025-09-20T22:59:40+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:05:54+02:00",
+                        "finished_at": "2025-09-20T23:06:21+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:20:54+02:00",
+                        "finished_at": "2025-09-20T23:21:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 29,
+                "id": 290010,
+                "name": "Atque doloribus consequatur reiciendis dignissimos.",
+                "metadata": {
+                    "cpr": 98,
+                    "name": "Koby Dietrich",
+                    "branch": "Goodwin, Christiansen and Beier"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:06:39+02:00",
+                        "finished_at": "2025-09-20T23:07:15+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:10:25+02:00",
+                        "finished_at": "2025-09-20T23:10:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:16:39+02:00",
+                        "finished_at": "2025-09-20T23:17:18+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:17:15+02:00"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

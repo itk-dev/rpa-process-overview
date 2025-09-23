@@ -1,0 +1,335 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/7/run"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 7,
+                "id": 70001,
+                "name": "Voluptatem enim quidem sit eos.",
+                "metadata": {
+                    "cpr": 2482,
+                    "name": "Armani Schmeler",
+                    "branch": "Parisian-Yost"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:05:34+02:00",
+                        "finished_at": "2025-09-20T23:05:45+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:05:44+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:05:44+02:00",
+                        "finished_at": "2025-09-20T23:05:50+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:07:43+02:00",
+                        "finished_at": "2025-09-20T23:08:13+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 7,
+                "id": 70002,
+                "name": "Delectus ex rerum ut enim.",
+                "metadata": {
+                    "cpr": 41012,
+                    "name": "Sonny Goldner",
+                    "branch": "Heaney PLC"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:07:32+02:00",
+                        "finished_at": "2025-09-20T23:08:04+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:20:42+02:00",
+                        "finished_at": "2025-09-20T23:21:09+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:22:23+02:00",
+                        "finished_at": "2025-09-20T23:22:27+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 7,
+                "id": 70003,
+                "name": "Sint sit exercitationem.",
+                "metadata": {
+                    "cpr": 683,
+                    "name": "Dr. Vito Gusikowski",
+                    "branch": "Koelpin and Sons"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:11:03+02:00",
+                        "finished_at": "2025-09-20T23:11:44+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:19:26+02:00",
+                        "finished_at": "2025-09-20T23:20:01+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:31:10+02:00",
+                        "finished_at": "2025-09-20T23:31:13+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:31:10+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 7,
+                "id": 70004,
+                "name": "Ut soluta doloremque et error.",
+                "metadata": {
+                    "cpr": 345,
+                    "name": "Fannie Gottlieb",
+                    "branch": "Torphy-Predovic"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:08:21+02:00",
+                        "finished_at": "2025-09-20T23:08:44+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:09:11+02:00",
+                        "finished_at": "2025-09-20T23:09:40+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:09:36+02:00",
+                        "finished_at": "2025-09-20T23:10:11+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 7,
+                "id": 70005,
+                "name": "Voluptates ipsam quis et.",
+                "metadata": {
+                    "cpr": 7196,
+                    "name": "Travis Tillman",
+                    "branch": "Stracke-Baumbach"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:06:50+02:00",
+                        "finished_at": "2025-09-20T23:07:16+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:16:38+02:00",
+                        "finished_at": "2025-09-20T23:16:43+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:19:10+02:00",
+                        "finished_at": "2025-09-20T23:19:25+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:19:23+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 7,
+                "id": 70006,
+                "name": "Aspernatur labore ut sit.",
+                "metadata": {
+                    "cpr": 7528949,
+                    "name": "Gracie Kulas",
+                    "branch": "Zieme, Witting and Boehm"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:01:36+02:00",
+                        "finished_at": "2025-09-20T23:01:59+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:03:25+02:00",
+                        "finished_at": "2025-09-20T23:04:03+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:04:01+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:12:44+02:00",
+                        "finished_at": "2025-09-20T23:12:58+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 7,
+                "id": 70007,
+                "name": "Sit et aut aut ea.",
+                "metadata": {
+                    "cpr": 3391449,
+                    "name": "Dejon Swift",
+                    "branch": "Renner Inc"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:07:00+02:00",
+                        "finished_at": "2025-09-20T23:07:20+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:22:06+02:00",
+                        "finished_at": "2025-09-20T23:22:32+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:28:16+02:00",
+                        "finished_at": "2025-09-20T23:28:21+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 7,
+                "id": 70008,
+                "name": "Est odio sit dolores.",
+                "metadata": {
+                    "cpr": 55,
+                    "name": "Cleve Goldner",
+                    "branch": "Abshire-Bogan"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:08:05+02:00",
+                        "finished_at": "2025-09-20T23:08:10+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:08:23+02:00",
+                        "finished_at": "2025-09-20T23:08:47+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:22:07+02:00",
+                        "finished_at": "2025-09-20T23:22:14+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 7,
+                "id": 70009,
+                "name": "Maxime aut sapiente maiores quia.",
+                "metadata": {
+                    "cpr": 124,
+                    "name": "Mack Fritsch",
+                    "branch": "Corkery, Hill and Crooks"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:03:05+02:00",
+                        "finished_at": "2025-09-20T23:03:10+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:14:57+02:00",
+                        "finished_at": "2025-09-20T23:15:02+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:29:09+02:00",
+                        "finished_at": "2025-09-20T23:29:48+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:29:45+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 7,
+                "id": 70010,
+                "name": "Et saepe consequatur.",
+                "metadata": {
+                    "cpr": 41800910,
+                    "name": "Ramiro Kilback",
+                    "branch": "Kuhic-Barton"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:11:29+02:00",
+                        "finished_at": "2025-09-20T23:11:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:27:05+02:00",
+                        "finished_at": "2025-09-20T23:27:09+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:36:19+02:00",
+                        "finished_at": "2025-09-20T23:36:39+02:00",
+                        "failure": null
+                    }
+                ]
+            }
+        ]
+    }
+}

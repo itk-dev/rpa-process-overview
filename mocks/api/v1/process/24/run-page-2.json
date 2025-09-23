@@ -1,0 +1,275 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/24/run?page=2"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 24,
+                "id": 240011,
+                "name": "Totam perferendis possimus sunt saepe magnam.",
+                "metadata": {
+                    "cpr": 4193,
+                    "name": "Nils Bernier",
+                    "branch": "Bernier Group"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:05:42+02:00",
+                        "finished_at": "2025-09-20T23:06:14+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:18:03+02:00",
+                        "finished_at": "2025-09-20T23:18:37+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240012,
+                "name": "Enim beatae minima nam magnam.",
+                "metadata": {
+                    "cpr": 14,
+                    "name": "Emanuel Batz",
+                    "branch": "Willms PLC"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:15:56+02:00",
+                        "finished_at": "2025-09-20T23:16:29+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:23:27+02:00",
+                        "finished_at": "2025-09-20T23:23:34+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240013,
+                "name": "Dignissimos et aut distinctio.",
+                "metadata": {
+                    "cpr": 8122148,
+                    "name": "Alisha Streich",
+                    "branch": "Williamson and Sons"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:05:24+02:00",
+                        "finished_at": "2025-09-20T23:05:53+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:05:52+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:10:34+02:00",
+                        "finished_at": "2025-09-20T23:10:58+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240014,
+                "name": "Libero aut ad aspernatur velit expedita.",
+                "metadata": {
+                    "cpr": 83,
+                    "name": "Hans Bergstrom",
+                    "branch": "Sipes, Fritsch and Baumbach"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:01:03+02:00",
+                        "finished_at": "2025-09-20T23:01:21+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:16:21+02:00",
+                        "finished_at": "2025-09-20T23:16:41+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:16:41+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240015,
+                "name": "Perspiciatis doloribus laudantium magnam maxime.",
+                "metadata": {
+                    "cpr": 414658292,
+                    "name": "Ignacio Sporer",
+                    "branch": "Bednar and Sons"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:12:44+02:00",
+                        "finished_at": "2025-09-20T23:12:47+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:29:01+02:00",
+                        "finished_at": "2025-09-20T23:29:20+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240016,
+                "name": "Voluptatem blanditiis ab laboriosam.",
+                "metadata": {
+                    "cpr": 40623353,
+                    "name": "Miss Emmanuelle Schaefer IV",
+                    "branch": "Witting Group"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:09:15+02:00",
+                        "finished_at": "2025-09-20T23:09:55+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:17:53+02:00",
+                        "finished_at": "2025-09-20T23:18:25+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:18:25+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240017,
+                "name": "Eligendi est qui.",
+                "metadata": {
+                    "cpr": 9403,
+                    "name": "Carrie Greenholt",
+                    "branch": "Pollich Inc"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:03:22+02:00",
+                        "finished_at": "2025-09-20T23:03:26+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:10:15+02:00",
+                        "finished_at": "2025-09-20T23:10:52+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240018,
+                "name": "Quam in eligendi.",
+                "metadata": {
+                    "cpr": 3685,
+                    "name": "Domenick Boyer",
+                    "branch": "Hettinger-Franecki"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:10:29+02:00",
+                        "finished_at": "2025-09-20T23:11:05+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:13:55+02:00",
+                        "finished_at": "2025-09-20T23:14:15+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240019,
+                "name": "At nam dolorem tenetur sint et.",
+                "metadata": {
+                    "cpr": 22,
+                    "name": "Vergie Tremblay",
+                    "branch": "Jacobson-Pfannerstill"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:11:43+02:00",
+                        "finished_at": "2025-09-20T23:11:50+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:11:48+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:23:18+02:00",
+                        "finished_at": "2025-09-20T23:23:43+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240020,
+                "name": "Sed earum eos eius.",
+                "metadata": {
+                    "cpr": 873394782,
+                    "name": "Napoleon Hermann",
+                    "branch": "Dibbert LLC"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:05:15+02:00",
+                        "finished_at": "2025-09-20T23:05:53+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:11:25+02:00",
+                        "finished_at": "2025-09-20T23:11:28+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:11:26+02:00"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

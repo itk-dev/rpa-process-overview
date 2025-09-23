@@ -18,3 +18,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Controller\ProxyApiController:
+        arguments:
+            $options:
+                api_base_url: '%env(API_BASE_URL)%'
+
+    App\Command\GenerateMockApiDataCommand:
+        arguments:
+            $options:
+                seed: '%env(int:MOCK_API_GENERATOR_SEED)%'

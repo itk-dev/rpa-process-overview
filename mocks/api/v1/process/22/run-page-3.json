@@ -1,0 +1,270 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/22/run?page=3"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 22,
+                "id": 220021,
+                "name": "Repellat nemo enim sequi.",
+                "metadata": {
+                    "cpr": 574427391,
+                    "name": "Audie Turner",
+                    "branch": "Hansen, Considine and Swaniawski"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 22,
+                "id": 220022,
+                "name": "Et eos quia non aspernatur.",
+                "metadata": {
+                    "cpr": 0,
+                    "name": "Keely Keebler",
+                    "branch": "Purdy-Nikolaus"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T22:54:35+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 22,
+                "id": 220023,
+                "name": "Ut aut tempore quibusdam velit.",
+                "metadata": {
+                    "cpr": 71969586,
+                    "name": "Yasmeen Kilback",
+                    "branch": "Stamm, Smith and Sawayn"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 22,
+                "id": 220024,
+                "name": "Eveniet ut deleniti.",
+                "metadata": {
+                    "cpr": 23,
+                    "name": "Marcia Cassin",
+                    "branch": "Frami, Spinka and Bradtke"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 22,
+                "id": 220025,
+                "name": "Eveniet qui tenetur dolores.",
+                "metadata": {
+                    "cpr": 426150,
+                    "name": "Dillan Waelchi",
+                    "branch": "O'Conner Group"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 22,
+                "id": 220026,
+                "name": "Quo aut quis.",
+                "metadata": {
+                    "cpr": 65210,
+                    "name": "Kyra Sauer",
+                    "branch": "Yost, Lockman and Armstrong"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T22:54:35+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 22,
+                "id": 220027,
+                "name": "Sapiente veritatis ullam.",
+                "metadata": {
+                    "cpr": 76304,
+                    "name": "Ramon Langosh",
+                    "branch": "Spinka and Sons"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 22,
+                "id": 220028,
+                "name": "Voluptatem et est excepturi.",
+                "metadata": {
+                    "cpr": 992529584,
+                    "name": "Janie Williamson",
+                    "branch": "Barton, Wisoky and Connelly"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 22,
+                "id": 220029,
+                "name": "Ratione velit assumenda ducimus.",
+                "metadata": {
+                    "cpr": 560930,
+                    "name": "Isai Yost MD",
+                    "branch": "Huels, Ritchie and Cummings"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T22:54:35+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 22,
+                "id": 220030,
+                "name": "Atque aliquid rerum excepturi.",
+                "metadata": {
+                    "cpr": 783753,
+                    "name": "Mr. Devante Von PhD",
+                    "branch": "Legros PLC"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T22:54:35+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            }
+        ]
+    }
+}

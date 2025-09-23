@@ -33,6 +33,10 @@ class ProcessOverview
     #[ORM\Column(type: Types::TEXT)]
     private ?string $options = null;
 
+    #[ORM\ManyToOne(inversedBy: 'processOverviews')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?DataSource $dataSource = null;
+
     public function __construct()
     {
         $this->steps = new ArrayCollection();
@@ -105,6 +109,18 @@ class ProcessOverview
     public function setOptions(string $options): static
     {
         $this->options = $options;
+
+        return $this;
+    }
+
+    public function getDataSource(): ?DataSource
+    {
+        return $this->dataSource;
+    }
+
+    public function setDataSource(?DataSource $dataSource): static
+    {
+        $this->dataSource = $dataSource;
 
         return $this;
     }

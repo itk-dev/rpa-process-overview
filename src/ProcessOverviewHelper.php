@@ -3,16 +3,14 @@
 namespace App;
 
 use App\Entity\ProcessOverview;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\Yaml\Yaml;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class ProcessOverviewHelper
 {
     public function __construct(
         private readonly PropertyAccessorInterface $propertyAccessor,
-        private readonly HttpClientInterface $httpClient,
+        private readonly DataSourceHelper $dataSourceHelper,
     ) {
     }
 
@@ -20,12 +18,9 @@ class ProcessOverviewHelper
     {
         try {
             $options = Yaml::parse($overview->getOptions());
+            $processId = $options['process_id'] ?? $this->getArrayValue($options, 'process.id') ?? null;
 
-            $url = $this->getArrayValue($options, 'data_source.url');
-
-            $response = $this->httpClient->request(Request::METHOD_GET, $url);
-
-            $data = $response->toArray();
+            $data = $this->dataSourceHelper->getProcessRun($overview->getDataSource(), $processId);
 
             $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];
 

@@ -1,0 +1,480 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/34/run?page=1"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 34,
+                "id": 340001,
+                "name": "Est earum ut ut amet qui.",
+                "metadata": {
+                    "cpr": 195,
+                    "name": "Verona McClure",
+                    "branch": "Kohler-Kassulke"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:08:31+02:00",
+                        "finished_at": "2025-09-20T23:08:42+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:14:50+02:00",
+                        "finished_at": "2025-09-20T23:14:56+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:25:25+02:00",
+                        "finished_at": "2025-09-20T23:25:31+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:28:24+02:00",
+                        "finished_at": "2025-09-20T23:29:02+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:29:00+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:39:28+02:00",
+                        "finished_at": "2025-09-20T23:40:06+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340002,
+                "name": "Eos eum in sunt.",
+                "metadata": {
+                    "cpr": 887,
+                    "name": "Vern Dickinson",
+                    "branch": "Gerhold Group"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:01:43+02:00",
+                        "finished_at": "2025-09-20T23:02:11+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:08:18+02:00",
+                        "finished_at": "2025-09-20T23:08:46+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:22:15+02:00",
+                        "finished_at": "2025-09-20T23:22:21+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:34:09+02:00",
+                        "finished_at": "2025-09-20T23:34:38+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:43:57+02:00",
+                        "finished_at": "2025-09-20T23:44:16+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:44:15+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340003,
+                "name": "Sed distinctio qui quis omnis.",
+                "metadata": {
+                    "cpr": 694965,
+                    "name": "Quinn Lemke",
+                    "branch": "Doyle-Rath"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:06:53+02:00",
+                        "finished_at": "2025-09-20T23:07:24+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:13:35+02:00",
+                        "finished_at": "2025-09-20T23:14:17+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:29:50+02:00",
+                        "finished_at": "2025-09-20T23:30:03+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:30:01+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:40:34+02:00",
+                        "finished_at": "2025-09-20T23:40:57+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:40:41+02:00",
+                        "finished_at": "2025-09-20T23:41:09+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340004,
+                "name": "Provident hic eos provident.",
+                "metadata": {
+                    "cpr": 445,
+                    "name": "Adelia Jacobs",
+                    "branch": "Emmerich, Macejkovic and Pouros"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:01:32+02:00",
+                        "finished_at": "2025-09-20T23:01:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:05:40+02:00",
+                        "finished_at": "2025-09-20T23:05:47+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:05:46+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:12:18+02:00",
+                        "finished_at": "2025-09-20T23:12:22+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:28:36+02:00",
+                        "finished_at": "2025-09-20T23:28:51+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:28:39+02:00",
+                        "finished_at": "2025-09-20T23:28:46+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340005,
+                "name": "Repellat et iusto.",
+                "metadata": {
+                    "cpr": 192706,
+                    "name": "Virginia Lebsack",
+                    "branch": "Pagac-Kutch"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:10:42+02:00",
+                        "finished_at": "2025-09-20T23:10:57+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:25:56+02:00",
+                        "finished_at": "2025-09-20T23:26:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:30:05+02:00",
+                        "finished_at": "2025-09-20T23:30:19+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:46:23+02:00",
+                        "finished_at": "2025-09-20T23:46:35+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:46:35+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:53:59+02:00",
+                        "finished_at": "2025-09-20T23:54:19+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340006,
+                "name": "Quasi dolorum quos praesentium id et.",
+                "metadata": {
+                    "cpr": 21,
+                    "name": "Mason Roob",
+                    "branch": "Metz, Rogahn and Koepp"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:01:18+02:00",
+                        "finished_at": "2025-09-20T23:01:22+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:07:40+02:00",
+                        "finished_at": "2025-09-20T23:08:22+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:22:20+02:00",
+                        "finished_at": "2025-09-20T23:22:57+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:22:54+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:23:42+02:00",
+                        "finished_at": "2025-09-20T23:24:12+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:40:18+02:00",
+                        "finished_at": "2025-09-20T23:40:47+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340007,
+                "name": "Ut pariatur corrupti et non.",
+                "metadata": {
+                    "cpr": 16587034,
+                    "name": "Janae Weissnat",
+                    "branch": "Howe and Sons"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:59:27+02:00",
+                        "finished_at": "2025-09-20T22:59:48+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:00:37+02:00",
+                        "finished_at": "2025-09-20T23:00:40+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:05:46+02:00",
+                        "finished_at": "2025-09-20T23:06:28+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:22:02+02:00",
+                        "finished_at": "2025-09-20T23:22:12+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:22:10+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:22:11+02:00",
+                        "finished_at": "2025-09-20T23:22:24+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340008,
+                "name": "Ullam accusantium pariatur id maiores sint.",
+                "metadata": {
+                    "cpr": 74882,
+                    "name": "Dr. Robbie Osinski",
+                    "branch": "Bauch Inc"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:00:38+02:00",
+                        "finished_at": "2025-09-20T23:01:20+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:04:12+02:00",
+                        "finished_at": "2025-09-20T23:04:38+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:12:10+02:00",
+                        "finished_at": "2025-09-20T23:12:26+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:12:24+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:22:20+02:00",
+                        "finished_at": "2025-09-20T23:22:44+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:31:45+02:00",
+                        "finished_at": "2025-09-20T23:31:56+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340009,
+                "name": "Aut enim perferendis vitae.",
+                "metadata": {
+                    "cpr": 4382830,
+                    "name": "Gennaro Ritchie",
+                    "branch": "Wuckert and Sons"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:09:34+02:00",
+                        "finished_at": "2025-09-20T23:09:58+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:13:32+02:00",
+                        "finished_at": "2025-09-20T23:13:36+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:25:16+02:00",
+                        "finished_at": "2025-09-20T23:25:28+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:38:50+02:00",
+                        "finished_at": "2025-09-20T23:39:16+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:51:53+02:00",
+                        "finished_at": "2025-09-20T23:52:08+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:52:08+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 34,
+                "id": 340010,
+                "name": "Tenetur aperiam est ut.",
+                "metadata": {
+                    "cpr": 250210,
+                    "name": "Mohamed Kovacek",
+                    "branch": "Hettinger-Wyman"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:09:32+02:00",
+                        "finished_at": "2025-09-20T23:09:54+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:24:50+02:00",
+                        "finished_at": "2025-09-20T23:25:29+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:31:54+02:00",
+                        "finished_at": "2025-09-20T23:32:16+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:32:16+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:37:37+02:00",
+                        "finished_at": "2025-09-20T23:37:56+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:46:58+02:00",
+                        "finished_at": "2025-09-20T23:47:08+02:00",
+                        "failure": null
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,275 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/24/run?page=4"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 24,
+                "id": 240031,
+                "name": "Natus neque veritatis et.",
+                "metadata": {
+                    "cpr": 4533,
+                    "name": "Alejandra Cormier",
+                    "branch": "Skiles, Schumm and Collier"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:14:57+02:00",
+                        "finished_at": "2025-09-20T23:15:38+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:31:01+02:00",
+                        "finished_at": "2025-09-20T23:31:22+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:31:22+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240032,
+                "name": "Recusandae qui ut voluptatem.",
+                "metadata": {
+                    "cpr": 40999,
+                    "name": "Orland Strosin MD",
+                    "branch": "Hermiston-Blanda"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:06:41+02:00",
+                        "finished_at": "2025-09-20T23:06:44+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:11:42+02:00",
+                        "finished_at": "2025-09-20T23:11:58+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:11:58+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240033,
+                "name": "Sed quod ut saepe commodi nesciunt.",
+                "metadata": {
+                    "cpr": 42,
+                    "name": "Elvie Langworth",
+                    "branch": "Miller, Jacobi and Lakin"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:01:38+02:00",
+                        "finished_at": "2025-09-20T23:02:20+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:04:53+02:00",
+                        "finished_at": "2025-09-20T23:04:59+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:04:58+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240034,
+                "name": "Sunt ut ab ut veritatis.",
+                "metadata": {
+                    "cpr": 272825657,
+                    "name": "Shannon Quigley",
+                    "branch": "Metz-Bergstrom"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:12:04+02:00",
+                        "finished_at": "2025-09-20T23:12:46+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:12:44+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:17:08+02:00",
+                        "finished_at": "2025-09-20T23:17:19+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240035,
+                "name": "Vel vero est asperiores.",
+                "metadata": {
+                    "cpr": 9107166,
+                    "name": "Doug Kemmer",
+                    "branch": "Kohler, Smith and Bartell"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:12:31+02:00",
+                        "finished_at": "2025-09-20T23:12:51+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:22:44+02:00",
+                        "finished_at": "2025-09-20T23:23:02+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240036,
+                "name": "Eveniet impedit harum iure dolorum iusto.",
+                "metadata": {
+                    "cpr": 8902,
+                    "name": "Rod Lebsack",
+                    "branch": "Strosin, Vandervort and Senger"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:12:56+02:00",
+                        "finished_at": "2025-09-20T23:13:27+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:13:24+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:16:20+02:00",
+                        "finished_at": "2025-09-20T23:16:50+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240037,
+                "name": "In iste minus quo quia ut.",
+                "metadata": {
+                    "cpr": 660898,
+                    "name": "Elliot Labadie",
+                    "branch": "Barrows, Kirlin and Paucek"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:06:49+02:00",
+                        "finished_at": "2025-09-20T23:07:09+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:20:26+02:00",
+                        "finished_at": "2025-09-20T23:20:42+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240038,
+                "name": "Aspernatur voluptas fugit perferendis velit.",
+                "metadata": {
+                    "cpr": 97424491,
+                    "name": "Kaia Jacobson",
+                    "branch": "Schuppe-Rohan"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:00:26+02:00",
+                        "finished_at": "2025-09-20T23:00:45+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:02:27+02:00",
+                        "finished_at": "2025-09-20T23:02:45+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240039,
+                "name": "Illo voluptatem a.",
+                "metadata": {
+                    "cpr": 1652,
+                    "name": "Mr. Prince Emmerich",
+                    "branch": "Borer-Braun"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:02:58+02:00",
+                        "finished_at": "2025-09-20T23:03:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:03:01+02:00",
+                        "finished_at": "2025-09-20T23:03:30+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 24,
+                "id": 240040,
+                "name": "Fuga aut sed eos perferendis.",
+                "metadata": {
+                    "cpr": 16,
+                    "name": "Mrs. Madelynn Considine",
+                    "branch": "Roob-Koelpin"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:12:31+02:00",
+                        "finished_at": "2025-09-20T23:12:55+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:13:37+02:00",
+                        "finished_at": "2025-09-20T23:13:46+02:00",
+                        "failure": null
+                    }
+                ]
+            }
+        ]
+    }
+}

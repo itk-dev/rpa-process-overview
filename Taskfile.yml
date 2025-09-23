@@ -40,9 +40,6 @@ tasks:
       - task: compose
         vars:
           TASK_ARGS: up --detach --wait
-      - task: composer
-        vars:
-          TASK_ARGS: install {{.COMPOSER_INSTALL_ARGS}}
 
   logs:
     desc: Show live logs
@@ -76,9 +73,12 @@ tasks:
     desc: Update site
     deps: [start]
     cmds:
+      - task: composer
+        vars:
+          TASK_ARGS: install {{.COMPOSER_INSTALL_ARGS}}
       - task: console
         vars:
-          TASK_ARGS: doctrine:migrations:migrate
+          TASK_ARGS: doctrine:migrations:migrate --no-interaction
       - task: console
         vars:
           TASK_ARGS: cache:clear
@@ -113,3 +113,13 @@ tasks:
     vars:
       BUILD_DIR: widgets/static/dist/
       PUBLIC_DIR: public/widgets
+
+  mocks:generate:
+    desc: Generate mocks for Faker
+    cmds:
+      - task: console
+        vars:
+          TASK_ARGS: app:generate:mock-api-data
+      - task: compose
+        vars:
+          TASK_ARGS: restart faker

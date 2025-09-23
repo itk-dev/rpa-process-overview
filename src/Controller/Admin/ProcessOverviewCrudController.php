@@ -23,8 +23,8 @@ class ProcessOverviewCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return parent::configureCrud($crud)
-            ->setEntityLabelInPlural(t('Process overviews'))
-            ->setEntityLabelInSingular(t('Process overview'));
+            ->setEntityLabelInSingular(t('Process overview'))
+            ->setEntityLabelInPlural(t('Process overviews'));
     }
 
     public function configureActions(Actions $actions): Actions
@@ -44,6 +44,7 @@ class ProcessOverviewCrudController extends AbstractCrudController
         yield IdField::new('id', t('ID'))
             ->onlyOnDetail();
         yield TextField::new('label', t('Label'));
+        yield AssociationField::new('dataSource', t('Data source'));
         yield AssociationField::new('group', t('Group'));
         yield CodeEditorField::new('options', t('Options'))
             ->hideOnIndex()

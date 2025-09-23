@@ -1,0 +1,395 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/5/run?page=5"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 5,
+                "id": 50041,
+                "name": "Tenetur voluptate suscipit consequatur quibusdam.",
+                "metadata": {
+                    "cpr": 59,
+                    "name": "Prof. Kylie Boyer",
+                    "branch": "Cruickshank, Leffler and Mohr"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T22:54:35+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 5,
+                "id": 50042,
+                "name": "Ut delectus est ut.",
+                "metadata": {
+                    "cpr": 8,
+                    "name": "Shawn Considine DDS",
+                    "branch": "Pfannerstill LLC"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 5,
+                "id": 50043,
+                "name": "Nihil veniam harum provident voluptatibus.",
+                "metadata": {
+                    "cpr": 50,
+                    "name": "Luis Kulas V",
+                    "branch": "Morissette-Dibbert"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 5,
+                "id": 50044,
+                "name": "Est fuga sed et nostrum.",
+                "metadata": {
+                    "cpr": 2679697,
+                    "name": "Abigale Collins",
+                    "branch": "Carroll-Marquardt"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T22:54:35+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 5,
+                "id": 50045,
+                "name": "Reiciendis rerum molestias inventore.",
+                "metadata": {
+                    "cpr": 6629821,
+                    "name": "Dr. Electa Rippin Sr.",
+                    "branch": "Barton, Rowe and Mayer"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 5,
+                "id": 50046,
+                "name": "Mollitia occaecati consequatur.",
+                "metadata": {
+                    "cpr": 1,
+                    "name": "Bertram Schmidt DVM",
+                    "branch": "Stroman Group"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T22:54:35+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 5,
+                "id": 50047,
+                "name": "Aut dolorum veritatis similique veritatis eveniet.",
+                "metadata": {
+                    "cpr": 5267,
+                    "name": "Alvina Hilpert",
+                    "branch": "Okuneva, Lakin and Mraz"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T22:54:35+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 5,
+                "id": 50048,
+                "name": "Voluptas eveniet consequatur sed quia.",
+                "metadata": {
+                    "cpr": 64537,
+                    "name": "Adalberto Schultz",
+                    "branch": "Wehner Ltd"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T22:54:35+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 5,
+                "id": 50049,
+                "name": "Architecto voluptate reiciendis unde.",
+                "metadata": {
+                    "cpr": 49183668,
+                    "name": "Dr. Lonzo Gerlach III",
+                    "branch": "Zemlak, Dickinson and Veum"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 5,
+                "id": 50050,
+                "name": "Et mollitia debitis ea.",
+                "metadata": {
+                    "cpr": 3,
+                    "name": "Lavada Waelchi",
+                    "branch": "Aufderhar-Buckridge"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T22:54:35+02:00",
+                        "finished_at": "2025-09-20T22:54:35+02:00",
+                        "failure": null
+                    }
+                ]
+            }
+        ]
+    }
+}

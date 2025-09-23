@@ -1,0 +1,475 @@
+{
+    "request": {
+        "method": "GET",
+        "path": "/api/v1/process/38/run?page=5"
+    },
+    "response": {
+        "body": [
+            {
+                "process_id": 38,
+                "id": 380041,
+                "name": "Alias omnis error sint ratione.",
+                "metadata": {
+                    "cpr": 2,
+                    "name": "Merle Keebler",
+                    "branch": "Dicki Ltd"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:01:55+02:00",
+                        "finished_at": "2025-09-20T23:02:11+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:04:10+02:00",
+                        "finished_at": "2025-09-20T23:04:16+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:16:42+02:00",
+                        "finished_at": "2025-09-20T23:17:13+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:17:12+02:00",
+                        "finished_at": "2025-09-20T23:17:34+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:32:08+02:00",
+                        "finished_at": "2025-09-20T23:32:50+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:32:48+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 38,
+                "id": 380042,
+                "name": "Perferendis facere aut vel.",
+                "metadata": {
+                    "cpr": 208409653,
+                    "name": "Mr. Darian Buckridge",
+                    "branch": "Stiedemann Ltd"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:02:28+02:00",
+                        "finished_at": "2025-09-20T23:02:55+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:02:53+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:10:04+02:00",
+                        "finished_at": "2025-09-20T23:10:33+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:16:00+02:00",
+                        "finished_at": "2025-09-20T23:16:17+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:18:40+02:00",
+                        "finished_at": "2025-09-20T23:19:01+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:22:15+02:00",
+                        "finished_at": "2025-09-20T23:22:25+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 38,
+                "id": 380043,
+                "name": "Accusantium placeat ipsa quia.",
+                "metadata": {
+                    "cpr": 2078,
+                    "name": "Jana Cummerata",
+                    "branch": "Pfeffer Group"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:07:23+02:00",
+                        "finished_at": "2025-09-20T23:07:39+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:11:42+02:00",
+                        "finished_at": "2025-09-20T23:11:45+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:11:44+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:25:00+02:00",
+                        "finished_at": "2025-09-20T23:25:32+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:33:15+02:00",
+                        "finished_at": "2025-09-20T23:33:25+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:47:52+02:00",
+                        "finished_at": "2025-09-20T23:47:56+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 38,
+                "id": 380044,
+                "name": "Quia magnam voluptatem consectetur.",
+                "metadata": {
+                    "cpr": 935817435,
+                    "name": "Regan Carroll",
+                    "branch": "D'Amore, Dietrich and Breitenberg"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:10:25+02:00",
+                        "finished_at": "2025-09-20T23:10:51+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:15:54+02:00",
+                        "finished_at": "2025-09-20T23:16:10+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:16:10+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:28:21+02:00",
+                        "finished_at": "2025-09-20T23:28:49+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:28:53+02:00",
+                        "finished_at": "2025-09-20T23:29:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:42:48+02:00",
+                        "finished_at": "2025-09-20T23:43:09+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 38,
+                "id": 380045,
+                "name": "Fuga fugiat error dignissimos amet.",
+                "metadata": {
+                    "cpr": 3439306,
+                    "name": "Aileen Koss",
+                    "branch": "Yost and Sons"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:13:29+02:00",
+                        "finished_at": "2025-09-20T23:13:35+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:21:48+02:00",
+                        "finished_at": "2025-09-20T23:22:23+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:21:56+02:00",
+                        "finished_at": "2025-09-20T23:22:02+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:36:53+02:00",
+                        "finished_at": "2025-09-20T23:37:17+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:46:10+02:00",
+                        "finished_at": "2025-09-20T23:46:27+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:46:25+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 38,
+                "id": 380046,
+                "name": "Repellendus sunt modi temporibus.",
+                "metadata": {
+                    "cpr": 95,
+                    "name": "Prof. Shayna Halvorson",
+                    "branch": "Wiza-Ullrich"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T22:59:23+02:00",
+                        "finished_at": "2025-09-20T23:00:03+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:00:01+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:05:40+02:00",
+                        "finished_at": "2025-09-20T23:06:01+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:08:14+02:00",
+                        "finished_at": "2025-09-20T23:08:41+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:16:56+02:00",
+                        "finished_at": "2025-09-20T23:17:15+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:19:28+02:00",
+                        "finished_at": "2025-09-20T23:19:58+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 38,
+                "id": 380047,
+                "name": "Nihil rerum id.",
+                "metadata": {
+                    "cpr": 413357074,
+                    "name": "Prof. Roman Gulgowski DVM",
+                    "branch": "Jenkins-Dickens"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:07:29+02:00",
+                        "finished_at": "2025-09-20T23:07:45+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:07:42+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:08:21+02:00",
+                        "finished_at": "2025-09-20T23:08:53+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:14:08+02:00",
+                        "finished_at": "2025-09-20T23:14:23+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:27:25+02:00",
+                        "finished_at": "2025-09-20T23:27:37+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:38:14+02:00",
+                        "finished_at": "2025-09-20T23:38:49+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 38,
+                "id": 380048,
+                "name": "Cumque saepe in accusamus dolorem.",
+                "metadata": {
+                    "cpr": 34363,
+                    "name": "Prof. Richie Lockman",
+                    "branch": "Deckow, Reynolds and Ritchie"
+                },
+                "steps": [
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:12:15+02:00",
+                        "finished_at": "2025-09-20T23:12:23+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": true,
+                            "occurred_at": "2025-09-20T23:12:21+02:00"
+                        }
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:13:47+02:00",
+                        "finished_at": "2025-09-20T23:13:57+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:27:24+02:00",
+                        "finished_at": "2025-09-20T23:27:38+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:27:50+02:00",
+                        "finished_at": "2025-09-20T23:28:23+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "PENDING",
+                        "started_at": "2025-09-20T23:42:56+02:00",
+                        "finished_at": "2025-09-20T23:43:29+02:00",
+                        "failure": null
+                    }
+                ]
+            },
+            {
+                "process_id": 38,
+                "id": 380049,
+                "name": "Dolor in esse quasi tempore.",
+                "metadata": {
+                    "cpr": 915,
+                    "name": "Haskell Shanahan",
+                    "branch": "Sanford Inc"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:03:43+02:00",
+                        "finished_at": "2025-09-20T23:03:56+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:16:20+02:00",
+                        "finished_at": "2025-09-20T23:16:59+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:21:24+02:00",
+                        "finished_at": "2025-09-20T23:21:49+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:21:56+02:00",
+                        "finished_at": "2025-09-20T23:22:24+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "FAILED",
+                        "started_at": "2025-09-20T23:38:22+02:00",
+                        "finished_at": "2025-09-20T23:38:40+02:00",
+                        "failure": {
+                            "code": "Fejlkode",
+                            "message": "Fejlbesked",
+                            "retryable": false,
+                            "occurred_at": "2025-09-20T23:38:37+02:00"
+                        }
+                    }
+                ]
+            },
+            {
+                "process_id": 38,
+                "id": 380050,
+                "name": "Eos ratione quia.",
+                "metadata": {
+                    "cpr": 9761512,
+                    "name": "King Carroll PhD",
+                    "branch": "Hickle and Sons"
+                },
+                "steps": [
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:05:42+02:00",
+                        "finished_at": "2025-09-20T23:06:24+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:18:12+02:00",
+                        "finished_at": "2025-09-20T23:18:15+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:26:47+02:00",
+                        "finished_at": "2025-09-20T23:26:53+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:32:35+02:00",
+                        "finished_at": "2025-09-20T23:33:07+02:00",
+                        "failure": null
+                    },
+                    {
+                        "status": "SUCCESS",
+                        "started_at": "2025-09-20T23:36:32+02:00",
+                        "finished_at": "2025-09-20T23:37:00+02:00",
+                        "failure": null
+                    }
+                ]
+            }
+        ]
+    }
+}
