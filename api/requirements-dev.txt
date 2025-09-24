@@ -1,0 +1,6 @@
+Faker==37.8.0
+flake8==7.3.0
+mccabe==0.7.0
+pycodestyle==2.14.0
+pyflakes==3.4.0
+tzdata==2025.2

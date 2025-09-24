@@ -1,0 +1,55 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+  pip:install:
+    desc: Install pip
+    cmds:
+      - pip install --requirement requirements.txt
+
+  pip:install:dev:
+    desc: Install pip dev
+    deps:
+      - pip:install
+    cmds:
+      - pip install --requirement requirements-dev.txt --yes
+
+  pip:freeze:
+    desc: Freeze pip
+    prompt: Really frezze pip?
+    cmds:
+      - pip uninstall --requirement requirements.txt --requirement requirements-dev.txt --yes
+      - pip install --requirement requirements.txt
+      - pip freeze > requirements.txt
+
+      - pip uninstall --requirement requirements.txt --requirement requirements-dev.txt --yes
+      - pip install --requirement requirements-dev.txt
+      - pip freeze > requirements-dev.txt
+
+      - task:install:dev
+
+  flake8:
+    cmds:
+      - flake8 {{.CLI_ARGS}}
+
+  start:dev:
+    cmds:
+      - fastapi dev project/app.py
+
+  start:prod:
+    cmds:
+      - fastapi run project/app.py
+
+  fixtures:load:
+    prompt: Really reset data?
+    cmds:
+      - python -m project.create-data
