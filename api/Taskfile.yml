@@ -52,4 +52,9 @@ tasks:
   fixtures:load:
     prompt: Really reset data?
     cmds:
+      - rm -f database-api.db
       - python -m project.create-data
+
+  lint:
+    cmds:
+      - ruff check project --fix

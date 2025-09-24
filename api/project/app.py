@@ -8,16 +8,26 @@ from typing import Generic, TypeVar
 
 from .database import create_db_and_tables, engine
 
-from .models import Process, ProcessPublic
+from .models import Process, ProcessPublic, ProcessRun, ProcessRunPublic
 
 ResourceType = TypeVar("ResourceType")
 
 class ListResponse(SQLModel, Generic[ResourceType]):
-    data: list[ResourceType]
     links: dict[str, str] = {}
+    data: list[ResourceType]
+
+class ResourceResponse(SQLModel):
+    links: dict[str, str] = {}
+    data: SQLModel
 
 class ProcessListResponse(ListResponse):
     data: list[ProcessPublic]
+
+class ProcessResponse(ResourceResponse):
+    data: ProcessPublic
+
+class ProcessRunListResponse(ListResponse):
+    data: list[ProcessRunPublic]
 
 def get_session():
     with Session(engine) as session:
@@ -29,16 +39,20 @@ app = FastAPI()
 def on_startup():
     create_db_and_tables()
 
+API_PATH_PREFIX = "/api/v1"
 
-@app.get("/process/", response_model=ProcessListResponse)
-def read_process_list(request: Request, session: Session = Depends(get_session), page: int = 1, page_size: int = Query(default=100, le=100)):
-    items = session.exec(
-        select(Process)
-            .order_by(Process.id)
-            .offset((page-1)*page_size)
-            # Fetch one more than needed to check if more exist
-            .limit(page_size+1)
-        ).all()
+@app.get(API_PATH_PREFIX+"/process/", response_model=ProcessListResponse)
+def read_process_list(request: Request, session: Session = Depends(get_session), page: int = 1, page_size: int = Query(default=100, le=100), q: str = None):
+    query = (select(Process)
+             .order_by(Process.id)
+             .offset((page-1)*page_size)
+             # Fetch one more than needed to check if more exist
+             .limit(page_size+1))
+
+    if q is not None:
+        query = query.filter(Process.name.like('%{}%'.format(q)))
+
+    items = session.exec(query).all()
 
     has_more = False
     if len(items) > page_size:
@@ -47,7 +61,9 @@ def read_process_list(request: Request, session: Session = Depends(get_session),
 
     url = request.url
     # https://jsonapi.org/format/#fetching-pagination
-    links = {}
+    links = {
+        "self": str(url),
+    }
     if len(items) > 0:
         links["first"] = str(url.include_query_params(page=1))
         if page > 1:
@@ -57,41 +73,54 @@ def read_process_list(request: Request, session: Session = Depends(get_session),
 
     return ListResponse(data=items, links=links)
 
-@app.get("/process/{process_id}", response_model=ProcessPublic)
-# @app.get("/process/{process_id}") #, response_model=DANJAResource[ProcessPublic])
-def read_process(*, session: Session = Depends(get_session), process_id: int):
+@app.get(API_PATH_PREFIX+"/process/{process_id}", response_model=ProcessResponse)
+def read_process(*, request: Request, session: Session = Depends(get_session), process_id: int):
     process = session.get(Process, process_id)
     if not process:
         raise HTTPException(status_code=404, detail="Process not found")
-    return process
-    # return DANJAResource.from_basemodel(process)
 
-# @app.get("/process_step/", response_model=list[ProcessStepPublic])
-# def read_process_steps(*, session: Session = Depends(get_session)):
-#     items = session.exec(select(ProcessStep)).all()
-#     return items
+    url = request.url
+    # https://jsonapi.org/format/#fetching-pagination
+    links = {
+        "self": str(url),
+        "run": str(url)+"/run",
+    }
 
-# @app.get("/process_step/{process_step_id}", response_model=ProcessStepPublic)
-# def read_process_step(*, session: Session = Depends(get_session), process_step_id: int):
-#     process = session.get(ProcessStep, process_step_id)
-#     if not process:
-#         raise HTTPException(status_code=404, detail="Process step not found")
-#     return process
+    return ProcessResponse(data=process, links=links)
 
+@app.get(API_PATH_PREFIX+"/process/{process_id}/run", response_model=ProcessRunListResponse)
+def read_process_run(*, request: Request, session: Session = Depends(get_session), process_id: int, page: int = 1, page_size: int = Query(default=10, le=100), q: str = None):
+    process = session.get(Process, process_id)
+    if not process:
+        raise HTTPException(status_code=404, detail="Process not found")
 
-# @app.get("/hmm/", response_model=list[ProcessPublic])
-# def read_hmm(
-#     *,
-#     session: Session = Depends(get_session),
-#     offset: int = 0,
-#     limit: int = Query(default=100, le=100),
-# ):
-#     processs = session.exec(select(Process).offset(offset).limit(limit)).all()
-#     return processs
+    query = (select(ProcessRun)
+             .filter(ProcessRun.process==process)
+             .order_by(ProcessRun.id)
+             .offset((page-1)*page_size)
+             # Fetch one more than needed to check if more exist
+             .limit(page_size+1))
 
-# @app.get("/hmm/{process_id}", response_model=ProcessPublic)
-# def read_team(*, process_id: int, session: Session = Depends(get_session)):
-#     process = session.get(Process, process_id)
-#     if not process:
-#         raise HTTPException(status_code=404, detail="Process not found")
-#     return process
+    if q is not None:
+        query = query.filter(ProcessRun.meta.like('%{}%'.format(q)))
+
+    items = session.exec(query).all()
+
+    has_more = False
+    if len(items) > page_size:
+        items = items[:-1]
+        has_more = True
+
+    url = request.url
+    # https://jsonapi.org/format/#fetching-pagination
+    links = {
+        "self": str(url),
+    }
+    if len(items) > 0:
+        links["first"] = str(url.include_query_params(page=1))
+        if page > 1:
+            links["prev"] = str(url.include_query_params(page=page-1))
+        if has_more:
+            links["next"] = str(url.include_query_params(page=page+1))
+
+    return ProcessRunListResponse(data=items, links=links)

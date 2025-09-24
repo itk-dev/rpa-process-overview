@@ -6,14 +6,17 @@ from sqlmodel import Field, SQLModel, Relationship
 
 class ProcessBase(SQLModel):
     name: str = Field(index=True)
+    meta: str = Field()
 
 class Process(ProcessBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
 
     steps: list["ProcessStep"] = Relationship(back_populates="process")
+    runs: list["ProcessRun"] = Relationship(back_populates="process")
 
 class ProcessPublic(ProcessBase):
     id: int
+    meta: str
     steps: list["ProcessStepPublic"] = []
 
 # Process step
@@ -31,4 +34,20 @@ class ProcessStep(ProcessStepBase, table=True):
 
 class ProcessStepPublic(ProcessStepBase):
     id: int
-    # pass
+
+# Process run
+
+class ProcessRunBase(SQLModel):
+    meta: str = Field()
+    steps: str = Field()
+    process_id: int | None = Field(default=None, foreign_key="process.id")
+
+class ProcessRun(ProcessRunBase, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+
+    process: Process | None = Relationship(back_populates="runs")
+
+class ProcessRunPublic(ProcessRunBase):
+    id: int
+    meta: str
+    steps: str
