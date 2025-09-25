@@ -3,16 +3,27 @@
 from datetime import timedelta
 
 from faker import Faker
-from sqlmodel import Session
+from sqlmodel import Session, delete
 
 from .database import create_db_and_tables, engine
 from .models import (Process, ProcessRun, ProcessStep, ProcessStepRun,
                      StepRunStatus)
 
 
-def main():
-    create_db_and_tables()
+def delete_data():
+    with Session(engine) as session:
+        for c in [
+                ProcessStepRun,
+                ProcessRun,
+                ProcessStep,
+                Process,
+        ]:
+            statement = delete(c)
+            session.exec(statement)
+            session.commit()
 
+
+def create_data():
     fake = Faker()
     fake.seed_instance(19750523)
 
@@ -88,6 +99,18 @@ def main():
 
         session.commit()
 
+
+def main():
+    # /app/src/api/create-data.py:26: SAWarning: relationship 'ProcessStepRun.run' will copy column process_run.id to column process_step_run.run_id, which conflicts with relationship(s): 'ProcessRun.steps'
+    # (copies process_run.id to process_step_run.run_id).
+    # If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only.
+    # For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.
+    # To silence this warning, add the parameter 'overlaps="steps"' to the 'ProcessStepRun.run' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx)
+    # (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+    create_db_and_tables()
+
+    delete_data()
+    create_data()
 
 if __name__ == '__main__':
     main()

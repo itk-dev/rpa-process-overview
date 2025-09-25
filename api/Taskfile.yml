@@ -8,6 +8,17 @@ tasks:
       - task --list
     silent: true
 
+  start:
+    cmds:
+      - pwd
+    preconditions:
+      - sh: test -n "$VIRTUAL_ENV"
+        msg: 'This must be run inside a virtual environment. Run `task venv:create` to create one.'
+
+  venv:create:
+    cmds:
+      - uv venv
+
   pip:install:
     desc: Install pip
     cmds:
@@ -40,21 +51,16 @@ tasks:
 
   start:dev:
     cmds:
-      - fastapi dev app/main.py
-
-  start:prod:
-    cmds:
-      - fastapi run app/main.py
+      - uv run fastapi dev src/api
 
   fixtures:load:
     prompt: Really reset data?
     cmds:
-      - rm -f database-api.db
-      - python -m app.create-data
+      - uv run python -m src.api.create-data
 
   lint:
     cmds:
-      - isort app
-      - ruff check app --fix
-      - ruff check app
-      - flake8 app
+      - isort src/
+      - ruff check src/ --fix
+      - ruff check src/
+      - flake8 src/

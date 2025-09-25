@@ -1,4 +1,5 @@
 import json
+import os
 
 from dotenv import dotenv_values
 from fastapi import HTTPException, Security, status
@@ -6,8 +7,8 @@ from fastapi.security import APIKeyHeader
 
 config = {
     **dotenv_values(".env.local"),  # load shared development variables
+    **os.environ,  # override loaded values with environment variables
 }
-
 try:
     API_KEYS_READ = json.loads(config.get('API_KEYS_READ', '[]'))
 except json.JSONDecodeError:
@@ -17,7 +18,6 @@ try:
     API_KEYS_WRITE = json.loads(config.get('API_KEYS_WRITE', '[]'))
 except json.JSONDecodeError:
     API_KEYS_WRITE = []
-
 
 api_key_header = APIKeyHeader(name="x-api-key", auto_error=False)
 

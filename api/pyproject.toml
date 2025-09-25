@@ -1,3 +1,15 @@
+[project]
+name = "rpa-process-overview-api"
+version = "0.1.0"
+description = "RPA Process Overview API"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi-pagination>=0.14.1",
+    "fastapi[standard]>=0.117.1",
+    "sqlmodel>=0.0.25",
+]
+
 # https://docs.astral.sh/ruff/formatter/#philosophy
 [tool.ruff]
 line-length = 120
@@ -6,3 +18,11 @@ line-length = 120
 quote-style = "single"
 indent-style = "tab"
 docstring-code-format = true
+
+[dependency-groups]
+dev = [
+    "faker>=37.8.0",
+    "flake8>=7.3.0",
+    "isort>=6.0.1",
+    "ruff>=0.13.1",
+]

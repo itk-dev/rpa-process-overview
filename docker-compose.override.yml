@@ -1,3 +1,6 @@
+include:
+  - docker-compose.api.yml
+
 services:
   phpfpm:
     image: itkdev/php8.4-fpm:latest

@@ -15,7 +15,6 @@ class StepRunStatus(str, enum.Enum):
 
 # Process
 
-
 class ProcessBase(SQLModel):
     name: str = Field(index=True)
     meta: dict[str, Any] = Field(sa_column=Column(JSON))
