@@ -83,6 +83,8 @@ def main():
                     )
                     session.add(step_run)
 
+                    if status == STATUS_FAILED:
+                        break
 
         session.commit()
 
