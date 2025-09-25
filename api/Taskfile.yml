@@ -2,13 +2,10 @@
 
 version: '3'
 
-vars:
-  GREETING: Hello, World!
-
 tasks:
   default:
     cmds:
-      - echo "{{.GREETING}}"
+      - task --list
     silent: true
 
   pip:install:
@@ -43,21 +40,21 @@ tasks:
 
   start:dev:
     cmds:
-      - fastapi dev project/app.py
+      - fastapi dev app/main.py
 
   start:prod:
     cmds:
-      - fastapi run project/app.py
+      - fastapi run app/main.py
 
   fixtures:load:
     prompt: Really reset data?
     cmds:
       - rm -f database-api.db
-      - python -m project.create-data
+      - python -m app.create-data
 
   lint:
     cmds:
-      - isort project
-      - ruff check project --fix
-      - ruff check project
-      - flake8 project
+      - isort app
+      - ruff check app --fix
+      - ruff check app
+      - flake8 app

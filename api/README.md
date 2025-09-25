@@ -25,7 +25,6 @@ pip install --requirement requirements.txt
 pip install
 ```
 
-
 ``` shell
 pip uninstall --requirement requirements.txt --requirement requirements-dev.txt --yes
 pip install --requirement requirements.txt
