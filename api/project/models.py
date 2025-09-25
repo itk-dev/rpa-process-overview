@@ -4,6 +4,13 @@ from typing import Any
 from sqlmodel import Field, SQLModel, Relationship, Column
 from sqlalchemy import JSON
 from datetime import datetime
+from sqlalchemy.orm import     RelationshipProperty
+
+import enum
+class StepRunStatus(str, enum.Enum):
+    PENDING = 'PENDING'
+    SUCCESS = 'SUCCESS'
+    FAILED = 'FAILED'
 
 # Process
 
@@ -16,7 +23,7 @@ class Process(ProcessBase, table=True):
 
     id: int | None = Field(default=None, primary_key=True)
 
-    steps: list["ProcessStep"] = Relationship(back_populates="process")
+    steps: list["ProcessStep"] = Relationship(back_populates="process", sa_relationship=RelationshipProperty(order_by="ProcessStep.index"))
     runs: list["ProcessRun"] = Relationship(back_populates="process")
 
 class ProcessPublic(ProcessBase):
@@ -53,7 +60,9 @@ class ProcessRun(ProcessRunBase, table=True):
 
     id: int | None = Field(default=None, primary_key=True)
 
-    steps: list["ProcessStepRun"] = Relationship(back_populates="run")
+    steps: list["ProcessStepRun"] = Relationship(back_populates="run",
+                                                 sa_relationship=RelationshipProperty(order_by="ProcessStepRun.step_index"),
+                                                 )
     process: Process | None = Relationship(back_populates="runs")
 
 class ProcessRunPublic(ProcessRunBase):
@@ -64,13 +73,20 @@ class ProcessRunPublic(ProcessRunBase):
 # Process step run
 
 class ProcessStepRunBase(SQLModel):
-    status: str
+    status: StepRunStatus
     started_at: datetime|None
     finished_at: datetime|None
     failure: dict[str, Any]|None = Field(sa_column=Column(JSON)) #, schema_extra={'examples': "A very nice Item"})
 
     run_id: int | None = Field(default=None, foreign_key="process_run.id")
     step_id: int | None = Field(default=None, foreign_key="process_step.id")
+    step_index: int
+
+class ProcessStepRunUpdate(SQLModel):
+    status: StepRunStatus
+    started_at: datetime
+    finished_at: datetime|None = None
+    failure: dict[str, Any]|None = None
 
 class ProcessStepRun(ProcessStepRunBase, table=True):
     __tablename__ = 'process_step_run'
@@ -79,3 +95,9 @@ class ProcessStepRun(ProcessStepRunBase, table=True):
 
     run: ProcessRun | None = Relationship()
     step: ProcessStep | None = Relationship()
+
+    def update(self, update: ProcessStepRunUpdate):
+        self.status = update.status
+        self.started_at = update.started_at
+        self.finished_at = update.finished_at
+        self.failure = update.failure if update.status == StepRunStatus.FAILED else None

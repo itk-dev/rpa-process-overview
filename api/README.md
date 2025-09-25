@@ -35,3 +35,23 @@ pip uninstall --requirement requirements.txt --requirement requirements-dev.txt 
 pip install --requirement requirements-dev.txt
 pip freeze > requirements-dev.txt
 ```
+
+``` shell name=update-run-step
+curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/3/step/2' --header 'content-type: application/json' --data '
+{
+"status":"FAILED",
+"started_at": "2025-09-25",
+"failure": {
+"code": 87,
+"failed_at": "2025-09-25"
+}
+}
+'
+
+curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/3/step/0' --header 'content-type: application/json' --data '
+{
+    "status":"SUCCESS",
+    "started_at": "2025-09-25"
+}
+'
+```
