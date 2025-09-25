@@ -4,7 +4,6 @@ from typing import Any
 
 from fastapi import (Depends, FastAPI, HTTPException, Request, Response,
                      Security, status)
-from fastapi.security import APIKeyHeader
 from fastapi_pagination import Page, add_pagination
 from fastapi_pagination.ext.sqlmodel import paginate
 from sqlmodel import Session, select
@@ -12,6 +11,7 @@ from sqlmodel import Session, select
 from .database import create_db_and_tables, engine
 from .models import (Process, ProcessPublic, ProcessRun, ProcessRunPublic,
                      ProcessStepRun, ProcessStepRunUpdate)
+from .security import get_api_key, get_api_key_write
 
 
 class HTTPNotFoundException(HTTPException):
@@ -27,60 +27,6 @@ app = FastAPI(
     description=description,
 )
 add_pagination(app)
-
-api_key_header = APIKeyHeader(name="x-api-key", auto_error=False)
-
-API_KEYS_READ = [
-    'read-only',
-]
-
-API_KEYS_WRITE = [
-    'read-write',
-]
-
-
-def get_api_key(
-    api_key_header: str = Security(api_key_header),
-) -> str:
-    """Retrieve and validate an API key from the query parameters or HTTP header.
-
-    Args:
-        api_key_header: The API key passed in the HTTP header.
-
-    Returns:
-        The validated API key.
-
-    Raises:
-        HTTPException: If the API key is invalid or missing.
-    """
-    if api_key_header in API_KEYS_READ:
-        return api_key_header
-    raise HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Invalid or missing API Key",
-    )
-
-
-def get_api_key_write(
-    api_key_header: str = Security(api_key_header),
-) -> str:
-    """Retrieve and validate an API key from the query parameters or HTTP header.
-
-    Args:
-        api_key_header: The API key passed in the HTTP header.
-
-    Returns:
-        The validated API key.
-
-    Raises:
-        HTTPException: If the API key is invalid or missing.
-    """
-    if api_key_header in API_KEYS_WRITE:
-        return api_key_header
-    raise HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Invalid or missing API Key",
-    )
 
 
 @app.on_event("startup")
