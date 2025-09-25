@@ -7,4 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-3](https://github.com/itk-dev/rpa-process-overview/pull/3)
+  Mocked API with FastAPI and friends.
+
 [Unreleased]: https://github.com/rimi-itk/rpa-process-overview
