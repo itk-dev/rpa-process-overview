@@ -105,7 +105,7 @@ class ProcessStepRun(ProcessStepRunBase, table=True):
 
     id: int | None = Field(default=None, primary_key=True)
 
-    run: ProcessRun | None = Relationship()
+    run: ProcessRun | None = Relationship(back_populates="steps")
     step: ProcessStep | None = Relationship()
 
     def update(self, update: ProcessStepRunUpdate):

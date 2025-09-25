@@ -28,3 +28,5 @@ Create some data:
 docker compose exec api uv run python -m src.api.create-data
 curl "http://$(docker compose port api 8000)/api/v1/process/" --header 'x-api-key: a-not-so-secret-key'
 ```
+
+See [api/README.md](api/README.md) for some more details.

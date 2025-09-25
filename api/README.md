@@ -1,5 +1,41 @@
 # API
 
+## Database
+
+``` mermaid
+---
+title: RPA Process Overview
+---
+classDiagram
+    Process <|-- ProcessStep
+    Process <|-- ProcessRun
+    ProcessRun <|-- ProcessStepRun
+
+    class Process {
+        list[ProcessStep] steps
+        list[ProcessRun] runs
+    }
+
+    class ProcessStep {
+        Process process
+        int index
+        string name
+    }
+
+    class ProcessRun {
+        Process process
+        list[ProcessStepRun] steps
+    }
+
+    class ProcessStepRun {
+        ProcessRun run
+        string status
+        datetime started_at
+        datetime finished_at
+        JSON failure
+    }
+```
+
 ``` text
 GET /api/v1/process
   ?page=…
@@ -24,39 +60,29 @@ pip install --requirement requirements.txt
 pip install
 ```
 
-``` shell
-pip uninstall --requirement requirements.txt --requirement requirements-dev.txt --yes
-pip install --requirement requirements.txt
-pip freeze > requirements.txt
-
-pip uninstall --requirement requirements.txt --requirement requirements-dev.txt --yes
-pip install --requirement requirements-dev.txt
-pip freeze > requirements-dev.txt
-```
-
 ``` shell name=update-run-step
 curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/3/step/2' --header 'content-type: application/json' --data '
 {
-"status":"FAILED",
-"started_at": "2025-09-25",
-"failure": {
-"code": 87,
-"failed_at": "2025-09-25"
-}
+ "status":"FAILED",
+ "started_at": "2025-09-25",
+ "failure": {
+  "code": 87,
+  "failed_at": "2025-09-25"
+ }
 }
 '
 
 curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/3/step/0' --header 'content-type: application/json' --data '
 {
-    "status":"SUCCESS",
-    "started_at": "2025-09-25"
+ "status":"SUCCESS",
+ "started_at": "2025-09-25"
 }
 '
 ```
 
 ## Security
 
-Defined API keys in `.env.local`, e.g.
+Define API keys in `.env.local`, e.g.
 
 ``` dotenv
 # .env.local
@@ -73,3 +99,15 @@ Use a key:
 ``` shell
 curl http://127.0.0.1:8000/api/v1/process/ --header 'x-api-key: a-not-so-secret-key'
 ```
+
+> [!TIP]
+> During development you may want to effectively disable authorization, and this can be done by adding `null` as a valid
+> API key:
+>
+> ``` dotenv
+> # .env.local
+> API_KEYS_READ=[null]
+> API_KEYS_WRITE=[null]
+> ```
+>
+> Don't do this in production!

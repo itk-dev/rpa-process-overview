@@ -28,7 +28,8 @@ def create_data():
     fake.seed_instance(19750523)
 
     with Session(engine) as session:
-        for _ in range(87):
+        number_of_processes = fake.pyint(50, 200)
+        for _ in range(number_of_processes):
             meta = {
               'cpr': 'string',
               'name': 'string',

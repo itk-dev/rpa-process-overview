@@ -10,44 +10,26 @@ tasks:
 
   start:
     cmds:
-      - pwd
+      - uv sync
+      - task: start:dev
     preconditions:
       - sh: test -n "$VIRTUAL_ENV"
-        msg: 'This must be run inside a virtual environment. Run `task venv:create` to create one.'
+        msg: |
+          This must be run inside a virtual environment.
+
+          Run
+
+            task venv:create
+
+          to create one or run
+
+            source .venv/bin/activate
+
+          to activate an existing virtual environment.
 
   venv:create:
     cmds:
       - uv venv
-
-  pip:install:
-    desc: Install pip
-    cmds:
-      - pip install --requirement requirements.txt
-
-  pip:install:dev:
-    desc: Install pip dev
-    deps:
-      - pip:install
-    cmds:
-      - pip install --requirement requirements-dev.txt
-
-  pip:freeze:
-    desc: Freeze pip
-    prompt: Really frezze pip?
-    cmds:
-      - pip uninstall --requirement requirements.txt --requirement requirements-dev.txt --yes
-      - pip install --requirement requirements.txt
-      - pip freeze > requirements.txt
-
-      - pip uninstall --requirement requirements.txt --requirement requirements-dev.txt --yes
-      - pip install --requirement requirements-dev.txt
-      - pip freeze > requirements-dev.txt
-
-      - task pip:install:dev
-
-  flake8:
-    cmds:
-      - flake8 {{.CLI_ARGS}}
 
   start:dev:
     cmds:
