@@ -21,7 +21,7 @@ tasks:
     deps:
       - pip:install
     cmds:
-      - pip install --requirement requirements-dev.txt --yes
+      - pip install --requirement requirements-dev.txt
 
   pip:freeze:
     desc: Freeze pip
@@ -35,7 +35,7 @@ tasks:
       - pip install --requirement requirements-dev.txt
       - pip freeze > requirements-dev.txt
 
-      - task:install:dev
+      - task pip:install:dev
 
   flake8:
     cmds:
@@ -57,4 +57,7 @@ tasks:
 
   lint:
     cmds:
+      - isort project
       - ruff check project --fix
+      - ruff check project
+      - flake8 project

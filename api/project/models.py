@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
+import enum
+from datetime import datetime
 from typing import Any
 
-from sqlmodel import Field, SQLModel, Relationship, Column
 from sqlalchemy import JSON
-from datetime import datetime
-from sqlalchemy.orm import     RelationshipProperty
+from sqlalchemy.orm import RelationshipProperty
+from sqlmodel import Column, Field, Relationship, SQLModel
 
-import enum
+
 class StepRunStatus(str, enum.Enum):
     PENDING = 'PENDING'
     SUCCESS = 'SUCCESS'
@@ -14,9 +15,11 @@ class StepRunStatus(str, enum.Enum):
 
 # Process
 
+
 class ProcessBase(SQLModel):
     name: str = Field(index=True)
     meta: dict[str, Any] = Field(sa_column=Column(JSON))
+
 
 class Process(ProcessBase, table=True):
     __tablename__ = 'process'
@@ -26,6 +29,7 @@ class Process(ProcessBase, table=True):
     steps: list["ProcessStep"] = Relationship(back_populates="process", sa_relationship=RelationshipProperty(order_by="ProcessStep.index"))
     runs: list["ProcessRun"] = Relationship(back_populates="process")
 
+
 class ProcessPublic(ProcessBase):
     id: int
     meta: dict[str, Any]
@@ -33,11 +37,13 @@ class ProcessPublic(ProcessBase):
 
 # Process step
 
+
 class ProcessStepBase(SQLModel):
     index: int = Field()
     name: str = Field(index=True)
 
     process_id: int | None = Field(default=None, foreign_key="process.id")
+
 
 class ProcessStep(ProcessStepBase, table=True):
     __tablename__ = 'process_step'
@@ -46,14 +52,17 @@ class ProcessStep(ProcessStepBase, table=True):
 
     process: Process | None = Relationship(back_populates="steps")
 
+
 class ProcessStepPublic(ProcessStepBase):
     id: int
 
 # Process run
 
+
 class ProcessRunBase(SQLModel):
     meta: dict[str, Any] = Field(sa_column=Column(JSON))
     process_id: int | None = Field(default=None, foreign_key="process.id")
+
 
 class ProcessRun(ProcessRunBase, table=True):
     __tablename__ = 'process_run'
@@ -65,6 +74,7 @@ class ProcessRun(ProcessRunBase, table=True):
                                                  )
     process: Process | None = Relationship(back_populates="runs")
 
+
 class ProcessRunPublic(ProcessRunBase):
     id: int
     meta: dict[str, Any]
@@ -72,21 +82,24 @@ class ProcessRunPublic(ProcessRunBase):
 
 # Process step run
 
+
 class ProcessStepRunBase(SQLModel):
     status: StepRunStatus
-    started_at: datetime|None
-    finished_at: datetime|None
-    failure: dict[str, Any]|None = Field(sa_column=Column(JSON)) #, schema_extra={'examples': "A very nice Item"})
+    started_at: datetime | None
+    finished_at: datetime | None
+    failure: dict[str, Any] | None = Field(sa_column=Column(JSON))
 
     run_id: int | None = Field(default=None, foreign_key="process_run.id")
     step_id: int | None = Field(default=None, foreign_key="process_step.id")
     step_index: int
 
+
 class ProcessStepRunUpdate(SQLModel):
     status: StepRunStatus
     started_at: datetime
-    finished_at: datetime|None = None
-    failure: dict[str, Any]|None = None
+    finished_at: datetime | None = None
+    failure: dict[str, Any] | None = None
+
 
 class ProcessStepRun(ProcessStepRunBase, table=True):
     __tablename__ = 'process_step_run'

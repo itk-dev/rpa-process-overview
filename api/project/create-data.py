@@ -1,13 +1,14 @@
 # https://sqlmodel.tiangolo.com/tutorial/fastapi/simple-hero-api/#sqlmodel-code-models-engine
 
-from .database import create_db_and_tables, engine
-from .models import Process, ProcessStep, ProcessRun, ProcessStepRun
-from .models import StepRunStatus
 from datetime import timedelta
 
 from faker import Faker
-
 from sqlmodel import Session
+
+from .database import create_db_and_tables, engine
+from .models import (Process, ProcessRun, ProcessStep, ProcessStepRun,
+                     StepRunStatus)
+
 
 def main():
     create_db_and_tables()
@@ -32,7 +33,7 @@ def main():
             steps = []
             for index in range(number_of_steps):
                 step = ProcessStep(
-                    process = process,
+                    process=process,
                     index=index,
                     name=fake.sentence(2),
                 )
@@ -86,6 +87,7 @@ def main():
                         break
 
         session.commit()
+
 
 if __name__ == '__main__':
     main()

@@ -1,6 +1,8 @@
 Faker==37.8.0
 flake8==7.3.0
+isort==6.0.1
 mccabe==0.7.0
 pycodestyle==2.14.0
 pyflakes==3.4.0
+ruff==0.13.1
 tzdata==2025.2
