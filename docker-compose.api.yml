@@ -1,0 +1,14 @@
+services:
+  api:
+    build: ./api
+    env_file: .env.local
+    ports:
+      - "8000"
+    networks:
+      - app
+      - frontend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=frontend"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-api.rule=Host(`api.${COMPOSE_DOMAIN}`)"
+      - "traefik.http.services.${COMPOSE_PROJECT_NAME}-api.loadbalancer.server.port=8000"

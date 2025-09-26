@@ -1,0 +1,47 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - task --list
+    silent: true
+
+  start:
+    cmds:
+      - uv sync
+      - task: start:dev
+    preconditions:
+      - sh: test -n "$VIRTUAL_ENV"
+        msg: |
+          This must be run inside a virtual environment.
+
+          Run
+
+            task venv:create
+
+          to create one or run
+
+            source .venv/bin/activate
+
+          to activate an existing virtual environment.
+
+  venv:create:
+    cmds:
+      - uv venv
+
+  dev:
+    cmds:
+      - uv run fastapi dev src/api
+
+  fixtures:load:
+    prompt: Really reset data?
+    cmds:
+      - uv run python -m src.api.create-data
+
+  lint:
+    cmds:
+      - ruff format src
+      - ruff check --select ALL check src --fix
+      # - ruff check --select ALL check src
