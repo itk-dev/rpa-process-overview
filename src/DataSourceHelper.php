@@ -4,6 +4,7 @@ namespace App;
 
 use App\Entity\DataSource;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Yaml\Yaml;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class DataSourceHelper
@@ -30,10 +31,10 @@ class DataSourceHelper
         return $this->get($dataSource, 'process/'.$processId.'/run');
     }
 
-    private function get(DataSource $dataSource, string $path): array
+    private function get(DataSource $dataSource, string $path, array $query = []): array
     {
         $url = $this->buildUrl($dataSource, $path);
-        $options = [];
+        $options = $this->buildOptions($dataSource, $query);
         $response = $this->httpClient->request(Request::METHOD_GET, $url, $options);
 
         return $response->toArray();
@@ -49,5 +50,34 @@ class DataSourceHelper
         }
 
         return rtrim($url, '/').'/'.$path;
+    }
+
+    private function buildOptions(DataSource $dataSource, array $query): array
+    {
+        $options = [
+            'query' => $query,
+        ];
+
+        $dataSourceOptions = $this->getOptions($dataSource);
+        if ($header = ($dataSourceOptions['auth']['header'] ?? null)) {
+            foreach ($header as $name => $value) {
+                $options['headers'][$name] = $value;
+            }
+        }
+
+        return $options;
+    }
+
+    private function getOptions(DataSource $dataSource): array
+    {
+        try {
+            $data = Yaml::parse($dataSource->getOptions() ?? '');
+            if (is_array($data)) {
+                return $data;
+            }
+        } catch (\Exception) {
+        }
+
+        return [];
     }
 }
