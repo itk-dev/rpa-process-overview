@@ -91,6 +91,14 @@ tasks:
         vars:
           TASK_ARGS: hautelook:fixtures:load --no-interaction
 
+  api:fixtures:load:
+    desc: Load API fixtures
+    prompt: Continue?
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: exec api uv run python -m src.api.fixtures
+
   translations:extract:
     cmds:
       # We need a translation from en to en (!) (without prefix) to be able to process placeholders in en.

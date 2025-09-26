@@ -38,7 +38,7 @@ tasks:
   fixtures:load:
     prompt: Really reset data?
     cmds:
-      - uv run python -m src.api.create-data
+      - uv run python -m src.api.fixtures
 
   lint:
     cmds:

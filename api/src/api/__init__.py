@@ -60,7 +60,7 @@ def read_process_list(
     query = select(Process).order_by(Process.id)
 
     if q is not None:
-        query = query.filter(Process.name.like(f"%{q}%"))
+        query = query.filter(Process.search_index.like(f"%{q}%"))
 
     return _set_pagination_links(request, response, paginate(session, query))
 
@@ -98,7 +98,7 @@ def read_process_run_list(
     query = select(ProcessRun).filter(ProcessRun.process == process)
 
     if q is not None:
-        query = query.filter(ProcessRun.meta.like(f"%{q}%"))
+        query = query.filter(ProcessRun.search_index.like(f"%{q}%"))
 
     return _set_pagination_links(request, response, paginate(session, query))
 
@@ -167,15 +167,13 @@ def update_process_run(
     except IndexError as e:
         raise HTTPNotFoundException(detail="Step not found") from e
 
-    item = session.query(ProcessStepRun).filter_by(run=run, step_index=step_index).one_or_none()
+    item = session.query(ProcessStepRun).filter_by(run=run, step_index=step.index).one_or_none()
 
     if item is None:
         item = ProcessStepRun(
             process=process,
             run=run,
             step=step,
-            # @todo Set this when step is set.
-            step_index=step.index,
         )
     try:
         item.apply_update(update)

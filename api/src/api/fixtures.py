@@ -93,7 +93,6 @@ class Fixtures:
                             process=process,
                             run=run,
                             step=steps[index],
-                            step_index=steps[index].index,
                             failure=failure,
                         )
                         session.add(step_run)

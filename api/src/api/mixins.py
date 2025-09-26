@@ -1,6 +1,7 @@
 """Mixins."""
 
 # Lifted from https://github.com/iloveitaly/activemodel/blob/master/activemodel/mixins/timestamps.py
+from abc import ABC, abstractmethod
 from datetime import datetime
 
 import sqlalchemy as sa
@@ -33,3 +34,17 @@ class TimestampsMixin:
         sa_type=sa.DateTime(timezone=True),
         sa_column_kwargs={"onupdate": sa.func.now(), "server_default": sa.func.now()},
     )
+
+
+class SearchableMixin(ABC):
+    """SearchableMixin."""
+
+    search_index: str | None = Field(default=None)
+
+    def update_search_index(self) -> None:
+        """Update the search index."""
+        self.search_index = self._get_search_index()
+
+    @abstractmethod
+    def _get_search_index(self) -> str:
+        pass

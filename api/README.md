@@ -1,5 +1,8 @@
 # API
 
+> [!WARNING]
+> Don't use this API mock for production!
+
 ## Database
 
 ``` mermaid
@@ -87,7 +90,7 @@ Define API keys in `.env.local`, e.g.
 ``` dotenv
 # .env.local
 # Get a token from https://generate-random.org/api-token-generator or some such …
-# Notice that the values must not be enclose in single quotes!
+# Notice that the values must not be enclosed in single quotes and must not contain spaces!
 API_KEYS_READ=["a-not-so-secret-key", "759568492f338454603821a04810eabf"]
 API_KEYS_WRITE=["3825e7be2d1ca130063171d8362ad4996e3a0df1e9f6dd2a4dc6bebf38bfc205"]
 ```

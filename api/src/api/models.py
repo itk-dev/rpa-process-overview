@@ -4,12 +4,12 @@ import enum
 from datetime import datetime
 from typing import Any
 
-from sqlalchemy import JSON
+from sqlalchemy import JSON, event
 from sqlalchemy.orm import RelationshipProperty
 from sqlmodel import Column, Field, Relationship, SQLModel
 
 from .exception import UpdateError
-from .mixins import TimestampsMixin
+from .mixins import SearchableMixin, TimestampsMixin
 
 
 class StepRunStatus(str, enum.Enum):
@@ -30,7 +30,7 @@ class ProcessBase(SQLModel):
     meta: dict[str, Any] = Field(sa_column=Column(JSON))
 
 
-class Process(ProcessBase, TimestampsMixin, table=True):
+class Process(ProcessBase, SearchableMixin, TimestampsMixin, table=True):
     """Process."""
 
     __tablename__ = "process"
@@ -42,6 +42,9 @@ class Process(ProcessBase, TimestampsMixin, table=True):
         sa_relationship=RelationshipProperty(order_by="ProcessStep.index"),
     )
     runs: list["ProcessRun"] = Relationship(back_populates="process")
+
+    def _get_search_index(self) -> str:
+        return self.name
 
 
 class ProcessPublic(ProcessBase):
@@ -90,7 +93,7 @@ class ProcessRunBase(SQLModel):
     process_id: int | None = Field(default=None, foreign_key="process.id")
 
 
-class ProcessRun(ProcessRunBase, TimestampsMixin, table=True):
+class ProcessRun(ProcessRunBase, SearchableMixin, TimestampsMixin, table=True):
     """ProcessRun."""
 
     __tablename__ = "process_run"
@@ -102,6 +105,9 @@ class ProcessRun(ProcessRunBase, TimestampsMixin, table=True):
         sa_relationship=RelationshipProperty(order_by="ProcessStepRun.step_index"),
     )
     process: Process | None = Relationship(back_populates="runs")
+
+    def _get_search_index(self) -> str:
+        return " ".join(list(self.meta.values()))
 
 
 class ProcessRunPublic(ProcessRunBase):
@@ -158,3 +164,19 @@ class ProcessStepRun(ProcessStepRunBase, TimestampsMixin, table=True):
         self.failure = update.failure if update.status == StepRunStatus.FAILED else None
 
         return self
+
+
+# https://docs.sqlalchemy.org/en/20/orm/events.html
+@event.listens_for(Process, "before_insert")
+@event.listens_for(Process, "before_update")
+@event.listens_for(ProcessRun, "before_insert")
+@event.listens_for(ProcessRun, "before_update")
+@event.listens_for(ProcessStepRun, "before_insert")
+@event.listens_for(ProcessStepRun, "before_update")
+def do_stuff(mapper, connection, target: Process | ProcessRun | ProcessStepRun) -> None:  # noqa: ANN001 ARG001
+    """Do stuff when models are created and updated."""
+    if isinstance(target, SearchableMixin):
+        target.update_search_index()
+
+    if isinstance(target, ProcessStepRun):
+        target.step_index = target.step.index if target.step is not None else -1
