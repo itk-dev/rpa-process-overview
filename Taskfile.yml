@@ -101,12 +101,17 @@ tasks:
 
   translations:extract:
     cmds:
-      # We need a translation from en to en (!) (without prefix) to be able to process placeholders in en.
-      - "DEFAULT_LOCALE=en task console -- translation:extract --clean --force en --prefix=''"
-      - "DEFAULT_LOCALE=en task console -- translation:extract --clean --force da"
-      # Mark default translations (prefixed with `__`) as “Needs work” in Danish translations
-      - gsed --in-place='' 's/<target>__/<target state=\"needs-l10n\">__/' translations/*.da.*xlf
+      - task: script
+        vars:
+          TASK_ARGS: "{{.TASK}}"
     silent: true
+
+  script:
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: run --rm phpfpm task/scripts/{{.TASK_ARGS}}
+    internal: true
 
   build:widgets:
     desc: Build widgets for production and copy to public folder

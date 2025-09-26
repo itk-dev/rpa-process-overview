@@ -69,9 +69,37 @@
         <source>Toggle navigation</source>
         <target state="translated">Vis/skjul navigation</target>
       </trans-unit>
-      <trans-unit id="KXqovG." resname="Loading data …">
-        <source>Loading data …</source>
-        <target state="translated">Henter data …</target>
+      <trans-unit id=".pEQgOp" resname="Data source">
+        <source>Data source</source>
+        <target state="translated">Datakilde</target>
+      </trans-unit>
+      <trans-unit id="RwpY.69" resname="Data sources">
+        <source>Data sources</source>
+        <target state="translated">Datakilder</target>
+      </trans-unit>
+      <trans-unit id="26bqdzX" resname="URL">
+        <source>URL</source>
+        <target state="translated">Url</target>
+      </trans-unit>
+      <trans-unit id="87uOfkU" resname="Process">
+        <source>Process</source>
+        <target state="translated">Proces</target>
+      </trans-unit>
+      <trans-unit id="ubX_Tix" resname="Process details">
+        <source>Process details</source>
+        <target state="translated">Procesdetaljer</target>
+      </trans-unit>
+      <trans-unit id="QXrccnc" resname="Metadata">
+        <source>Metadata</source>
+        <target state="translated">Metadata</target>
+      </trans-unit>
+      <trans-unit id="8mOVCwE" resname="Example use in &quot;{options}&quot;">
+        <source>Example use in "{options}"</source>
+        <target state="translated">Eksempel på brug i "{options}"</target>
+      </trans-unit>
+      <trans-unit id="AOEC242" resname="Steps">
+        <source>Steps</source>
+        <target state="translated">Skridt</target>
       </trans-unit>
     </body>
   </file>

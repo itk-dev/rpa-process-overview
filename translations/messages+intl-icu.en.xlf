@@ -69,9 +69,37 @@
         <source>Toggle navigation</source>
         <target>Toggle navigation</target>
       </trans-unit>
-      <trans-unit id="KXqovG." resname="Loading data …">
-        <source>Loading data …</source>
-        <target>Loading data …</target>
+      <trans-unit id=".pEQgOp" resname="Data source">
+        <source>Data source</source>
+        <target>Data source</target>
+      </trans-unit>
+      <trans-unit id="RwpY.69" resname="Data sources">
+        <source>Data sources</source>
+        <target>Data sources</target>
+      </trans-unit>
+      <trans-unit id="26bqdzX" resname="URL">
+        <source>URL</source>
+        <target>URL</target>
+      </trans-unit>
+      <trans-unit id="87uOfkU" resname="Process">
+        <source>Process</source>
+        <target>Process</target>
+      </trans-unit>
+      <trans-unit id="ubX_Tix" resname="Process details">
+        <source>Process details</source>
+        <target>Process details</target>
+      </trans-unit>
+      <trans-unit id="QXrccnc" resname="Metadata">
+        <source>Metadata</source>
+        <target>Metadata</target>
+      </trans-unit>
+      <trans-unit id="8mOVCwE" resname="Example use in &quot;{options}&quot;">
+        <source>Example use in "{options}"</source>
+        <target>Example use in "{options}"</target>
+      </trans-unit>
+      <trans-unit id="AOEC242" resname="Steps">
+        <source>Steps</source>
+        <target>Steps</target>
       </trans-unit>
     </body>
   </file>
