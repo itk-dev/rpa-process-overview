@@ -1,16 +1,16 @@
 App\Entity\DataSource:
   data_source_api:
     label: API mock
-    options:
-      url: http://api:8000
+    url: http://api:8000
+    options: |-
       auth:
         header:
           x-api-key: a-not-so-secret-key
 
   data_source_faker:
     label: Faker
-    options:
-      url: http://faker:3030
+    url: http://faker:3030
+    options: |-
 
 App\Entity\ProcessOverviewGroup:
   process_overview_group_1:

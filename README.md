@@ -25,7 +25,7 @@ curl "http://$(docker compose port api 8000)/api/v1/process/" --header 'x-api-ke
 Create some data:
 
 ``` shell
-docker compose exec api uv run python -m src.api.create-data
+docker compose exec api uv run python -m src.api.fixtures
 curl "http://$(docker compose port api 8000)/api/v1/process/" --header 'x-api-key: a-not-so-secret-key'
 ```
 

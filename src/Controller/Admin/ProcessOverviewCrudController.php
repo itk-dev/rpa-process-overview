@@ -67,7 +67,10 @@ class ProcessOverviewCrudController extends AbstractCrudController
         $process = null;
         if ($datasource = $entity?->getDataSource()) {
             if ($processId = $entity->getProcessId()) {
-                $process = $this->dataSourceHelper->getProcess($datasource, $processId);
+                try {
+                    $process = $this->dataSourceHelper->getProcess($datasource, $processId);
+                } catch (\Exception) {
+                }
             }
         }
 

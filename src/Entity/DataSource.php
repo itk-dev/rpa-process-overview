@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\DataSourceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DataSourceRepository::class)]
@@ -18,14 +19,17 @@ class DataSource
     #[ORM\Column(length: 255)]
     private ?string $label = null;
 
-    #[ORM\Column]
-    private array $options = [];
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $options = null;
 
     /**
      * @var Collection<int, ProcessOverview>
      */
     #[ORM\OneToMany(targetEntity: ProcessOverview::class, mappedBy: 'dataSource')]
     private Collection $processOverviews;
+
+    #[ORM\Column(length: 255)]
+    private ?string $url = null;
 
     public function __construct()
     {
@@ -54,12 +58,12 @@ class DataSource
         return $this;
     }
 
-    public function getOptions(): array
+    public function getOptions(): ?string
     {
         return $this->options;
     }
 
-    public function setOptions(array $options): static
+    public function setOptions(string $options): static
     {
         $this->options = $options;
 
@@ -98,6 +102,13 @@ class DataSource
 
     public function getUrl(): ?string
     {
-        return $this->getOptions()['url'] ?? null;
+        return $this->url;
+    }
+
+    public function setUrl(string $url): static
+    {
+        $this->url = $url;
+
+        return $this;
     }
 }
