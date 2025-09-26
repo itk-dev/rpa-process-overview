@@ -1,3 +1,5 @@
+"""Some sort of security."""
+
 import json
 import os
 
@@ -10,12 +12,12 @@ config = {
     **os.environ,  # override loaded values with environment variables
 }
 try:
-    API_KEYS_READ = json.loads(config.get('API_KEYS_READ', '[]'))
+    API_KEYS_READ = json.loads(config.get("API_KEYS_READ", "[]"))
 except json.JSONDecodeError:
     API_KEYS_READ = []
 
 try:
-    API_KEYS_WRITE = json.loads(config.get('API_KEYS_WRITE', '[]'))
+    API_KEYS_WRITE = json.loads(config.get("API_KEYS_WRITE", "[]"))
 except json.JSONDecodeError:
     API_KEYS_WRITE = []
 
@@ -35,6 +37,7 @@ def get_api_key(
 
     Raises:
         HTTPException: If the API key is invalid or missing.
+
     """
     if api_key_header in API_KEYS_READ or api_key_header in API_KEYS_WRITE:
         return api_key_header
@@ -57,6 +60,7 @@ def get_api_key_write(
 
     Raises:
         HTTPException: If the API key is invalid or missing.
+
     """
     if api_key_header in API_KEYS_WRITE:
         return api_key_header

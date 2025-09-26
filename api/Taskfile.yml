@@ -31,7 +31,7 @@ tasks:
     cmds:
       - uv venv
 
-  start:dev:
+  dev:
     cmds:
       - uv run fastapi dev src/api
 
@@ -42,7 +42,6 @@ tasks:
 
   lint:
     cmds:
-      - isort src/
-      - ruff check src/ --fix
-      - ruff check src/
-      - flake8 src/
+      - ruff format src
+      - ruff check --select ALL check src --fix
+      # - ruff check --select ALL check src

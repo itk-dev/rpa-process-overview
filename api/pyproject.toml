@@ -16,13 +16,12 @@ line-length = 120
 
 [tool.ruff.format]
 quote-style = "single"
-indent-style = "tab"
+# https://peps.python.org/pep-0008/#indentation
+# indent-style = "tab"
 docstring-code-format = true
 
 [dependency-groups]
 dev = [
     "faker>=37.8.0",
-    "flake8>=7.3.0",
-    "isort>=6.0.1",
     "ruff>=0.13.1",
 ]
