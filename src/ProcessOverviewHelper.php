@@ -17,34 +17,40 @@ class ProcessOverviewHelper
     public function getData(ProcessOverview $overview): array
     {
         try {
-            $options = Yaml::parse($overview->getOptions());
-            $processId = $options['process_id'] ?? $this->getArrayValue($options, 'process.id') ?? null;
+            $datasource = $overview->getDataSource();
+            $processId = $overview->getProcessId();
+            if (empty($datasource) || empty($processId)) {
+                return [];
+            }
 
-            $data = $this->dataSourceHelper->getProcessRun($overview->getDataSource(), $processId);
+            $options = $this->getOptions($overview);
 
-            $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];
+            $process = $this->dataSourceHelper->getProcess($overview->getDataSource(), $overview->getProcessId());
+            $data = $this->dataSourceHelper->getProcessRun($overview->getDataSource(), $overview->getProcessId());
 
             $metadataColumns = [];
-            $stepColumns = [];
+            $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];
             foreach ($metadataColumnsOptions as $column) {
                 $metadataColumns[] = $column + [
                     'type' => $column['type'] ?? 'text',
                 ];
             }
 
+            // Add step columns
+            $stepColumns = [];
+            foreach ($process['steps'] as $step) {
+                $stepColumns[] = [
+                    'label' => $step['name'],
+                    'type' => 'step',
+                ];
+            }
+
             $rows = [];
-            foreach ($data as $index => $item) {
+            $items = $data['items'] ?? [];
+            foreach ($items as $item) {
                 $steps = $item['steps'] ?? null;
                 if (!$steps) {
                     break;
-                }
-                if (0 === $index) {
-                    foreach ($steps as $stepIndex => $step) {
-                        $stepColumns[] = [
-                            'label' => $step['label'] ?? $step['name'] ?? $stepIndex,
-                            'type' => 'step',
-                        ];
-                    }
                 }
                 $rows[] = array_merge(
                     array_map(fn (array $col) => [
@@ -57,8 +63,8 @@ class ProcessOverviewHelper
             }
 
             return [
-                'rows' => $rows,
                 'columns' => array_merge($metadataColumns, $stepColumns),
+                'rows' => $rows,
                 'data' => $data,
             ];
         } catch (\Exception $exception) {
@@ -72,5 +78,18 @@ class ProcessOverviewHelper
         $propertyPath = '['.str_replace('.', '][', $key).']';
 
         return $this->propertyAccessor->getValue($array, $propertyPath);
+    }
+
+    private function getOptions(ProcessOverview $overview): array
+    {
+        try {
+            $data = Yaml::parse($overview->getOptions() ?? '');
+            if (is_array($data)) {
+                return $data;
+            }
+        } catch (\Exception) {
+        }
+
+        return [];
     }
 }

@@ -7,7 +7,7 @@ dotenv: [".env.local", ".env"]
 
 vars:
   DOCKER_COMPOSE: '{{.TASK_DOCKER_COMPOSE | default "docker compose" }}'
-  COMPOSER_INSTALL_ARGS: '{{.TASK_DOCKER_COMPOSE | default "" }}'
+  COMPOSER_INSTALL_ARGS: '{{.TASK_COMPOSER_INSTALL_ARGS | default "" }}'
 
 includes:
   coding-standards: ./task/Taskfile.coding-standards.yml
@@ -39,7 +39,7 @@ tasks:
           TASK_ARGS: pull
       - task: compose
         vars:
-          TASK_ARGS: up --detach --wait
+          TASK_ARGS: up --build --detach --wait
 
   logs:
     desc: Show live logs

@@ -30,12 +30,15 @@ class ProcessOverview
     #[ORM\OneToMany(targetEntity: Process::class, mappedBy: 'process', orphanRemoval: true)]
     private Collection $steps;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $options = null;
 
     #[ORM\ManyToOne(inversedBy: 'processOverviews')]
     #[ORM\JoinColumn(nullable: false)]
     private ?DataSource $dataSource = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $processId = null;
 
     public function __construct()
     {
@@ -101,7 +104,7 @@ class ProcessOverview
         return $this;
     }
 
-    public function getOptions(): string
+    public function getOptions(): ?string
     {
         return $this->options;
     }
@@ -121,6 +124,18 @@ class ProcessOverview
     public function setDataSource(?DataSource $dataSource): static
     {
         $this->dataSource = $dataSource;
+
+        return $this;
+    }
+
+    public function getProcessId(): ?string
+    {
+        return $this->processId;
+    }
+
+    public function setProcessId(?string $processId): static
+    {
+        $this->processId = $processId;
 
         return $this;
     }

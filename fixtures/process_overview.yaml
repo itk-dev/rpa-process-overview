@@ -1,15 +1,16 @@
 App\Entity\DataSource:
-  data_source_1:
+  data_source_api:
+    label: API mock
+    options:
+      url: http://api:8000
+      auth:
+        header:
+          x-api-key: a-not-so-secret-key
+
+  data_source_faker:
     label: Faker
     options:
       url: http://faker:3030
-
-  data_source_2:
-    label: Faker (another, but the same)
-    options:
-      url: http://faker:3030
-      auth:
-        basic: …
 
 App\Entity\ProcessOverviewGroup:
   process_overview_group_1:
@@ -22,9 +23,9 @@ App\Entity\ProcessOverview:
   process_overview_1:
     label: Udskrivning 22 år
     group: "@process_overview_group_1"
-    dataSource: "@data_source_1"
+    dataSource: "@data_source_api"
+    processId: 1
     options: |-
-      process_id: 1
       metadata_columns:
           - label: Borger
             data: metadata.cpr
@@ -37,9 +38,23 @@ App\Entity\ProcessOverview:
   process_overview_2:
     label: Frit valg 0-15 år
     group: "@process_overview_group_1"
-    dataSource: "@data_source_1"
+    dataSource: "@data_source_api"
+    processId: 2
     options: |-
-      process_id: 2
+      metadata_columns:
+          - label: Barn
+            data: meta.cpr
+          - label: Name
+            data: meta.name
+          - label: Klinik
+            data: meta.branch
+
+  process_overview_3:
+    label: En anden proces
+    group: "@process_overview_group_2"
+    dataSource: "@data_source_faker"
+    processId: 3
+    options: |-
       metadata_columns:
           - label: Barn
             data: metadata.cpr
@@ -49,17 +64,8 @@ App\Entity\ProcessOverview:
           # - label: Klinik
           #   data: metadata.klinik
 
-  process_overview_3:
-    label: En anden proces
-    group: "@process_overview_group_2"
-    dataSource: "@data_source_2"
+  process_overview_incomplete:
+    label: Incomplete (missing process ID)
+    group: "@process_overview_group_1"
+    dataSource: "@data_source_api"
     options: |-
-      process_id: 3
-      metadata_columns:
-          - label: Barn
-            data: metadata.cpr
-          - label: Name
-            data: metadata.name
-          # Missing
-          # - label: Klinik
-          #   data: metadata.klinik
