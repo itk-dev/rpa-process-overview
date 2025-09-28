@@ -1,0 +1,36 @@
+{% if process.meta|default(null) %}
+    <details class="process-details" open>
+        <summary>{{ 'Process details'|trans }}</summary>
+
+        {% if process.meta|default(null) %}
+            <h3>{{ 'Metadata'|trans }}</h3>
+
+            {% set metadata_columns = [] %}
+
+            <ul>
+                {% for name, type in process.meta %}
+                    <li>{{ name }} ({{ type }})</li>
+                    {% set metadata_columns = metadata_columns|merge([{
+label: 'The label for "%name%"'|replace({'%name%': name}),
+data: 'meta.' ~ name,
+}]) %}
+                {% endfor %}
+            </ul>
+
+            <h4>{{ 'Example use in "{options}"'|trans({options: 'Options'|trans}) }}</h4>
+
+            <pre><code>{{ {metadata_columns: metadata_columns}|yaml_encode(87) }}</code></pre>
+
+        {% endif %}
+
+        {% if process.steps|default(null) %}
+            <h3>{{ 'Steps'|trans }}</h3>
+
+            <ol>
+                {% for step in process.steps %}
+                    <li>{{ step.name }}</li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+    </details>
+{% endif %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Admin\Field\FormField;
 use App\DataSourceHelper;
 use App\Entity\ProcessOverview;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -48,8 +49,7 @@ class ProcessOverviewCrudController extends AbstractCrudController
                 ])))
             ->remove(Crud::PAGE_NEW, Action::SAVE_AND_ADD_ANOTHER)
             ->add(Crud::PAGE_NEW, Action::SAVE_AND_CONTINUE)
-            ->remove(Crud::PAGE_NEW, Action::SAVE_AND_RETURN)
-        ;
+            ->remove(Crud::PAGE_NEW, Action::SAVE_AND_RETURN);
     }
 
     public function configureFields(string $pageName): iterable
@@ -63,9 +63,9 @@ class ProcessOverviewCrudController extends AbstractCrudController
             ->hideOnIndex();
 
         $entity = $this->getContext()->getEntity()->getInstance();
-        $datasource = null;
+        $datasource = $entity?->getDataSource();
         $process = null;
-        if ($datasource = $entity?->getDataSource()) {
+        if ($datasource) {
             if ($processId = $entity->getProcessId()) {
                 try {
                     $process = $this->dataSourceHelper->getProcess($datasource, $processId);
@@ -74,9 +74,15 @@ class ProcessOverviewCrudController extends AbstractCrudController
             }
         }
 
-        if (Crud::PAGE_DETAIL === $pageName) {
+        if (Crud::PAGE_NEW === $pageName) {
+            yield FormField::addAlert(
+                t('You must save the process overview to select a process.'),
+                type: FormField::TYPE_INFO
+            );
+
+            yield FormField::addAction(t('Save process overview'), Action::SAVE_AND_CONTINUE);
         } else {
-            if (in_array($pageName, [Crud::PAGE_EDIT])) {
+            if (Crud::PAGE_EDIT === $pageName) {
                 if ($datasource) {
                     yield ChoiceField::new('processId', t('Process'))
                         ->setFormTypeOptions([
@@ -92,22 +98,18 @@ class ProcessOverviewCrudController extends AbstractCrudController
                             }),
                         ])
                         ->setRequired(true)
-                        ->hideOnIndex()
-
-                        // This is a hack to pass the process data to the template (cf. templates/admin/form.html.twig)
-                        ->setFormTypeOptions([
-                            'attr' => ['data-process-data' => json_encode($process)],
-                        ]);
+                        ->hideOnIndex();
 
                     if ($process) {
                         yield CodeEditorField::new('options', t('Options'))
-                            ->hideOnIndex()
-                            ->setLanguage('yaml');
+                            ->setLanguage('yaml')
+                        ->setColumns(6);
+                        yield FormField::addTemplateView('admin/crud/process_overview/options_details.html.twig', [
+                            'process' => $process,
+                        ])
+                        ->setColumns(6);
                     }
                 }
-            } else {
-                // @todo Show message telling to save the entity
-                // @todo Show a “Save to continue” button.
             }
         }
     }

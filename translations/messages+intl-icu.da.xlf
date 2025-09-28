@@ -101,6 +101,14 @@
         <source>Steps</source>
         <target state="translated">Skridt</target>
       </trans-unit>
+      <trans-unit id="5mY5kYF" resname="You must save the process overview to select a process.">
+        <source>You must save the process overview to select a process.</source>
+        <target state="translated">Du skal gemme procesoverblikket for at kunne vælge en proces.</target>
+      </trans-unit>
+      <trans-unit id=".7bSppN" resname="Save process overview">
+        <source>Save process overview</source>
+        <target state="translated">Gem procesoverblik</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

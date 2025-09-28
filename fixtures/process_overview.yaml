@@ -34,6 +34,9 @@ App\Entity\ProcessOverview:
           # Missing
           # - label: Klinik
           #   data: metadata.klinik
+      run:
+        default_params:
+          status: [FAILED]
 
   process_overview_2:
     label: Frit valg 0-15 år

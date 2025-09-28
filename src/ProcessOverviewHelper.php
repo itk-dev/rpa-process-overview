@@ -14,7 +14,7 @@ class ProcessOverviewHelper
     ) {
     }
 
-    public function getData(ProcessOverview $overview): array
+    public function getData(ProcessOverview $overview, array $query): array
     {
         try {
             $datasource = $overview->getDataSource();
@@ -25,8 +25,8 @@ class ProcessOverviewHelper
 
             $options = $this->getOptions($overview);
 
-            $process = $this->dataSourceHelper->getProcess($overview->getDataSource(), $overview->getProcessId());
-            $data = $this->dataSourceHelper->getProcessRun($overview->getDataSource(), $overview->getProcessId());
+            $process = $this->dataSourceHelper->getProcess($datasource, $processId);
+            $data = $this->dataSourceHelper->getProcessRun($datasource, $processId, $query);
 
             $metadataColumns = [];
             $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];

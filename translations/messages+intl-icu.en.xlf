@@ -101,6 +101,14 @@
         <source>Steps</source>
         <target>Steps</target>
       </trans-unit>
+      <trans-unit id="5mY5kYF" resname="You must save the process overview to select a process.">
+        <source>You must save the process overview to select a process.</source>
+        <target>You must save the process overview to select a process.</target>
+      </trans-unit>
+      <trans-unit id=".7bSppN" resname="Save process overview">
+        <source>Save process overview</source>
+        <target>Save process overview</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

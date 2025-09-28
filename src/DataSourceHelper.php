@@ -26,21 +26,21 @@ class DataSourceHelper
         return $this->get($dataSource, 'process/'.$processId);
     }
 
-    public function getProcessRun(DataSource $dataSource, string $processId): array
+    public function getProcessRun(DataSource $dataSource, string $processId, array $query): array
     {
-        return $this->get($dataSource, 'process/'.$processId.'/run');
+        return $this->get($dataSource, 'process/'.$processId.'/run', $query);
     }
 
     private function get(DataSource $dataSource, string $path, array $query = []): array
     {
-        $url = $this->buildUrl($dataSource, $path);
-        $options = $this->buildOptions($dataSource, $query);
+        $url = $this->buildUrl($dataSource, $path, $query);
+        $options = $this->buildOptions($dataSource);
         $response = $this->httpClient->request(Request::METHOD_GET, $url, $options);
 
         return $response->toArray();
     }
 
-    private function buildUrl(DataSource $dataSource, string $path): string
+    private function buildUrl(DataSource $dataSource, string $path, array $query): string
     {
         $url = $dataSource->getUrl();
 
@@ -49,14 +49,18 @@ class DataSourceHelper
             $path = self::DEFAULT_API_BASE_PATH.$path;
         }
 
-        return rtrim($url, '/').'/'.$path;
+        $url = rtrim($url, '/').'/'.$path;
+
+        if (!empty($query)) {
+            $url .= (str_contains($url, '?') ? '&' : '?').$this->buildQueryString($query);
+        }
+
+        return $url;
     }
 
-    private function buildOptions(DataSource $dataSource, array $query): array
+    private function buildOptions(DataSource $dataSource): array
     {
-        $options = [
-            'query' => $query,
-        ];
+        $options = [];
 
         $dataSourceOptions = $this->getOptions($dataSource);
         if ($header = ($dataSourceOptions['auth']['header'] ?? null)) {
@@ -83,9 +87,6 @@ class DataSourceHelper
 
     /**
      * Build query string with proper handling of list values.
-     *
-     * @param array $params
-     * @return string
      */
     private function buildQueryString(array $params): string
     {
