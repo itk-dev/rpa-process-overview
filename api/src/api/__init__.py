@@ -4,16 +4,25 @@
 # @todo Resolve this.
 # ruff: noqa: FAST002 B008
 
-from typing import Any
+import enum
+from typing import Annotated, Any
 
-from fastapi import Depends, FastAPI, HTTPException, Request, Response, Security
+from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response, Security
 from fastapi_pagination import Page, add_pagination
 from fastapi_pagination.ext.sqlmodel import paginate
 from sqlmodel import Session, select
 
 from .database import create_db_and_tables, engine
 from .exception import HTTPNotFoundException, UpdateError
-from .models import Process, ProcessPublic, ProcessRun, ProcessRunPublic, ProcessStepRun, ProcessStepRunUpdate
+from .models import (
+    Process,
+    ProcessPublic,
+    ProcessRun,
+    ProcessRunPublic,
+    ProcessStepRun,
+    ProcessStepRunUpdate,
+    StepRunStatus,
+)
 from .security import get_api_key, get_api_key_write
 
 description = """
@@ -35,32 +44,57 @@ def on_startup() -> None:
 API_PATH_PREFIX = "/api/v1"
 
 
+# We cannot extend an enum (https://docs.python.org/3/howto/enum.html#restricted-enum-subclassing)
+class StepRunStatusParam(str, enum.Enum):
+    """Status values for a process step run."""
+
+    PENDING = "PENDING"
+    SUCCESS = "SUCCESS"
+    FAILED = "FAILED"
+
+    # @todo Whihc is better? "all" or "any"?
+    # ALL = "all" # noqa: ERA001
+    ANY = "any"
+
+
 def get_session() -> Session:
     """Get session (database)."""
     with Session(engine) as session:
         yield session
 
 
-@app.get(API_PATH_PREFIX + "/process/")
+@app.get(API_PATH_PREFIX + "/process")
 def read_process_list(
     *,
     _: str = Security(get_api_key),
     request: Request,
     response: Response,
     session: Session = Depends(get_session),
-    q: str | None = None,
+    ids: Annotated[
+        list[int],
+        Query(
+            alias="id",
+            description="""Return only processes with these IDs, e.g `/process?id=42&id=87`""",
+        ),
+    ] = [],  # noqa: B006
+    q: Annotated[str, Query(description="Search query")] = "",
 ) -> Page[ProcessPublic]:
     """Get process list.
 
-    # Parameters
-
-    * a
-    * b
+    ``` shell
+    /process
+    /process?status=FAILED
+    /process?status=FAILED&status=PENDING
+    /process?q=name
+    /process?id=…&id=…
+    ```
     """
     query = select(Process).order_by(Process.id)
 
-    if q is not None:
+    if len(q) > 0:
         query = query.filter(Process.search_index.like(f"%{q}%"))
+    if ids is not None and len(ids) > 0:
+        query = query.filter(Process.id.in_(ids))
 
     return _set_pagination_links(request, response, paginate(session, query))
 
@@ -81,14 +115,16 @@ def read_process(
 
 
 @app.get(API_PATH_PREFIX + "/process/{process_id}/run")
-def read_process_run_list(
+def read_process_run_list(  # noqa: PLR0913
     *,
     _: str = Security(get_api_key),
     request: Request,
     response: Response,
     session: Session = Depends(get_session),
     process_id: int,
-    q: str | None = None,
+    status: Annotated[list[StepRunStatus], Query(description="")] = [],  # noqa: B006
+    ids: Annotated[list[int], Query(alias="id")] = [],  # noqa: B006
+    q: str = "",
 ) -> Page[ProcessRunPublic]:
     """Get process list."""
     process = session.get(Process, process_id)
@@ -97,8 +133,12 @@ def read_process_run_list(
 
     query = select(ProcessRun).filter(ProcessRun.process == process)
 
+    if status is not None and len(status) > 0:
+        query = query.filter(ProcessRun.status.in_(status))
     if q is not None:
         query = query.filter(ProcessRun.search_index.like(f"%{q}%"))
+    if ids is not None and len(ids) > 0:
+        query = query.filter(ProcessRun.id.in_(ids))
 
     return _set_pagination_links(request, response, paginate(session, query))
 

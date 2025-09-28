@@ -80,4 +80,18 @@ class DataSourceHelper
 
         return [];
     }
+
+    /**
+     * Build query string with proper handling of list values.
+     *
+     * @param array $params
+     * @return string
+     */
+    private function buildQueryString(array $params): string
+    {
+        // @see https://stackoverflow.com/a/8171667
+        $query = http_build_query($params);
+
+        return preg_replace('/%5B\d+%5D(?==)/', '', $query);
+    }
 }

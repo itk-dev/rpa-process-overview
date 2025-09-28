@@ -2,12 +2,13 @@
 
 import enum
 from datetime import datetime
-from typing import Any
+from typing import Any, Self
 
 from sqlalchemy import JSON, event
 from sqlalchemy.orm import RelationshipProperty
-from sqlmodel import Column, Field, Relationship, SQLModel
+from sqlmodel import Column, Field, Relationship, Session, SQLModel
 
+from .database import engine
 from .exception import UpdateError
 from .mixins import SearchableMixin, TimestampsMixin
 
@@ -91,6 +92,15 @@ class ProcessRunBase(SQLModel):
 
     meta: dict[str, Any] = Field(sa_column=Column(JSON))
     process_id: int | None = Field(default=None, foreign_key="process.id")
+    # Reflect the status of steps
+    status: StepRunStatus | None
+
+    def update_status(self) -> Self:
+        """Update run status based on status of steps."""
+        # @todo
+        self.status = StepRunStatus.PENDING
+
+        return self
 
 
 class ProcessRun(ProcessRunBase, SearchableMixin, TimestampsMixin, table=True):
@@ -153,7 +163,7 @@ class ProcessStepRun(ProcessStepRunBase, TimestampsMixin, table=True):
     run: ProcessRun | None = Relationship(back_populates="steps")
     step: ProcessStep | None = Relationship()
 
-    def apply_update(self, update: ProcessStepRunUpdate) -> "ProcessStepRun":
+    def apply_update(self, update: ProcessStepRunUpdate) -> Self:
         """Apply an update."""
         if self.status == StepRunStatus.SUCCESS:
             raise UpdateError(detail="Cannot update successful item")
@@ -173,10 +183,23 @@ class ProcessStepRun(ProcessStepRunBase, TimestampsMixin, table=True):
 @event.listens_for(ProcessRun, "before_update")
 @event.listens_for(ProcessStepRun, "before_insert")
 @event.listens_for(ProcessStepRun, "before_update")
-def do_stuff(mapper, connection, target: Process | ProcessRun | ProcessStepRun) -> None:  # noqa: ANN001 ARG001
+def before_update(mapper, connection, target: Process | ProcessRun | ProcessStepRun) -> None:  # noqa: ANN001 ARG001
     """Do stuff when models are created and updated."""
     if isinstance(target, SearchableMixin):
         target.update_search_index()
 
     if isinstance(target, ProcessStepRun):
         target.step_index = target.step.index if target.step is not None else -1
+
+
+# @todo Make this work!
+with Session(engine) as session:
+    # https://docs.sqlalchemy.org/en/20/orm/session_events.html#before-flush
+    # https://docs.sqlalchemy.org/en/20/orm/events.html#sqlalchemy.orm.SessionEvents.before_flush
+    @event.listens_for(session, "before_flush")
+    def _before_flush(session: Session, flush_context, instances) -> None:  # noqa: ANN001 ARG001
+        # print("before_flush", session) # noqa: ERA001
+        for obj in session.dirty:
+            if isinstance(obj, ProcessStepRun):
+                obj.run.update_status()
+                session.add(obj.run)
