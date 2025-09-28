@@ -64,7 +64,7 @@ pip install
 ```
 
 ``` shell name=update-run-step
-curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/3/step/2' --header 'content-type: application/json' --data '
+curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/3/step/3' --header 'content-type: application/json' --data '
 {
  "status":"FAILED",
  "started_at": "2025-09-25",
@@ -75,7 +75,7 @@ curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/3
 }
 '
 
-curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/3/step/0' --header 'content-type: application/json' --data '
+curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/3/step/3' --header 'content-type: application/json' --data '
 {
  "status":"SUCCESS",
  "started_at": "2025-09-25"

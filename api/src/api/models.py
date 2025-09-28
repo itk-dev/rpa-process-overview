@@ -8,7 +8,6 @@ from sqlalchemy import JSON, event
 from sqlalchemy.orm import RelationshipProperty
 from sqlmodel import Column, Field, Relationship, Session, SQLModel
 
-from .database import engine
 from .exception import UpdateError
 from .mixins import SearchableMixin, TimestampsMixin
 
@@ -97,8 +96,11 @@ class ProcessRunBase(SQLModel):
 
     def update_status(self) -> Self:
         """Update run status based on status of steps."""
-        # @todo
-        self.status = StepRunStatus.PENDING
+        self.status = StepRunStatus.SUCCESS
+        for step in self.steps:
+            if step.status != StepRunStatus.SUCCESS:
+                self.status = step.status
+                break
 
         return self
 
@@ -166,7 +168,8 @@ class ProcessStepRun(ProcessStepRunBase, TimestampsMixin, table=True):
     def apply_update(self, update: ProcessStepRunUpdate) -> Self:
         """Apply an update."""
         if self.status == StepRunStatus.SUCCESS:
-            raise UpdateError(detail="Cannot update successful item")
+            msg = "Cannot update successful item"
+            raise UpdateError(msg)
 
         self.status = update.status
         self.started_at = update.started_at
@@ -192,14 +195,11 @@ def before_update(mapper, connection, target: Process | ProcessRun | ProcessStep
         target.step_index = target.step.index if target.step is not None else -1
 
 
-# @todo Make this work!
-with Session(engine) as session:
-    # https://docs.sqlalchemy.org/en/20/orm/session_events.html#before-flush
-    # https://docs.sqlalchemy.org/en/20/orm/events.html#sqlalchemy.orm.SessionEvents.before_flush
-    @event.listens_for(session, "before_flush")
-    def _before_flush(session: Session, flush_context, instances) -> None:  # noqa: ANN001 ARG001
-        # print("before_flush", session) # noqa: ERA001
-        for obj in session.dirty:
-            if isinstance(obj, ProcessStepRun):
-                obj.run.update_status()
-                session.add(obj.run)
+# https://docs.sqlalchemy.org/en/20/orm/session_events.html#before-flush
+# https://docs.sqlalchemy.org/en/20/orm/events.html#sqlalchemy.orm.SessionEvents.before_flush
+@event.listens_for(Session, "before_flush")
+def _before_flush(session: Session, flush_context, instances) -> None:  # noqa: ANN001 ARG001
+    for obj in session.dirty.union(session.new):
+        if isinstance(obj, ProcessStepRun):
+            obj.run.update_status()
+            session.add(obj.run)
