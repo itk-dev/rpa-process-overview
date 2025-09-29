@@ -97,8 +97,9 @@ class Fixtures:
                         )
                         session.add(step_run)
 
-                        if status == StepRunStatus.FAILED:
-                            break
+                        # @todo Should we generate pending steps?
+                        # if status == StepRunStatus.FAILED:
+                        #     break    # noqa: ERA001
 
             session.commit()
 

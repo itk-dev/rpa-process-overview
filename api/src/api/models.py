@@ -11,15 +11,6 @@ from sqlmodel import Column, Field, Relationship, Session, SQLModel
 from .exception import UpdateError
 from .mixins import SearchableMixin, TimestampsMixin
 
-
-class StepRunStatus(str, enum.Enum):
-    """Status values for a process step run."""
-
-    PENDING = "PENDING"
-    SUCCESS = "SUCCESS"
-    FAILED = "FAILED"
-
-
 # Process
 
 
@@ -84,6 +75,14 @@ class ProcessStepPublic(ProcessStepBase):
 
 
 # Process run
+
+
+class StepRunStatus(str, enum.Enum):
+    """Status values for a process step run."""
+
+    PENDING = "PENDING"
+    SUCCESS = "SUCCESS"
+    FAILED = "FAILED"
 
 
 class ProcessRunBase(SQLModel):

@@ -23,5 +23,6 @@ docstring-code-format = true
 [dependency-groups]
 dev = [
     "faker>=37.8.0",
+    "python-lsp-server[all]>=1.13.1",
     "ruff>=0.13.1",
 ]

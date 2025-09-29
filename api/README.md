@@ -100,7 +100,7 @@ Restart the API to load the updated config.
 Use a key:
 
 ``` shell
-curl http://127.0.0.1:8000/api/v1/process/ --header 'x-api-key: a-not-so-secret-key'
+curl http://127.0.0.1:8000/api/v1/process --header 'x-api-key: a-not-so-secret-key'
 ```
 
 > [!TIP]

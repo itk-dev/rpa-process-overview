@@ -4,7 +4,6 @@
 # @todo Resolve this.
 # ruff: noqa: FAST002 B008
 
-import enum
 from typing import Annotated, Any
 
 from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response, Security
@@ -42,19 +41,6 @@ def on_startup() -> None:
 
 
 API_PATH_PREFIX = "/api/v1"
-
-
-# We cannot extend an enum (https://docs.python.org/3/howto/enum.html#restricted-enum-subclassing)
-class StepRunStatusParam(str, enum.Enum):
-    """Status values for a process step run."""
-
-    PENDING = "PENDING"
-    SUCCESS = "SUCCESS"
-    FAILED = "FAILED"
-
-    # @todo Whihc is better? "all" or "any"?
-    # ALL = "all" # noqa: ERA001
-    ANY = "any"
 
 
 def get_session() -> Session:
