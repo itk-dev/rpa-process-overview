@@ -116,13 +116,21 @@ tasks:
   build:widgets:
     desc: Build widgets for production and copy to public folder
     cmds:
-      - task widgets:build
+      - task: widgets:build
 
       # Copy result into public folder
-      - rm -fr {{.PUBLIC_DIR}}
-      # rsync is weird when it comes to including and excluding files …
-      - rsync -azv {{.BUILD_DIR}} --include '*/' --include '**/*.css' --include '**/*.js' --exclude '*' --delete {{.PUBLIC_DIR}}
-      - find {{.PUBLIC_DIR}} -type f
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm rm -fr {{.PUBLIC_DIR}}
+      - task: compose
+        vars:
+          # rsync is weird when it comes to including and excluding files …
+          # https://stackoverflow.com/a/11111793
+          TASK_ARGS: exec phpfpm rsync -azv {{.BUILD_DIR}} --include '*/' --include '**/*.css' --include '**/*.js' --exclude '*' --delete {{.PUBLIC_DIR}}
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm find {{.PUBLIC_DIR}} -type f
+
     vars:
       BUILD_DIR: widgets/static/dist/
       PUBLIC_DIR: public/widgets
