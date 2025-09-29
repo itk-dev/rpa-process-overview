@@ -36,7 +36,8 @@ App\Entity\ProcessOverview:
           #   data: metadata.klinik
       run:
         default_params:
-          status: [FAILED]
+          status:
+            - FAILED
 
   process_overview_2:
     label: Frit valg 0-15 år
