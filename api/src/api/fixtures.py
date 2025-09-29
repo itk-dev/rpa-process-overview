@@ -69,7 +69,7 @@ class Fixtures:
                     )
                     session.add(run)
 
-                    failed_step_index = fake.pyint(0, number_of_steps + 1)
+                    failed_step_index = fake.pyint(-1, number_of_steps + 1)
                     started_at = fake.past_datetime()
                     for index in range(number_of_steps):
                         status = StepRunStatus.SUCCESS if index < failed_step_index else StepRunStatus.PENDING
