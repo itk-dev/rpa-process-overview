@@ -6,10 +6,12 @@ use App\Repository\ProcessOverviewRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProcessOverviewRepository::class)]
 #[ORM\Table(name: 'rpa_process_overview_process_overview')]
+#[ORM\HasLifecycleCallbacks]
 class ProcessOverview
 {
     #[ORM\Id]
@@ -138,5 +140,23 @@ class ProcessOverview
         $this->processId = $processId;
 
         return $this;
+    }
+
+    /**
+     * Decide if overview is ready for display.
+     */
+    public function isReady(): bool
+    {
+        return null !== $this->getProcessId();
+    }
+
+    #[ORM\PreUpdate]
+    public function onPreUpdate(PreUpdateEventArgs $args): void
+    {
+        if ($args->hasChangedField('dataSource')) {
+            /** @var self $object */
+            $object = $args->getObject();
+            $object->setProcessId(null);
+        }
     }
 }

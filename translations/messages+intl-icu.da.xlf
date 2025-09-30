@@ -85,10 +85,6 @@
         <source>Process</source>
         <target state="translated">Proces</target>
       </trans-unit>
-      <trans-unit id="ubX_Tix" resname="Process details">
-        <source>Process details</source>
-        <target state="translated">Procesdetaljer</target>
-      </trans-unit>
       <trans-unit id="QXrccnc" resname="Metadata">
         <source>Metadata</source>
         <target state="translated">Metadata</target>
@@ -108,6 +104,22 @@
       <trans-unit id=".7bSppN" resname="Save process overview">
         <source>Save process overview</source>
         <target state="translated">Gem procesoverblik</target>
+      </trans-unit>
+      <trans-unit id="DHnPBuj" resname="Process options">
+        <source>Process options</source>
+        <target state="translated">Indstillinger</target>
+      </trans-unit>
+      <trans-unit id="UAABDvd" resname="Use data source">
+        <source>Use data source</source>
+        <target state="translated">Brug datakilde</target>
+      </trans-unit>
+      <trans-unit id="Q7w68gQ" resname="Use process">
+        <source>Use process</source>
+        <target state="translated">Brug proces</target>
+      </trans-unit>
+      <trans-unit id="bk5A_r0" resname="Details for {process}">
+        <source>Details for {process}</source>
+        <target state="translated">Detaljer for {process}</target>
       </trans-unit>
     </body>
   </file>

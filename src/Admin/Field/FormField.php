@@ -17,7 +17,6 @@ final class FormField implements FieldInterface
     public const OPTION_CONTENT = 'content';
     public const OPTION_TYPE = 'type';
     public const OPTION_ACTION = 'action';
-    public const OPTION_TEMPLATE = 'template';
     public const OPTION_TEMPLATE_CONTEXT = 'template_context';
 
     public const TYPE_INFO = 'info';
