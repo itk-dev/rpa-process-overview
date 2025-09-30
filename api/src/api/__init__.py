@@ -50,7 +50,7 @@ def get_session() -> Session:
 
 
 description = """
-Return only processes with these IDs, e.g `/process?ids[]=42&ids[]=87`.
+Return only processes with these IDs, e.g `/process?id=42&id=87`.
 
 Invalid (i.e. non-existing) IDs are silently ignored.
 """
@@ -66,7 +66,7 @@ def read_process_list(
     ids: Annotated[
         list[int],
         Query(
-            alias="ids[]",
+            alias="id",
             description=description,
         ),
     ] = [],  # noqa: B006
@@ -106,11 +106,11 @@ def read_process(
 
 
 description_status = (
-    """Return only runs with these statusses, e.g `/process/87/run?status[]=FAILED&status[]=PENDING`."""
+    """Return only runs with these statusses, e.g `/process/87/run?status=FAILED&status=PENDING`."""
 )
 
 
-description_ids = """Return only runs with these IDs, e.g `/process?ids[]=42&ids[]=87`.
+description_ids = """Return only runs with these IDs, e.g `/process?id=42&id=87`.
 
 Invalid (i.e. non-existing) IDs are silently ignored.
 """
@@ -127,14 +127,14 @@ def read_process_run_list(  # noqa: PLR0913
     status: Annotated[
         list[StepRunStatus],
         Query(
-            alias="status[]",
+            alias="status",
             description=description_status,
         ),
     ] = [],  # noqa: B006
     ids: Annotated[
         list[int],
         Query(
-            alias="ids[]",
+            alias="id",
             description=description_ids,
         ),
     ] = [],  # noqa: B006
