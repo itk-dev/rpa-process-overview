@@ -55,3 +55,5 @@ After changing mocks in `mocks/`, you must run `task compose -- restart faker` t
 ``` shell
 curl "http://$(task --silent compose -- port faker 3030)/api/v1/process"
 ```
+
+See [docs/API.md](docs/API.md) for some crude details on our API proxy.

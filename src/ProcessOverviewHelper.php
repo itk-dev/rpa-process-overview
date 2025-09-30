@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Entity\ProcessOverview;
+use League\Uri\Modifier;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\Yaml\Yaml;
 
@@ -14,7 +16,7 @@ class ProcessOverviewHelper
     ) {
     }
 
-    public function getData(ProcessOverview $overview, array $query): array
+    public function getData(Request $request, ProcessOverview $overview): array
     {
         try {
             $datasource = $overview->getDataSource();
@@ -26,7 +28,7 @@ class ProcessOverviewHelper
             $options = $this->getOptions($overview);
 
             $process = $this->dataSourceHelper->getProcess($datasource, $processId);
-            $data = $this->dataSourceHelper->getProcessRun($datasource, $processId, $query);
+            $data = $this->dataSourceHelper->getProcessRun($datasource, $processId, $request->query->all());
 
             $metadataColumns = [];
             $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];
@@ -62,10 +64,29 @@ class ProcessOverviewHelper
                 );
             }
 
+            $modifier = Modifier::from($request->getUri());
+            $page = $data['page'] ?? 1;
+            $links = [
+                'self' => $modifier->getUriString(),
+            ];
+            if ($page > 1) {
+                $links['prev'] = $modifier->mergeQueryParameters(['page' => $page - 1])->getUriString();
+            }
+            if ($page < ($data['pages'] ?? 0)) {
+                $links['next'] = $modifier->mergeQueryParameters(['page' => $page + 1])->getUriString();
+            }
+            $meta = array_filter([
+                'total' => $data['total'] ?? null,
+            ]);
+
             return [
-                'columns' => array_merge($metadataColumns, $stepColumns),
-                'rows' => $rows,
-                'data' => $data,
+                'data' => [
+                    'columns' => array_merge($metadataColumns, $stepColumns),
+                    'rows' => $rows,
+                    'data' => $data,
+                ],
+                'links' => $links,
+                'meta' => $meta,
             ];
         } catch (\Exception $exception) {
             // @todo Log the exception

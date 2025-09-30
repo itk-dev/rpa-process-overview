@@ -38,15 +38,15 @@ final class ProcessOverviewController extends AbstractController
     #[Route('/{overview}/data', name: 'data')]
     public function data(Request $request, ProcessOverview $overview, ProcessOverviewHelper $helper): Response
     {
-        $data = $helper->getData($overview, $request->query->all());
+        $data = $helper->getData($request, $overview);
 
         return new JsonResponse($data);
     }
 
     #[Route('/{overview}/search', name: 'search')]
-    public function search(ProcessOverview $overview, ProcessOverviewHelper $helper): Response
+    public function search(Request $request, ProcessOverview $overview, ProcessOverviewHelper $helper): Response
     {
-        $data = $helper->getData($overview);
+        $data = $helper->getData($request, $overview);
 
         return new JsonResponse($data);
     }
