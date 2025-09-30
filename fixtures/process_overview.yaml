@@ -34,8 +34,8 @@ App\Entity\ProcessOverview:
           # Missing
           # - label: Klinik
           #   data: metadata.klinik
-      run:
-        default_params:
+      data:
+        default_query:
           status:
             - FAILED
 

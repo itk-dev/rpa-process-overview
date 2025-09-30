@@ -28,7 +28,12 @@ class ProcessOverviewHelper
             $options = $this->getOptions($overview);
 
             $process = $this->dataSourceHelper->getProcess($datasource, $processId);
-            $data = $this->dataSourceHelper->getProcessRun($datasource, $processId, $request->query->all());
+            $query = $options['data']['default_query'] ?? null;
+            if (!is_array($query)) {
+                $query = [];
+            }
+            $query += $request->query->all();
+            $data = $this->dataSourceHelper->getProcessRun($datasource, $processId, $query);
 
             $metadataColumns = [];
             $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];
