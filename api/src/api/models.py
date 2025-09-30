@@ -167,7 +167,7 @@ class ProcessStepRun(ProcessStepRunBase, TimestampsMixin, table=True):
     def apply_update(self, update: ProcessStepRunUpdate) -> Self:
         """Apply an update."""
         if self.status == StepRunStatus.SUCCESS:
-            msg = "Cannot update successful item"
+            msg = f"Cannot update item with status {self.status.value}"
             raise UpdateError(msg)
 
         self.status = update.status

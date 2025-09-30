@@ -6,7 +6,7 @@
 
 from typing import Annotated, Any
 
-from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response, Security
+from fastapi import Depends, FastAPI, HTTPException, Path, Query, Request, Response, Security
 from fastapi_pagination import Page, add_pagination
 from fastapi_pagination.ext.sqlmodel import paginate
 from sqlmodel import Session, select
@@ -49,6 +49,13 @@ def get_session() -> Session:
         yield session
 
 
+description = """
+Return only processes with these IDs, e.g `/process?ids[]=42&ids[]=87`.
+
+Invalid (i.e. non-existing) IDs are silently ignored.
+"""
+
+
 @app.get(API_PATH_PREFIX + "/process")
 def read_process_list(
     *,
@@ -59,8 +66,8 @@ def read_process_list(
     ids: Annotated[
         list[int],
         Query(
-            alias="id",
-            description="""Return only processes with these IDs, e.g `/process?id=42&id=87`""",
+            alias="ids[]",
+            description=description,
         ),
     ] = [],  # noqa: B006
     q: Annotated[str, Query(description="Search query")] = "",
@@ -69,8 +76,6 @@ def read_process_list(
 
     ``` shell
     /process
-    /process?status=FAILED
-    /process?status=FAILED&status=PENDING
     /process?q=name
     /process?id=…&id=…
     ```
@@ -85,12 +90,12 @@ def read_process_list(
     return _set_pagination_links(request, response, paginate(session, query))
 
 
-@app.get(API_PATH_PREFIX + "/process/{process_id}")
+@app.get(API_PATH_PREFIX + "/process/{process}")
 def read_process(
     *,
     _: str = Security(get_api_key),
     session: Session = Depends(get_session),
-    process_id: int,
+    process_id: Annotated[int, Path(alias="process")],
 ) -> ProcessPublic:
     """Read process."""
     process = session.get(Process, process_id)
@@ -100,16 +105,39 @@ def read_process(
     return process
 
 
-@app.get(API_PATH_PREFIX + "/process/{process_id}/run")
+description_status = (
+    """Return only runs with these statusses, e.g `/process/87/run?status[]=FAILED&status[]=PENDING`."""
+)
+
+
+description_ids = """Return only runs with these IDs, e.g `/process?ids[]=42&ids[]=87`.
+
+Invalid (i.e. non-existing) IDs are silently ignored.
+"""
+
+
+@app.get(API_PATH_PREFIX + "/process/{process}/run")
 def read_process_run_list(  # noqa: PLR0913
     *,
     _: str = Security(get_api_key),
     request: Request,
     response: Response,
     session: Session = Depends(get_session),
-    process_id: int,
-    status: Annotated[list[StepRunStatus], Query(description="")] = [],  # noqa: B006
-    ids: Annotated[list[int], Query(alias="id")] = [],  # noqa: B006
+    process_id: Annotated[int, Path(alias="process")],
+    status: Annotated[
+        list[StepRunStatus],
+        Query(
+            alias="status[]",
+            description=description_status,
+        ),
+    ] = [],  # noqa: B006
+    ids: Annotated[
+        list[int],
+        Query(
+            alias="ids[]",
+            description=description_ids,
+        ),
+    ] = [],  # noqa: B006
     q: str = "",
 ) -> Page[ProcessRunPublic]:
     """Get process list."""
@@ -149,13 +177,13 @@ def read_process_run(
     return run
 
 
-@app.post(API_PATH_PREFIX + "/process/{process_id}/run/{run_id}/retry")
+@app.post(API_PATH_PREFIX + "/process/{process}/run/{run}/retry")
 def retry_process_run(
     *,
     _: str = Security(get_api_key_write),
     session: Session = Depends(get_session),
-    process_id: int,
-    run_id: int,
+    process_id: Annotated[int, Path(alias="process")],
+    run_id: Annotated[int, Path(alias="run")],
 ) -> dict[str, Any]:
     """Retry process run."""
     process = session.get(Process, process_id)
@@ -169,15 +197,15 @@ def retry_process_run(
     return {"ok": True}
 
 
-@app.post(API_PATH_PREFIX + "/process/{process_id}/run/{run_id}/step/{step_index}")
+@app.post(API_PATH_PREFIX + "/process/{process}/run/{run}/step/{step}")
 def update_process_run(
     *,
     _: str = Security(get_api_key_write),
     update: ProcessStepRunUpdate,
     session: Session = Depends(get_session),
-    process_id: int,
-    run_id: int,
-    step_index: int,
+    process_id: Annotated[int, Path(alias="process")],
+    run_id: Annotated[int, Path(alias="run")],
+    step_index: Annotated[int, Path(alias="step")],
 ) -> ProcessRunPublic:
     """Update a process run."""
     process = session.get(Process, process_id)
@@ -201,10 +229,11 @@ def update_process_run(
             run=run,
             step=step,
         )
+
     try:
         item.apply_update(update)
     except UpdateError as e:
-        raise HTTPException(status_code=400, detail="Cannot update item") from e
+        raise HTTPException(status_code=400, detail=f"Cannot update item: {e}") from e
 
     session.add(item)
     session.commit()
