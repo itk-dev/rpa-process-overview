@@ -118,6 +118,11 @@ tasks:
     cmds:
       - task: widgets:build
 
+      # Build tailwind
+      - task: console
+        vars:
+          TASK_ARGS: tailwind:build
+
       # Copy result into public folder
       - task: compose
         vars:

@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-6](https://github.com/itk-dev/rpa-process-overview/pull/6)
+  Setup tailwind
 * [PR-4](https://github.com/itk-dev/rpa-process-overview/pull/4)
   Added and used `rsync` inside docker service
 * [PR-3](https://github.com/itk-dev/rpa-process-overview/pull/3)
