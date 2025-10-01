@@ -1,5 +1,7 @@
 services:
   api:
+    profiles:
+      - ${DOCKER_API_DISABLE:-}
     build: ./api
     env_file: .env.local
     ports:

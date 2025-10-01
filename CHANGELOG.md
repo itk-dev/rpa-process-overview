@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-17](https://github.com/itk-dev/rpa-process-overview/pull/17)
+  Added release script and workflow
 * [PR-18](https://github.com/itk-dev/rpa-process-overview/pull/18)
   Spinner colors changed to make it appear as if something is spinning
 * [PR-19](https://github.com/itk-dev/rpa-process-overview/pull/19)

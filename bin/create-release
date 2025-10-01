@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -o errexit -o errtrace -o noclobber -o nounset -o pipefail
+IFS=$'\n\t'
+
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+project_dir=$(cd "$(dirname "$script_dir")" && pwd)
+
+name=rpa-process-overview
+
+tag=${1:-}
+if [ -z "$tag" ]; then
+  (>&2 echo "Usage: $0 tag")
+  exit
+fi
+
+cd "$project_dir"
+
+output_dir=/tmp
+archive_file_name="$name-$tag.tar.gz"
+# Full path to archive file.
+archive_file_path="$output_dir/$archive_file_name"
+
+docker compose run --env APP_ENV=prod --rm phpfpm composer install --no-dev --classmap-authoritative
+docker compose run --env APP_ENV=prod --rm phpfpm composer clear-cache
+
+# Build tailwind (cf. https://symfony.com/bundles/TailwindBundle/current/index.html#deploying)
+docker compose run --env APP_ENV=prod --rm phpfpm bin/console tailwind:build
+
+# https://symfony.com/doc/current/frontend/asset_mapper.html#serving-assets-in-dev-vs-prod
+docker compose run --env APP_ENV=prod --rm phpfpm bin/console asset-map:compile
+
+task widgets:deploy
+
+mkdir -p "$output_dir"
+rm -f "$archive_file_path"
+# Note: The anchors in excludes does not work as expected with `/usr/bin/tar` on MacOS (`./widgets` ignores not only the root widgets directory).
+# Consider installing https://formulae.brew.sh/formula/gnu-tar
+tar --exclude='.git' --exclude='./assets' --exclude='./widgets' --exclude='./var' --exclude='./fixtures' --exclude='./api' --exclude='*.tar.gz' --exclude='*.local' --gzip --create --file "$archive_file_path" ./
+
+sha256sum "$archive_file_path" >| checksum.txt
+mv "$archive_file_path" .
+
+ls "$archive_file_name" checksum.txt

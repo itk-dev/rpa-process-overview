@@ -24,5 +24,13 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
 *.local
 .idea
+
+# Generated widget code
+/public/widgets/
+
+# Release assets
+checksum.txt
+*.tar.gz
