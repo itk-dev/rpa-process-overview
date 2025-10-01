@@ -2,5 +2,5 @@
 
 * [ ] Handle pagination
 * [ ] Search for process when creating/editing overview
-* [ ] Figure out[how to build](https://symfony.com/bundles/TailwindBundle/current/index.html#deploying) tailwind and set
+* [ ] Figure out [how to build tailwind](https://symfony.com/bundles/TailwindBundle/current/index.html#deploying) and set
   it up
