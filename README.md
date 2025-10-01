@@ -6,30 +6,55 @@ task help
 
 ## Production
 
+First, add a little config to make our tasks use the right docker compose setup:
+
 ``` shell
 # .env.local
 TASK_DOCKER_COMPOSE='itkdev-docker-compose'
 TASK_COMPOSER_INSTALL_ARGS='--no-dev'
 ```
 
+Update the site by running:
+
+``` shell
+task site:update
+```
+
+## Development
+
+Run
+
+``` shell
+task site:update
+```
+
+to get things started.
+
+Load fixtures with
+
+``` shell
+task fixtures:load
+```
+
 ## API Mock
 
-``` shell
-docker compose up --build --detach --wait
+We use a [FastAPI](https://fastapi.tiangolo.com) app to mock the RPA process overview API.
 
+``` shell
 curl "http://$(docker compose port api 8000)/openapi.json"
-curl "http://$(docker compose port api 8000)/api/v1/process/"
-curl "http://$(docker compose port api 8000)/api/v1/process/" --header 'x-api-key: a-not-so-secret-key'
+curl "http://$(docker compose port api 8000)/api/v1/process"
+curl "http://$(docker compose port api 8000)/api/v1/process" --header 'x-api-key: a-not-so-secret-key'
 ```
 
-Create some data:
+Create some fixture data for the API:
 
 ``` shell
-docker compose exec api uv run python -m src.api.fixtures
+task api:fixtures:load
 curl "http://$(docker compose port api 8000)/api/v1/process/" --header 'x-api-key: a-not-so-secret-key'
 ```
 
-See [api/README.md](api/README.md) for some more details.
+See [api/README.md](api/README.md) for some more details (and [`docker-compose.api.yml`](docker-compose.api.yml) for the
+docker compose setup).
 
 ## CORS
 
@@ -45,15 +70,3 @@ curl -H "Origin: http://127.0.0.1:3000/ProcessOverview?page=3" \
     -X OPTIONS --verbose \
     "http://$(task --silent compose -- port nginx 8080)/group/1/overview/1/data"
 ```
-
-## Mock API
-
-We use [faker](https://github.com/dotronglong/faker) to mock the RPA process API.
-
-After changing mocks in `mocks/`, you must run `task compose -- restart faker` to reload the new data.
-
-``` shell
-curl "http://$(task --silent compose -- port faker 3030)/api/v1/process"
-```
-
-See [docs/API.md](docs/API.md) for some crude details on our API proxy.

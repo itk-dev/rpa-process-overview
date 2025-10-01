@@ -7,11 +7,6 @@ App\Entity\DataSource:
         header:
           x-api-key: a-not-so-secret-key
 
-  data_source_faker:
-    label: Faker
-    url: http://faker:3030
-    options: |-
-
 App\Entity\ProcessOverviewGroup:
   process_overview_group_1:
     label: Tandpleje - Udskrivningsprocesser
@@ -56,7 +51,7 @@ App\Entity\ProcessOverview:
   process_overview_3:
     label: En anden proces
     group: "@process_overview_group_2"
-    dataSource: "@data_source_faker"
+    dataSource: "@data_source_api"
     processId: 3
     options: |-
       metadata_columns:
