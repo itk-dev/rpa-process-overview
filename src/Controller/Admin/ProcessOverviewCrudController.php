@@ -70,31 +70,37 @@ class ProcessOverviewCrudController extends AbstractCrudController
 
         /** @var ProcessOverview $entity */
         $entity = $this->getContext()->getEntity()->getInstance();
-        $datasource = $entity?->getDataSource();
+        $dataSource = $entity?->getDataSource();
         $process = null;
-        if ($datasource) {
+        if ($dataSource) {
             if ($processId = $entity->getProcessId()) {
                 try {
-                    $process = $this->dataSourceHelper->getProcess($datasource, $processId);
+                    $process = $this->dataSourceHelper->getProcess($dataSource, $processId);
                 } catch (\Exception) {
                 }
             }
         }
 
         // https://symfony.com/bundles/EasyAdminBundle/current/fields.html#form-fieldsets
-        yield EaFormField::addFieldset(t('Data source'), propertySuffix: 'data_source');
+        yield EaFormField::addFieldset(
+            $dataSource ? t('Data source ({label})', ['label' => $dataSource->getLabel()]) : t('Data source'),
+            propertySuffix: 'data_source'
+        );
 
         yield AssociationField::new('dataSource', t('Data source'))
             ->hideOnIndex();
 
-        yield EaFormField::addFieldset(t('Process'), propertySuffix: 'process');
+        yield EaFormField::addFieldset(
+            isset($process['name']) ? t('Process ({label})', ['label' => $process['name']]) : t('Process'),
+            propertySuffix: 'process'
+        );
 
-        if ($datasource) {
+        if ($dataSource) {
             yield ChoiceField::new('processId', t('Process'))
                 ->setFormTypeOptions([
                     // @todo Add search for process
-                    'choice_loader' => new CallbackChoiceLoader(function () use ($datasource): array {
-                        $processes = $this->dataSourceHelper->getProcesses($datasource);
+                    'choice_loader' => new CallbackChoiceLoader(function () use ($dataSource): array {
+                        $processes = $this->dataSourceHelper->getProcesses($dataSource);
                         $options = array_combine(
                             array_column($processes['items'] ?? [], 'name'),
                             array_column($processes['items'] ?? [], 'id'),

@@ -71,16 +71,27 @@
     {% set collapsed = data_source is empty or process is not empty %}
 
     {{ _self.accordion_item_start('process', form.vars.label|trans(label_translation_parameters, translation_domain), collapsed) }}
+
+    {% if null == overview.id|default(null) %}
+        <div class="alert alert-info">
+            {{ 'You must select and use a data source before you can select a process.'|trans }}
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block _ProcessOverview_ea_form_fieldset_close_process_row %}
-    {% set action = ea_crud_form.ea_entity.actions['saveAndContinue']|default(null) %}
-    {% set label = 'Use process'|trans %}
+    {% set overview = ea_vars.entity.instance|default(null) %}
+    {% set process = overview.processId|default(null) %}
 
-    {% if action %}
-        {% set _ = action.setLabel(label) %}
-        {% set _ = action.setIcon(null) %}
-        {{ include('@EasyAdmin/crud/action.html.twig', {action: action}) }}
+    {% if null != overview.id|default(null) %}
+        {% set action = ea_crud_form.ea_entity.actions['saveAndContinue']|default(null) %}
+        {% set label = 'Use process'|trans %}
+
+        {% if action %}
+            {% set _ = action.setLabel(label) %}
+            {% set _ = action.setIcon(null) %}
+            {{ include('@EasyAdmin/crud/action.html.twig', {action: action}) }}
+        {% endif %}
     {% endif %}
 
     {{ _self.accordion_item_end() }}
@@ -93,6 +104,12 @@
     {% set collapsed = data_source is empty or process is empty %}
 
     {{ _self.accordion_item_start('process_options', form.vars.label|trans(label_translation_parameters, translation_domain), collapsed) }}
+
+    {% if not process %}
+        <div class="alert alert-info">
+            {{ 'You must select and use a data source and a process before you can define options.'|trans }}
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block _ProcessOverview_ea_form_fieldset_close_process_options_row %}
