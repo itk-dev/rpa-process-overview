@@ -119,7 +119,7 @@
         {% set overview = ea_vars.entity.instance|default(null) %}
         {% set data_source = overview.dataSource|default(null) %}
         {% set process = overview.processId|default(null) %}
-        {% set collapsed = data_source is empty and process is not empty %}
+        {% set collapsed = data_source is empty or process is empty %}
 
         {{ _self.accordion_item_start('process_options', form.vars.label|trans(label_translation_parameters, translation_domain), collapsed) }}
 {% endblock %}
