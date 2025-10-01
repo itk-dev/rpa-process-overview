@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\DataSource;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CodeEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
@@ -29,6 +30,12 @@ class DataSourceCrudController extends AbstractCrudController
         yield TextField::new('label', t('Label'));
         yield TextField::new('url', t('URL'))
             ->setFormType(UrlType::class);
+
+        yield TextField::new('createdBy', t('Created by'))
+            ->hideOnForm();
+        yield DateTimeField::new('createdAt', t('Created at'))
+            ->hideOnForm();
+
         yield CodeEditorField::new('options', t('Options'))
             ->hideOnIndex()
             ->setLanguage('yaml');

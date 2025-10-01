@@ -8,12 +8,17 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Blameable\Traits\BlameableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: ProcessOverviewRepository::class)]
 #[ORM\Table(name: 'rpa_process_overview_process_overview')]
 #[ORM\HasLifecycleCallbacks]
 class ProcessOverview
 {
+    use BlameableEntity;
+    use TimestampableEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
