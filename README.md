@@ -70,3 +70,13 @@ curl -H "Origin: http://127.0.0.1:3000/ProcessOverview?page=3" \
     -X OPTIONS --verbose \
     "http://$(task --silent compose -- port nginx 8080)/group/1/overview/1/data"
 ```
+
+## User management
+
+We have a number of commands for managing users. Run
+
+``` shell
+task console -- list app:user
+```
+
+to see the list of user related commands.
