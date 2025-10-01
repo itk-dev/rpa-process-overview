@@ -27,7 +27,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle(t('RPA Process Overview'));
+            ->setTitle($this->getParameter('site_title'));
     }
 
     public function configureMenuItems(): iterable
