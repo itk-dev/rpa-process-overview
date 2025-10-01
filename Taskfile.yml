@@ -139,13 +139,3 @@ tasks:
     vars:
       BUILD_DIR: widgets/static/dist/
       PUBLIC_DIR: public/widgets
-
-  mocks:generate:
-    desc: Generate mocks for Faker
-    cmds:
-      - task: console
-        vars:
-          TASK_ARGS: app:generate:mock-api-data
-      - task: compose
-        vars:
-          TASK_ARGS: restart faker

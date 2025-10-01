@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-7](https://github.com/itk-dev/rpa-process-overview/pull/7)
+  Cleaned up
 * [PR-6](https://github.com/itk-dev/rpa-process-overview/pull/6)
   Setup tailwind
 * [PR-4](https://github.com/itk-dev/rpa-process-overview/pull/4)
