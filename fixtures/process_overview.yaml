@@ -7,6 +7,14 @@ App\Entity\DataSource:
         header:
           x-api-key: a-not-so-secret-key
 
+  data_source_api_2:
+    label: API mock (the same, but another)
+    url: http://api:8000
+    options: |-
+      auth:
+        header:
+          x-api-key: a-not-so-secret-key
+
 App\Entity\ProcessOverviewGroup:
   process_overview_group_1:
     label: Tandpleje - Udskrivningsprocesser
@@ -51,7 +59,7 @@ App\Entity\ProcessOverview:
   process_overview_3:
     label: En anden proces
     group: "@process_overview_group_2"
-    dataSource: "@data_source_api"
+    dataSource: "@data_source_api_2"
     processId: 3
     options: |-
       metadata_columns:

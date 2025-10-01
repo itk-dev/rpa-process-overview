@@ -85,10 +85,6 @@
         <source>Process</source>
         <target state="translated">Proces</target>
       </trans-unit>
-      <trans-unit id="ubX_Tix" resname="Process details">
-        <source>Process details</source>
-        <target state="translated">Procesdetaljer</target>
-      </trans-unit>
       <trans-unit id="QXrccnc" resname="Metadata">
         <source>Metadata</source>
         <target state="translated">Metadata</target>
@@ -101,13 +97,37 @@
         <source>Steps</source>
         <target state="translated">Skridt</target>
       </trans-unit>
-      <trans-unit id="5mY5kYF" resname="You must save the process overview to select a process.">
-        <source>You must save the process overview to select a process.</source>
-        <target state="translated">Du skal gemme procesoverblikket for at kunne vælge en proces.</target>
+      <trans-unit id="DHnPBuj" resname="Process options">
+        <source>Process options</source>
+        <target state="translated">Indstillinger</target>
       </trans-unit>
-      <trans-unit id=".7bSppN" resname="Save process overview">
-        <source>Save process overview</source>
-        <target state="translated">Gem procesoverblik</target>
+      <trans-unit id="UAABDvd" resname="Use data source">
+        <source>Use data source</source>
+        <target state="translated">Brug datakilde</target>
+      </trans-unit>
+      <trans-unit id="Q7w68gQ" resname="Use process">
+        <source>Use process</source>
+        <target state="translated">Brug proces</target>
+      </trans-unit>
+      <trans-unit id="bk5A_r0" resname="Details for {process}">
+        <source>Details for {process}</source>
+        <target state="translated">Detaljer for {process}</target>
+      </trans-unit>
+      <trans-unit id="FnYEvwc" resname="You must select and use a data source before you can select a process.">
+        <source>You must select and use a data source before you can select a process.</source>
+        <target state="translated">Du skal vælge og bruge en datakilde før du kan vælge en proces.</target>
+      </trans-unit>
+      <trans-unit id="eyneDsx" resname="You must select and use a data source and a process before you can define options.">
+        <source>You must select and use a data source and a process before you can define options.</source>
+        <target state="translated">Du skal vælge og bruge en datakilde og en proces før du kan definere indstillinger.</target>
+      </trans-unit>
+      <trans-unit id="BD_hWKF" resname="Data source ({label})">
+        <source>Data source ({label})</source>
+        <target state="translated">Datakilde ({label})</target>
+      </trans-unit>
+      <trans-unit id="2DkQNvu" resname="Process ({label})">
+        <source>Process ({label})</source>
+        <target state="translated">Proces ({label})</target>
       </trans-unit>
     </body>
   </file>

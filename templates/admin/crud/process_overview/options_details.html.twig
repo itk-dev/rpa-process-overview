@@ -1,9 +1,11 @@
-{% if process.meta|default(null) %}
-    <details class="process-details" open>
-        <summary>{{ 'Process details'|trans }}</summary>
+<fieldset class="process-details">
+    <legend>{{ 'Details for {process}'|trans({process: process.name}) }}</legend>
 
-        {% if process.meta|default(null) %}
-            <h3>{{ 'Metadata'|trans }}</h3>
+    {% if process.meta|default(null) %}
+        <section class="meta">
+            <header>
+                <h3>{{ 'Metadata'|trans }}</h3>
+            </header>
 
             {% set metadata_columns = [] %}
 
@@ -20,17 +22,20 @@ data: 'meta.' ~ name,
             <h4>{{ 'Example use in "{options}"'|trans({options: 'Options'|trans}) }}</h4>
 
             <pre><code>{{ {metadata_columns: metadata_columns}|yaml_encode(87) }}</code></pre>
+        </section>
+    {% endif %}
 
-        {% endif %}
-
-        {% if process.steps|default(null) %}
-            <h3>{{ 'Steps'|trans }}</h3>
+    {% if process.steps|default(null) %}
+        <section class="steps">
+            <header>
+                <h3>{{ 'Steps'|trans }}</h3>
+            </header>
 
             <ol>
                 {% for step in process.steps %}
                     <li>{{ step.name }}</li>
                 {% endfor %}
             </ol>
-        {% endif %}
-    </details>
-{% endif %}
+        </section>
+    {% endif %}
+</fieldset>

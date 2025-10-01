@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-5](https://github.com/itk-dev/rpa-process-overview/pull/5)
+  Added multi-step form hacks
 * [PR-7](https://github.com/itk-dev/rpa-process-overview/pull/7)
   Cleaned up
 * [PR-6](https://github.com/itk-dev/rpa-process-overview/pull/6)

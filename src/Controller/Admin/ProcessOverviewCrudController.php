@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CodeEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField as EaFormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\ChoiceList\Loader\CallbackChoiceLoader;
@@ -34,22 +35,30 @@ class ProcessOverviewCrudController extends AbstractCrudController
         return parent::configureCrud($crud)
             ->setEntityLabelInSingular(t('Process overview'))
             ->setEntityLabelInPlural(t('Process overviews'))
-            ->addFormTheme('admin/form.html.twig');
+            ->addFormTheme('admin/process_overview_form.html.twig');
     }
 
     public function configureActions(Actions $actions): Actions
     {
+        // Cheat a little to set display condition on built in action.
+        $saveAndReturn = $actions->getAsDto(Crud::PAGE_EDIT)->getAction(Crud::PAGE_EDIT, Action::SAVE_AND_RETURN)
+            ->getAsConfigObject()
+            // Hide for incomplete overview.
+            ->displayIf(static fn (ProcessOverview $overview) => $overview->isReady());
+
         return parent::configureActions($actions)
-            ->add(Crud::PAGE_INDEX, Action::DETAIL)
             ->add(Crud::PAGE_INDEX, Action::new('show', t('Show process overview'))
-                ->displayIf(fn (ProcessOverview $overview) => $overview->getGroup())
+                ->displayIf(fn (ProcessOverview $overview) => $overview->isReady())
                 ->linkToUrl(fn (ProcessOverview $overview) => $this->generateUrl('process_overview_show', [
                     'group' => $overview->getGroup()->getId(),
                     'overview' => $overview->getId(),
                 ])))
             ->remove(Crud::PAGE_NEW, Action::SAVE_AND_ADD_ANOTHER)
             ->add(Crud::PAGE_NEW, Action::SAVE_AND_CONTINUE)
-            ->remove(Crud::PAGE_NEW, Action::SAVE_AND_RETURN);
+            ->remove(Crud::PAGE_NEW, Action::SAVE_AND_RETURN)
+            // Hide “Save and return” for incomplete overview.
+            ->remove(Crud::PAGE_EDIT, Action::SAVE_AND_RETURN)
+            ->add(Crud::PAGE_EDIT, $saveAndReturn);
     }
 
     public function configureFields(string $pageName): iterable
@@ -58,59 +67,68 @@ class ProcessOverviewCrudController extends AbstractCrudController
             ->onlyOnDetail();
         yield TextField::new('label', t('Label'));
         yield AssociationField::new('group', t('Group'));
-        yield AssociationField::new('dataSource', t('Data source'))
-            ->setFormTypeOption('block_prefix', 'mikkel')
-            ->hideOnIndex();
 
+        /** @var ProcessOverview $entity */
         $entity = $this->getContext()->getEntity()->getInstance();
-        $datasource = $entity?->getDataSource();
+        $dataSource = $entity?->getDataSource();
         $process = null;
-        if ($datasource) {
+        if ($dataSource) {
             if ($processId = $entity->getProcessId()) {
                 try {
-                    $process = $this->dataSourceHelper->getProcess($datasource, $processId);
+                    $process = $this->dataSourceHelper->getProcess($dataSource, $processId);
                 } catch (\Exception) {
                 }
             }
         }
 
-        if (Crud::PAGE_NEW === $pageName) {
-            yield FormField::addAlert(
-                t('You must save the process overview to select a process.'),
-                type: FormField::TYPE_INFO
-            );
+        // https://symfony.com/bundles/EasyAdminBundle/current/fields.html#form-fieldsets
+        yield EaFormField::addFieldset(
+            $dataSource ? t('Data source ({label})', ['label' => $dataSource->getLabel()]) : t('Data source'),
+            propertySuffix: 'data_source'
+        );
 
-            yield FormField::addAction(t('Save process overview'), Action::SAVE_AND_CONTINUE);
-        } else {
-            if (Crud::PAGE_EDIT === $pageName) {
-                if ($datasource) {
-                    yield ChoiceField::new('processId', t('Process'))
-                        ->setFormTypeOptions([
-                            // @todo Add search for process
-                            'choice_loader' => new CallbackChoiceLoader(function () use ($datasource): array {
-                                $processes = $this->dataSourceHelper->getProcesses($datasource);
-                                $options = array_combine(
-                                    array_column($processes['items'] ?? [], 'name'),
-                                    array_column($processes['items'] ?? [], 'id'),
-                                );
+        yield AssociationField::new('dataSource', t('Data source'))
+            ->hideOnIndex();
 
-                                return $options;
-                            }),
-                        ])
-                        ->setRequired(true)
-                        ->hideOnIndex();
+        yield EaFormField::addFieldset(
+            isset($process['name']) ? t('Process ({label})', ['label' => $process['name']]) : t('Process'),
+            propertySuffix: 'process'
+        );
 
-                    if ($process) {
-                        yield CodeEditorField::new('options', t('Options'))
-                            ->setLanguage('yaml')
-                        ->setColumns(6);
-                        yield FormField::addTemplateView('admin/crud/process_overview/options_details.html.twig', [
-                            'process' => $process,
-                        ])
-                        ->setColumns(6);
-                    }
-                }
-            }
+        if ($dataSource) {
+            yield ChoiceField::new('processId', t('Process'))
+                ->setFormTypeOptions([
+                    // @todo Add search for process
+                    'choice_loader' => new CallbackChoiceLoader(function () use ($dataSource): array {
+                        $processes = $this->dataSourceHelper->getProcesses($dataSource);
+                        $options = array_combine(
+                            array_column($processes['items'] ?? [], 'name'),
+                            array_column($processes['items'] ?? [], 'id'),
+                        );
+
+                        return $options;
+                    }),
+                ])
+                // ->setRequired(true)
+                ->onlyOnForms();
+        }
+
+        yield EaFormField::addFieldset(t('Process options'), propertySuffix: 'process_options');
+
+        if ($process) {
+            yield CodeEditorField::new('options', t('Options'))
+                ->setLanguage('yaml')
+                ->setColumns(6)
+                ->setFormTypeOptions([
+                    'empty_data' => '',
+                ])
+            ;
+            yield FormField::addTemplateView('admin/crud/process_overview/options_details.html.twig', [
+                'process' => $process,
+            ])
+                ->onlyOnForms()
+                ->setColumns(6)
+            ;
         }
     }
 }
