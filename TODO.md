@@ -6,3 +6,4 @@
       it up
 - [ ] Add white mode
 - [ ] Paginate data
+- [ ] Localizable texts in svelte
