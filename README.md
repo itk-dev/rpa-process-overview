@@ -80,3 +80,44 @@ task console -- list app:user
 ```
 
 to see the list of user related commands.
+
+### OpenID Connect
+
+[Symfony supports OpenID Connect](https://symfony.com/doc/current/security/access_token.html#using-openid-connect-oidc),
+but our IdP does not play well with that. Therefore, we use our own battle-tested [OpenId Connect
+Bundle](https://github.com/itk-dev/openid-connect-bundle) for OIDC login.
+
+The bundle is configured with some environment variables:
+
+``` dotenv
+# .env.local
+ADMIN_OIDC_ALLOW_HTTP=false
+# Get these from your IdP provider
+ADMIN_OIDC_METADATA_URL=https://…/.well-known/openid-configuration
+ADMIN_OIDC_CLIENT_ID=…
+ADMIN_OIDC_CLIENT_SECRET=…
+
+ADMIN_OIDC_REDIRECT_URI=https://rpa-process-overview.example.com/
+
+ADMIN_OIDC_ROLE_MAP='{
+  "administrator": ["ROLE_ADMIN"]
+}'
+```
+
+For local testing of OIDC login, we use [OpenId Connect Server Mock](https://github.com/Soluto/oidc-server-mock) (cf.
+[`docker-compose.oidc.yml`](docker-compose.oidc.yml)) and the mock is running on
+<https://idp.rpa-process-overview.local.itkdev.dk/>.
+
+The mock provides these users (cf. [`docker-compose.oidc.yml`](docker-compose.oidc.yml)):
+
+| Username | Password | Roles         |
+|----------|----------|---------------|
+| admin    | admin    | administrator |
+| user     | user     | user          |
+
+> [!TIP]
+> Set `DOCKER_OIDC_DISABLE` to a non-empty value in `.env.local` to disable the OIDC service, e.g.
+>
+> ``` dotend
+> # .env.local
+> DOCKER_OIDC_DISABLE=true

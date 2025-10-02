@@ -20,7 +20,7 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Controller\SecurityController:
+    App\Security\OidcAuthenticator:
         arguments:
             $options:
-                page_title: '%site_title%'
+                role_map: '%env(json:ADMIN_OIDC_ROLE_MAP)%'
