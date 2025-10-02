@@ -6,6 +6,7 @@ use App\Entity\ProcessOverviewGroup;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -39,5 +40,10 @@ class ProcessOverviewGroupCrudController extends AbstractCrudController
         yield IdField::new('id', t('ID'))
             ->onlyOnDetail();
         yield TextField::new('label', t('Label'));
+
+        yield TextField::new('createdBy', t('Created by'))
+            ->hideOnForm();
+        yield DateTimeField::new('createdAt', t('Created at'))
+            ->hideOnForm();
     }
 }
