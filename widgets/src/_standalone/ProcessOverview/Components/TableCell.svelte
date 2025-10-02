@@ -11,7 +11,7 @@
 		children
 	}: { i: number; row: Step[]; cell: Step; className: string; children: Snippet } = $props();
 
-	function willTheNextFail(row: Step[], stepIndex: Number | null) {
+	function isTheNextStepFailed(row: Step[], stepIndex: Number | null) {
 		if (stepIndex === null) return false;
 		const indexElement = row.findIndex(({ step_index }) => step_index === stepIndex);
 		const nextElement = indexElement + 1;
@@ -34,7 +34,7 @@
 	<!-- The last step should not display the little stick between the round things -->
 	{#if notTheLastStep(i, row.length)}
 		<div
-			class="{willTheNextFail(row, cell.step_index)
+			class="{isTheNextStepFailed(row, cell.step_index)
 				? 'bg-neutral-800'
 				: 'bg-green-700'} absolute top-1/2 left-[calc(50%+16px)] h-0.5 w-[calc(100%-32px)] -translate-y-1/2 z-0"
 		></div>
