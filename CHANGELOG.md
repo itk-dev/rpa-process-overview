@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-11](https://github.com/itk-dev/rpa-process-overview/pull/11)
+  Add localization
 * [PR-10](https://github.com/itk-dev/rpa-process-overview/pull/10)
   Added OIDC login
 * [PR-9](https://github.com/itk-dev/rpa-process-overview/pull/9)
