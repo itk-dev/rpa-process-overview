@@ -32,15 +32,17 @@
 {#if fetching}
 	<div class="flex justify-center">
 		<Spinner>
-			<h2 class="my-3 text-white">{t('Loading data...')}</h2>
+			<h2 class="my-3 dark:text-white text-neutral-900">{t('Loading data...')}</h2>
 		</Spinner>
 	</div>
 {:else if null === data}
 	<div class="my-3 text-white"><h2 class="p-4">{t('Missing data')}</h2></div>
 {:else}
-	<div class="flex flex-col border bg-gray-900 border-neutral-800 rounded-md shadow-sm">
+	<div
+		class="flex flex-col border bg-gray-100 dark:bg-gray-900 border-neutral-300 dark:border-neutral-800 rounded-md"
+	>
 		<div
-			class=" p-3 text-white font-medium bg-gray-800 flex items-center border-b border-neutral-800"
+			class="p-3 dark:text-white font-medium bg-gray-200 dark:bg-gray-800 flex items-center border-b border-neutral-300 dark:border-neutral-800"
 		>
 			<ExclamationMark />
 			<h2>{t('Failed processes')}</h2>

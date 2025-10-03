@@ -19,10 +19,10 @@
 
 <table class="min-w-full">
 	{#if columns}
-		<thead class="bg-gray-800 border-b border-neutral-800">
+		<thead class="border-neutral-300 dark:bg-gray-800 border-b">
 			<tr>
 				{#each columns as { label }}
-					<th class="px-2 py-3 text-center text-xs font-medium text-gray-400 w-24">
+					<th class="px-2 py-3 text-center text-xs font-medium dark:text-gray-400 w-24">
 						<span class="block text-center whitespace-normal">{label}</span>
 					</th>
 				{/each}
@@ -33,7 +33,9 @@
 		<tbody>
 			{#if rows.length > 0}
 				{#each rows as row}
-					<tr class="hover:bg-gray-800 border-b border-neutral-800">
+					<tr
+						class="hover:bg-neutral-300 dark:hover:bg-gray-800 border-b border-neutral-300 dark:border-neutral-800"
+					>
 						{#each row as cell, i}
 							{#if cell.status}
 								<TableCell
@@ -44,13 +46,13 @@
 										? 'bg-green-700'
 										: cell.status === Status.FAILED
 											? 'bg-rose-700'
-											: 'bg-neutral-800'}
+											: 'bg-neutral-400 dark:bg-neutral-800'}
 								>
 									{@const IconComponent = icons[cell.status]}
 									<IconComponent />
 								</TableCell>
 							{:else}
-								<td class="px-3 py-4 whitespace-nowrap text-sm text-gray-300 w-24 truncate">
+								<td class="px-3 py-4 whitespace-nowrap text-sm dark:text-gray-300 w-24 truncate">
 									<!-- Let's keep the little ghost -->
 									{cell.value ?? cell.status ?? '👻'}
 								</td>
