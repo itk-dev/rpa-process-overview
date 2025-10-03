@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let className = 'h-4 w-4 opacity-50';
+	export let className = 'h-4 w-4 dark:opacity-50';
 </script>
 
 <svg
