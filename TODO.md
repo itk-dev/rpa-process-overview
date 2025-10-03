@@ -5,4 +5,4 @@
 - [ ] Figure out [how to build tailwind](https://symfony.com/bundles/TailwindBundle/current/index.html#deploying) and set
       it up
 - [ ] Add white mode
-- [ ] Localizable texts in svelte
+- [x] Localizable texts in svelte
