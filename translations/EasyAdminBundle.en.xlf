@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="nRSzgzm" resname="page_title.exception">
+        <source>page_title.exception</source>
+        <target>Error|Errors</target>
+      </trans-unit>
+      <trans-unit id="GTjPPy9" resname="datagrid.hidden_results">
+        <source>datagrid.hidden_results</source>
+        <target>Some results can't be displayed because you don't have enough permissions</target>
+      </trans-unit>
+      <trans-unit id="CO0E0pU" resname="datagrid.no_results">
+        <source>datagrid.no_results</source>
+        <target>No results found.</target>
+      </trans-unit>
+      <trans-unit id="ANpWHHW" resname="paginator.previous">
+        <source>paginator.previous</source>
+        <target>Previous</target>
+      </trans-unit>
+      <trans-unit id="SaZbUiU" resname="paginator.next">
+        <source>paginator.next</source>
+        <target>Next</target>
+      </trans-unit>
+      <trans-unit id="ZsypGha" resname="paginator.results">
+        <source>paginator.results</source>
+        <target><![CDATA[{0} No results|{1} <strong>1</strong> result|]1,Inf] <strong>%count%</strong> results]]></target>
+      </trans-unit>
+      <trans-unit id="S2q7CDj" resname="label.empty">
+        <source>label.empty</source>
+        <target>Empty</target>
+      </trans-unit>
+      <trans-unit id="fAVSIIs" resname="label.null">
+        <source>label.null</source>
+        <target>Null</target>
+      </trans-unit>
+      <trans-unit id="0EqWTob" resname="label.inaccessible">
+        <source>label.inaccessible</source>
+        <target>Inaccessible</target>
+      </trans-unit>
+      <trans-unit id="OLmlP81" resname="label.inaccessible.explanation">
+        <source>label.inaccessible.explanation</source>
+        <target>Getter method does not exist for this field or the field is not public</target>
+      </trans-unit>
+      <trans-unit id="MJQ4k4D" resname="field.code_editor.view_code">
+        <source>field.code_editor.view_code</source>
+        <target>View code</target>
+      </trans-unit>
+      <trans-unit id="11gUR_y" resname="field.text_editor.view_content">
+        <source>field.text_editor.view_content</source>
+        <target>View content</target>
+      </trans-unit>
+      <trans-unit id="FI_qUZL" resname="action.entity_actions">
+        <source>action.entity_actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="tKPecTw" resname="action.search">
+        <source>action.search</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="Cd4XVNn" resname="action.delete">
+        <source>action.delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="wPEuKmL" resname="action.cancel">
+        <source>action.cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="ecFC4Sv" resname="action.add_new_item">
+        <source>action.add_new_item</source>
+        <target>Add a new item</target>
+      </trans-unit>
+      <trans-unit id="b5M9sxm" resname="action.remove_item">
+        <source>action.remove_item</source>
+        <target>Remove the item</target>
+      </trans-unit>
+      <trans-unit id="Yy_rDAt" resname="action.choose_file">
+        <source>action.choose_file</source>
+        <target>Choose file</target>
+      </trans-unit>
+      <trans-unit id="PO_UHtX" resname="action.close">
+        <source>action.close</source>
+        <target>Close</target>
+      </trans-unit>
+      <trans-unit id="IvOrJqD" resname="batch_action_modal.title">
+        <source>batch_action_modal.title</source>
+        <target>You are going to apply the "%action_name%" action to %num_items% item(s).</target>
+      </trans-unit>
+      <trans-unit id="HzIn9A_" resname="batch_action_modal.content">
+        <source>batch_action_modal.content</source>
+        <target>There is no undo for this operation.</target>
+      </trans-unit>
+      <trans-unit id="1QzA7HJ" resname="batch_action_modal.action">
+        <source>batch_action_modal.action</source>
+        <target>Proceed</target>
+      </trans-unit>
+      <trans-unit id=".DbNkeY" resname="delete_modal.title">
+        <source>delete_modal.title</source>
+        <target>Do you really want to delete this item?</target>
+      </trans-unit>
+      <trans-unit id="O8SUipq" resname="delete_modal.content">
+        <source>delete_modal.content</source>
+        <target>There is no undo for this operation.</target>
+      </trans-unit>
+      <trans-unit id="VH1tHkH" resname="filter.title">
+        <source>filter.title</source>
+        <target>Filters</target>
+      </trans-unit>
+      <trans-unit id="GapHtez" resname="filter.button.clear">
+        <source>filter.button.clear</source>
+        <target>Clear</target>
+      </trans-unit>
+      <trans-unit id="F7_Hyy1" resname="filter.button.apply">
+        <source>filter.button.apply</source>
+        <target>Apply</target>
+      </trans-unit>
+      <trans-unit id="3VqDiBO" resname="form.tab.error_badge_title">
+        <source>form.tab.error_badge_title</source>
+        <target>One invalid input|%count% invalid inputs</target>
+      </trans-unit>
+      <trans-unit id="kgatv6N" resname="user.logged_in_as">
+        <source>user.logged_in_as</source>
+        <target>Logged in as</target>
+      </trans-unit>
+      <trans-unit id=".eqAPKs" resname="user.anonymous">
+        <source>user.anonymous</source>
+        <target>Anonymous User</target>
+      </trans-unit>
+      <trans-unit id="JBbrEd7" resname="settings.appearance.label">
+        <source>settings.appearance.label</source>
+        <target>Appearance</target>
+      </trans-unit>
+      <trans-unit id="vxKYCsn" resname="settings.appearance.light">
+        <source>settings.appearance.light</source>
+        <target>Light</target>
+      </trans-unit>
+      <trans-unit id="h3pBR4_" resname="settings.appearance.dark">
+        <source>settings.appearance.dark</source>
+        <target>Dark</target>
+      </trans-unit>
+      <trans-unit id="8ViDiWx" resname="settings.appearance.auto">
+        <source>settings.appearance.auto</source>
+        <target>Auto</target>
+      </trans-unit>
+      <trans-unit id="E5cimFA" resname="settings.locale">
+        <source>settings.locale</source>
+        <target>Language</target>
+      </trans-unit>
+      <trans-unit id="iFP0IOu" resname="login_page.username">
+        <source>login_page.username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="uxJWiMn" resname="login_page.password">
+        <source>login_page.password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="eiGmhDt" resname="login_page.sign_in">
+        <source>login_page.sign_in</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="IsDUuMi" resname="login_page.forgot_password">
+        <source>login_page.forgot_password</source>
+        <target>Forgot Your Password?</target>
+      </trans-unit>
+      <trans-unit id="GNqK_5o" resname="login_page.remember_me">
+        <source>login_page.remember_me</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id="dc37768" resname="autocomplete.no-results-found">
+        <source>autocomplete.no-results-found</source>
+        <target>No results found</target>
+      </trans-unit>
+      <trans-unit id="Mi9fRIF" resname="autocomplete.no-more-results">
+        <source>autocomplete.no-more-results</source>
+        <target>No more results</target>
+      </trans-unit>
+      <trans-unit id="_EDCsYO" resname="autocomplete.loading-more-results">
+        <source>autocomplete.loading-more-results</source>
+        <target>Loading more results…</target>
+      </trans-unit>
+      <trans-unit id="3Mq5DeM" resname="files">
+        <source>files</source>
+        <target>files</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

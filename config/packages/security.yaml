@@ -1,0 +1,38 @@
+security:
+    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            lazy: true
+            custom_authenticators:
+                - App\Security\OidcAuthenticator
+                - ItkDev\OpenIdConnectBundle\Security\CliLoginTokenAuthenticator
+            entry_point: App\Security\OidcAuthenticator
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#the-firewall
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    role_hierarchy:
+        !php/enum App\Entity\UserRole::Admin->value:
+            - !php/enum App\Entity\UserRole::User->value
+        !php/enum App\Entity\UserRole::OverviewManager->value:
+            - !php/enum App\Entity\UserRole::Admin->value
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/admin, roles: !php/enum App\Entity\UserRole::Admin->value }
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: '^/openidconnect/login(/.+)?$', role: PUBLIC_ACCESS }
+        - { path: ^/, roles: !php/enum App\Entity\UserRole::User->value }

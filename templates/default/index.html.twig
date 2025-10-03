@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <ul class="nav flex-column">
+        {% if is_granted(enum('App\\Entity\\UserRole').Admin.value) %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('process_overview_admin') }}">{{ 'Admin'|trans }}</a>
+            </li>
+        {% endif %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('process_overview_group_index') }}">{{ 'Groups'|trans }}</a>
+        </li>
+    </ul>
+{% endblock %}

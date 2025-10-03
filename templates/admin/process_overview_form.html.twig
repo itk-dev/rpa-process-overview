@@ -1,0 +1,119 @@
+{# Form overrides #}
+{% extends '@EasyAdmin/crud/form_theme.html.twig' %}
+
+{% block admin_form_template_view_widget %}
+    {% set template_path = ea_vars.field.templatePath|default(null) %}
+    {% set template_context = ea_vars.field.customOptions.get('template_context')|default([]) %}
+    {{ include(template_path, template_context) }}
+{% endblock %}
+
+{% macro accordion_start() %}
+    <div class="accordion accordion-flush" id="app_accordion_id">
+{% endmacro %}
+
+{% macro accordion_item_start(id, label, collapsed) %}
+    {% set item_id = 'accordion_item-' ~ id %}
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button {{ collapsed ? 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#{{ item_id }}" aria-expanded="false" aria-controls="{{ item_id }}">
+                    {{- label -}}
+                </button>
+            </h2>
+            <div id="{{ item_id }}" class="accordion-collapse collapse {{ not collapsed ? 'show' }}" data-bs-parent="#app_accordion_id">
+                <div class="accordion-body">
+                    {% if id == 'process_options' %}
+                        <div class="row">
+                        {% endif %}
+{% endmacro %}
+
+{% macro accordion_item_end(id) %}
+                    {% if id == 'process_options' %}
+                        </div>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+{% endmacro %}
+
+{% macro accordion_end() %}
+    </div>
+{% endmacro %}
+
+{# https://symfony.com/bundles/EasyAdminBundle/current/fields.html#form-fieldsets #}
+{% block _ProcessOverview_ea_form_fieldset_data_source_row %}
+    {{ _self.accordion_start }}
+
+    {% set overview = ea_vars.entity.instance|default(null) %}
+    {% set data_source = overview.dataSource|default(null) %}
+    {% set process = overview.processId|default(null) %}
+    {% set collapsed = data_source is not empty %}
+
+    {{ _self.accordion_item_start('data_source', form.vars.label|trans(label_translation_parameters, translation_domain), collapsed) }}
+{% endblock %}
+
+{% block _ProcessOverview_ea_form_fieldset_close_data_source_row %}
+    {% set action = ea_crud_form.ea_entity.actions['saveAndContinue']|default(null) %}
+    {% set label = 'Use data source'|trans %}
+
+    {% if action %}
+        {% set _ = action.setLabel(label) %}
+        {% set _ = action.setIcon(null) %}
+        {{ include('@EasyAdmin/crud/action.html.twig', {action: action}) }}
+    {% endif %}
+
+    {{ _self.accordion_item_end() }}
+{% endblock %}
+
+{% block _ProcessOverview_ea_form_fieldset_process_row %}
+    {% set overview = ea_vars.entity.instance|default(null) %}
+    {% set data_source = overview.dataSource|default(null) %}
+    {% set process = overview.processId|default(null) %}
+    {% set collapsed = data_source is empty or process is not empty %}
+
+    {{ _self.accordion_item_start('process', form.vars.label|trans(label_translation_parameters, translation_domain), collapsed) }}
+
+    {% if null == overview.id|default(null) %}
+        <div class="alert alert-info">
+            {{ 'You must select and use a data source before you can select a process.'|trans }}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block _ProcessOverview_ea_form_fieldset_close_process_row %}
+    {% set overview = ea_vars.entity.instance|default(null) %}
+    {% set process = overview.processId|default(null) %}
+
+    {% if null != overview.id|default(null) %}
+        {% set action = ea_crud_form.ea_entity.actions['saveAndContinue']|default(null) %}
+        {% set label = 'Use process'|trans %}
+
+        {% if action %}
+            {% set _ = action.setLabel(label) %}
+            {% set _ = action.setIcon(null) %}
+            {{ include('@EasyAdmin/crud/action.html.twig', {action: action}) }}
+        {% endif %}
+    {% endif %}
+
+    {{ _self.accordion_item_end() }}
+{% endblock %}
+
+{% block _ProcessOverview_ea_form_fieldset_process_options_row %}
+    {% set overview = ea_vars.entity.instance|default(null) %}
+    {% set data_source = overview.dataSource|default(null) %}
+    {% set process = overview.processId|default(null) %}
+    {% set collapsed = data_source is empty or process is empty %}
+
+    {{ _self.accordion_item_start('process_options', form.vars.label|trans(label_translation_parameters, translation_domain), collapsed) }}
+
+    {% if not process %}
+        <div class="alert alert-info">
+            {{ 'You must select and use a data source and a process before you can define options.'|trans }}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block _ProcessOverview_ea_form_fieldset_close_process_options_row %}
+    {{ _self.accordion_item_end('process_options') }}
+
+    {{ _self.accordion_end }}
+{% endblock %}

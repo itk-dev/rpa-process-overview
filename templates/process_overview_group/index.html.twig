@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Process overview groups'|trans }}{% endblock %}
+
+{% block content %}
+    <h1>{{ 'Groups'|trans }}</h1>
+
+    <ul class="nav flex-column">
+        {% for group in groups %}
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{{ path('process_overview_group_show', {id: group.id}) }}">{{ group.label }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

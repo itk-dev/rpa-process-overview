@@ -1,0 +1,100 @@
+{
+    "name": "itk-dev/rpa-process-overview",
+    "description": "RPA Process Overview",
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^8.4",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "doctrine/doctrine-bundle": "^2.16.2",
+        "doctrine/doctrine-migrations-bundle": "^3.4.2",
+        "doctrine/orm": "^3.5.2",
+        "easycorp/easyadmin-bundle": "^4.25.1",
+        "itk-dev/openid-connect-bundle": "^4.0",
+        "league/uri-components": "^7.5.1",
+        "runtime/frankenphp-symfony": "^0.2.0",
+        "stof/doctrine-extensions-bundle": "^1.14",
+        "symfony/asset": "~7.3.0",
+        "symfony/asset-mapper": "~7.3.4",
+        "symfony/console": "~7.3.4",
+        "symfony/dotenv": "~7.3.2",
+        "symfony/flex": "^2.8.2",
+        "symfony/framework-bundle": "~7.3.4",
+        "symfony/mercure-bundle": "^0.3.9",
+        "symfony/runtime": "~7.3.4",
+        "symfony/security-bundle": "~7.3.0",
+        "symfony/translation": "~7.3.4",
+        "symfony/twig-bundle": "~7.3.4",
+        "symfony/yaml": "~7.3.3",
+        "symfonycasts/tailwind-bundle": "^0.11.1",
+        "twig/extra-bundle": "^2.12 || ^3.21",
+        "twig/twig": "^2.12 || ^3.21.1"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.48.2",
+        "friendsofphp/php-cs-fixer": "^3.88.2",
+        "hautelook/alice-bundle": "^2.15.1",
+        "nelmio/cors-bundle": "^2.5",
+        "symfony/debug-bundle": "~7.3.4",
+        "symfony/maker-bundle": "^1.64",
+        "symfony/stopwatch": "~7.3.0",
+        "symfony/web-profiler-bundle": "~7.3.4",
+        "vincentlanglet/twig-cs-fixer": "^3.10"
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*",
+        "symfony/polyfill-php82": "*"
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "php-http/discovery": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
+        "bump-after-update": true,
+        "sort-packages": true
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": true,
+            "docker": true,
+            "require": "7.3.*"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "importmap:install": "symfony-cmd"
+        }
+    }
+}

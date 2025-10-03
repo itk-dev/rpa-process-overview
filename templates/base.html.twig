@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ site_title }}{% endblock %}</title>
+</script>
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body class="bg-white dark:bg-gray-950 w-full min-h-screen">
+<div class="container mx-auto px-4 py-6 dark:text-white">
+    {% block body %}
+        {% block header %}
+            {{ include('_partials/main_header.html.twig') }}
+        {% endblock %}
+        <div class="container-fluid">
+            {% block content %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+</div>
+</body>
+</html>

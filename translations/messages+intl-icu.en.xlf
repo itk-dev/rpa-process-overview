@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="Qg4MLJh" resname="Show process overview">
+        <source>Show process overview</source>
+        <target>Show process overview</target>
+      </trans-unit>
+      <trans-unit id="zSLE5ho" resname="Process overview">
+        <source>Process overview</source>
+        <target>Process overview</target>
+      </trans-unit>
+      <trans-unit id="ZqmQ97D" resname="Group">
+        <source>Group</source>
+        <target>Group</target>
+      </trans-unit>
+      <trans-unit id="5BaLM8U" resname="Overview {label}">
+        <source>Overview {label}</source>
+        <target>Overview {label}</target>
+      </trans-unit>
+      <trans-unit id="RNJQIxA" resname="Process overview groups">
+        <source>Process overview groups</source>
+        <target>Process overview groups</target>
+      </trans-unit>
+      <trans-unit id="uQW8fpJ" resname="Group {label}">
+        <source>Group {label}</source>
+        <target>Group {label}</target>
+      </trans-unit>
+      <trans-unit id="tfHGWb6" resname="Groups">
+        <source>Groups</source>
+        <target>Groups</target>
+      </trans-unit>
+      <trans-unit id=".uTfHVh" resname="Show group">
+        <source>Show group</source>
+        <target>Show group</target>
+      </trans-unit>
+      <trans-unit id="37wivZ3" resname="ID">
+        <source>ID</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="NJouBgC" resname="Label">
+        <source>Label</source>
+        <target>Label</target>
+      </trans-unit>
+      <trans-unit id="OneE1vG" resname="Process overviews">
+        <source>Process overviews</source>
+        <target>Process overviews</target>
+      </trans-unit>
+      <trans-unit id="IkIkCgL" resname="Options">
+        <source>Options</source>
+        <target>Options</target>
+      </trans-unit>
+      <trans-unit id="rjoPh2q" resname="RPA Process Overview">
+        <source>RPA Process Overview</source>
+        <target>RPA Process Overview</target>
+      </trans-unit>
+      <trans-unit id="ExFLJqx" resname="Home">
+        <source>Home</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="kIqhHtP" resname="Admin">
+        <source>Admin</source>
+        <target>Admin</target>
+      </trans-unit>
+      <trans-unit id="FC.YH9X" resname="Toggle navigation">
+        <source>Toggle navigation</source>
+        <target>Toggle navigation</target>
+      </trans-unit>
+      <trans-unit id=".pEQgOp" resname="Data source">
+        <source>Data source</source>
+        <target>Data source</target>
+      </trans-unit>
+      <trans-unit id="RwpY.69" resname="Data sources">
+        <source>Data sources</source>
+        <target>Data sources</target>
+      </trans-unit>
+      <trans-unit id="26bqdzX" resname="URL">
+        <source>URL</source>
+        <target>URL</target>
+      </trans-unit>
+      <trans-unit id="87uOfkU" resname="Process">
+        <source>Process</source>
+        <target>Process</target>
+      </trans-unit>
+      <trans-unit id="QXrccnc" resname="Metadata">
+        <source>Metadata</source>
+        <target>Metadata</target>
+      </trans-unit>
+      <trans-unit id="8mOVCwE" resname="Example use in &quot;{options}&quot;">
+        <source>Example use in "{options}"</source>
+        <target>Example use in "{options}"</target>
+      </trans-unit>
+      <trans-unit id="AOEC242" resname="Steps">
+        <source>Steps</source>
+        <target>Steps</target>
+      </trans-unit>
+      <trans-unit id="DHnPBuj" resname="Process options">
+        <source>Process options</source>
+        <target>Process options</target>
+      </trans-unit>
+      <trans-unit id="UAABDvd" resname="Use data source">
+        <source>Use data source</source>
+        <target>Use data source</target>
+      </trans-unit>
+      <trans-unit id="Q7w68gQ" resname="Use process">
+        <source>Use process</source>
+        <target>Use process</target>
+      </trans-unit>
+      <trans-unit id="bk5A_r0" resname="Details for {process}">
+        <source>Details for {process}</source>
+        <target>Details for {process}</target>
+      </trans-unit>
+      <trans-unit id="FnYEvwc" resname="You must select and use a data source before you can select a process.">
+        <source>You must select and use a data source before you can select a process.</source>
+        <target>You must select and use a data source before you can select a process.</target>
+      </trans-unit>
+      <trans-unit id="eyneDsx" resname="You must select and use a data source and a process before you can define options.">
+        <source>You must select and use a data source and a process before you can define options.</source>
+        <target>You must select and use a data source and a process before you can define options.</target>
+      </trans-unit>
+      <trans-unit id="BD_hWKF" resname="Data source ({label})">
+        <source>Data source ({label})</source>
+        <target>Data source ({label})</target>
+      </trans-unit>
+      <trans-unit id="2DkQNvu" resname="Process ({label})">
+        <source>Process ({label})</source>
+        <target>Process ({label})</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

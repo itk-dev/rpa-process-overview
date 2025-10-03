@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="da" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="Qg4MLJh" resname="Show process overview">
+        <source>Show process overview</source>
+        <target state="translated">Vis procesoverblik</target>
+      </trans-unit>
+      <trans-unit id="zSLE5ho" resname="Process overview">
+        <source>Process overview</source>
+        <target state="translated">Procesoverblik</target>
+      </trans-unit>
+      <trans-unit id="ZqmQ97D" resname="Group">
+        <source>Group</source>
+        <target state="translated">Gruppe</target>
+      </trans-unit>
+      <trans-unit id="5BaLM8U" resname="Overview {label}">
+        <source>Overview {label}</source>
+        <target state="translated">{label}</target>
+      </trans-unit>
+      <trans-unit id="RNJQIxA" resname="Process overview groups">
+        <source>Process overview groups</source>
+        <target state="translated">Procesoverbliksgrupper</target>
+      </trans-unit>
+      <trans-unit id="uQW8fpJ" resname="Group {label}">
+        <source>Group {label}</source>
+        <target state="translated">{label}</target>
+      </trans-unit>
+      <trans-unit id="tfHGWb6" resname="Groups">
+        <source>Groups</source>
+        <target state="translated">Grupper</target>
+      </trans-unit>
+      <trans-unit id=".uTfHVh" resname="Show group">
+        <source>Show group</source>
+        <target state="translated">Vis gruppe</target>
+      </trans-unit>
+      <trans-unit id="37wivZ3" resname="ID">
+        <source>ID</source>
+        <target state="translated">Id</target>
+      </trans-unit>
+      <trans-unit id="NJouBgC" resname="Label">
+        <source>Label</source>
+        <target state="translated">Navn</target>
+      </trans-unit>
+      <trans-unit id="OneE1vG" resname="Process overviews">
+        <source>Process overviews</source>
+        <target state="translated">Procesoverblik</target>
+      </trans-unit>
+      <trans-unit id="IkIkCgL" resname="Options">
+        <source>Options</source>
+        <target state="translated">Indstillinger</target>
+      </trans-unit>
+      <trans-unit id="rjoPh2q" resname="RPA Process Overview">
+        <source>RPA Process Overview</source>
+        <target state="translated">RPA-procesoverblik</target>
+      </trans-unit>
+      <trans-unit id="ExFLJqx" resname="Home">
+        <source>Home</source>
+        <target state="translated">Hjem</target>
+      </trans-unit>
+      <trans-unit id="kIqhHtP" resname="Admin">
+        <source>Admin</source>
+        <target state="translated">Admininistration</target>
+      </trans-unit>
+      <trans-unit id="FC.YH9X" resname="Toggle navigation">
+        <source>Toggle navigation</source>
+        <target state="translated">Vis/skjul navigation</target>
+      </trans-unit>
+      <trans-unit id=".pEQgOp" resname="Data source">
+        <source>Data source</source>
+        <target state="translated">Datakilde</target>
+      </trans-unit>
+      <trans-unit id="RwpY.69" resname="Data sources">
+        <source>Data sources</source>
+        <target state="translated">Datakilder</target>
+      </trans-unit>
+      <trans-unit id="26bqdzX" resname="URL">
+        <source>URL</source>
+        <target state="translated">Url</target>
+      </trans-unit>
+      <trans-unit id="87uOfkU" resname="Process">
+        <source>Process</source>
+        <target state="translated">Proces</target>
+      </trans-unit>
+      <trans-unit id="QXrccnc" resname="Metadata">
+        <source>Metadata</source>
+        <target state="translated">Metadata</target>
+      </trans-unit>
+      <trans-unit id="8mOVCwE" resname="Example use in &quot;{options}&quot;">
+        <source>Example use in "{options}"</source>
+        <target state="translated">Eksempel på brug i "{options}"</target>
+      </trans-unit>
+      <trans-unit id="AOEC242" resname="Steps">
+        <source>Steps</source>
+        <target state="translated">Skridt</target>
+      </trans-unit>
+      <trans-unit id="DHnPBuj" resname="Process options">
+        <source>Process options</source>
+        <target state="translated">Indstillinger</target>
+      </trans-unit>
+      <trans-unit id="UAABDvd" resname="Use data source">
+        <source>Use data source</source>
+        <target state="translated">Brug datakilde</target>
+      </trans-unit>
+      <trans-unit id="Q7w68gQ" resname="Use process">
+        <source>Use process</source>
+        <target state="translated">Brug proces</target>
+      </trans-unit>
+      <trans-unit id="bk5A_r0" resname="Details for {process}">
+        <source>Details for {process}</source>
+        <target state="translated">Detaljer for {process}</target>
+      </trans-unit>
+      <trans-unit id="FnYEvwc" resname="You must select and use a data source before you can select a process.">
+        <source>You must select and use a data source before you can select a process.</source>
+        <target state="translated">Du skal vælge og bruge en datakilde før du kan vælge en proces.</target>
+      </trans-unit>
+      <trans-unit id="eyneDsx" resname="You must select and use a data source and a process before you can define options.">
+        <source>You must select and use a data source and a process before you can define options.</source>
+        <target state="translated">Du skal vælge og bruge en datakilde og en proces før du kan definere indstillinger.</target>
+      </trans-unit>
+      <trans-unit id="BD_hWKF" resname="Data source ({label})">
+        <source>Data source ({label})</source>
+        <target state="translated">Datakilde ({label})</target>
+      </trans-unit>
+      <trans-unit id="2DkQNvu" resname="Process ({label})">
+        <source>Process ({label})</source>
+        <target state="translated">Proces ({label})</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

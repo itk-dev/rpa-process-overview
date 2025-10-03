@@ -1,0 +1,141 @@
+# https://taskfile.dev
+
+version: "3"
+
+# https://taskfile.dev/usage/#env-files
+dotenv: [".env.local", ".env"]
+
+vars:
+  DOCKER_COMPOSE: '{{.TASK_DOCKER_COMPOSE | default "docker compose" }}'
+  COMPOSER_INSTALL_ARGS: '{{.TASK_COMPOSER_INSTALL_ARGS | default "" }}'
+
+includes:
+  coding-standards: ./task/Taskfile.coding-standards.yml
+  widgets:
+    # https://taskfile.dev/usage/#directory-of-included-taskfile
+    taskfile: ./widgets/Taskfile.yml
+    dir: ./widgets
+
+tasks:
+  default:
+    - task: help
+
+  help:
+    desc: Outputs this help screen
+    cmds:
+      - task --list
+    silent: true
+
+  compose:
+    desc: Run docker compose
+    cmds:
+      - "{{.DOCKER_COMPOSE}} {{.TASK_ARGS}} {{.CLI_ARGS}}"
+
+  start:
+    desc: Pull images and start service
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: pull
+      - task: compose
+        vars:
+          TASK_ARGS: up --build --detach --wait
+
+  logs:
+    desc: Show live logs
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: logs --tail=0 --follow
+
+  shell:
+    desc: Run shell command inside PHP service
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm bash
+
+  composer:
+    desc: "Run composer, example: task {{.TASK}} -- req symfony/orm-pack"
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm composer {{.TASK_ARGS}}
+
+  console:
+    desc: "Run Sumfony console command, example: task {{.TASK}} -- cache:clear"
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm bin/console {{.TASK_ARGS}}
+
+  site:update:
+    desc: Update site
+    deps: [start]
+    cmds:
+      - task: composer
+        vars:
+          TASK_ARGS: install {{.COMPOSER_INSTALL_ARGS}}
+      - task: console
+        vars:
+          TASK_ARGS: doctrine:migrations:migrate --no-interaction
+      - task: console
+        vars:
+          TASK_ARGS: cache:clear
+
+  fixtures:load:
+    desc: Load fixtures
+    prompt: This will reset your database. Continue?
+    cmds:
+      - task: console
+        vars:
+          TASK_ARGS: hautelook:fixtures:load --no-interaction
+
+  api:fixtures:load:
+    desc: Load API fixtures
+    prompt: Continue?
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: exec api uv run python -m src.api.fixtures
+
+  translations:extract:
+    cmds:
+      - task: script
+        vars:
+          TASK_ARGS: "{{.TASK}}"
+    silent: true
+
+  script:
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: run --rm phpfpm task/scripts/{{.TASK_ARGS}}
+    internal: true
+
+  build:widgets:
+    desc: Build widgets for production and copy to public folder
+    cmds:
+      - task: widgets:build
+
+      # Build tailwind
+      - task: console
+        vars:
+          TASK_ARGS: tailwind:build
+
+      # Copy result into public folder
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm rm -fr {{.PUBLIC_DIR}}
+      - task: compose
+        vars:
+          # rsync is weird when it comes to including and excluding files …
+          # https://stackoverflow.com/a/11111793
+          TASK_ARGS: exec phpfpm rsync -azv {{.BUILD_DIR}} --include '*/' --include '**/*.css' --include '**/*.js' --exclude '*' --delete {{.PUBLIC_DIR}}
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm find {{.PUBLIC_DIR}} -type f
+
+    vars:
+      BUILD_DIR: widgets/static/dist/
+      PUBLIC_DIR: public/widgets
