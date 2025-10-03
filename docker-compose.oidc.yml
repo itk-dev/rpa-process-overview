@@ -94,30 +94,30 @@ services:
 
       USERS_CONFIGURATION_INLINE: |
         - SubjectId: 1
-          Username: admin
-          Password: admin
+          Username: overview-manager
+          Password: overview-manager
           Claims:
             # Claims added here must be defined above in IDENTITY_RESOURCES_INLINE
-          - Type: email
-            Value: 'admin@example.com'
-            ValueType: string
-          - Type: groups
-            Value: '["administrator"]'
-            ValueType: json
-          - Type: upn
-            Value: 'admin@example.com'
-            ValueType: string
+            - Type: email
+              Value: 'overview-manager@example.com'
+              ValueType: string
+            - Type: groups
+              Value: '["overview-manager"]'
+              ValueType: json
+            - Type: upn
+              Value: 'overview-manager@example.com'
+              ValueType: string
 
         - SubjectId: 2
           Username: user
           Password: user
           Claims:
-          - Type: email
-            Value: 'user@example.com'
-            ValueType: string
-          - Type: groups
-            Value: '["user"]'
-            ValueType: json
-          - Type: upn
-            Value: 'user@example.com'
-            ValueType: string
+            - Type: email
+              Value: 'user@example.com'
+              ValueType: string
+            - Type: groups
+              Value: '["user"]'
+              ValueType: json
+            - Type: upn
+              Value: 'user@example.com'
+              ValueType: string
