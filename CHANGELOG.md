@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-9](https://github.com/itk-dev/rpa-process-overview/pull/9)
+  Tailwind classes in twig and svelte files
 * [PR-8](https://github.com/itk-dev/rpa-process-overview/pull/8)
   Added users and security and form based login
 * [PR-5](https://github.com/itk-dev/rpa-process-overview/pull/5)
