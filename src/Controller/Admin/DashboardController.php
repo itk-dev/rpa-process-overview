@@ -8,9 +8,11 @@ use App\Entity\ProcessOverviewGroup;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 use function Symfony\Component\Translation\t;
 
@@ -28,6 +30,14 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle($this->getParameter('site_title'));
+    }
+
+    public function configureUserMenu(UserInterface $user): UserMenu
+    {
+        return parent::configureUserMenu($user)
+            ->setMenuItems([
+                // Remove the logout link.
+            ]);
     }
 
     public function configureMenuItems(): iterable

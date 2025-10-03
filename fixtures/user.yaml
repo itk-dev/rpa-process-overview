@@ -1,12 +1,10 @@
 App\Entity\User:
-  admin:
-    email: admin@example.com
-    password: '<password(@self, "admin")>'
+  overview-manager:
+    email: overview-manager@example.com
     roles:
-      - ROLE_ADMIN
+      - ROLE_OVERVIEW_MANAGER
 
   user:
     email: user@example.com
-    password: '<password(@self, "password")>'
     roles:
       - ROLE_USER

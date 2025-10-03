@@ -19,4 +19,5 @@ return [
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true],
     Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle::class => ['all' => true],
     Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
+    ItkDev\OpenIdConnectBundle\ItkDevOpenIdConnectBundle::class => ['all' => true],
 ];

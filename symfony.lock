@@ -72,6 +72,9 @@
             "fixtures/.gitignore"
         ]
     },
+    "itk-dev/openid-connect-bundle": {
+        "version": "4.0.1"
+    },
     "nelmio/alice": {
         "version": "3.14",
         "recipe": {

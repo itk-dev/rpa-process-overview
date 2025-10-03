@@ -1,0 +1,20 @@
+itkdev_openid_connect:
+    cache_options:
+        cache_pool: 'cache.app' # Cache item pool for caching discovery document and CLI login tokens
+    cli_login_options:
+        route: '%env(string:OIDC_CLI_LOGIN_ROUTE)%' # Redirect route for CLI login
+    user_provider: ~ #
+    openid_providers:
+        admin:
+            options:
+                metadata_url: '%env(string:ADMIN_OIDC_METADATA_URL)%'
+                client_id: '%env(string:ADMIN_OIDC_CLIENT_ID)%'
+                client_secret: '%env(string:ADMIN_OIDC_CLIENT_SECRET)%'
+                # Specify redirect URI
+                redirect_uri: '%env(string:ADMIN_OIDC_REDIRECT_URI)%'
+                # Optional: Specify leeway (seconds) to account for clock skew between provider and hosting
+                #           Defaults to 10
+                leeway: '%env(int:ADMIN_OIDC_LEEWAY)%'
+                # Optional: Allow (non-secure) http requests (used for mocking a IdP). NOT RECOMMENDED FOR PRODUCTION.
+                #           Defaults to false
+                allow_http: '%env(bool:ADMIN_OIDC_ALLOW_HTTP)%'

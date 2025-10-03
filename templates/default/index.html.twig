@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+    {{ dump(enum('App\\Entity\\UserRole').Admin) }}
     <ul class="nav flex-column">
-        {% if is_granted('ROLE_ADMIN') %}
+        {% if is_granted(enum('App\\Entity\\UserRole').Admin.value) %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('process_overview_admin') }}">{{ 'Admin'|trans }}</a>
             </li>
