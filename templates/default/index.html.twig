@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    {{ dump(enum('App\\Entity\\UserRole').Admin) }}
     <ul class="nav flex-column">
         {% if is_granted(enum('App\\Entity\\UserRole').Admin.value) %}
             <li class="nav-item">
