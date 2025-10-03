@@ -58,3 +58,12 @@ export type ProgressData = {
 	data: RawData[];
 	rows: Array<Array<Step>>;
 };
+
+export type Messages = {
+	[key: string]: string;
+};
+
+export type Config = {
+	messages: Messages;
+	data_url: string;
+};

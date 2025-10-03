@@ -5,8 +5,17 @@
 {% block content %}
     {{ include('_partials/group_header.html.twig', {group: overview.group, overview: overview}) }}
 
+{% set messages = {
+    'Missing data': 'Missing data'|trans,
+    'Failed processes': 'Failed processes'|trans,
+    'Loading data...': 'Loading data...'|trans,
+    } %}
+{% set config = {
+    messages: messages,
+    data_url: data_url,
+    } %}
     {# https://standalone.brenoliradev.com/embed.html#auto-embed-with-target #}
-    <div id="ProcessOverview" data-config="{{ {data_url: data_url}|json_encode }}"></div>
+    <div id="ProcessOverview" data-rpa-process-overview-config="{{ config|json_encode }}"></div>
     <script src="/widgets/ProcessOverview.min.js"></script>
 
     <div id="ProcessSearch" data-config="{{ {search_url: search_url}|json_encode }}"></div>
