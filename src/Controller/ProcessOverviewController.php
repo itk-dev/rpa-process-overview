@@ -7,6 +7,7 @@ use App\Entity\ProcessOverviewGroup;
 use App\ProcessOverviewHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Attribute\Route;
@@ -27,13 +28,25 @@ final class ProcessOverviewController extends AbstractController
                 'group' => $group->getId(),
                 'overview' => $overview->getId(),
             ]),
+            'search_url' => $this->generateUrl('process_overview_search', [
+                'group' => $group->getId(),
+                'overview' => $overview->getId(),
+            ]),
         ]);
     }
 
     #[Route('/{overview}/data', name: 'data')]
-    public function data(ProcessOverview $overview, ProcessOverviewHelper $helper): Response
+    public function data(Request $request, ProcessOverview $overview, ProcessOverviewHelper $helper): Response
     {
-        $data = $helper->getData($overview);
+        $data = $helper->getData($request, $overview);
+
+        return new JsonResponse($data);
+    }
+
+    #[Route('/{overview}/search', name: 'search')]
+    public function search(Request $request, ProcessOverview $overview, ProcessOverviewHelper $helper): Response
+    {
+        $data = $helper->getData($request, $overview);
 
         return new JsonResponse($data);
     }

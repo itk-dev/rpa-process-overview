@@ -38,10 +38,15 @@ tasks:
   fixtures:load:
     prompt: Really reset data?
     cmds:
-      - uv run python -m src.api.create-data
+      - uv run python -m src.api.fixtures
 
   lint:
     cmds:
       - ruff format src
-      - ruff check --select ALL check src --fix
+      - ruff check --select ALL src --fix
       # - ruff check --select ALL check src
+
+  sql:
+    desc: Talk to the database, e.g. `task {{.TASK}} -- "SELECT * FROM process LIMIT 10"`
+    cmds:
+      - sqlite3 -header -column database-api.db -- {{.CLI_ARGS}}

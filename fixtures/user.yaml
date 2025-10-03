@@ -1,0 +1,10 @@
+App\Entity\User:
+  overview-manager:
+    email: overview-manager@example.com
+    roles:
+      - ROLE_OVERVIEW_MANAGER
+
+  user:
+    email: user@example.com
+    roles:
+      - ROLE_USER

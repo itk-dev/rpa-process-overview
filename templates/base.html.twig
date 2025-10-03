@@ -3,24 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}RPA Process overview{% endblock %}</title>
-    {% block stylesheets %}
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    {% endblock %}
-
+    <title>{% block title %}{{ site_title }}{% endblock %}</title>
+</script>
     {% block javascripts %}
         {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
 </head>
-<body>
-{% block body %}
-    {% block header %}
-        {{ include('_partials/main_header.html.twig') }}
-    {% endblock %}
-    <div class="container-fluid">
-        {% block content %}
+<body class="bg-white dark:bg-gray-950 w-full min-h-screen">
+<div class="container mx-auto px-4 py-6 dark:text-white">
+    {% block body %}
+        {% block header %}
+            {{ include('_partials/main_header.html.twig') }}
         {% endblock %}
-    </div>
-{% endblock %}
+        <div class="container-fluid">
+            {% block content %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+</div>
 </body>
 </html>

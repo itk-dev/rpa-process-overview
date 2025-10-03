@@ -1,22 +1,50 @@
 include:
   - docker-compose.api.yml
+  - docker-compose.oidc.yml
 
 services:
   phpfpm:
     image: itkdev/php8.4-fpm:latest
+    build:
+      # We need rsync to copy built widget files.
+      dockerfile_inline: |
+        FROM itkdev/php8.4-fpm:latest
+
+        USER root
+        RUN apt-get update && \
+            apt-get --yes install rsync
+
+        USER deploy
 
   nginx:
+    ports: !override
+      - "8787:8080"
     labels:
       # HTTPS config - uncomment to enable redirect from :80 to :443
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=redirect-to-https"
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
 
-  # https://github.com/dotronglong/faker/wiki/Getting-Started-%5BDocker%5D
-  faker:
-    image: dotronglong/faker:stable
-    networks:
-      - app
+  prettier:
+    # Prettier does not (yet, fcf.
+    # https://github.com/prettier/prettier/issues/15206) have an official
+    # docker image.
+    # https://hub.docker.com/r/jauderho/prettier is good candidate (cf. https://hub.docker.com/search?q=prettier&sort=updated_at&order=desc)
+    # image: jauderho/prettier
+    build:
+      # Custom image to include https://github.com/sveltejs/prettier-plugin-svelte
+      dockerfile_inline: |
+        # https://github.com/jauderho/dockerfiles/blob/main/prettier/Dockerfile
+        FROM node:24
+
+        RUN npm install --global prettier prettier-plugin-svelte
+
+        WORKDIR /work
+
+        # Help prettier find our globally installed plugin
+        # (cf. https://github.com/prettier/prettier/issues/15141#issuecomment-2624767782)
+        ENTRYPOINT ["prettier", "--plugin", "/usr/local/lib/node_modules/prettier-plugin-svelte/plugin.js"]
+        CMD ["--help"]
     volumes:
-      - ./mocks:/app/mocks
-    ports:
-      - "3030"
+      - ./:/work
+    profiles:
+      - dev

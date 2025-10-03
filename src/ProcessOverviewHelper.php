@@ -3,53 +3,61 @@
 namespace App;
 
 use App\Entity\ProcessOverview;
+use League\Uri\Modifier;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\Yaml\Yaml;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class ProcessOverviewHelper
 {
     public function __construct(
         private readonly PropertyAccessorInterface $propertyAccessor,
-        private readonly HttpClientInterface $httpClient,
+        private readonly DataSourceHelper $dataSourceHelper,
     ) {
     }
 
-    public function getData(ProcessOverview $overview): array
+    public function getData(Request $request, ProcessOverview $overview): array
     {
         try {
-            $options = Yaml::parse($overview->getOptions());
+            $datasource = $overview->getDataSource();
+            $processId = $overview->getProcessId();
+            if (empty($datasource) || empty($processId)) {
+                return [];
+            }
 
-            $url = $this->getArrayValue($options, 'data_source.url');
+            $options = $this->getOptions($overview);
 
-            $response = $this->httpClient->request(Request::METHOD_GET, $url);
-
-            $data = $response->toArray();
-
-            $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];
+            $process = $this->dataSourceHelper->getProcess($datasource, $processId);
+            $query = $options['data']['default_query'] ?? null;
+            if (!is_array($query)) {
+                $query = [];
+            }
+            $query += $request->query->all();
+            $data = $this->dataSourceHelper->getProcessRun($datasource, $processId, $query);
 
             $metadataColumns = [];
-            $stepColumns = [];
+            $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];
             foreach ($metadataColumnsOptions as $column) {
                 $metadataColumns[] = $column + [
                     'type' => $column['type'] ?? 'text',
                 ];
             }
 
+            // Add step columns
+            $stepColumns = [];
+            foreach ($process['steps'] as $step) {
+                $stepColumns[] = [
+                    'label' => $step['name'],
+                    'type' => 'step',
+                ];
+            }
+
             $rows = [];
-            foreach ($data as $index => $item) {
+            $items = $data['items'] ?? [];
+            foreach ($items as $item) {
                 $steps = $item['steps'] ?? null;
                 if (!$steps) {
                     break;
-                }
-                if (0 === $index) {
-                    foreach ($steps as $stepIndex => $step) {
-                        $stepColumns[] = [
-                            'label' => $step['label'] ?? $step['name'] ?? $stepIndex,
-                            'type' => 'step',
-                        ];
-                    }
                 }
                 $rows[] = array_merge(
                     array_map(fn (array $col) => [
@@ -61,10 +69,29 @@ class ProcessOverviewHelper
                 );
             }
 
+            $modifier = Modifier::from($request->getUri());
+            $page = $data['page'] ?? 1;
+            $links = [
+                'self' => $modifier->getUriString(),
+            ];
+            if ($page > 1) {
+                $links['prev'] = $modifier->mergeQueryParameters(['page' => $page - 1])->getUriString();
+            }
+            if ($page < ($data['pages'] ?? 0)) {
+                $links['next'] = $modifier->mergeQueryParameters(['page' => $page + 1])->getUriString();
+            }
+            $meta = array_filter([
+                'total' => $data['total'] ?? null,
+            ]);
+
             return [
-                'rows' => $rows,
-                'columns' => array_merge($metadataColumns, $stepColumns),
-                'data' => $data,
+                'data' => [
+                    'columns' => array_merge($metadataColumns, $stepColumns),
+                    'rows' => $rows,
+                    'data' => $data,
+                ],
+                'links' => $links,
+                'meta' => $meta,
             ];
         } catch (\Exception $exception) {
             // @todo Log the exception
@@ -77,5 +104,18 @@ class ProcessOverviewHelper
         $propertyPath = '['.str_replace('.', '][', $key).']';
 
         return $this->propertyAccessor->getValue($array, $propertyPath);
+    }
+
+    private function getOptions(ProcessOverview $overview): array
+    {
+        try {
+            $data = Yaml::parse($overview->getOptions() ?? '');
+            if (is_array($data)) {
+                return $data;
+            }
+        } catch (\Exception) {
+        }
+
+        return [];
     }
 }

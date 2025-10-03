@@ -1,5 +1,8 @@
 # API
 
+> [!WARNING]
+> Don't use this API mock for production!
+
 ## Database
 
 ``` mermaid
@@ -61,7 +64,14 @@ pip install
 ```
 
 ``` shell name=update-run-step
-curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/3/step/2' --header 'content-type: application/json' --data '
+curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/2/step/5' --header 'content-type: application/json' --data '
+{
+ "status":"SUCCESS",
+ "started_at": "2025-09-25"
+}
+'
+
+curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/2/step/6' --header 'content-type: application/json' --data '
 {
  "status":"FAILED",
  "started_at": "2025-09-25",
@@ -69,13 +79,6 @@ curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/3
   "code": 87,
   "failed_at": "2025-09-25"
  }
-}
-'
-
-curl --silent --verbose --location 'http://127.0.0.1:8000/api/v1/process/1/run/3/step/0' --header 'content-type: application/json' --data '
-{
- "status":"SUCCESS",
- "started_at": "2025-09-25"
 }
 '
 ```
@@ -87,7 +90,7 @@ Define API keys in `.env.local`, e.g.
 ``` dotenv
 # .env.local
 # Get a token from https://generate-random.org/api-token-generator or some such …
-# Notice that the values must not be enclose in single quotes!
+# Notice that the values must not be enclosed in single quotes and must not contain spaces!
 API_KEYS_READ=["a-not-so-secret-key", "759568492f338454603821a04810eabf"]
 API_KEYS_WRITE=["3825e7be2d1ca130063171d8362ad4996e3a0df1e9f6dd2a4dc6bebf38bfc205"]
 ```
@@ -97,7 +100,7 @@ Restart the API to load the updated config.
 Use a key:
 
 ``` shell
-curl http://127.0.0.1:8000/api/v1/process/ --header 'x-api-key: a-not-so-secret-key'
+curl http://127.0.0.1:8000/api/v1/process --header 'x-api-key: a-not-so-secret-key'
 ```
 
 > [!TIP]
