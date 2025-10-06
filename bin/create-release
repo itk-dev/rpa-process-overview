@@ -20,6 +20,11 @@ archive_file_name="$name-$tag.tar.gz"
 # Full path to archive file.
 archive_file_path="$output_dir/$archive_file_name"
 
+# Build and deploy widgets
+task widgets:deploy
+
+# Install for production
+
 docker compose run --env APP_ENV=prod --rm phpfpm composer install --no-dev --classmap-authoritative
 docker compose run --env APP_ENV=prod --rm phpfpm composer clear-cache
 
@@ -28,8 +33,6 @@ docker compose run --env APP_ENV=prod --rm phpfpm bin/console tailwind:build
 
 # https://symfony.com/doc/current/frontend/asset_mapper.html#serving-assets-in-dev-vs-prod
 docker compose run --env APP_ENV=prod --rm phpfpm bin/console asset-map:compile
-
-task widgets:deploy
 
 mkdir -p "$output_dir"
 rm -f "$archive_file_path"
