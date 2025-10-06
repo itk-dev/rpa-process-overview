@@ -1,5 +1,6 @@
 <script lang="ts">
-	export let className = 'w-8 h-8 animate-spin dark:text-gray-800 fill-blue-900';
+	export let className =
+		'w-8 h-8 animate-spin dark:text-gray-800 text-gray-200 dark:fill-gray-400 fill-gray-800';
 </script>
 
 <div role="status" class="flex flex-col items-center">
