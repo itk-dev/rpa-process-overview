@@ -4,7 +4,7 @@
 
 <div role="status" class="flex flex-col items-center">
 	<svg
-		aria-hidden="true"
+		aria-hidden={true}
 		class={className}
 		viewBox="0 0 100 101"
 		fill="none"

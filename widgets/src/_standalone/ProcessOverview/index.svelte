@@ -36,7 +36,7 @@
 		</Spinner>
 	</div>
 {:else if null === data}
-	<div class="my-3 text-white"><h2 class="p-4">{t('Missing data')}</h2></div>
+	<h2 class="text-neutral-900 dark:text-white my-3">{t('Missing data')}</h2>
 {:else}
 	<div
 		class="flex flex-col border bg-gray-100 dark:bg-gray-900 border-neutral-300 dark:border-neutral-800 rounded-md"
