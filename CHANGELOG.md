@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-18](https://github.com/itk-dev/rpa-process-overview/pull/18)
+  Spinner colors changed to make it appear as if something is spinning
 * [PR-19](https://github.com/itk-dev/rpa-process-overview/pull/19)
   Add tailwind classes to search component
 * [PR-16](https://github.com/itk-dev/rpa-process-overview/pull/16)
