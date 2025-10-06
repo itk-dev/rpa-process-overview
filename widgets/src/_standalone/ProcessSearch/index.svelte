@@ -3,7 +3,7 @@
 	import Search from './Icons/Search.svelte';
 	import { t, config } from './config';
 	import type { ProgressData } from '$lib/types';
-	import Person from '$lib/Icons/Person.svelte';
+	import Person from './Icons/Person.svelte';
 
 	let query: string = $state('');
 	let parsedQuery: string = $state('');
