@@ -4,8 +4,9 @@ on:
   push:
     tags:
       - "*.*.*"
-    branches:
-      - "**"
+    # Uncomment this if we ever want to create pre-releases
+    # branches:
+    #   - "**"
 
 env:
   COMPOSE_USER: root
