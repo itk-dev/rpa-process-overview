@@ -63,7 +63,13 @@ export type Messages = {
 	[key: string]: string;
 };
 
-export type Config = {
+export type OverviewConfig = {
 	messages: Messages;
 	data_url: string;
+};
+
+export type SearchConfig = {
+	messages: Messages;
+	search_url: string;
+	min_search_limit: number;
 };

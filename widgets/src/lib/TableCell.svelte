@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { type Step } from '../types';
-	import Status from '../enums';
+	import { type Step } from './types';
+	import Status from './enums';
 	import type { Snippet } from 'svelte';
 
 	let {
