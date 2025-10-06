@@ -43,7 +43,7 @@
 	<h2 class="text-neutral-900 dark:text-white my-3 mb-5">{t('Missing data')}</h2>
 {:else}
 	<div
-		class="flex flex-col border bg-gray-100 dark:bg-gray-900 border-neutral-300 dark:border-neutral-800 rounded-md mb-5"
+		class="flex flex-col overflow-scroll border bg-gray-100 dark:bg-gray-900 border-neutral-300 dark:border-neutral-800 rounded-md mb-5"
 	>
 		<div
 			class="p-3 dark:text-white font-medium bg-gray-200 dark:bg-gray-800 flex items-center border-b border-neutral-300 dark:border-neutral-800"
