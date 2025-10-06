@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-19](https://github.com/itk-dev/rpa-process-overview/pull/19)
+  Add tailwind classes to search component
 * [PR-16](https://github.com/itk-dev/rpa-process-overview/pull/16)
   Used [OpenID Provider Mock](https://github.com/geigerzaehler/oidc-provider-mock) for local OIDC setup
 * [PR-15](https://github.com/itk-dev/rpa-process-overview/pull/15)

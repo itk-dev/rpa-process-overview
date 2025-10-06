@@ -5,19 +5,35 @@
 {% block content %}
     {{ include('_partials/group_header.html.twig', {group: overview.group, overview: overview}) }}
 
-{% set messages = {
+{% set overview_messages = {
     'Missing data': 'Missing data'|trans,
     'Failed processes': 'Failed processes'|trans,
     'Loading data...': 'Loading data...'|trans,
+    'An error occurred while fetching the data': 'An error occurred while fetching the data'|trans,
     } %}
-{% set config = {
-    messages: messages,
+
+{% set search_messages = {
+    'Citizen search': 'Citizen search'|trans,
+    'Citizen information': 'Citizen information'|trans,
+    Name: 'Name'|trans,
+    } %}
+
+{% set overview_config = {
+    messages: overview_messages,
     data_url: data_url,
     } %}
+
+    {# todo search limit from config #}
+{% set search_config = {
+    messages: search_messages,
+    search_url: search_url,
+    min_search_limit: 3,
+    } %}
+
     {# https://standalone.brenoliradev.com/embed.html#auto-embed-with-target #}
-    <div id="ProcessOverview" data-rpa-process-overview-config="{{ config|json_encode }}"></div>
+    <div id="ProcessOverview" data-rpa-process-overview-config="{{ overview_config|json_encode }}"></div>
     <script src="/widgets/ProcessOverview.min.js"></script>
 
-    <div id="ProcessSearch" data-config="{{ {search_url: search_url}|json_encode }}"></div>
+    <div id="ProcessSearch" data-rpa-process-search-config="{{ search_config|json_encode }}"></div>
     <script src="/widgets/ProcessSearch.min.js"></script>
 {% endblock %}
