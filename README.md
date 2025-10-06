@@ -94,17 +94,22 @@ ADMIN_OIDC_ROLE_MAP='{
 }'
 ```
 
-For local testing of OIDC login, we use [OpenId Connect Server Mock](https://github.com/Soluto/oidc-server-mock) (cf.
+For local testing of OIDC login, we use [OpenID Provider Mock](https://github.com/geigerzaehler/oidc-provider-mock) (cf.
 [`docker-compose.oidc.yml`](docker-compose.oidc.yml)) and the mock is running on
 <https://idp.rpa-process-overview.local.itkdev.dk/>.
 
-The mock provides these users (cf. [`docker-compose.oidc.yml`](docker-compose.oidc.yml)):
+To load users into the mock, run
 
-| Username         | Password         | Roles            |
-|------------------|------------------|------------------|
-| admin            | admin            | administrator    |
-| overview-manager | overview-manager | overview-manager |
-| user             | user             | user             |
+``` shell
+task oidc:mock:load-users
+```
+
+This will create the following users:
+
+| Username (sub)   | Roles            |
+|------------------|------------------|
+| overview-manager | overview-manager |
+| user             | user             |
 
 > [!TIP]
 > Set `DOCKER_OIDC_DISABLE` to a non-empty value in `.env.local` to disable the OIDC service, e.g.
