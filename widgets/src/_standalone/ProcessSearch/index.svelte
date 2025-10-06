@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onDestroy } from 'svelte';
 	import Table from '$lib/Table.svelte';
 	import Search from './Icons/Search.svelte';
 	import { t, config } from './config';
@@ -7,31 +8,42 @@
 
 	let query: string = $state('');
 	let parsedQuery: string = $state('');
+	const DEBOUNCE_DELAY: number = 500;
 	let name: string = $state('');
 	let data: ProgressData | null = $state(null);
 	const { search_url, min_search_limit } = config;
+	let timer: ReturnType<typeof setTimeout>;
 
 	$effect(() => {
 		parsedQuery = query.trim();
+		clearTimeout(timer);
 
-		if (parsedQuery && parsedQuery.length >= min_search_limit) {
-			const pageUrl = new URL(document.location.href);
-			pageUrl.searchParams.set('q', parsedQuery);
-			history.replaceState({}, '', pageUrl);
+		// Debounce setTimeout
+		timer = setTimeout(() => {
+			if (parsedQuery && parsedQuery.length >= min_search_limit) {
+				const pageUrl = new URL(document.location.href);
+				pageUrl.searchParams.set('q', parsedQuery);
+				history.replaceState({}, '', pageUrl);
 
-			const url = new URL(search_url, document.location.href);
-			url.searchParams.set('q', parsedQuery);
+				const url = new URL(search_url, document.location.href);
+				url.searchParams.set('q', parsedQuery);
 
-			data = null;
-			fetch(url.toString())
-				.then((response) => response.json())
-				.then(({ data: recievedData }) => {
-					if (recievedData) {
-						data = recievedData;
-						name = recievedData.data?.items[0].meta?.name;
-					}
-				});
-		}
+				data = null;
+				fetch(url.toString())
+					.then((response) => response.json())
+					.then(({ data: recievedData }) => {
+						if (recievedData) {
+							data = recievedData;
+							name = recievedData.data?.items[0].meta?.name;
+						}
+					});
+			}
+		}, DEBOUNCE_DELAY);
+	});
+
+	// I am actually not sure this component is ever destroyed
+	onDestroy(() => {
+		clearInterval(timer);
 	});
 </script>
 
