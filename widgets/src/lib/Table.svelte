@@ -1,10 +1,10 @@
 <script lang="ts">
-	import CheckMark from '../Icons/CheckMark.svelte';
-	import Clock from '../Icons/Clock.svelte';
-	import Close from '../Icons/Close.svelte';
-	import { type Step, type Column } from '../types';
+	import CheckMark from './Icons/CheckMark.svelte';
+	import Clock from './Icons/Clock.svelte';
+	import Close from './Icons/Close.svelte';
+	import { type Step, type Column } from './types';
 	import TableCell from './TableCell.svelte';
-	import Status from '../enums';
+	import Status from './enums';
 
 	let { columns, rows }: { columns: Column[] | null; rows: Array<Array<Step>> | null } = $props();
 
@@ -17,9 +17,13 @@
 	};
 </script>
 
+tas
+
 <table class="min-w-full">
 	{#if columns}
-		<thead class="border-neutral-300 dark:bg-gray-800 border-b">
+		<thead
+			class="bg-gray-200 dark:bg-gray-800 border-neutral-300 dark:border-neutral-800 dark:bg-gray-800 border-b"
+		>
 			<tr>
 				{#each columns as { label }}
 					<th class="px-2 py-3 text-center text-xs font-medium dark:text-gray-400 w-24">

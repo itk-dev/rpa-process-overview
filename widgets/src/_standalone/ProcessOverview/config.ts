@@ -1,13 +1,13 @@
 import ProcessOverview from './index.svelte';
 
 import type { TargetEmbeddedWindow } from 'svelte-standalone';
-import type { Config } from './types';
+import type { OverviewConfig } from '../../lib/types';
 
 declare global {
 	interface Window extends TargetEmbeddedWindow<typeof ProcessOverview, 'ProcessOverview'> {}
 }
 
-export const config: Config = (() => {
+export const config: OverviewConfig = (() => {
 	const el = document.querySelector('[data-rpa-process-overview-config]') as HTMLElement | null;
 	if (el !== null) {
 		try {
