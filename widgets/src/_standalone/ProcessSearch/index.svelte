@@ -62,7 +62,7 @@
 			<div class="p-4 flex flex-row gap-4 bg-gray-100 dark:bg-gray-900">
 				<div class="w-1/3 relative">
 					<div class="absolute left-3 top-5 transform -translate-y-1/2">
-						<Search className="h-5 w-5 mr-2 text-neutral-400 dark:text-neutral-800" />
+						<Search className="h-5 w-5 mr-2 text-neutral-400" />
 					</div>
 
 					<input
@@ -91,7 +91,7 @@
 					{/if}
 				</div>
 				{#if data}
-					<div class="w-2/3">
+					<div class="w-2/3 overflow-scroll">
 						<Table columns={data.columns} rows={data.rows}></Table>
 					</div>
 				{/if}

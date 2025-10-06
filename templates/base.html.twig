@@ -10,12 +10,12 @@
     {% endblock %}
 </head>
 <body class="bg-white dark:bg-gray-950 w-full min-h-screen">
-<div class="container mx-auto px-4 py-6 dark:text-white">
+<div class="mx-auto px-4 py-6 dark:text-white">
     {% block body %}
         {% block header %}
             {{ include('_partials/main_header.html.twig') }}
         {% endblock %}
-        <div class="container-fluid">
+        <div>
             {% block content %}
             {% endblock %}
         </div>

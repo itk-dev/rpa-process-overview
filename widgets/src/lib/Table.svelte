@@ -17,8 +17,6 @@
 	};
 </script>
 
-tas
-
 <table class="min-w-full">
 	{#if columns}
 		<thead
