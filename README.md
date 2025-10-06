@@ -117,3 +117,14 @@ This will create the following users:
 > ``` dotend
 > # .env.local
 > DOCKER_OIDC_DISABLE=true
+
+## Release
+
+We use a GitHub Actions workflow, [`.github/workflows/create-release.yml`](.github/workflows/create-release.yml), to
+releases. The actual content of a release is built by [`bin/create-release`](bin/create-release).
+
+To test building a release, run
+
+``` shell
+bin/create-release test
+```

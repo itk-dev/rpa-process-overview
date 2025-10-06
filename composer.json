@@ -13,7 +13,6 @@
         "easycorp/easyadmin-bundle": "^4.25.1",
         "itk-dev/openid-connect-bundle": "^4.0",
         "league/uri-components": "^7.5.1",
-        "runtime/frankenphp-symfony": "^0.2.0",
         "stof/doctrine-extensions-bundle": "^1.14",
         "symfony/asset": "~7.3.0",
         "symfony/asset-mapper": "~7.3.4",
