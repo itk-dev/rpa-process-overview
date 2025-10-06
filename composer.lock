@@ -1823,16 +1823,16 @@
         },
         {
             "name": "itk-dev/openid-connect",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/openid-connect.git",
-                "reference": "8f3b8c0cc4abc7e91c1ee0f3e978deee6806da6d"
+                "reference": "65951585ef2680432b33391fadffb1f87d210d27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/openid-connect/zipball/8f3b8c0cc4abc7e91c1ee0f3e978deee6806da6d",
-                "reference": "8f3b8c0cc4abc7e91c1ee0f3e978deee6806da6d",
+                "url": "https://api.github.com/repos/itk-dev/openid-connect/zipball/65951585ef2680432b33391fadffb1f87d210d27",
+                "reference": "65951585ef2680432b33391fadffb1f87d210d27",
                 "shasum": ""
             },
             "require": {
@@ -1880,9 +1880,9 @@
             "description": "OpenID connect configuration package",
             "support": {
                 "issues": "https://github.com/itk-dev/openid-connect/issues",
-                "source": "https://github.com/itk-dev/openid-connect/tree/4.0.1"
+                "source": "https://github.com/itk-dev/openid-connect/tree/4.0.2"
             },
-            "time": "2025-01-13T09:01:13+00:00"
+            "time": "2025-10-06T07:25:31+00:00"
         },
         {
             "name": "itk-dev/openid-connect-bundle",

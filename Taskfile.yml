@@ -139,3 +139,9 @@ tasks:
     vars:
       BUILD_DIR: widgets/static/dist/
       PUBLIC_DIR: public/widgets
+
+  oidc:mock:load-users:
+    cmds:
+      - |-
+        curl "http://$(task --silent compose -- port oidc-idp 80)/users/user" --request PUT --header 'content-type: application/json' --data '{"email": "user@example.com", "roles": ["user"]}'
+        curl "http://$(task --silent compose -- port oidc-idp 80)/users/overview-manager" --request PUT --header 'content-type: application/json' --data '{"email": "overview-manager", "roles": ["overview-manager"]}'
