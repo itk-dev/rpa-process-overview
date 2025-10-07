@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-25](https://github.com/itk-dev/rpa-process-overview/pull/25)
+  Remove form element
 * [PR-22](https://github.com/itk-dev/rpa-process-overview/pull/22)
   Add error banner component
 * [PR-17](https://github.com/itk-dev/rpa-process-overview/pull/17)
