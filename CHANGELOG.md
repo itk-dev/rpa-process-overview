@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-22](https://github.com/itk-dev/rpa-process-overview/pull/22)
+  Add error banner component
 * [PR-17](https://github.com/itk-dev/rpa-process-overview/pull/17)
   Added release script and workflow
 * [PR-18](https://github.com/itk-dev/rpa-process-overview/pull/18)
