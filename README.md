@@ -25,6 +25,7 @@ task site:update
 Run
 
 ``` shell
+git submodule update
 task site:update
 ```
 
@@ -40,25 +41,30 @@ task fixtures:load
 
 The icons are copied from [heroicons](https://heroicons.com).
 
-## API Mock
+## API
 
-We use a [FastAPI](https://fastapi.tiangolo.com) app to mock the RPA process overview API.
-
-``` shell
-curl "http://$(docker compose port api 8000)/openapi.json"
-curl "http://$(docker compose port api 8000)/api/v1/process"
-curl "http://$(docker compose port api 8000)/api/v1/process" --header 'x-api-key: a-not-so-secret-key'
-```
-
-Create some fixture data for the API:
+For development, we run [AAK-MBU/Process_Dashboard_API](https://github.com/AAK-MBU/Process_Dashboard_API) locally. The
+API is added as a [Git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) in the [api](./api) folder.
 
 ``` shell
-task api:fixtures:load
-curl "http://$(docker compose port api 8000)/api/v1/process/" --header 'x-api-key: a-not-so-secret-key'
+task api:generate:api-key
 ```
 
-See [api/README.md](api/README.md) for some more details (and [`docker-compose.api.yml`](docker-compose.api.yml) for the
-docker compose setup).
+Test access to the API:
+
+``` shell
+task api:test
+task api:get API_PATH=/api/v1/auth/me
+```
+
+See [`docker-compose.api.yml`](docker-compose.api.yml) for the docker compose setup for the API.
+
+### Loading data
+
+``` shell
+task api:script:run seed_data.py
+task api:script:run seed_data_aktindsigt.py
+```
 
 ## CORS
 

@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * [PR-27](https://github.com/itk-dev/rpa-process-overview/pull/27)
   Added pre-defined users in OIDC mock
+* [PR-26](https://github.com/itk-dev/rpa-process-overview/pull/26)
+  Added [the real API](https://github.com/AAK-MBU/Process_Dashboard_API) for local development and testing
 * [PR-24](https://github.com/itk-dev/rpa-process-overview/pull/24)
   Remove search from url
 * [PR-25](https://github.com/itk-dev/rpa-process-overview/pull/25)

@@ -2,8 +2,9 @@ services:
   api:
     profiles:
       - ${DOCKER_API_DISABLE:-}
-    build: ./Process_Dashboard_API
-    env_file: ./Process_Dashboard_API/.env.example
+    build: ./api
+    env_file: ./api/.env.example
+    # Overwrite some config from .env.example
     environment:
       DATABASE_URL: sqlite:///api.db
       DEBUG: true
