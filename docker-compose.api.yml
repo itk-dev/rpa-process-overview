@@ -2,8 +2,11 @@ services:
   api:
     profiles:
       - ${DOCKER_API_DISABLE:-}
-    build: ./api
-    env_file: .env.local
+    build: ./Process_Dashboard_API
+    env_file: ./Process_Dashboard_API/.env.example
+    environment:
+      DATABASE_URL: sqlite:///api.db
+      DEBUG: true
     ports:
       - "8000"
     networks:
