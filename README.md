@@ -36,6 +36,10 @@ Load fixtures with
 task fixtures:load
 ```
 
+### Icons
+
+The icons are copied from [heroicons](https://heroicons.com).
+
 ## API Mock
 
 We use a [FastAPI](https://fastapi.tiangolo.com) app to mock the RPA process overview API.
