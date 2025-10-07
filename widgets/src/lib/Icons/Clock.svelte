@@ -1,3 +1,4 @@
+<!-- From here https://heroicons.com/ -->
 <script lang="ts">
 	export let className = 'h-4 w-4 dark:opacity-50';
 </script>

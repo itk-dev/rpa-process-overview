@@ -1,3 +1,4 @@
+<!-- From here https://heroicons.com/ -->
 <script lang="ts">
 	export let className = 'w-5 h-5 mr-2 text-rose-700';
 </script>
