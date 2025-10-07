@@ -4,14 +4,18 @@
 	import { type ProgressData } from '$lib/types';
 	import Table from '$lib/Table.svelte';
 	import { t, config } from './config';
+	import ErrorBanner from '$lib/ErrorBanner.svelte';
 
-	let error: Boolean = $state(false);
+	let error: boolean = $state(false);
 	let data: ProgressData | null = $state(null);
 	let total: Number | null = $state(null);
 	let fetching = $state(true);
+	let errorMessage: string = $state('');
 
 	$effect(() => {
 		fetching = true;
+		errorMessage = '';
+		error = false;
 		const url = new URL(config.data_url, document.location.href);
 		fetch(url.toString())
 			.then((response) => response.json())
@@ -23,16 +27,16 @@
 				fetching = false;
 			})
 			.catch((e) => {
+				fetching = false;
 				console.error(e);
 				error = true;
+				errorMessage = t('An error occurred while fetching the data');
 			});
 	});
 </script>
 
 {#if error}
-	<h2 class="my-3 dark:text-white text-neutral-900">
-		{t('An error occurred while fetching the data')}
-	</h2>
+	<ErrorBanner {errorMessage} />
 {:else if fetching}
 	<div class="flex justify-center mb-5">
 		<Spinner>

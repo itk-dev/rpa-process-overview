@@ -5,8 +5,11 @@
 	import { t, config } from './config';
 	import type { ProgressData } from '$lib/types';
 	import Person from './Icons/Person.svelte';
+	import ErrorBanner from '$lib/ErrorBanner.svelte';
 
 	let query: string = $state('');
+	let errorMessage: string = $state('');
+	let error: boolean = $state(false);
 	let parsedQuery: string = $state('');
 	const DEBOUNCE_DELAY: number = 500;
 	let name: string = $state('');
@@ -17,6 +20,8 @@
 	$effect(() => {
 		parsedQuery = query.trim();
 		clearTimeout(timer);
+		errorMessage = '';
+		error = false;
 
 		// Debounce setTimeout
 		timer = setTimeout(() => {
@@ -27,15 +32,19 @@
 
 				const url = new URL(search_url, document.location.href);
 				url.searchParams.set('q', parsedQuery);
-
 				data = null;
 				fetch(url.toString())
 					.then((response) => response.json())
 					.then(({ data: recievedData }) => {
 						if (recievedData) {
 							data = recievedData;
-							name = recievedData.data?.items[0].meta?.name;
+							name = recievedData.data?.items[0]?.meta?.name;
 						}
+					})
+					.catch((e) => {
+						console.error(e);
+						error = true;
+						errorMessage = t('An error occurred while searching');
 					});
 			}
 		}, DEBOUNCE_DELAY);
@@ -64,13 +73,16 @@
 					<div class="absolute left-3 top-5 transform -translate-y-1/2">
 						<Search className="h-5 w-5 mr-2 text-neutral-400" />
 					</div>
-
 					<input
 						id="search"
 						type="search"
 						class="dark:bg-gray-950 bg-white border border-neutral-300 dark:border-neutral-800 outline-none rounded-md pl-10 pr-4 py-2 w-full transition-all dark:text-white text-gray-900 focus:border-neutral-400 focus:border-1 mb-2"
 						bind:value={query}
 					/>
+					{#if error}
+						<ErrorBanner {errorMessage} />
+					{/if}
+
 					{#if data}
 						<div
 							class="dark:bg-black bg-white rounded-md border border-neutral-300 dark:border-neutral-800 p-4"
@@ -90,6 +102,7 @@
 						</div>
 					{/if}
 				</div>
+
 				{#if data}
 					<div class="w-2/3 overflow-scroll">
 						<Table columns={data.columns} rows={data.rows}></Table>
