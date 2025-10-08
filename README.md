@@ -25,7 +25,7 @@ task site:update
 Run
 
 ``` shell
-git submodule update
+git submodule update --init
 task site:update
 ```
 
@@ -47,7 +47,7 @@ For development, we run [AAK-MBU/Process_Dashboard_API](https://github.com/AAK-M
 API is added as a [Git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) in the [api](./api) folder.
 
 ``` shell
-task api:generate:api-key
+task api:create:api-keys
 ```
 
 Test access to the API:
@@ -62,8 +62,8 @@ See [`docker-compose.api.yml`](docker-compose.api.yml) for the docker compose se
 ### Loading data
 
 ``` shell
-task api:script:run seed_data.py
-task api:script:run seed_data_aktindsigt.py
+task api:script:run SCRIPT_PATH=«path to seed_data.py»
+task api:script:run SCRIPT_PATH=«path to seed_data_aktindsigt.py»
 ```
 
 ## CORS

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { type Step } from './types';
-	import Status from './enums';
+	import StepStatus from './enums';
 	import type { Snippet } from 'svelte';
 
 	let {
@@ -15,7 +15,7 @@
 		if (stepIndex === null) return false;
 		const indexElement = row.findIndex(({ step_index }) => step_index === stepIndex);
 		const nextElement = indexElement + 1;
-		return row[nextElement]?.status !== Status.SUCCESS;
+		return row[nextElement]?.status !== StepStatus.SUCCESS;
 	}
 
 	function notTheLastStep(index: number, rowLength: number): boolean {

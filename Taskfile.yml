@@ -95,9 +95,7 @@ tasks:
     desc: Load API fixtures
     prompt: Continue?
     cmds:
-      - task: compose
-        vars:
-          TASK_ARGS: exec api uv run python -m src.api.fixtures
+      - echo '👻'
 
   translations:extract:
     cmds:

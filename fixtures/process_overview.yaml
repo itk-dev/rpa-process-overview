@@ -31,12 +31,12 @@ App\Entity\ProcessOverview:
     options: |-
       metadata_columns:
           - label: Borger
-            data: metadata.cpr
+            data: meta.cpr
           - label: Name
-            data: metadata.name
+            data: meta.name
           # Missing
           # - label: Klinik
-          #   data: metadata.klinik
+          #   data: meta.klinik
       data:
         default_query:
           status:
@@ -64,12 +64,12 @@ App\Entity\ProcessOverview:
     options: |-
       metadata_columns:
           - label: Barn
-            data: metadata.cpr
+            data: meta.cpr
           - label: Name
-            data: metadata.name
+            data: meta.name
           # Missing
           # - label: Klinik
-          #   data: metadata.klinik
+          #   data: meta.klinik
 
   process_overview_incomplete:
     label: Incomplete (missing process ID)

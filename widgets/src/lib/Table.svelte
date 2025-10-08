@@ -4,16 +4,16 @@
 	import Close from './Icons/Close.svelte';
 	import { type Step, type Column } from './types';
 	import TableCell from './TableCell.svelte';
-	import Status from './enums';
+	import StepStatus from './enums';
 
 	let { columns, rows }: { columns: Column[] | null; rows: Array<Array<Step>> | null } = $props();
 
 	// Status icons
 	// Todo, perhaps a "Running" status will be added
 	const icons = {
-		[Status.PENDING]: Clock,
-		[Status.SUCCESS]: CheckMark,
-		[Status.FAILED]: Close
+		[StepStatus.PENDING]: Clock,
+		[StepStatus.SUCCESS]: CheckMark,
+		[StepStatus.FAILED]: Close
 	};
 </script>
 
@@ -44,9 +44,9 @@
 									{cell}
 									{row}
 									{i}
-									className={cell.status === Status.SUCCESS
+									className={cell.status === StepStatus.SUCCESS
 										? 'bg-green-700'
-										: cell.status === Status.FAILED
+										: cell.status === StepStatus.FAILED
 											? 'bg-rose-700'
 											: 'bg-neutral-400 dark:bg-neutral-800'}
 								>
