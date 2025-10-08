@@ -10,7 +10,6 @@
 	let query: string = $state('');
 	let errorMessage: string = $state('');
 	let error: boolean = $state(false);
-	let parsedQuery: string = $state('');
 	const DEBOUNCE_DELAY: number = 500;
 	let name: string = $state('');
 	let data: ProgressData | null = $state(null);
@@ -18,7 +17,7 @@
 	let timer: ReturnType<typeof setTimeout>;
 
 	$effect(() => {
-		parsedQuery = query.trim();
+		const parsedQuery = query.trim();
 		clearTimeout(timer);
 		errorMessage = '';
 		error = false;
@@ -26,13 +25,7 @@
 		// Debounce setTimeout
 		timer = setTimeout(() => {
 			if (parsedQuery && parsedQuery.length >= min_search_limit) {
-				const pageUrl = new URL(document.location.href);
-				pageUrl.searchParams.set('q', parsedQuery);
-				history.replaceState({}, '', pageUrl);
-
 				const url = new URL(search_url, document.location.href);
-				url.searchParams.set('q', parsedQuery);
-				data = null;
 				fetch(url.toString())
 					.then((response) => response.json())
 					.then(({ data: recievedData }) => {
