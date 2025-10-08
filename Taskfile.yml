@@ -95,7 +95,16 @@ tasks:
     desc: Load API fixtures
     prompt: Continue?
     cmds:
-      - echo '👻'
+      - task: compose
+        vars:
+          TASK_ARGS: rm api --stop --force
+      - task: start
+      - task: compose
+        vars:
+          TASK_ARGS: exec api uv add --dev faker
+      - task: api:script:run
+        vars:
+          SCRIPT_PATH: scripts/api/fixtures.py
 
   translations:extract:
     cmds:
