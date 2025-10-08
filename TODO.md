@@ -6,4 +6,4 @@
       it up
 - [x] Add light mode
 - [x] Localizable texts in svelte
-- [ ] Proper error handling
+- [x] Proper error handling
