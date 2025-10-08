@@ -91,21 +91,6 @@ tasks:
         vars:
           TASK_ARGS: hautelook:fixtures:load --no-interaction
 
-  api:fixtures:load:
-    desc: Load API fixtures
-    prompt: Continue?
-    cmds:
-      - task: compose
-        vars:
-          TASK_ARGS: rm api --stop --force
-      - task: start
-      - task: compose
-        vars:
-          TASK_ARGS: exec api uv add --dev faker
-      - task: api:script:run
-        vars:
-          SCRIPT_PATH: scripts/api/fixtures.py
-
   translations:extract:
     cmds:
       - task: script
@@ -149,11 +134,30 @@ tasks:
         vars:
           SCRIPT_PATH: scripts/api/create_api_keys.py
 
+  api:fixtures:load:
+    desc: Load API fixtures
+    prompt: Continue?
+    cmds:
+      # Reset the API's database
+      - task: compose
+        vars:
+          TASK_ARGS: rm api --stop --force
+      - task: start
+
+      # Install faker and load fixtures
+      - task: compose
+        vars:
+          TASK_ARGS: exec api uv add --dev faker
+      - task: api:create:api-keys
+      - task: api:script:run
+        vars:
+          SCRIPT_PATH: scripts/api/fixtures.py
+
   api:script:run:
     desc: "Run script inside API service container, example: `task {{.TASK}} SCRIPT_PATH=test/load_data.py"
     silent: true
     cmds:
-      - echo "Running {{.SCRIPT_NAME}} inside API service"
+      - echo "Running {{.SCRIPT_PATH}} inside API service"
       - task: compose
         vars:
           TASK_ARGS: cp {{.SCRIPT_PATH}} api:/app/scripts
@@ -170,7 +174,7 @@ tasks:
     desc: "Perform a GET request to an API endpoint, examples: `task {{.TASK}} API_PATH=/api/v1/auth/me`, `task {{.TASK}} API_PATH=/api/v1/auth/me API_KEY=my-api-key`"
     cmds:
       - |-
-        task compose -- exec phpfpm curl --silent --verbose --header 'x-api-key: {{.API_KEY}}' {{.API_BASE_URL}}{{.API_PATH}} | docker run --rm --interactive ghcr.io/jqlang/jq:latest
+        task compose -- exec phpfpm curl --silent --verbose --header 'x-api-key: {{.API_KEY}}' '{{.API_BASE_URL}}{{.API_PATH}}' | docker run --rm --interactive ghcr.io/jqlang/jq:latest
     requires:
       vars: [API_PATH]
     vars:

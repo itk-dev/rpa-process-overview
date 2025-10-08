@@ -54,6 +54,8 @@ class Fixtures:
                 )
                 session.add(process)
 
+                print(f"process {process.id}")
+
                 number_of_steps = fake.pyint(2, 7)
                 steps = []
                 for index in range(number_of_steps):
@@ -64,6 +66,8 @@ class Fixtures:
                     )
                     session.add(step)
                     steps.append(step)
+
+                    print(f"step {step.id}")
 
                 number_of_runs = fake.pyint(0, 100)
                 for _ in range(number_of_runs):
@@ -76,8 +80,11 @@ class Fixtures:
                     run = ProcessRun(
                         process=process,
                         meta=meta,
+                        entity_id=fake.name(),
                     )
                     session.add(run)
+
+                    print(f"run {run.id}")
 
                     failed_step_index = fake.pyint(-1, number_of_steps + 1)
                     started_at = fake.past_datetime()
@@ -103,13 +110,18 @@ class Fixtures:
                             process=process,
                             run=run,
                             step=steps[index],
+                            step_index=index,
                             failure=failure,
                         )
                         session.add(step_run)
 
+                        print(f"step_run {step_run.id}")
+
                         # @todo Should we generate pending steps?
                         # if status == StepRunStatus.FAILED:
                         #     break    # noqa: ERA001
+
+                    run.update_status()
 
             session.commit()
 
