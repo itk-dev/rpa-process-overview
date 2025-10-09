@@ -4,7 +4,7 @@
 	import Close from './Icons/Close.svelte';
 	import { type Step, type Column } from './types';
 	import TableCell from './TableCell.svelte';
-	import StepStatus from './enums';
+	import { StepStatus } from './enums';
 
 	let { columns, rows }: { columns: Column[] | null; rows: Array<Array<Step>> | null } = $props();
 
@@ -24,8 +24,10 @@
 		>
 			<tr>
 				{#each columns as { label }}
-					<th class="px-2 py-3 text-center text-xs font-medium dark:text-gray-400 w-24">
-						<span class="block text-center whitespace-normal">{label}</span>
+					<th class="px-1 py-3 text-center text-xs font-medium dark:text-gray-400 max-w-[120px]">
+						<span class="block text-center whitespace-prewrap overflow-hidden text-ellipsis"
+							>{label}</span
+						>
 					</th>
 				{/each}
 			</tr>

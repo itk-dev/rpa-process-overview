@@ -2,7 +2,7 @@
 
 type RowColumnType = 'step' | 'text';
 type MetaType = 'meta.branch' | 'meta.name' | 'meta.cpr';
-export type Status = 'SUCCESS' | 'FAILED' | 'PENDING';
+export type Status = 'success' | 'failed' | 'pending' | 'running';
 
 export type Column = {
 	data: MetaType;
