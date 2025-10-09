@@ -83,13 +83,21 @@ tasks:
         vars:
           TASK_ARGS: cache:clear
 
-  fixtures:load:
-    desc: Load fixtures
+  app:fixtures:load:
+    desc: Load app fixtures
     prompt: This will reset your database. Continue?
     cmds:
       - task: console
         vars:
           TASK_ARGS: hautelook:fixtures:load --no-interaction
+
+  fixtures:load:
+    desc: Load all fixtures
+    prompt: This will reset your databases. Continue?
+    cmds:
+      - task: api:fixtures:load
+      - task: app:fixtures:load
+      - task: oidc:fixtures:load
 
   translations:extract:
     cmds:
@@ -141,7 +149,7 @@ tasks:
       # Reset the API's database
       - task: compose
         vars:
-          TASK_ARGS: rm api --stop --force
+          TASK_ARGS: rm api-db --stop --force
       - task: start
 
       # Install faker and load fixtures

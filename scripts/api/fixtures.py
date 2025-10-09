@@ -80,7 +80,8 @@ class Fixtures:
                     run = ProcessRun(
                         process=process,
                         meta=meta,
-                        entity_id=fake.name(),
+                        entity_id=meta["name"],
+                        entity_name=meta["name"],
                     )
                     session.add(run)
 
@@ -110,6 +111,7 @@ class Fixtures:
                             process=process,
                             run=run,
                             step=steps[index],
+                            # An event listener show set this.
                             step_index=index,
                             failure=failure,
                         )
@@ -121,6 +123,7 @@ class Fixtures:
                         # if status == StepRunStatus.FAILED:
                         #     break    # noqa: ERA001
 
+                    # An event listener should handle this.
                     run.update_status()
 
             session.commit()

@@ -26,6 +26,8 @@ Run
 
 ``` shell
 git submodule update --init
+# Apply a patch to support MySQL in the API.
+git -C api apply < patches/Process_Dashboard_API.patch
 task site:update
 ```
 
@@ -34,8 +36,17 @@ to get things started.
 Load fixtures with
 
 ``` shell
-task fixtures:load
+task app:fixtures:load
 ```
+
+> [!TIP]
+> Pro tip! Run
+>
+> ``` shell
+> task fixtures:load --yes
+> ```
+>
+> to load all fixtures in succession (including the fixtures mentioned below).
 
 ### Icons
 
@@ -55,6 +66,9 @@ Test access to the API:
 ``` shell
 task api:test
 task api:get API_PATH=/api/v1/auth/me
+
+task api:get API_PATH='/api/v1/runs/?process_id=1'
+task api:get API_PATH='/api/v1/runs/?process_id=1&meta_filter=name:Gregory%20Mendez'
 ```
 
 See [`docker-compose.api.yml`](docker-compose.api.yml) for the docker compose setup for the API.

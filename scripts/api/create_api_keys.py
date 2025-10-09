@@ -6,7 +6,7 @@ from app.models import ApiKey
 
 
 def seed_api_keys():
-    """Seed database with tandpleje example data."""
+    """Seed database with API keys."""
     engine = create_engine(get_connection_url())
 
     with Session(engine) as session:

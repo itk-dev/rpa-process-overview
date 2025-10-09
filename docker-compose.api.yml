@@ -1,3 +1,8 @@
+networks:
+  api:
+    driver: bridge
+    internal: false
+
 services:
   api:
     profiles:
@@ -6,15 +11,38 @@ services:
     env_file: ./api/.env.example
     # Overwrite some config from .env.example
     environment:
-      DATABASE_URL: sqlite:///api.db
+      DATABASE_URL: "mysql+pymysql://db:db@api-db:3306/db"
       DEBUG: true
+    depends_on:
+      api-db:
+        condition: service_healthy
     ports:
       - "8000"
     networks:
       - app
       - frontend
+      - api
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-api.rule=Host(`api.${COMPOSE_DOMAIN}`)"
       - "traefik.http.services.${COMPOSE_PROJECT_NAME}-api.loadbalancer.server.port=8000"
+
+  api-db:
+    image: itkdev/mariadb:latest
+    networks:
+      - api
+    ports:
+      - "3306"
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=db
+      - MYSQL_PASSWORD=db
+      - MYSQL_DATABASE=db
+      #- ENCRYPT=1 # Uncomment to enable database encryption.
