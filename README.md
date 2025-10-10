@@ -26,7 +26,7 @@ Run
 
 ``` shell
 git submodule update --init
-# Apply a patch to support MySQL in the API.
+# Apply a patch to support MySQL in the API and make building it work.
 git -C api apply < patches/Process_Dashboard_API.patch
 task site:update
 ```

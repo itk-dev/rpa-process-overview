@@ -10,3 +10,18 @@ index 15be699..0933d91 100644
  ]
  
  [project.optional-dependencies]
+diff --git a/uv.lock b/uv.lock
+index 67c564a..ad82d70 100644
+--- a/uv.lock
++++ b/uv.lock
+@@ -350,8 +350,8 @@ wheels = [
+ ]
+ 
+ [[package]]
+-name = "process-visualization-api"
+-version = "1.0.0"
++name = "process-dashboard-api"
++version = "1.1.0"
+ source = { editable = "." }
+ dependencies = [
+     { name = "fastapi" },
