@@ -5,7 +5,7 @@ from datetime import timedelta
 from faker import Faker
 
 from sqlmodel import Session, create_engine, delete
-from app.db.database import get_connection_url
+from app.db.database import create_db_and_tables, get_connection_url
 from app.models import (
     Process,
     ProcessRun,
@@ -131,6 +131,7 @@ class Fixtures:
     def load(self) -> None:
         """Load all fixtures."""
 
+        create_db_and_tables()
         self.delete_data()
         self.create_data()
 

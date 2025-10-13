@@ -1,7 +1,7 @@
 """Create admin and user API keys."""
 
 from sqlmodel import Session, create_engine, delete
-from app.db.database import get_connection_url
+from app.db.database import create_db_and_tables, get_connection_url
 from app.models import ApiKey
 
 
@@ -52,4 +52,5 @@ def seed_api_keys():
                 count += 1
 
 if __name__ == "__main__":
+    create_db_and_tables()
     seed_api_keys()
