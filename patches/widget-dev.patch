@@ -1,0 +1,28 @@
+diff --git a/vendor/symfony/asset-mapper/Factory/MappedAssetFactory.php b/vendor/symfony/asset-mapper/Factory/MappedAssetFactory.php
+index f1cf2ad..818b6a7 100644
+--- a/vendor/symfony/asset-mapper/Factory/MappedAssetFactory.php
++++ b/vendor/symfony/asset-mapper/Factory/MappedAssetFactory.php
+@@ -119,6 +119,7 @@ class MappedAssetFactory implements MappedAssetFactoryInterface
+         $digest = base64_encode(hex2bin($digest));
+         $digest = substr($digest, 0, self::PUBLIC_DIGEST_LENGTH);
+         $digest = strtr($digest, '+/', '-_');
++        $digest = 'static';
+         $digestedPath = preg_replace('/\.(\w+)$/', "-{$digest}\\0", $asset->logicalPath);
+ 
+         return $this->assetsPathResolver->resolvePublicPath($digestedPath);
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index a72f273..00547e1 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -32,7 +32,7 @@ security:
+     # Easy way to control access for large sections of your site
+     # Note: Only the *first* access control that matches will be used
+     access_control:
+-        - { path: ^/admin, roles: !php/enum App\Entity\UserRole::Admin->value }
+-        - { path: ^/login, roles: PUBLIC_ACCESS }
+-        - { path: '^/openidconnect/login(/.+)?$', role: PUBLIC_ACCESS }
+-        - { path: ^/, roles: !php/enum App\Entity\UserRole::User->value }
++        # - { path: ^/admin, roles: !php/enum App\Entity\UserRole::Admin->value }
++        # - { path: ^/login, roles: PUBLIC_ACCESS }
++        # - { path: '^/openidconnect/login(/.+)?$', role: PUBLIC_ACCESS }
++        # - { path: ^/, roles: !php/enum App\Entity\UserRole::User->value }

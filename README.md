@@ -47,6 +47,57 @@ task app:fixtures:load
 >
 > to load all fixtures in succession (including the fixtures mentioned below).
 
+### Widgets
+
+Reset data:
+
+``` shell
+git submodule update --init
+# Apply a patch to support MySQL in the API and make building it work.
+git -C api apply < patches/Process_Dashboard_API.patch
+task site:update
+
+task fixtures:load --yes
+```
+
+Start Vite dev server:
+
+``` shell
+task widgets:dev
+```
+
+Open a new terminal window and patch Symfony asset mapper to use a static filename and disable access control:
+
+``` shell
+patch --strip=1 < patches/widget-dev.patch
+```
+
+Build and watch for changes in the styles:
+
+``` shell
+# Force Tailwind to rebuild.
+rm var/tailwind/*.css
+task console -- tailwind:build --watch
+```
+
+Open <http://localhost:3000/> and enjoy. Any changes you make to the widget code should now be reflected (almost)
+immediately (you may have to force reload if changing the CSS).
+
+Remove the patch when you're done:
+
+``` shell
+patch --strip=1 --reverse < patches/widget-dev.patch
+```
+
+For convenience, you can to it all in one go:
+
+``` shell name=widget-dev-all-in-one
+rm var/tailwind/*.css
+patch --strip=1 < patches/widget-dev.patch && \
+task console -- tailwind:build --watch && \
+patch --strip=1 --reverse < patches/widget-dev.patch
+```
+
 ### Icons
 
 The icons are copied from [heroicons](https://heroicons.com).

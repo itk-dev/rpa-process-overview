@@ -6,6 +6,10 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<link
+		rel="stylesheet"
+		href="https://rpa-process-overview.local.itkdev.dk/assets/styles/app-static.css"
+	/>
 </svelte:head>
 
 <div>

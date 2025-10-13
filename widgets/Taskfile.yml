@@ -4,7 +4,7 @@ version: '3'
 
 vars:
   APP_PORT: 3000
-  BASE_PATH: tidy_feedback
+  BASE_PATH: ''
   WIDGET_URL: 'http://localhost:{{.APP_PORT}}/{{.BASE_PATH}}'
 
   DOCKER_COMPOSE: '{{.TASK_DOCKER_COMPOSE | default "docker compose" }}'
@@ -28,8 +28,7 @@ tasks:
     deps: [install]
     cmds:
       # https://stackoverflow.com/a/73821896
-      # - docker compose run --env ORIGIN=http://localhost:3000 --rm --publish '{{.APP_PORT}}:{{.APP_PORT}}' node npm run dev -- --port {{.APP_PORT}} --host
-      - docker compose run --name tidy-feedback-widget --rm --publish '{{.APP_PORT}}:{{.APP_PORT}}' node npm run dev -- --port {{.APP_PORT}} --host
+      - docker compose run --name rpa-process-overview-widgets --rm --publish '{{.APP_PORT}}:{{.APP_PORT}}' node npm run dev -- --port {{.APP_PORT}} --host
 
   open:
     desc: 'Open widget dev site'
