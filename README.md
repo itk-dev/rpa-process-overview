@@ -25,13 +25,12 @@ task site:update
 Run
 
 ``` shell
-git submodule update --init
-# Apply a patch to support MySQL in the API and make building it work.
-git -C api apply < patches/Process_Dashboard_API.patch
 task site:update
 ```
 
-to get things started.
+> [!NOTE]
+> Running `task site:update` on [macOS (darwin)](https://en.wikipedia.org/wiki/Darwin_(operating_system)) will pull and
+> patch the API Git submodule (cf. [#api](API)). See [`Taskfile.yml`](Taskfile.yml) for details.
 
 Load fixtures with
 
@@ -72,6 +71,17 @@ task api:get API_PATH='/api/v1/runs/?process_id=1&meta_filter=name:Gregory%20Men
 ```
 
 See [`docker-compose.api.yml`](docker-compose.api.yml) for the docker compose setup for the API.
+
+## Updating the API
+
+Run
+
+``` shell
+task api:update
+```
+
+to update the API to the latest version (the [`main`
+branch](https://github.com/AAK-MBU/Process_Dashboard_API/tree/main)).
 
 ### Loading data
 

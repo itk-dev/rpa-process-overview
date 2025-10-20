@@ -37,6 +37,16 @@ tasks:
       - task: compose
         vars:
           TASK_ARGS: pull
+
+      # Additional setup for local development (assuming we're running on maxOS (darwin))
+      - cmd: |
+          git -C api checkout .
+          git submodule update --init
+          # Apply a patch to support MySQL in the API and make building it work.
+          git -C api apply < patches/Process_Dashboard_API.patch
+        # https://taskfile.dev/docs/reference/schema#platforms
+        platforms: [darwin]
+
       - task: compose
         vars:
           TASK_ARGS: up --build --detach --wait
@@ -154,6 +164,16 @@ tasks:
       - task: api:script:run
         vars:
           SCRIPT_PATH: scripts/api/fixtures.py
+
+  api:update:
+    desc: Update API to latest version (https://github.com/AAK-MBU/Process_Dashboard_API/tree/main)
+    prompt: Really?
+    cmds:
+      - git -C api checkout .
+      - git -C api checkout main
+      - git -C api pull
+      # Check that our patch can be applied.
+      - git -C api apply --check < patches/Process_Dashboard_API.patch
 
   api:script:run:
     desc: "Run script inside API service container, example: `task {{.TASK}} SCRIPT_PATH=test/load_data.py"

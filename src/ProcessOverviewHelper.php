@@ -53,7 +53,7 @@ class ProcessOverviewHelper
             }
 
             $rows = [];
-            $items = $data;
+            $items = $data['items'] ?? [];
             foreach ($items as $item) {
                 $steps = $item['steps'] ?? null;
                 if (!$steps) {
