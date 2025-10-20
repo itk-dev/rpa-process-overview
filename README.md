@@ -102,13 +102,7 @@ For local testing of OIDC login, we use [OpenID Provider Mock](https://github.co
 [`docker-compose.oidc.yml`](docker-compose.oidc.yml)) and the mock is running on
 <https://idp.rpa-process-overview.local.itkdev.dk/>.
 
-To load users into the mock, run
-
-``` shell
-task oidc:mock:load-users
-```
-
-This will create the following users:
+The following users are defined in the mock (cf. [`docker-compose.oidc.yml`](docker-compose.oidc.yml)):
 
 | Username (sub)   | Roles            |
 |------------------|------------------|

@@ -4,14 +4,17 @@ services:
       - ${DOCKER_OIDC_DISABLE:-}
     # Let this container be accessible both internally and externally on the same domain.
     container_name: idp.${COMPOSE_DOMAIN}
-    build:
-      # https://github.com/geigerzaehler/oidc-provider-mock
-      dockerfile_inline: |
-        FROM python:3.13-slim-trixie
-        RUN pip install --root-user-action=ignore pipx
-
-        # https://github.com/geigerzaehler/oidc-provider-mock/blob/main/src/oidc_provider_mock/__main__.py
-        ENTRYPOINT ["/usr/local/bin/pipx", "run", "oidc-provider-mock", "--host", "0.0.0.0", "--port", "80"]
+    image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
+    # https://docs.docker.com/reference/compose-file/services/#command
+    command:
+      [
+        "--port",
+        "80",
+        "--user-claims",
+        '{"sub": "user", "email": "user@example.com", "roles": ["user"]}',
+        "--user-claims",
+        '{"sub": "overview-manager", "email": "overview-manager@example.com", "roles": ["overview-manager"]}',
+      ]
     ports:
       - "80"
     networks:
@@ -21,4 +24,3 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-idp.rule=Host(`idp.${COMPOSE_DOMAIN}`)"
-      # - "traefik.http.services.${COMPOSE_PROJECT_NAME}-idp.loadbalancer.server.port=9400"
