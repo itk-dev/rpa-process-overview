@@ -1,7 +1,8 @@
 <fieldset class="process-details">
     <legend>{{ 'Details for {process}'|trans({process: process.name}) }}</legend>
 
-    {% if process.meta|default(null) %}
+    {% set run_metadata_schema = process.meta.run_metadata_schema|default(null) %}
+    {% if run_metadata_schema %}
         <section class="meta">
             <header>
                 <h3>{{ 'Metadata'|trans }}</h3>
@@ -10,7 +11,7 @@
             {% set metadata_columns = [] %}
 
             <ul>
-                {% for name, type in process.meta %}
+                {% for name, type in run_metadata_schema %}
                     <li>{{ name }} ({{ type }})</li>
                     {% set metadata_columns = metadata_columns|merge([{
 label: 'The label for "%name%"'|replace({'%name%': name}),

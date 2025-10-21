@@ -31,16 +31,15 @@ App\Entity\ProcessOverview:
     options: |-
       metadata_columns:
           - label: Borger
-            data: metadata.cpr
+            data: meta.cpr
           - label: Name
-            data: metadata.name
+            data: meta.name
           # Missing
           # - label: Klinik
-          #   data: metadata.klinik
+          #   data: meta.klinik
       data:
         default_query:
-          status:
-            - FAILED
+          status: failed
 
   process_overview_2:
     label: Frit valg 0-15 år
@@ -57,19 +56,34 @@ App\Entity\ProcessOverview:
             data: meta.branch
 
   process_overview_3:
-    label: En anden proces
+    label: En anden proces (failed)
     group: "@process_overview_group_2"
     dataSource: "@data_source_api_2"
     processId: 3
     options: |-
       metadata_columns:
           - label: Barn
-            data: metadata.cpr
+            data: meta.cpr
           - label: Name
-            data: metadata.name
-          # Missing
-          # - label: Klinik
-          #   data: metadata.klinik
+            data: meta.name
+      data:
+        default_query:
+          status: failed
+
+  process_overview_4:
+    label: En anden proces (pending)
+    group: "@process_overview_group_2"
+    dataSource: "@data_source_api_2"
+    processId: 3
+    options: |-
+      metadata_columns:
+          - label: Barn
+            data: meta.cpr
+          - label: Name
+            data: meta.name
+      data:
+        default_query:
+          status: pending
 
   process_overview_incomplete:
     label: Incomplete (missing process ID)

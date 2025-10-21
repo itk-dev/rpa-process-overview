@@ -3,10 +3,17 @@
 from datetime import timedelta
 
 from faker import Faker
-from sqlmodel import Session, delete
 
-from .database import create_db_and_tables, engine
-from .models import Process, ProcessRun, ProcessStep, ProcessStepRun, StepRunStatus
+from sqlmodel import Session, create_engine, delete
+from app.db.database import create_db_and_tables, get_connection_url
+from app.models import (
+    Process,
+    ProcessRun,
+    ProcessRunStatus,
+    ProcessStep,
+    ProcessStepRun,
+    StepRunStatus,
+)
 
 
 class Fixtures:
@@ -14,6 +21,8 @@ class Fixtures:
 
     def delete_data(self) -> None:
         """Delete all data."""
+
+        engine = create_engine(get_connection_url())
         with Session(engine) as session:
             for c in [
                 ProcessStepRun,
@@ -30,6 +39,7 @@ class Fixtures:
         fake = Faker()
         fake.seed_instance(seed)
 
+        engine = create_engine(get_connection_url())
         with Session(engine) as session:
             number_of_processes = fake.pyint(50, 200)
             for _ in range(number_of_processes):
@@ -44,6 +54,8 @@ class Fixtures:
                 )
                 session.add(process)
 
+                print(f"process {process.id}")
+
                 number_of_steps = fake.pyint(2, 7)
                 steps = []
                 for index in range(number_of_steps):
@@ -54,6 +66,8 @@ class Fixtures:
                     )
                     session.add(step)
                     steps.append(step)
+
+                    print(f"step {step.id}")
 
                 number_of_runs = fake.pyint(0, 100)
                 for _ in range(number_of_runs):
@@ -66,8 +80,12 @@ class Fixtures:
                     run = ProcessRun(
                         process=process,
                         meta=meta,
+                        entity_id=meta["name"],
+                        entity_name=meta["name"],
                     )
                     session.add(run)
+
+                    print(f"run {run.id}")
 
                     failed_step_index = fake.pyint(-1, number_of_steps + 1)
                     started_at = fake.past_datetime()
@@ -93,20 +111,27 @@ class Fixtures:
                             process=process,
                             run=run,
                             step=steps[index],
+                            # An event listener show set this.
+                            step_index=index,
                             failure=failure,
                         )
                         session.add(step_run)
+
+                        print(f"step_run {step_run.id}")
 
                         # @todo Should we generate pending steps?
                         # if status == StepRunStatus.FAILED:
                         #     break    # noqa: ERA001
 
+                    # An event listener should handle this.
+                    run.update_status()
+
             session.commit()
 
     def load(self) -> None:
-        """Create database and load all fixtures."""
-        create_db_and_tables()
+        """Load all fixtures."""
 
+        create_db_and_tables()
         self.delete_data()
         self.create_data()
 

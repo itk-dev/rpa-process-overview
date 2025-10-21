@@ -1,2 +1,5 @@
 # The Svelte standalone widgets have a life of their own …
 widgets/
+
+# The API must also not be touched
+api/

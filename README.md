@@ -28,37 +28,67 @@ Run
 task site:update
 ```
 
-to get things started.
+> [!NOTE]
+> Running `task site:update` on [macOS (darwin)](https://en.wikipedia.org/wiki/Darwin_(operating_system)) will pull and
+> patch the API Git submodule (cf. [#api](API)). See [`Taskfile.yml`](Taskfile.yml) for details.
 
 Load fixtures with
 
 ``` shell
-task fixtures:load
+task app:fixtures:load
 ```
+
+> [!TIP]
+> Pro tip! Run
+>
+> ``` shell
+> task fixtures:load --yes
+> ```
+>
+> to load all fixtures in succession (including the fixtures mentioned below).
 
 ### Icons
 
 The icons are copied from [heroicons](https://heroicons.com).
 
-## API Mock
+## API
 
-We use a [FastAPI](https://fastapi.tiangolo.com) app to mock the RPA process overview API.
-
-``` shell
-curl "http://$(docker compose port api 8000)/openapi.json"
-curl "http://$(docker compose port api 8000)/api/v1/process"
-curl "http://$(docker compose port api 8000)/api/v1/process" --header 'x-api-key: a-not-so-secret-key'
-```
-
-Create some fixture data for the API:
+For development, we run [AAK-MBU/Process_Dashboard_API](https://github.com/AAK-MBU/Process_Dashboard_API) locally. The
+API is added as a [Git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) in the [api](./api) folder.
 
 ``` shell
-task api:fixtures:load
-curl "http://$(docker compose port api 8000)/api/v1/process/" --header 'x-api-key: a-not-so-secret-key'
+task api:create:api-keys
 ```
 
-See [api/README.md](api/README.md) for some more details (and [`docker-compose.api.yml`](docker-compose.api.yml) for the
-docker compose setup).
+Test access to the API:
+
+``` shell
+task api:test
+task api:get API_PATH=/api/v1/auth/me
+
+task api:get API_PATH='/api/v1/runs/?process_id=1'
+task api:get API_PATH='/api/v1/runs/?process_id=1&meta_filter=name:Gregory%20Mendez'
+```
+
+See [`docker-compose.api.yml`](docker-compose.api.yml) for the docker compose setup for the API.
+
+## Updating the API
+
+Run
+
+``` shell
+task api:update
+```
+
+to update the API to the latest version (the [`main`
+branch](https://github.com/AAK-MBU/Process_Dashboard_API/tree/main)).
+
+### Loading data
+
+``` shell
+task api:script:run SCRIPT_PATH=«path to seed_data.py»
+task api:script:run SCRIPT_PATH=«path to seed_data_aktindsigt.py»
+```
 
 ## CORS
 

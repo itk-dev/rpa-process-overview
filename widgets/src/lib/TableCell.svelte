@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { type Step } from './types';
-	import Status from './enums';
+	import { StepStatus } from './enums';
 	import type { Snippet } from 'svelte';
 
 	let {
@@ -15,7 +15,7 @@
 		if (stepIndex === null) return false;
 		const indexElement = row.findIndex(({ step_index }) => step_index === stepIndex);
 		const nextElement = indexElement + 1;
-		return row[nextElement]?.status !== Status.SUCCESS;
+		return row[nextElement]?.status !== StepStatus.SUCCESS;
 	}
 
 	function notTheLastStep(index: number, rowLength: number): boolean {
@@ -34,7 +34,7 @@
 		<div
 			class="{isTheNextStepFailed(row, cell.step_index)
 				? 'bg-neutral-400 dark:bg-neutral-800'
-				: 'bg-green-700'} absolute top-1/2 left-[calc(50%+16px)] h-0.5 w-[calc(100%-32px)] -translate-y-1/2 z-0"
+				: 'bg-green-700'} absolute top-1/2 left-[calc(50%+16px)] h-0.5 w-[calc(100%-30px)] -translate-y-1/2 z-0"
 		></div>
 	{/if}
 </td>

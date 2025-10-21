@@ -1,9 +1,15 @@
-const Status = {
-	FAILED: 'FAILED',
-	PENDING: 'PENDING',
-	SUCCESS: 'SUCCESS'
+// Enums to match https://github.com/AAK-MBU/Process_Dashboard_API/blob/main/app/models/enums.py
+
+export const StepStatus = {
+	FAILED: 'failed',
+	PENDING: 'pending',
+	RUNNING: 'running',
+	SUCCESS: 'success'
 } as const;
 
-Object.freeze(Status);
-
-export default Status;
+export const ProjectStatus = {
+	PENDING: 'pending',
+	RUNNING: 'running',
+	COMPLETED: 'completed',
+	FAILED: 'failed'
+} as const;

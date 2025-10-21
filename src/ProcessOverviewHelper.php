@@ -60,11 +60,13 @@ class ProcessOverviewHelper
                     break;
                 }
                 $rows[] = array_merge(
-                    array_map(fn (array $col) => [
-                        'type' => 'text',
-                        'value' => $this->getArrayValue($item, $col['data']),
-                    ],
-                        $metadataColumns),
+                    array_map(
+                        fn (array $col) => [
+                            'type' => 'text',
+                            'value' => $this->getArrayValue($item, $col['data']),
+                        ],
+                        $metadataColumns
+                    ),
                     array_map(static fn (array $step) => $step + ['type' => 'step'], $steps),
                 );
             }
