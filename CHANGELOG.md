@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-30](https://github.com/itk-dev/rpa-process-overview/pull/30)
+  Add pagination
 * [PR-27](https://github.com/itk-dev/rpa-process-overview/pull/27)
   Added pre-defined users in OIDC mock
 * [PR-26](https://github.com/itk-dev/rpa-process-overview/pull/26)
