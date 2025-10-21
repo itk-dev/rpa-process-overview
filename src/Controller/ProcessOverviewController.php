@@ -26,6 +26,7 @@ final class ProcessOverviewController extends AbstractController
         }
 
         $overviewData = Yaml::parse($overview->getOptions() ?? '');
+
         return $this->render('process_overview/show.html.twig', [
             'overview' => $overview,
             'overview_config' => [
@@ -43,7 +44,7 @@ final class ProcessOverviewController extends AbstractController
                     'of' => strval(t('of')),
                     'An error occurred while fetching the data' => strval(t('An error occurred while fetching the data')),
                 ],
-                'page_size' => $overviewData['data']['page_size'] ?? 5
+                'page_size' => $overviewData['data']['page_size'] ?? 5,
             ],
             'search_config' => [
                 'search_url' => $this->generateUrl('process_overview_search', [
