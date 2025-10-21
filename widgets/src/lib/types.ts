@@ -2,13 +2,14 @@
 
 type RowColumnType = 'step' | 'text';
 type MetaType = 'meta.branch' | 'meta.name' | 'meta.cpr';
-export type Status = 'success' | 'failed' | 'pending' | 'running';
+type Status = 'success' | 'failed' | 'pending' | 'running';
 
 export type Column = {
 	data: MetaType;
 	label: string;
 	type: RowColumnType;
 };
+
 type Failure = {
 	code: Number;
 	message: string;
@@ -66,10 +67,11 @@ export type Messages = {
 export type OverviewConfig = {
 	messages: Messages;
 	data_url: string;
+	page_size: string;
 };
 
 export type SearchConfig = {
 	messages: Messages;
 	search_url: string;
-	min_search_limit: number;
+	characters_before_search: number;
 };

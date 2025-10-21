@@ -3,7 +3,6 @@
 export const StepStatus = {
 	FAILED: 'failed',
 	PENDING: 'pending',
-	RUNNING: 'running',
 	SUCCESS: 'success'
 } as const;
 

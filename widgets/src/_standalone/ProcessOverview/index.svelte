@@ -5,19 +5,41 @@
 	import Table from '$lib/Table.svelte';
 	import { t, config } from './config';
 	import ErrorBanner from '$lib/ErrorBanner.svelte';
+	import Pagination from './Pagination.svelte';
+
+	const { page_size, data_url } = config;
 
 	let error: boolean = $state(false);
 	let data: ProgressData | null = $state(null);
-	let total: Number | null = $state(null);
-	let fetching = $state(true);
+	let total: number | null = $state(null);
+	let fetching: boolean = $state(true);
 	let errorMessage: string = $state('');
+	let size: number = $state(parseInt(page_size));
+	let page: number = $state(getCurrentPage());
+
+	function getCurrentPage(): number {
+		const url = new URL(document.location.href);
+		const page = Number(url.searchParams.get('page')) || null;
+		return page ?? 1;
+	}
+
+	function updateUrl(): void {
+		const pageUrl = new URL(document.location.href);
+		pageUrl.searchParams.set('page', String(page));
+		history.replaceState({}, '', pageUrl);
+	}
+
+	function changePage(index: number): void {
+		page = index;
+	}
 
 	$effect(() => {
+		updateUrl();
 		fetching = true;
 		errorMessage = '';
 		error = false;
-		const url = new URL(config.data_url, document.location.href);
-		fetch(url.toString())
+
+		fetch(`${data_url}?page=${page}&size=${size}`)
 			.then((response) => response.json())
 			.then(({ data: recievedData, meta }) => {
 				if (recievedData) {
@@ -27,8 +49,8 @@
 				fetching = false;
 			})
 			.catch((e) => {
-				fetching = false;
 				console.error(e);
+				fetching = false;
 				error = true;
 				errorMessage = t('An error occurred while fetching the data');
 			});
@@ -58,8 +80,17 @@
 				>{total ?? '?'}</span
 			>
 		</div>
-		<div class="p-4">
+		<div class="p-4 min-h-[450px] flex flex-col justify-between">
 			<Table columns={data.columns} rows={data.rows}></Table>
+			{#if total !== null}
+				<Pagination
+					totalAmountOfButtons={Math.ceil(total / size)}
+					totalAmount={total}
+					{changePage}
+					{size}
+					{page}
+				/>
+			{/if}
 		</div>
 	</div>
 {/if}

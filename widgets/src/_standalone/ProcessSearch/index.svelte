@@ -13,7 +13,7 @@
 	const DEBOUNCE_DELAY: number = 500;
 	let name: string = $state('');
 	let data: ProgressData | null = $state(null);
-	const { search_url, min_search_limit } = config;
+	const { search_url, characters_before_search } = config;
 	let timer: ReturnType<typeof setTimeout>;
 
 	$effect(() => {
@@ -24,7 +24,7 @@
 
 		// Debounce setTimeout
 		timer = setTimeout(() => {
-			if (parsedQuery && parsedQuery.length >= min_search_limit) {
+			if (parsedQuery && parsedQuery.length >= characters_before_search) {
 				const url = new URL(search_url, document.location.href);
 				fetch(url.toString())
 					.then((response) => response.json())
