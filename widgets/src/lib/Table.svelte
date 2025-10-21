@@ -25,12 +25,11 @@
 			<tr>
 				{#each columns as { label }}
 					<th class="px-1 py-3">
-						<button
+						<span
 							class="max-w-[140px] whitespace-prewrap overflow-hidden text-ellipsis text-center text-xs font-medium dark:text-gray-400"
-							aria-label="todo"
 						>
 							{label}
-						</button>
+						</span>
 					</th>
 				{/each}
 			</tr>
