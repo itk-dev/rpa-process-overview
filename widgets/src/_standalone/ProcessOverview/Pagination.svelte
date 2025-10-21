@@ -40,17 +40,19 @@
 	<div class="flex items-center space-x-2">
 		{#if !isThisTheFirstPage()}
 			<button
+				aria-describedby="prev-page-label"
 				onclick={() => changePage(page - 1)}
 				class="cursor-pointer flex justify-center items-center h-8 w-8 rounded-md text-gray-800 dark:text-gray-300 dark:hover:bg-violet-600 hover:bg-violet-300 text-gray-100"
 			>
 				<LeftArrow />
-				<span class="sr-only">{t('Go to previous page')}</span>
+				<span class="sr-only" id="prev-page-label">{t('Go to previous page')}</span>
 			</button>
 		{/if}
 		<div class="flex items-center space-x-1">
 			{#each totalAmountOfPagesAsIntegerArray as index}
-				<span class="sr-only">{t('Go to page')}</span>
+				<span class="sr-only" id={`go-to-page-${index}`}>{t('Go to page')}</span>
 				<button
+					aria-describedby={`go-to-page-${index}`}
 					onclick={() => changePage(index)}
 					class="cursor-pointer flex justify-center items-center h-8 w-8 rounded-md text-gray-800 dark:text-gray-300 dark:hover:bg-violet-600 hover:bg-violet-300 text-gray-100 {page ===
 					index
@@ -66,10 +68,11 @@
 
 		{#if !isThisTheLastPage()}
 			<button
+				aria-describedby="next-page-label"
 				onclick={() => changePage(page + 1)}
 				class="cursor-pointer flex justify-center items-center h-8 w-8 rounded-md text-gray-800 dark:text-gray-300 dark:hover:bg-violet-600 hover:bg-violet-300 text-gray-100"
 				><RightArrow />
-				<span class="sr-only">{t('Go to next page')}</span>
+				<span class="sr-only" id="next-page-label">{t('Go to next page')}</span>
 			</button>
 		{/if}
 	</div>
