@@ -25,7 +25,7 @@ final class ProcessOverviewController extends AbstractController
             throw new BadRequestHttpException();
         }
 
-        $overviewData = Yaml::parse($overview->getOptions() ?? '');
+        $overviewOptions = Yaml::parse($overview->getOptions() ?? '');
 
         return $this->render('process_overview/show.html.twig', [
             'overview' => $overview,
@@ -44,14 +44,14 @@ final class ProcessOverviewController extends AbstractController
                     'of' => strval(t('of')),
                     'An error occurred while fetching the data' => strval(t('An error occurred while fetching the data')),
                 ],
-                'page_size' => $overviewData['data']['page_size'] ?? 5,
+                'page_size' => $overviewOptions['data']['page_size'] ?? 5,
             ],
             'search_config' => [
                 'search_url' => $this->generateUrl('process_overview_search', [
                     'group' => $group->getId(),
                     'overview' => $overview->getId(),
                 ]),
-                'minimum_search_query_length' => $overviewData['search']['minimum_search_query_length'] ?? 2,
+                'minimum_search_query_length' => $overviewOptions['search']['minimum_search_query_length'] ?? 2,
                 'messages' => [
                     'Citizen search' => strval(t('Citizen search')),
                     'Citizen information' => strval(t('Citizen information')),
