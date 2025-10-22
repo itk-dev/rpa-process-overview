@@ -34,7 +34,7 @@
 		<div
 			class="{isTheNextStepFailed(row, cell.step_index)
 				? 'bg-neutral-400 dark:bg-neutral-800'
-				: 'bg-green-700'} absolute top-1/2 left-[calc(50%+16px)] h-0.5 w-[calc(100%-30px)] -translate-y-1/2 z-0"
+				: 'bg-green-700'} absolute top-1/2 left-[calc(50%+18px)] h-0.5 w-[calc(100%)] -translate-y-1/2"
 		></div>
 	{/if}
 </td>

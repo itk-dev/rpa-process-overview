@@ -24,10 +24,12 @@
 		>
 			<tr>
 				{#each columns as { label }}
-					<th class="px-1 py-3 text-center text-xs font-medium dark:text-gray-400 max-w-[120px]">
-						<span class="block text-center whitespace-prewrap overflow-hidden text-ellipsis"
-							>{label}</span
+					<th class="px-1 py-3">
+						<span
+							class="max-w-[140px] whitespace-prewrap overflow-hidden text-ellipsis text-center text-xs font-medium dark:text-gray-400"
 						>
+							{label}
+						</span>
 					</th>
 				{/each}
 			</tr>
