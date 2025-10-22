@@ -107,7 +107,6 @@ tasks:
     cmds:
       - task: api:fixtures:load
       - task: app:fixtures:load
-      - task: oidc:fixtures:load
 
   translations:extract:
     cmds:
@@ -209,8 +208,8 @@ tasks:
     cmds:
       - for:
           - /api/v1/auth/me
-          - /api/v1/processes/processes/
-          - /api/v1/processes/processes/1
+          - /api/v1/processes/
+          - /api/v1/processes/1
         task: api:get
         vars:
           API_PATH: "{{.ITEM}}"

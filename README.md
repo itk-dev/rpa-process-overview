@@ -30,7 +30,7 @@ task site:update
 
 > [!NOTE]
 > Running `task site:update` on [macOS (darwin)](https://en.wikipedia.org/wiki/Darwin_(operating_system)) will pull and
-> patch the API Git submodule (cf. [#api](API)). See [`Taskfile.yml`](Taskfile.yml) for details.
+> patch the API Git submodule (cf. [API](#api)). See [`Taskfile.yml`](Taskfile.yml) for details.
 
 Load fixtures with
 
