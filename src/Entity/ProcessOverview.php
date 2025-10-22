@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ProcessOverviewRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
@@ -31,12 +29,6 @@ class ProcessOverview
     #[ORM\JoinColumn(nullable: false)]
     private ?ProcessOverviewGroup $group = null;
 
-    /**
-     * @var Collection<int, Process>
-     */
-    #[ORM\OneToMany(targetEntity: Process::class, mappedBy: 'process', orphanRemoval: true)]
-    private Collection $steps;
-
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $options = null;
 
@@ -46,11 +38,6 @@ class ProcessOverview
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $processId = null;
-
-    public function __construct()
-    {
-        $this->steps = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -77,36 +64,6 @@ class ProcessOverview
     public function setGroup(?ProcessOverviewGroup $group): static
     {
         $this->group = $group;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Process>
-     */
-    public function getSteps(): Collection
-    {
-        return $this->steps;
-    }
-
-    public function addStep(Process $step): static
-    {
-        if (!$this->steps->contains($step)) {
-            $this->steps->add($step);
-            $step->setProcess($this);
-        }
-
-        return $this;
-    }
-
-    public function removeStep(Process $step): static
-    {
-        if ($this->steps->removeElement($step)) {
-            // set the owning side to null (unless already changed)
-            if ($step->getProcess() === $this) {
-                $step->setProcess(null);
-            }
-        }
 
         return $this;
     }
