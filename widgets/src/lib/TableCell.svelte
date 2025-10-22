@@ -16,7 +16,6 @@
 		className: string;
 		children: Snippet;
 	} = $props();
-	console.log($state.snapshot(cell));
 
 	function isTheNextStepFailed(row: Step[], stepIndex: Number | null) {
 		if (stepIndex === null) return false;
