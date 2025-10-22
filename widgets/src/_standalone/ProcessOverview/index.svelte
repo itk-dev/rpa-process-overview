@@ -38,8 +38,10 @@
 		fetching = true;
 		errorMessage = '';
 		error = false;
-
-		fetch(`${data_url}?page=${page}&size=${size}`)
+		const url = new URL(data_url, document.location.href);
+		url.searchParams.set('page', String(page));
+		url.searchParams.set('size', String(size));
+		fetch(url.toString())
 			.then((response) => response.json())
 			.then(({ data: recievedData, meta }) => {
 				if (recievedData) {
