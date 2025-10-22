@@ -73,5 +73,5 @@ export type OverviewConfig = {
 export type SearchConfig = {
 	messages: Messages;
 	search_url: string;
-	characters_before_search: number;
+	minimum_search_query_length: number;
 };

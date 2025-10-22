@@ -42,7 +42,7 @@ App\Entity\ProcessOverview:
           status: failed
         page_size: 7
       search:
-        characters_before_search: 3
+        minimum_search_query_length: 3
 
   process_overview_2:
     label: Frit valg 0-15 år
@@ -60,7 +60,7 @@ App\Entity\ProcessOverview:
       data:
         page_size: 3
       search:
-        characters_before_search: 2
+        minimum_search_query_length: 2
 
   process_overview_3:
     label: En anden proces (failed)
@@ -78,7 +78,7 @@ App\Entity\ProcessOverview:
           status: failed
         page_size: 3
       search:
-        characters_before_search: 2
+        minimum_search_query_length: 2
   process_overview_4:
     label: En anden proces (pending)
     group: "@process_overview_group_2"
@@ -95,7 +95,7 @@ App\Entity\ProcessOverview:
           status: pending
         page_size: 5
       search:
-        characters_before_search: 3
+        minimum_search_query_length: 3
 
   process_overview_incomplete:
     label: Incomplete (missing process ID)

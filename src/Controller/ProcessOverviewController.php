@@ -51,7 +51,7 @@ final class ProcessOverviewController extends AbstractController
                     'group' => $group->getId(),
                     'overview' => $overview->getId(),
                 ]),
-                'characters_before_search' => $overviewData['search']['characters_before_search'] ?? 2,
+                'minimum_search_query_length' => $overviewData['search']['minimum_search_query_length'] ?? 2,
                 'messages' => [
                     'Citizen search' => strval(t('Citizen search')),
                     'Citizen information' => strval(t('Citizen information')),
