@@ -14,6 +14,8 @@ services:
         '{"sub": "user", "email": "user@example.com", "roles": ["user"]}',
         "--user-claims",
         '{"sub": "overview-manager", "email": "overview-manager@example.com", "roles": ["overview-manager"]}',
+        "--user-claims",
+        '{"sub": "admin", "email": "admin@example.com", "roles": ["admin"]}',
       ]
     ports:
       - "80"

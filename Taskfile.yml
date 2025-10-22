@@ -38,18 +38,29 @@ tasks:
         vars:
           TASK_ARGS: pull
 
-      # Additional setup for local development (assuming we're running on maxOS (darwin))
+      # Additional setup if API service is enabled.
       - cmd: |
-          git -C api checkout .
-          git submodule update --init
-          # Apply a patch to support MySQL in the API and make building it work.
-          git -C api apply < patches/Process_Dashboard_API.patch
-        # https://taskfile.dev/docs/reference/schema#platforms
-        platforms: [darwin]
+          if [ -n "{{.API_ENABLED}}" ]; then
+            git -C api checkout .
+            git submodule update --init
+            # Apply a patch to support MySQL in the API and make building it work.
+            git -C api apply < patches/Process_Dashboard_API.patch
+          fi
 
       - task: compose
         vars:
           TASK_ARGS: up --build --detach --wait
+
+      # Unpatch API if API service is enabled.
+      - cmd: |
+          if [ -n "{{.API_ENABLED}}" ]; then
+            git -C api checkout .
+          fi
+
+    vars:
+      API_ENABLED:
+        # Check if the api service is enabled.
+        sh: (task --silent compose -- config --services  | grep "^api$") || true
 
   logs:
     desc: Show live logs
@@ -107,7 +118,6 @@ tasks:
     cmds:
       - task: api:fixtures:load
       - task: app:fixtures:load
-      - task: oidc:fixtures:load
 
   translations:extract:
     cmds:
@@ -209,8 +219,8 @@ tasks:
     cmds:
       - for:
           - /api/v1/auth/me
-          - /api/v1/processes/processes/
-          - /api/v1/processes/processes/1
+          - /api/v1/processes/
+          - /api/v1/processes/1
         task: api:get
         vars:
           API_PATH: "{{.ITEM}}"

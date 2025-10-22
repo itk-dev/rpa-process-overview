@@ -9,7 +9,6 @@ from app.db.database import create_db_and_tables, get_connection_url
 from app.models import (
     Process,
     ProcessRun,
-    ProcessRunStatus,
     ProcessStep,
     ProcessStepRun,
     StepRunStatus,
@@ -54,7 +53,7 @@ class Fixtures:
                 )
                 session.add(process)
 
-                print(f"process {process.id}")
+                print(f"process {process}")
 
                 number_of_steps = fake.pyint(2, 7)
                 steps = []
@@ -67,7 +66,7 @@ class Fixtures:
                     session.add(step)
                     steps.append(step)
 
-                    print(f"step {step.id}")
+                    print(f" step {step}")
 
                 number_of_runs = fake.pyint(0, 100)
                 for _ in range(number_of_runs):
@@ -85,7 +84,7 @@ class Fixtures:
                     )
                     session.add(run)
 
-                    print(f"run {run.id}")
+                    print(f"  run {run}")
 
                     failed_step_index = fake.pyint(-1, number_of_steps + 1)
                     started_at = fake.past_datetime()
@@ -117,7 +116,7 @@ class Fixtures:
                         )
                         session.add(step_run)
 
-                        print(f"step_run {step_run.id}")
+                        print(f"   step_run {step_run}")
 
                         # @todo Should we generate pending steps?
                         # if status == StepRunStatus.FAILED:
