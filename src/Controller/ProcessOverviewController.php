@@ -34,16 +34,16 @@ final class ProcessOverviewController extends AbstractController
                     'group' => $group->getId(),
                     'overview' => $overview->getId(),
                 ]),
-                'messages' => [
+                'messages' => array_map('strval', [
                     'Go to previous page' => strval(t('Go to previous page')),
-                    'Go to page' => strval(t('Go to page')),
-                    'Go to next page' => strval(t('Go to next page')),
-                    'Missing data' => strval(t('Missing data')),
-                    'Failed processes' => strval(t('Failed processes')),
-                    'Loading data...' => strval(t('Loading data...')),
-                    'of' => strval(t('of')),
-                    'An error occurred while fetching the data' => strval(t('An error occurred while fetching the data')),
-                ],
+                    'Go to page' => t('Go to page'),
+                    'Go to next page' => t('Go to next page'),
+                    'Missing data' => t('Missing data'),
+                    'Failed processes' => t('Failed processes'),
+                    'Loading data...' => t('Loading data...'),
+                    'of' => t('of'),
+                    'An error occurred while fetching the data' => t('An error occurred while fetching the data'),
+                ]),
                 'page_size' => $overviewOptions['data']['page_size'] ?? 5,
             ],
             'search_config' => [
@@ -52,11 +52,11 @@ final class ProcessOverviewController extends AbstractController
                     'overview' => $overview->getId(),
                 ]),
                 'minimum_search_query_length' => $overviewOptions['search']['minimum_search_query_length'] ?? 2,
-                'messages' => [
-                    'Citizen search' => strval(t('Citizen search')),
-                    'Citizen information' => strval(t('Citizen information')),
-                    'An error occurred while searching' => strval(t('An error occurred while searching')),
-                ],
+                'messages' => array_map('strval', [
+                    'Citizen search' => t('Citizen search'),
+                    'Citizen information' => t('Citizen information'),
+                    'An error occurred while searching' => t('An error occurred while searching'),
+                ]),
             ],
         ]);
     }
