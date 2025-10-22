@@ -5,19 +5,17 @@
 	import PaginationButton from './PaginationButton.svelte';
 
 	let {
-		totalAmount,
+		total,
 		size,
 		page,
-		changePage,
-		totalAmountOfButtons
+		changePage
 	}: {
 		size: number;
 		page: number;
-		totalAmount: number;
+		total: number;
 		changePage: Function;
-		totalAmountOfButtons: number;
 	} = $props();
-
+	const totalAmountOfButtons: number = total / size;
 	const totalAmountOfPagesAsIntegerArray = Array.from(
 		{ length: totalAmountOfButtons },
 		(_, i) => i + 1

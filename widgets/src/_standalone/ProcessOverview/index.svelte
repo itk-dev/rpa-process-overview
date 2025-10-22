@@ -85,13 +85,7 @@
 		<div class="p-4 min-h-[450px] flex flex-col justify-between">
 			<Table columns={data.columns} rows={data.rows}></Table>
 			{#if total !== null}
-				<Pagination
-					totalAmountOfButtons={Math.ceil(total / size)}
-					totalAmount={total}
-					{changePage}
-					{size}
-					{page}
-				/>
+				<Pagination {total} {changePage} {size} {page} />
 			{/if}
 		</div>
 	</div>
