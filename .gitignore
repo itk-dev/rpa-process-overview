@@ -26,6 +26,7 @@
 ###< symfony/asset-mapper ###
 
 *.local
+*.local.yml
 .idea
 
 # Generated widget code
