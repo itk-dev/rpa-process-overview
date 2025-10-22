@@ -26,9 +26,14 @@ class DataSourceHelper
         return $this->get($dataSource, 'processes/'.$processId);
     }
 
-    public function getProcessRun(DataSource $dataSource, string $processId, array $query): array
+    public function getProcessRuns(DataSource $dataSource, string $processId, array $query): array
     {
         return $this->get($dataSource, 'runs/', ['process_id' => $processId] + $query);
+    }
+
+    public function getProcessRun(DataSource $dataSource, string $processId, string $runId): array
+    {
+        return $this->get($dataSource, 'runs/'.$runId);
     }
 
     private function get(DataSource $dataSource, string $path, array $query = []): array

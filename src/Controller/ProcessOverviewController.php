@@ -43,6 +43,14 @@ final class ProcessOverviewController extends AbstractController
         return new JsonResponse($data);
     }
 
+    #[Route('/{overview}/data/{run}/raw-data/{field}', name: 'raw_data_field')]
+    public function getRawRunFieldValue(Request $request, ProcessOverview $overview, string $run, string $field, ProcessOverviewHelper $helper): Response
+    {
+        $data = $helper->getRawRunFieldValue($request, $overview, $run, $field);
+
+        return new JsonResponse($data);
+    }
+
     #[Route('/{overview}/search', name: 'search')]
     public function search(Request $request, ProcessOverview $overview, ProcessOverviewHelper $helper): Response
     {
