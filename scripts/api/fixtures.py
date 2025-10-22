@@ -93,14 +93,17 @@ class Fixtures:
                         started_at = started_at + timedelta(seconds=fake.pyint(1, 1000))
                         finished_at = started_at + timedelta(seconds=fake.pyint(3, 42))
                         failure = None
+                        is_rerunnable = False
+                        rerun_config = {}
                         if index == failed_step_index:
+                            is_rerunnable = fake.boolean()
                             status = StepRunStatus.FAILED
                             occurred_at = (finished_at - timedelta(seconds=-fake.pyint(0, 3))).isoformat()
                             finished_at = None
                             failure = {
                                 "code": fake.pyint(1, 7),
                                 "message": fake.sentence(),
-                                "retryable": fake.boolean(),
+                                "retryable": is_rerunnable,
                                 "occurred_at": occurred_at,
                             }
                         step_run = ProcessStepRun(
@@ -108,9 +111,10 @@ class Fixtures:
                             started_at=started_at if status != StepRunStatus.PENDING else None,
                             finished_at=finished_at if status != StepRunStatus.PENDING else None,
                             process=process,
+                            can_rerun=fake.boolean() if status == StepRunStatus.FAILED else False,
                             run=run,
                             step=steps[index],
-                            # An event listener show set this.
+                            # An event listener should set this.
                             step_index=index,
                             failure=failure,
                         )
