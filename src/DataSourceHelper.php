@@ -36,11 +36,25 @@ class DataSourceHelper
         return $this->get($dataSource, 'runs/'.$runId);
     }
 
+    public function rerun(DataSource $dataSource, string $runId): array
+    {
+        return $this->post($dataSource, 'step-runs/'.$runId.'/rerun');
+    }
+
     private function get(DataSource $dataSource, string $path, array $query = []): array
     {
         $url = $this->buildUrl($dataSource, $path, $query);
         $options = $this->buildOptions($dataSource);
         $response = $this->httpClient->request(Request::METHOD_GET, $url, $options);
+
+        return $response->toArray();
+    }
+
+    private function post(DataSource $dataSource, string $path, array $query = []): array
+    {
+        $url = $this->buildUrl($dataSource, $path, $query);
+        $options = $this->buildOptions($dataSource);
+        $response = $this->httpClient->request(Request::METHOD_POST, $url, $options);
 
         return $response->toArray();
     }

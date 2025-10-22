@@ -86,7 +86,20 @@ class ProcessOverviewHelper
                         },
                         $metadataColumns
                     ),
-                    array_map(static fn (array $step) => $step + ['type' => 'step'], $steps),
+                    array_map(
+                        function (array $steps) use ($overview, $item) {
+                            return $steps + [
+                                'type' => 'step',
+                                'rerun_url' => $this->urlGenerator->generate('process_overview_rerun',
+                                    [
+                                        'group' => $overview->getGroup()->getId(),
+                                        'overview' => $overview->getId(),
+                                        'run' => $item['id'],
+                                    ], UrlGeneratorInterface::ABSOLUTE_URL),
+                            ];
+                        },
+                        $steps
+                    ),
                 );
             }
 
@@ -129,6 +142,22 @@ class ProcessOverviewHelper
         }
 
         $data = $this->dataSourceHelper->getProcessRun($datasource, $processId, $run);
+
+        return [
+            'field' => $field,
+            'value' => $this->getArrayValue($data, $field),
+        ];
+    }
+
+    public function rerun(Request $request, ProcessOverview $overview, string $run)
+    {
+        $datasource = $overview->getDataSource();
+        $processId = $overview->getProcessId();
+        if (empty($datasource) || empty($processId)) {
+            return [];
+        }
+
+        $data = $this->dataSourceHelper->rerun($datasource, $run);
 
         return [
             'field' => $field,
