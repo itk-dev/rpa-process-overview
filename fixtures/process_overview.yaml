@@ -32,6 +32,9 @@ App\Entity\ProcessOverview:
       metadata_columns:
           - label: Borger
             data: meta.cpr
+            mask:
+              search: '/\d{4}$/'
+              replace: '-****'
           - label: Name
             data: meta.name
           # Missing

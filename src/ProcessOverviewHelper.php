@@ -6,6 +6,7 @@ use App\Entity\ProcessOverview;
 use League\Uri\Modifier;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Yaml\Yaml;
 
 class ProcessOverviewHelper
@@ -13,6 +14,7 @@ class ProcessOverviewHelper
     public function __construct(
         private readonly PropertyAccessorInterface $propertyAccessor,
         private readonly DataSourceHelper $dataSourceHelper,
+        private readonly UrlGeneratorInterface $urlGenerator,
     ) {
     }
 
@@ -33,7 +35,7 @@ class ProcessOverviewHelper
                 $query = [];
             }
             $query += $request->query->all();
-            $data = $this->dataSourceHelper->getProcessRun($datasource, $processId, $query);
+            $data = $this->dataSourceHelper->getProcessRuns($datasource, $processId, $query);
 
             $metadataColumns = [];
             $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];
@@ -61,10 +63,27 @@ class ProcessOverviewHelper
                 }
                 $rows[] = array_merge(
                     array_map(
-                        fn (array $col) => [
-                            'type' => 'text',
-                            'value' => $this->getArrayValue($item, $col['data']),
-                        ],
+                        function (array $col) use ($overview, $item) {
+                            $value = $this->getArrayValue($item, $col['data']);
+                            $result = [
+                                'type' => 'text',
+                            ];
+
+                            if (isset($col['mask']['search'], $col['mask']['replace'])) {
+                                $value = @preg_replace($col['mask']['search'], $col['mask']['replace'], $value);
+
+                                $result['raw_value_url'] = $this->urlGenerator->generate('process_overview_raw_data_field',
+                                    [
+                                        'group' => $overview->getGroup()->getId(),
+                                        'overview' => $overview->getId(),
+                                        'run' => $item['id'],
+                                        'field' => $col['data'],
+                                    ], UrlGeneratorInterface::ABSOLUTE_URL);
+                            }
+                            $result['value'] = $value;
+
+                            return $result;
+                        },
                         $metadataColumns
                     ),
                     array_map(static fn (array $step) => $step + ['type' => 'step'], $steps),
@@ -99,6 +118,22 @@ class ProcessOverviewHelper
             // @todo Log the exception
             throw $exception;
         }
+    }
+
+    public function getRawRunFieldValue(Request $request, ProcessOverview $overview, string $run, string $field)
+    {
+        $datasource = $overview->getDataSource();
+        $processId = $overview->getProcessId();
+        if (empty($datasource) || empty($processId)) {
+            return [];
+        }
+
+        $data = $this->dataSourceHelper->getProcessRun($datasource, $processId, $run);
+
+        return [
+            'field' => $field,
+            'value' => $this->getArrayValue($data, $field),
+        ];
     }
 
     private function getArrayValue(array $array, string $key): mixed
