@@ -10,7 +10,6 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: ProcessOverviewGroupRepository::class)]
-#[ORM\Table(name: 'rpa_process_overview_process_overview_group')]
 class ProcessOverviewGroup
 {
     use BlameableEntity;
