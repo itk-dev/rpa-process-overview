@@ -35,6 +35,7 @@
 	class="flex items-center overflow-y-scroll justify-between border-t border-neutral-400 dark:border-neutral-700 px-4 py-3"
 >
 	<div class="min-w-[200px] flex items-center text-sm dark:text-gray-300">
+		<!-- Todo find a way to handle placeholders -->
 		<span>{size * page - size}-{size * page} {t('of')} {totalAmount}</span>
 	</div>
 	<div class="flex items-center space-x-2">
