@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\ProcessStepRepository;
+use App\Repository\ProcessRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ProcessStepRepository::class)]
+#[ORM\Entity(repositoryClass: ProcessRepository::class)]
 #[ORM\Table(name: 'rpa_process_overview_process')]
 class Process
 {
