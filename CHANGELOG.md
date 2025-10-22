@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-31](https://github.com/itk-dev/rpa-process-overview/pull/31)
+  * Used Mysql database.
+  * Cleaned up entities.
 * [PR-30](https://github.com/itk-dev/rpa-process-overview/pull/30)
   Add pagination
 * [PR-27](https://github.com/itk-dev/rpa-process-overview/pull/27)
