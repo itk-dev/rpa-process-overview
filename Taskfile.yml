@@ -189,6 +189,7 @@ tasks:
       - git -C api checkout .
       - git -C api checkout main
       - git -C api pull
+      - git -C api log --oneline -10
       # Check that our patch can be applied.
       - git -C api apply --check < patches/Process_Dashboard_API.patch
 
