@@ -68,10 +68,8 @@ class DataSourceHelper
         $options = [];
 
         $dataSourceOptions = $this->getOptions($dataSource);
-        if ($header = ($dataSourceOptions['auth']['header'] ?? null)) {
-            foreach ($header as $name => $value) {
-                $options['headers'][$name] = $value;
-            }
+        if ($clientOptions = ($dataSourceOptions['client_options'] ?? null)) {
+            $options += $clientOptions;
         }
 
         return $options;

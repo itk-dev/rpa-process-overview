@@ -108,6 +108,13 @@ tasks:
     desc: Load app fixtures
     prompt: This will reset your database. Continue?
     cmds:
+      # Reset database (and IDs!) by migrating down and up.
+      - task: console
+        vars:
+          TASK_ARGS: doctrine:migrations:migrate first --no-interaction
+      - task: console
+        vars:
+          TASK_ARGS: doctrine:migrations:migrate --no-interaction
       - task: console
         vars:
           TASK_ARGS: hautelook:fixtures:load --no-interaction
@@ -221,6 +228,7 @@ tasks:
           - /api/v1/auth/me
           - /api/v1/processes/
           - /api/v1/processes/1
+          - /api/v1/runs/?process_id=1&run_status=failed
         task: api:get
         vars:
           API_PATH: "{{.ITEM}}"

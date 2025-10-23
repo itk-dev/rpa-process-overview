@@ -43,9 +43,12 @@ class Fixtures:
             number_of_processes = fake.pyint(50, 200)
             for _ in range(number_of_processes):
                 meta = {
-                    "cpr": "string",
-                    "name": "string",
-                    "branch": "string",
+                    "description": fake.sentence(5),
+                    "run_metadata_schema": {
+                        "cpr": "string",
+                        "name": "string",
+                        "branch": "string",
+                    }
                 }
                 process = Process(
                     name=fake.sentence(4),
