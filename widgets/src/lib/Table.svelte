@@ -43,7 +43,7 @@
 						class="hover:bg-neutral-300 dark:hover:bg-gray-800 border-b border-neutral-300 dark:border-neutral-800"
 					>
 						{#each row as cell, i}
-							{#if cell.status}
+							{#if 'step' === cell.type}
 								<TableCell
 									{cell}
 									{row}
