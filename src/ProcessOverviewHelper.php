@@ -109,7 +109,6 @@ class ProcessOverviewHelper
                 'data' => [
                     'columns' => array_merge($metadataColumns, $stepColumns),
                     'rows' => $rows,
-                    'data' => $data,
                 ],
                 'links' => $links,
                 'meta' => $meta,
