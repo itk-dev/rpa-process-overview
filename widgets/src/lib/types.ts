@@ -36,6 +36,7 @@ export type Step = {
 	can_rerun: boolean | null;
 };
 
+// @todo This can be any object (the the keys and the value types are not static).
 type MetaDataItem = {
 	branch: string;
 	cpr: string;
@@ -60,6 +61,7 @@ export type RawData = {
 
 export type ProgressData = {
 	columns: Column[];
+	// @todo The raw run data will be removed shortly.
 	data: RawData[];
 	rows: Array<Array<Step>>;
 };
