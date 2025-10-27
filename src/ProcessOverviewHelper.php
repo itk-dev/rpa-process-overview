@@ -94,7 +94,7 @@ class ProcessOverviewHelper
                                     [
                                         'group' => $overview->getGroup()->getId(),
                                         'overview' => $overview->getId(),
-                                        'run' => $item['id'],
+                                        'run' => $steps['id'],
                                     ], UrlGeneratorInterface::ABSOLUTE_URL),
                             ];
                         },
@@ -137,6 +137,7 @@ class ProcessOverviewHelper
     {
         $datasource = $overview->getDataSource();
         $processId = $overview->getProcessId();
+
         if (empty($datasource) || empty($processId)) {
             return [];
         }
@@ -157,12 +158,7 @@ class ProcessOverviewHelper
             return [];
         }
 
-        $data = $this->dataSourceHelper->rerun($datasource, $run);
-
-        return [
-            'field' => $field,
-            'value' => $this->getArrayValue($data, $field),
-        ];
+        return $this->dataSourceHelper->rerun($datasource, $run);
     }
 
     private function getArrayValue(array $array, string $key): mixed

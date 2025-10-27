@@ -66,7 +66,7 @@
 				<input
 					id="search"
 					type="search"
-					class="dark:bg-gray-950 bg-white border border-neutral-300 dark:border-neutral-800 outline-none rounded-md pl-10 pr-4 py-2 w-full transition-all dark:text-white text-gray-900 focus:border-neutral-400 focus:border-1 mb-2"
+					class="dark:bg-gray-950 bg-white border border-neutral-300 dark:border-neutral-800 outline-none rounded-md pl-10 pr-4 py-2 w-full transition-all motion-reduce:transition-none dark:text-white text-gray-900 focus:border-neutral-400 focus:border-1 mb-2"
 					bind:value={query}
 				/>
 				{#if error}
