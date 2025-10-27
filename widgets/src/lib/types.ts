@@ -22,6 +22,7 @@ export type Step = {
 	value: string | null;
 	rerun_url: string;
 	created_at: Date | null;
+	occurred_at: Date | null;
 	started_at: Date | null;
 	finished_at: Date | null;
 	updated_at: Date | null;

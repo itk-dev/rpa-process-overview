@@ -14,15 +14,17 @@
 	}: {
 		step: Step;
 	} = $props();
-	let updatedAt: string = $state('');
+	let finishedAt: string | null = $state(null);
 	let posting: boolean = $state(false);
 	let error: boolean = $state(false);
 
-	const { can_rerun, status, id, updated_at, failure, rerun_url } = step;
-	
+	const { can_rerun, status, id, finished_at, failure, rerun_url } = step;
+
 	$effect(() => {
 		dayjs.extend(localizedFormat);
-		updatedAt = dayjs(updated_at).locale(localeDa).format('LLLL');
+		if (finished_at) {
+			finishedAt = dayjs(finished_at).locale(localeDa).format('LLLL');
+		}
 	});
 
 	function rerun() {
@@ -55,7 +57,7 @@
 
 <div
 	id={`popover-${id}`}
-	class="anchor-position bg-transparent [&:popover-open]:flex items-center flex-col"
+	class="anchor-position top-[anchor(bottom)] [justify-self:anchor-center] bg-transparent [&:popover-open]:flex items-center flex-col"
 	anchor={`anchor-${id}`}
 	popover
 >
@@ -65,11 +67,18 @@
 			<div class="py-1 font-bold">
 				{failure.message}
 			</div>
+			<div class="py-1 font-bold">
+				{t('Error code')}
+				{failure.code}
+			</div>
 		{/if}
-		<div class="py-1 font-thin">
-			{t('Updated at')}
-			{updatedAt}
-		</div>
+
+		{#if finishedAt}
+			<div class="py-1 font-thin">
+				{t('Finished at')}
+				{finishedAt}
+			</div>
+		{/if}
 		<!-- For consistency, the button is always visible on failed processes, and disabled if they cannot rerun -->
 		{#if status === StepStatus.FAILED}
 			<button
@@ -92,10 +101,3 @@
 		{/if}
 	</div>
 </div>
-
-<style scoped>
-	.anchor-position {
-		top: anchor(bottom);
-		justify-self: anchor-center;
-	}
-</style>
