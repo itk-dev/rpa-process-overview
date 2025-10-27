@@ -22,34 +22,46 @@
 	let finishedAt: string | null = $state(null);
 	let posting: boolean = $state(false);
 	let error: boolean = $state(false);
+	let failedAt: boolean = $state(false);
 
-	const { can_rerun, status, id, finished_at, failure, rerun_url } = step;
+	const {
+		can_rerun: canRerun,
+		status,
+		id,
+		finished_at: finished,
+		failure,
+		rerun_url: rerunUrl
+	} = step;
 
 	$effect(() => {
 		dayjs.extend(localizedFormat);
 
-		if (finished_at) {
-			finishedAt = dayjs(finished_at).locale(localeDa).format('LLLL');
+		if (failure?.occurred_at) {
+			failedAt = dayjs(failure.occurred_at).locale(localeDa).format('LLLL');
+		}
+		if (finished) {
+			finishedAt = dayjs(finished).locale(localeDa).format('LLLL');
 		}
 	});
 
 	function rerun() {
-		posting = true;
-		error = false;
-	
-		fetch(rerun_url, { method: 'POST' })
-			.then((response) => response.json())
-			.then(() => {
-				updatePosted(true);
-			})
-			.catch(() => {
-				error = true;
-			})
-			.finally(() => {
-				posting = false;
-			});
-	}
+		if (rerunUrl !== null) {
+			posting = true;
+			error = false;
 
+			fetch(rerunUrl, { method: 'POST' })
+				.then((response) => response.json())
+				.then(() => {
+					updatePosted(true);
+				})
+				.catch(() => {
+					error = true;
+				})
+				.finally(() => {
+					posting = false;
+				});
+		}
+	}
 	// tailwind so verbose
 	function getStatusClasses() {
 		if (posted) return 'border-violet-600';
@@ -86,7 +98,7 @@
 				<div class="py-1 font-bold">
 					{failure.message}
 				</div>
-				<div class="py-1">
+				<div class="py-1 font-thin">
 					{t('Error code')}
 					{failure.code}
 				</div>
@@ -98,11 +110,17 @@
 					{finishedAt}
 				</div>
 			{/if}
+			{#if failedAt}
+				<div class="py-1 font-thin">
+					{t('Failed at')}
+					{failedAt}
+				</div>
+			{/if}
 			<!-- For consistency, the button is always visible on failed processes, and disabled if they cannot rerun -->
 			{#if status === StepStatus.FAILED}
 				<button
 					onclick={() => rerun()}
-					disabled={!can_rerun}
+					disabled={!canRerun || rerunUrl === null}
 					type="button"
 					class="flex flex-row items-center justify-center my-3 py-1 px-3 w-full disabled:cursor-default cursor-pointer p-1 disabled:bg-gray-300 hover:disabled:bg-gray-300 rounded-xs text-white bg-violet-600 hover:bg-violet-300"
 				>

@@ -87,15 +87,15 @@ class ProcessOverviewHelper
                         $metadataColumns
                     ),
                     array_map(
-                        function (array $steps) use ($overview, $item) {
+                        function (array $steps) use ($overview) {
                             return $steps + [
                                 'type' => 'step',
-                                'rerun_url' => $this->urlGenerator->generate('process_overview_rerun',
+                                'rerun_url' => $steps['can_rerun'] ? $this->urlGenerator->generate('process_overview_rerun',
                                     [
                                         'group' => $overview->getGroup()->getId(),
                                         'overview' => $overview->getId(),
                                         'run' => $steps['id'],
-                                    ], UrlGeneratorInterface::ABSOLUTE_URL),
+                                    ], UrlGeneratorInterface::ABSOLUTE_URL) : null,
                             ];
                         },
                         $steps

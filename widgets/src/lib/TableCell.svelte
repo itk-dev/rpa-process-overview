@@ -55,7 +55,9 @@
 	<button
 		id={`anchor-${id}`}
 		class="flex items-center justify-center width-stretch [width:stretch] {status !==
-			StepStatus.PENDING && 'cursor-pointer'}"
+		StepStatus.PENDING
+			? 'cursor-pointer'
+			: ''}"
 		popovertarget={`popover-${id}`}
 	>
 		<div

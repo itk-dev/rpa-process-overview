@@ -44,6 +44,7 @@ final class ProcessOverviewController extends AbstractController
                     'An error occurred when the process was restarted' => t('An error occurred when the process was restarted'),
                     'Rerun step' => t('Rerun step'),
                     'Finished at' => t('Finished at'),
+                    'Failed at' => t('Failed at'),
                     'Error code' => t('Error code'),
                     'Loading data...' => t('Loading data...'),
                     'of' => t('of'),

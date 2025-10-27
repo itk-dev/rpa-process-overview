@@ -20,7 +20,7 @@ type Failure = {
 export type Step = {
 	type: RowColumnType;
 	value: string | null;
-	rerun_url: string;
+	rerun_url: string | null;
 	created_at: Date | null;
 	occurred_at: Date | null;
 	started_at: Date | null;
