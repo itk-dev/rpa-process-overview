@@ -45,12 +45,12 @@
 
 	// tailwind so verbose
 	function getPopverClasses() {
-		return `border border-2 rounded-md p-4 dark:bg-gray-900 dark:text-white ${
+		return `border border-2 rounded-md p-4 dark:bg-gray-900 dark:text-white bg-white ${
 			status === StepStatus.SUCCESS
-				? 'border-green-700 dark:bg-green-100 bg-white'
+				? 'border-green-700'
 				: status === StepStatus.FAILED
-					? 'border-rose-700 dark:bg-rose-100 bg-white'
-					: 'border-neutral-400 dark:bg-neutral-100 bg-white'
+					? 'border-rose-700'
+					: 'border-neutral-400'
 		}`;
 	}
 </script>
@@ -67,7 +67,7 @@
 			<div class="py-1 font-bold">
 				{failure.message}
 			</div>
-			<div class="py-1 font-bold">
+			<div class="py-1">
 				{t('Error code')}
 				{failure.code}
 			</div>
