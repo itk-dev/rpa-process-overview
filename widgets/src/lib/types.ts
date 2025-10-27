@@ -2,7 +2,7 @@
 
 type RowColumnType = 'step' | 'text';
 type MetaType = 'meta.branch' | 'meta.name' | 'meta.cpr';
-type Status = 'success' | 'failed' | 'pending';
+export type Status = 'success' | 'failed' | 'pending';
 
 export type Column = {
 	data: MetaType;
@@ -20,7 +20,9 @@ type Failure = {
 export type Step = {
 	type: RowColumnType;
 	value: string | null;
+	rerun_url: string | null;
 	created_at: Date | null;
+	occurred_at: Date | null;
 	started_at: Date | null;
 	finished_at: Date | null;
 	updated_at: Date | null;
@@ -30,6 +32,7 @@ export type Step = {
 	step_index: Number | null;
 	run_id: Number | null;
 	status: Status;
+	can_rerun: boolean | null;
 };
 
 type MetaDataItem = {

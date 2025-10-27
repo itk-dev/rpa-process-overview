@@ -7,3 +7,4 @@
 - [x] Add light mode
 - [x] Localizable texts in svelte
 - [x] Proper error handling
+- [x] Add successful state when sure what api returns on rerun

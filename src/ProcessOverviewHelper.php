@@ -86,7 +86,20 @@ class ProcessOverviewHelper
                         },
                         $metadataColumns
                     ),
-                    array_map(static fn (array $step) => $step + ['type' => 'step'], $steps),
+                    array_map(
+                        function (array $step) use ($overview) {
+                            return $step + [
+                                'type' => 'step',
+                                'rerun_url' => $step['can_rerun'] ? $this->urlGenerator->generate('process_overview_rerun',
+                                    [
+                                        'group' => $overview->getGroup()->getId(),
+                                        'overview' => $overview->getId(),
+                                        'run' => $step['id'],
+                                    ], UrlGeneratorInterface::ABSOLUTE_URL) : null,
+                            ];
+                        },
+                        $steps
+                    ),
                 );
             }
 
@@ -124,6 +137,7 @@ class ProcessOverviewHelper
     {
         $datasource = $overview->getDataSource();
         $processId = $overview->getProcessId();
+
         if (empty($datasource) || empty($processId)) {
             return [];
         }
@@ -134,6 +148,17 @@ class ProcessOverviewHelper
             'field' => $field,
             'value' => $this->getArrayValue($data, $field),
         ];
+    }
+
+    public function rerun(Request $request, ProcessOverview $overview, string $run)
+    {
+        $datasource = $overview->getDataSource();
+        $processId = $overview->getProcessId();
+        if (empty($datasource) || empty($processId)) {
+            return [];
+        }
+
+        return $this->dataSourceHelper->rerun($datasource, $run);
     }
 
     private function getArrayValue(array $array, string $key): mixed

@@ -40,6 +40,12 @@ final class ProcessOverviewController extends AbstractController
                     'Go to next page' => t('Go to next page'),
                     'Missing data' => t('Missing data'),
                     'Failed processes' => t('Failed processes'),
+                    'The process was restarted' => t('The process was restarted'),
+                    'An error occurred when the process was restarted' => t('An error occurred when the process was restarted'),
+                    'Rerun step' => t('Rerun step'),
+                    'Finished at' => t('Finished at'),
+                    'Failed at' => t('Failed at'),
+                    'Error code' => t('Error code'),
                     'Loading data...' => t('Loading data...'),
                     'of' => t('of'),
                     'An error occurred while fetching the data' => t('An error occurred while fetching the data'),
@@ -73,6 +79,14 @@ final class ProcessOverviewController extends AbstractController
     public function getRawRunFieldValue(Request $request, ProcessOverview $overview, string $run, string $field, ProcessOverviewHelper $helper): Response
     {
         $data = $helper->getRawRunFieldValue($request, $overview, $run, $field);
+
+        return new JsonResponse($data);
+    }
+
+    #[Route('/{overview}/runs/{run}/rerun', name: 'rerun', methods: [Request::METHOD_POST])]
+    public function rerun(Request $request, ProcessOverview $overview, string $run, ProcessOverviewHelper $helper): Response
+    {
+        $data = $helper->rerun($request, $overview, $run);
 
         return new JsonResponse($data);
     }
