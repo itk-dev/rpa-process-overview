@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-36](https://github.com/itk-dev/rpa-process-overview/pull/36)
+  * Handled placeholders in JS translations
+  * Updated translations
 * [PR-33](https://github.com/itk-dev/rpa-process-overview/pull/33)
   * Add popover with more info and rerun option
 * [PR-31](https://github.com/itk-dev/rpa-process-overview/pull/31)

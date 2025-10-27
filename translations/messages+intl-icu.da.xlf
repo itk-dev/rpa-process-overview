@@ -53,10 +53,6 @@
         <source>Options</source>
         <target state="translated">Indstillinger</target>
       </trans-unit>
-      <trans-unit id="rjoPh2q" resname="RPA Process Overview">
-        <source>RPA Process Overview</source>
-        <target state="translated">RPA-procesoverblik</target>
-      </trans-unit>
       <trans-unit id="ExFLJqx" resname="Home">
         <source>Home</source>
         <target state="translated">Hjem</target>
@@ -128,6 +124,82 @@
       <trans-unit id="2DkQNvu" resname="Process ({label})">
         <source>Process ({label})</source>
         <target state="translated">Proces ({label})</target>
+      </trans-unit>
+      <trans-unit id="P9_Y7yU" resname="Created by">
+        <source>Created by</source>
+        <target state="translated">Oprettet af</target>
+      </trans-unit>
+      <trans-unit id="LVVWz4T" resname="Created at">
+        <source>Created at</source>
+        <target state="translated">Oprettet</target>
+      </trans-unit>
+      <trans-unit id="ZHIlC6b" resname="Go to previous page">
+        <source>Go to previous page</source>
+        <target state="translated">Gå til forrige side</target>
+      </trans-unit>
+      <trans-unit id="YiuzkhO" resname="Go to next page">
+        <source>Go to next page</source>
+        <target state="translated">Gå til næste side</target>
+      </trans-unit>
+      <trans-unit id="ICfdxrk" resname="Missing data">
+        <source>Missing data</source>
+        <target state="translated">Manglende data</target>
+      </trans-unit>
+      <trans-unit id="SGmWohz" resname="Failed processes">
+        <source>Failed processes</source>
+        <target state="translated">Fejlede processer</target>
+      </trans-unit>
+      <trans-unit id="QOhsBcU" resname="An error occurred while fetching the data">
+        <source>An error occurred while fetching the data</source>
+        <target state="translated">Fejl under indlæsning af data</target>
+      </trans-unit>
+      <trans-unit id="eF09fJD" resname="Citizen search">
+        <source>Citizen search</source>
+        <target state="translated">__Citizen search</target>
+      </trans-unit>
+      <trans-unit id="tx702.d" resname="Citizen information">
+        <source>Citizen information</source>
+        <target state="translated">Borgerinformation</target>
+      </trans-unit>
+      <trans-unit id="XPwqrmY" resname="An error occurred while searching">
+        <source>An error occurred while searching</source>
+        <target state="translated">Fejl ved søgning</target>
+      </trans-unit>
+      <trans-unit id="M.iCN3v" resname="Go to page {page}">
+        <source>Go to page {page}</source>
+        <target state="translated">Gå til side {page}</target>
+      </trans-unit>
+      <trans-unit id="KXqovG." resname="Loading data …">
+        <source>Loading data …</source>
+        <target state="translated">Henter data …</target>
+      </trans-unit>
+      <trans-unit id="iMqbR_1" resname="Showing {from}–{to} of {total}">
+        <source>Showing {from}–{to} of {total}</source>
+        <target state="translated">Viser {from}–{to} of {total}</target>
+      </trans-unit>
+      <trans-unit id="rogeeu2" resname="The process was restarted">
+        <source>The process was restarted</source>
+        <target state="translated">Processen blev genstartet</target>
+      </trans-unit>
+      <trans-unit id="U5QT.Nm" resname="An error occurred when trying to restart the process">
+        <source>An error occurred when trying to restart the process</source>
+        <target state="translated">Fejl under forsøg på at genstarte proces</target>
+      </trans-unit>
+      <trans-unit id="tIp4N7k" resname="Rerun step">
+        <source>Rerun step</source>
+        <target state="translated">Genstart proces</target>
+      </trans-unit>
+      <trans-unit id="wmAX68g" resname="Finished at {finishedAt}">
+        <source>Finished at {finishedAt}</source>
+        <target state="translated">Afsluttet {finishedAt}</target>
+      </trans-unit>
+      <trans-unit id="jmp.PI_" resname="Failed at {failedAt}">
+        <source>Failed at {failedAt}</source>
+        <target state="translated">Fejlet {failedAt}</target>
+      </trans-unit>
+      <trans-unit id="cyzVmW2" resname="Error code: {code}">
+        <source>Error code: {code}</source>
+        <target state="translated">Fejlkode: {code}</target>
       </trans-unit>
     </body>
   </file>

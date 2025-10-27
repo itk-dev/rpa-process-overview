@@ -34,8 +34,13 @@
 	class="flex items-center justify-between border-t border-neutral-400 dark:border-neutral-700 px-4 py-3"
 >
 	<div class="min-w-[200px] flex items-center text-sm dark:text-gray-300">
-		<!-- Todo find a way to handle placeholders -->
-		<span>{size * page - size}-{size * page} {t('of')} {total}</span>
+		<span
+			>{t('Showing {from}–{to} of {total}', {
+				from: size * page - size + 1,
+				to: Math.min(size * page, total),
+				total
+			})}</span
+		>
 	</div>
 	<div class="flex items-center space-x-2">
 		<PaginationButton
@@ -50,7 +55,7 @@
 			{#each totalAmountOfPagesAsIntegerArray as index}
 				<PaginationButton
 					selected={page === index}
-					label={t('Go to page')}
+					label={t('Go to page {page}', { page: index })}
 					id={String(index)}
 					changePage={() => changePage(index)}>{index}</PaginationButton
 				>
