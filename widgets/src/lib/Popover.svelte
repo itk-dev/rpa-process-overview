@@ -99,21 +99,18 @@
 					{failure.message}
 				</div>
 				<div class="py-1 font-thin">
-					{t('Error code')}
-					{failure.code}
+					{t('Error code: {code}', { code: failure.code })}
 				</div>
 			{/if}
 
 			{#if finishedAt}
 				<div class="py-1 font-thin">
-					{t('Finished at')}
-					{finishedAt}
+					{t('Finished at {finishedAt}', { finishedAt })}
 				</div>
 			{/if}
 			{#if failedAt}
 				<div class="py-1 font-thin">
-					{t('Failed at')}
-					{failedAt}
+					{t('Failed at {failedAt}', { failedAt })}
 				</div>
 			{/if}
 			<!-- For consistency, the button is always visible on failed processes, and disabled if they cannot rerun -->
@@ -133,7 +130,7 @@
 			{#if error}
 				<div class="py-1 font-bold max-w-[280px] flex items-center">
 					<Bell className="h-8 w-8 mr-2" />
-					{t('An error occurred when the process was restarted')}
+					{t('An error occurred when trying to restart the process')}
 				</div>
 			{/if}
 		{/if}

@@ -22,4 +22,11 @@ export const config: OverviewConfig = (() => {
 	return {};
 })();
 
-export const t = (text: string) => config.messages?.[text] ?? text + ' (missing translation)';
+export const t = (text: string, placeholders: object = {}) => {
+	const translated = config.messages?.[text] ?? text + ' (missing translation)';
+
+	// Replace `{key}` with `placeholders[key]`. If `key` is not defined, return the placeholder (incl. `{}`).
+	return translated.replace(/\{([^\}]+)\}/g, (match, key) => {
+		return placeholders[key] ?? match;
+	});
+};

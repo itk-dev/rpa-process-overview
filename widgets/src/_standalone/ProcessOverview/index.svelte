@@ -64,7 +64,7 @@
 {:else if fetching}
 	<div class="flex justify-center mb-5">
 		<Spinner>
-			<h2 class="my-3 dark:text-white text-neutral-900">{t('Loading data...')}</h2>
+			<h2 class="my-3 dark:text-white text-neutral-900">{t('Loading data …')}</h2>
 		</Spinner>
 	</div>
 {:else if null === data}

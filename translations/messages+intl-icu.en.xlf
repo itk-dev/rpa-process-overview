@@ -53,10 +53,6 @@
         <source>Options</source>
         <target>Options</target>
       </trans-unit>
-      <trans-unit id="rjoPh2q" resname="RPA Process Overview">
-        <source>RPA Process Overview</source>
-        <target>RPA Process Overview</target>
-      </trans-unit>
       <trans-unit id="ExFLJqx" resname="Home">
         <source>Home</source>
         <target>Home</target>
@@ -128,6 +124,82 @@
       <trans-unit id="2DkQNvu" resname="Process ({label})">
         <source>Process ({label})</source>
         <target>Process ({label})</target>
+      </trans-unit>
+      <trans-unit id="P9_Y7yU" resname="Created by">
+        <source>Created by</source>
+        <target>Created by</target>
+      </trans-unit>
+      <trans-unit id="LVVWz4T" resname="Created at">
+        <source>Created at</source>
+        <target>Created at</target>
+      </trans-unit>
+      <trans-unit id="ZHIlC6b" resname="Go to previous page">
+        <source>Go to previous page</source>
+        <target>Go to previous page</target>
+      </trans-unit>
+      <trans-unit id="YiuzkhO" resname="Go to next page">
+        <source>Go to next page</source>
+        <target>Go to next page</target>
+      </trans-unit>
+      <trans-unit id="ICfdxrk" resname="Missing data">
+        <source>Missing data</source>
+        <target>Missing data</target>
+      </trans-unit>
+      <trans-unit id="SGmWohz" resname="Failed processes">
+        <source>Failed processes</source>
+        <target>Failed processes</target>
+      </trans-unit>
+      <trans-unit id="QOhsBcU" resname="An error occurred while fetching the data">
+        <source>An error occurred while fetching the data</source>
+        <target>An error occurred while fetching the data</target>
+      </trans-unit>
+      <trans-unit id="eF09fJD" resname="Citizen search">
+        <source>Citizen search</source>
+        <target>Citizen search</target>
+      </trans-unit>
+      <trans-unit id="tx702.d" resname="Citizen information">
+        <source>Citizen information</source>
+        <target>Citizen information</target>
+      </trans-unit>
+      <trans-unit id="XPwqrmY" resname="An error occurred while searching">
+        <source>An error occurred while searching</source>
+        <target>An error occurred while searching</target>
+      </trans-unit>
+      <trans-unit id="M.iCN3v" resname="Go to page {page}">
+        <source>Go to page {page}</source>
+        <target>Go to page {page}</target>
+      </trans-unit>
+      <trans-unit id="KXqovG." resname="Loading data …">
+        <source>Loading data …</source>
+        <target>Loading data …</target>
+      </trans-unit>
+      <trans-unit id="iMqbR_1" resname="Showing {from}–{to} of {total}">
+        <source>Showing {from}–{to} of {total}</source>
+        <target>Showing {from}–{to} of {total}</target>
+      </trans-unit>
+      <trans-unit id="rogeeu2" resname="The process was restarted">
+        <source>The process was restarted</source>
+        <target>The process was restarted</target>
+      </trans-unit>
+      <trans-unit id="U5QT.Nm" resname="An error occurred when trying to restart the process">
+        <source>An error occurred when trying to restart the process</source>
+        <target>An error occurred when trying to restart the process</target>
+      </trans-unit>
+      <trans-unit id="tIp4N7k" resname="Rerun step">
+        <source>Rerun step</source>
+        <target>Rerun step</target>
+      </trans-unit>
+      <trans-unit id="wmAX68g" resname="Finished at {finishedAt}">
+        <source>Finished at {finishedAt}</source>
+        <target>Finished at {finishedAt}</target>
+      </trans-unit>
+      <trans-unit id="jmp.PI_" resname="Failed at {failedAt}">
+        <source>Failed at {failedAt}</source>
+        <target>Failed at {failedAt}</target>
+      </trans-unit>
+      <trans-unit id="cyzVmW2" resname="Error code: {code}">
+        <source>Error code: {code}</source>
+        <target>Error code: {code}</target>
       </trans-unit>
     </body>
   </file>
