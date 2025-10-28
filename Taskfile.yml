@@ -108,6 +108,13 @@ tasks:
     desc: Load app fixtures
     prompt: This will reset your database. Continue?
     cmds:
+      # Reset database (and IDs!) by migrating down and up.
+      - task: console
+        vars:
+          TASK_ARGS: doctrine:migrations:migrate first --no-interaction
+      - task: console
+        vars:
+          TASK_ARGS: doctrine:migrations:migrate --no-interaction
       - task: console
         vars:
           TASK_ARGS: hautelook:fixtures:load --no-interaction
@@ -182,6 +189,7 @@ tasks:
       - git -C api checkout .
       - git -C api checkout main
       - git -C api pull
+      - git -C api log --oneline -10
       # Check that our patch can be applied.
       - git -C api apply --check < patches/Process_Dashboard_API.patch
 
@@ -221,6 +229,7 @@ tasks:
           - /api/v1/auth/me
           - /api/v1/processes/
           - /api/v1/processes/1
+          - /api/v1/runs/?process_id=1&run_status=failed
         task: api:get
         vars:
           API_PATH: "{{.ITEM}}"

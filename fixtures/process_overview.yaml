@@ -3,17 +3,19 @@ App\Entity\DataSource:
     label: API mock
     url: http://api:8000
     options: |-
-      auth:
-        header:
+      client_options:
+        headers:
           x-api-key: a-not-so-secret-key
 
   data_source_api_2:
     label: API mock (the same, but another)
     url: http://api:8000
     options: |-
-      auth:
-        header:
+      client_options:
+        headers:
           x-api-key: a-not-so-secret-key
+        verify_peer: false
+        verify_host: false
 
 App\Entity\ProcessOverviewGroup:
   process_overview_group_1:
@@ -42,7 +44,7 @@ App\Entity\ProcessOverview:
           #   data: meta.klinik
       data:
         default_query:
-          status: failed
+          run_status: failed
         page_size: 7
       search:
         minimum_search_query_length: 3
@@ -77,11 +79,13 @@ App\Entity\ProcessOverview:
           - label: Name
             data: meta.name
       data:
+        title: Failed processes
         default_query:
-          status: failed
+          run_status: failed
         page_size: 3
       search:
         minimum_search_query_length: 2
+
   process_overview_4:
     label: En anden proces (pending)
     group: "@process_overview_group_2"
@@ -94,8 +98,28 @@ App\Entity\ProcessOverview:
           - label: Name
             data: meta.name
       data:
+        title: Pending processes
         default_query:
-          status: pending
+          run_status: pending
+        page_size: 5
+      search:
+        minimum_search_query_length: 3
+
+  process_overview_5:
+    label: En anden proces (completed)
+    group: "@process_overview_group_2"
+    dataSource: "@data_source_api_2"
+    processId: 3
+    options: |-
+      metadata_columns:
+          - label: Barn
+            data: meta.cpr
+          - label: Name
+            data: meta.name
+      data:
+        title: Completed processes
+        default_query:
+          run_status: completed
         page_size: 5
       search:
         minimum_search_query_length: 3

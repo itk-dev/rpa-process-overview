@@ -1,7 +1,7 @@
 <fieldset class="process-details">
     <legend>{{ 'Details for {process}'|trans({process: process.name}) }}</legend>
 
-    {% set meta = process.meta|default(null) %}
+    {% set meta = process.meta.run_metadata_schema|default(null) %}
     {% if meta %}
         <section class="meta">
             <header>
