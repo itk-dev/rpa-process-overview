@@ -15,7 +15,7 @@
 		total: number;
 		changePage: Function;
 	} = $props();
-	const totalAmountOfButtons: number = total / size;
+	const totalAmountOfButtons: number = Math.ceil(total / size);
 	const totalAmountOfPagesAsIntegerArray = Array.from(
 		{ length: totalAmountOfButtons },
 		(_, i) => i + 1

@@ -7,6 +7,7 @@ export type Status = 'success' | 'failed' | 'pending';
 export type Column = {
 	data: MetaType;
 	label: string;
+	id: number;
 	type: RowColumnType;
 };
 

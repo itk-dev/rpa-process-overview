@@ -1,15 +1,18 @@
 <script lang="ts">
 	import Spinner from './Icons/Spinner.svelte';
 	import ExclamationMark from './Icons/ExclamationMark.svelte';
-	import { type ProgressData } from '$lib/types';
+	import { type ProgressData, type Column } from '$lib/types';
 	import Table from '$lib/Table.svelte';
 	import { t, config } from './config';
 	import ErrorBanner from '$lib/ErrorBanner.svelte';
 	import Pagination from './Pagination.svelte';
+	import FilterByFailed from './FilterByFailed.svelte';
 
 	const { page_size, data_url } = config;
 
 	let error: boolean = $state(false);
+	let filters: Column[] | null = $state(null);
+	let selectedFilter: number | null = $state(getCurrentFilter());
 	let data: ProgressData | null = $state(null);
 	let total: number | null = $state(null);
 	let fetching: boolean = $state(true);
@@ -22,10 +25,16 @@
 		const page = Number(url.searchParams.get('page')) || null;
 		return page ?? 1;
 	}
+	function getCurrentFilter(): number | null {
+		const url = new URL(document.location.href);
+		const failedAt = Number(url.searchParams.get('failed_at')) || null;
+		return failedAt ?? null;
+	}
 
 	function updateUrl(): void {
 		const pageUrl = new URL(document.location.href);
 		pageUrl.searchParams.set('page', String(page));
+		pageUrl.searchParams.set('failed_at', String(selectedFilter));
 		history.replaceState({}, '', pageUrl);
 	}
 
@@ -38,8 +47,13 @@
 		fetching = true;
 		errorMessage = '';
 		error = false;
+
 		const url = new URL(data_url, document.location.href);
 		url.searchParams.set('page', String(page));
+
+		if (selectedFilter) {
+			url.searchParams.set('failed_at', String(selectedFilter));
+		}
 		url.searchParams.set('size', String(size));
 		fetch(url.toString())
 			.then((response) => response.json())
@@ -47,6 +61,7 @@
 				if (recievedData) {
 					total = meta?.total ?? null;
 					data = recievedData;
+					filters = data.columns.filter(({ type }) => 'step' === type);
 				}
 				fetching = false;
 			})
@@ -57,6 +72,11 @@
 				errorMessage = t('An error occurred while fetching the data');
 			});
 	});
+
+	function selectFilter(event: Event): void {
+		page = 1;
+		selectedFilter = Number((event.target as HTMLInputElement).value) || null;
+	}
 </script>
 
 {#if error}
@@ -74,13 +94,17 @@
 		class="flex flex-col border bg-gray-100 dark:bg-gray-900 border-neutral-300 dark:border-neutral-800 rounded-md mb-5"
 	>
 		<div
-			class="p-3 dark:text-white font-medium bg-gray-200 dark:bg-gray-800 flex items-center border-b border-neutral-300 dark:border-neutral-800"
+			class="p-4 dark:text-white justify-between font-medium bg-gray-200 dark:bg-gray-800 flex items-center border-b border-neutral-300 dark:border-neutral-800"
 		>
-			<ExclamationMark />
-			<h2>{t('Failed processes')}</h2>
-			<span class="ml-2 px-2 py-0.5 text-xs font-semibold rounded-full bg-rose-700 text-white"
-				>{total ?? '?'}</span
-			>
+			<div class="flex">
+				<ExclamationMark />
+				<h2>{t('Failed processes')}</h2>
+				<span
+					class="ml-2 px-2 py-0.5 text-xs font-semibold rounded-full self-center bg-rose-700 text-white"
+					>{total ?? '?'}</span
+				>
+			</div>
+			<FilterByFailed {selectedFilter} {selectFilter} {filters} />
 		</div>
 		<div class="p-4 min-h-[450px] flex flex-col justify-between">
 			<Table columns={data.columns} rows={data.rows}></Table>

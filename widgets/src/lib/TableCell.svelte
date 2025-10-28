@@ -51,11 +51,10 @@
 </script>
 
 <!-- relative to absolute position the stick -->
-<td class="relative">
+<td class="relative [width:stretch]">
 	<button
 		id={`anchor-${id}`}
-		class="flex items-center justify-center width-stretch [width:stretch] {status !==
-		StepStatus.PENDING
+		class="flex items-center justify-center [width:stretch] {status !== StepStatus.PENDING
 			? 'cursor-pointer'
 			: ''}"
 		popovertarget={`popover-${id}`}

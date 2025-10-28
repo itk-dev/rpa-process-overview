@@ -40,6 +40,8 @@ final class ProcessOverviewController extends AbstractController
                     'Go to next page' => t('Go to next page'),
                     'Missing data' => t('Missing data'),
                     'Failed processes' => t('Failed processes'),
+                    'Filter by failed in' => t('Filter by failed in'),
+                    'Show all' => t('Show all'),
                     'The process was restarted' => t('The process was restarted'),
                     'An error occurred when trying to restart the process' => t('An error occurred when trying to restart the process'),
                     'Rerun step' => t('Rerun step'),
