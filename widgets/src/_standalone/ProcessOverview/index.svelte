@@ -11,8 +11,8 @@
 	const { page_size, data_url, title } = config;
 
 	let error: boolean = $state(false);
-	let filters: Column[] | null = $state(null);
-	let selectedFilter: number | null = $state(getCurrentFilter());
+	let filtersFailedAt: Column[] | null = $state(null);
+	let selectedFilterFailedAt: number | null = $state(getCurrentFilter());
 	let data: ProgressData | null = $state(null);
 	let total: number | null = $state(null);
 	let fetching: boolean = $state(true);
@@ -89,10 +89,10 @@
 			});
 	});
 
-	function selectFilter(event: Event): void {
+	function selectFilterFailedAt(event: Event): void {
 		// Page is reset on filters, so when filtered we start from scratch, and not accidentally end up on a page that has no content
 		page = 1;
-		selectedFilter = parseInteger((event.target as HTMLInputElement).value);
+		selectedFilterFailedAt = parseInteger((event.target as HTMLInputElement).value);
 	}
 </script>
 
@@ -121,7 +121,11 @@
 					>{total ?? '?'}</span
 				>
 			</div>
-			<FilterByFailed {selectedFilter} {selectFilter} {filters} />
+			<FilterByFailed
+				selectedFilter={selectedFilterFailedAt}
+				selectFilter={selectFilterFailedAt}
+				filters={filtersFailedAt}
+			/>
 		</div>
 		<div class="p-4 min-h-[450px] flex flex-col justify-between">
 			<Table columns={data.columns} rows={data.rows}></Table>

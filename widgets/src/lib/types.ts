@@ -1,6 +1,6 @@
 // Not sure I've got the types, but theyll probably change when we get the proper api so I wont bother yet
 
-type RowColumnType = 'step' | 'text';
+type RowColumnType = 'meta' | 'step';
 type MetaType = 'meta.branch' | 'meta.name' | 'meta.cpr';
 export type Status = 'success' | 'failed' | 'pending';
 
