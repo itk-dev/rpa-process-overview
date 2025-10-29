@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-43](https://github.com/itk-dev/rpa-process-overview/pull/43)
+  * Refactored users and permissions
+  * Handled "rerun process run step" permission
 * [PR-38](https://github.com/itk-dev/rpa-process-overview/pull/38)
   * Add filter on failed in
 * [PR-37](https://github.com/itk-dev/rpa-process-overview/pull/37)

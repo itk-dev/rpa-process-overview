@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Admin\Field\FormField;
 use App\DataSourceHelper;
 use App\Entity\ProcessOverview;
+use App\Entity\UserRole;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -16,9 +17,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\FormField as EaFormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\ChoiceList\Loader\CallbackChoiceLoader;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 use function Symfony\Component\Translation\t;
 
+#[IsGranted(UserRole::OverviewEditor->value)]
 class ProcessOverviewCrudController extends AbstractCrudController
 {
     public function __construct(

@@ -3,14 +3,17 @@
 namespace App\Controller\Admin;
 
 use App\Entity\DataSource;
+use App\Entity\UserRole;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CodeEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 use function Symfony\Component\Translation\t;
 
+#[IsGranted(UserRole::SuperAdmin->value)]
 class DataSourceCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string

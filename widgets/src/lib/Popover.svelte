@@ -22,7 +22,7 @@
 	let finishedAt: string | null = $state(null);
 	let posting: boolean = $state(false);
 	let error: boolean = $state(false);
-	let failedAt: boolean = $state(false);
+	let failedAt: string | null = $state(null);
 
 	const {
 		can_rerun: canRerun,
@@ -113,8 +113,9 @@
 					{t('Failed at {failedAt}', { failedAt })}
 				</div>
 			{/if}
-			<!-- For consistency, the button is always visible on failed processes, and disabled if they cannot rerun -->
-			{#if status === StepStatus.FAILED}
+			<!-- If rerunUrl is not set, the user must not see any rerun information -->
+			{#if status === StepStatus.FAILED && 'undefined' !== typeof rerunUrl}
+				<!-- For consistency, the button is always visible on failed processes, and disabled if they cannot rerun -->
 				<button
 					onclick={() => rerun()}
 					disabled={!canRerun || rerunUrl === null}
