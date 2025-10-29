@@ -23,6 +23,7 @@
 		timer = setTimeout(() => {
 			feedbackClass = '';
 			feedback = '';
+			error = false;
 		}, FEEDBACK_VISIBLE);
 	}
 
