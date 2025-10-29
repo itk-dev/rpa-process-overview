@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-38](https://github.com/itk-dev/rpa-process-overview/pull/38)
+  * Add filter on failed in
 * [PR-37](https://github.com/itk-dev/rpa-process-overview/pull/37)
   * Add favicon
 * [PR-36](https://github.com/itk-dev/rpa-process-overview/pull/36)

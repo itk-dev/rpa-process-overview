@@ -7,11 +7,12 @@ export type Status = 'success' | 'failed' | 'pending';
 export type Column = {
 	data: MetaType;
 	label: string;
+	id: number;
 	type: RowColumnType;
 };
 
 type Failure = {
-	code: Number;
+	code: number;
 	message: string;
 	occurred_at: Date;
 	retryable: Boolean;
@@ -50,10 +51,10 @@ type Item = {
 };
 
 export type RawData = {
-	page: Number;
-	pages: Number;
-	size: Number;
-	total: Number;
+	page: number;
+	pages: number;
+	size: number;
+	total: number;
 	items: Item[];
 };
 

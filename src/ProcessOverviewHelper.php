@@ -50,6 +50,7 @@ class ProcessOverviewHelper
             foreach ($process['steps'] as $step) {
                 $stepColumns[] = [
                     'label' => $step['name'],
+                    'id' => $step['id'],
                     'type' => 'step',
                 ];
             }
