@@ -38,6 +38,10 @@ class Fixtures:
         fake = Faker()
         fake.seed_instance(seed)
 
+        branches = [
+            fake.company() for _ in range(7)
+        ]
+
         engine = create_engine(get_connection_url())
         with Session(engine) as session:
             number_of_processes = fake.pyint(50, 200)
@@ -76,7 +80,7 @@ class Fixtures:
                     meta = {
                         "cpr": str(fake.random_number(10, fix_len=True)),
                         "name": fake.name(),
-                        "branch": fake.company(),
+                        "branch": branches[fake.pyint(0, len(branches) - 1)]
                     }
 
                     run = ProcessRun(
