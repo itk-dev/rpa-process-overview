@@ -41,7 +41,9 @@
 	function updateUrl(): void {
 		const pageUrl = new URL(document.location.href);
 		pageUrl.searchParams.set('page', String(page));
-		pageUrl.searchParams.set('failed_at', String(selectedFilter));
+		if (selectedFilter) {
+			pageUrl.searchParams.set('failed_at', String(selectedFilter));
+		}
 		history.replaceState({}, '', pageUrl);
 	}
 
@@ -61,13 +63,16 @@
 		if (selectedFilter) {
 			url.searchParams.set('failed_at', String(selectedFilter));
 		}
+
 		url.searchParams.set('size', String(size));
+
 		fetch(url.toString())
 			.then((response) => response.json())
 			.then(({ data: recievedData, meta }: { data: ProgressData | null; meta: RawData }) => {
 				if (recievedData) {
 					total = meta?.total ?? null;
 					data = recievedData;
+					console.log(recievedData);
 					filters = recievedData.columns.filter(({ type }) => 'step' === type);
 				}
 				fetching = false;
