@@ -9,6 +9,7 @@ export type Column = {
 	label: string;
 	id: number;
 	type: RowColumnType;
+	value_name?: string;
 };
 
 type Failure = {

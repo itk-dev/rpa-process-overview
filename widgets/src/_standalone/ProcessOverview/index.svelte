@@ -11,8 +11,12 @@
 	const { page_size, data_url, title } = config;
 
 	let error: boolean = $state(false);
+
 	let filtersFailedAt: Column[] | null = $state(null);
-	let selectedFilterFailedAt: number | null = $state(getCurrentFilter());
+	let selectedFilterFailedAt: number | null = $state(getCurrentFilterFailedAt());
+	let filtersMeta: Column[] | null = $state(null);
+	let selectedFilterMeta: object | null = $state(getCurrentFilterMeta());
+
 	let data: ProgressData | null = $state(null);
 	let total: number | null = $state(null);
 	let fetching: boolean = $state(true);
@@ -34,10 +38,21 @@
 		const url = new URL(document.location.href);
 		return parseInteger(url.searchParams.get('page')) ?? 1;
 	}
-
-	function getCurrentFilter(): number | null {
+	function getCurrentFilterFailedAt(): number | null {
 		const url = new URL(document.location.href);
 		return parseInteger(url.searchParams.get('failed_at'));
+	}
+	function getCurrentFilterMeta(): object {
+		const url = new URL(document.location.href);
+		const filters = {}
+		for (const item of url.searchParams.getAll('meta_filter')) {
+			const pair = item.split(':', 2)
+			if (2 === pair.length) {
+				filters[pair[0]] = pair[1]
+			}
+		}
+
+		return filters
 	}
 
 	function setUrlSearchParams(url: URL) {
@@ -128,6 +143,7 @@
 			/>
 		</div>
 		<div class="p-4 min-h-[450px] flex flex-col justify-between">
+			<pre>{JSON.stringify([filtersMeta, selectedFilterMeta, getCurrentFilterMeta()], null, 2)}</pre>
 			<Table columns={data.columns} rows={data.rows}></Table>
 			{#if total !== null}
 				<Pagination {total} {changePage} {size} {page} />

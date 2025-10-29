@@ -6,6 +6,7 @@
 	import TableStepCell from './TableStepCell.svelte';
 	import TableMetaCell from './TableMetaCell.svelte';
 	import { StepStatus } from './enums';
+	import MetaFilterWidget from "$lib/MetaFilterWidget.svelte";
 
 	let { columns, rows }: { columns: Column[] | null; rows: Array<Array<Step>> | null } = $props();
 
@@ -53,6 +54,7 @@
 								<TableMetaCell rawValueUrl={cell.raw_value_url}>
 									<!-- Let's keep the little ghost -->
 									{cell.value ?? cell.status ?? '👻'}
+									<MetaFilterWidget name={columns[i].value_name} {cell}/>
 								</TableMetaCell>
 							{/if}
 						{/each}
