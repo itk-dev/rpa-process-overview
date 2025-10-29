@@ -22,7 +22,7 @@
 	let finishedAt: string | null = $state(null);
 	let posting: boolean = $state(false);
 	let error: boolean = $state(false);
-	let failedAt: string|null = $state(null);
+	let failedAt: string | null = $state(null);
 
 	const {
 		can_rerun: canRerun,
