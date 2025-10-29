@@ -15,7 +15,7 @@
 
 {#if filters}
 	<div>
-		<label for="filter-select" class="mx-2">{t('Viewing processes failed in')}</label>
+		<label for="filter-select" class="mx-2">{t('Showing processes failed in')}</label>
 		<select
 			value={selectedFilter}
 			onchange={(e) => selectFilter(e)}
