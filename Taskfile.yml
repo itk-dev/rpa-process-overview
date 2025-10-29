@@ -103,6 +103,10 @@ tasks:
       - task: console
         vars:
           TASK_ARGS: cache:clear
+      - task: widgets:deploy
+      - task: console
+        vars:
+          TASK_ARGS: tailwind:build
 
   app:fixtures:load:
     desc: Load app fixtures
@@ -143,6 +147,10 @@ tasks:
   widgets:deploy:
     desc: Build widgets for production and copy to public folder
     cmds:
+      - task: console
+        vars:
+          TASK_ARGS: tailwind:build
+
       - task: widgets:build
 
       # Copy result into public folder
