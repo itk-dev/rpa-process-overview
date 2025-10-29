@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Spinner from './Icons/Spinner.svelte';
 	import ExclamationMark from './Icons/ExclamationMark.svelte';
-	import { type ProgressData, type Column } from '$lib/types';
+	import { type ProgressData, type Column, type RawData } from '$lib/types';
 	import Table from '$lib/Table.svelte';
 	import { t, config } from './config';
 	import ErrorBanner from '$lib/ErrorBanner.svelte';
@@ -20,15 +20,22 @@
 	let size: number = $state(parseInt(page_size));
 	let page: number = $state(getCurrentPage());
 
+	function parseInteger(int: string | null): number | null {
+		if (int) {
+			return Number(int);
+		}
+		return null;
+	}
+
 	function getCurrentPage(): number {
 		const url = new URL(document.location.href);
-		const page = Number(url.searchParams.get('page')) || null;
+		const page = parseInteger(url.searchParams.get('page'));
 		return page ?? 1;
 	}
 	function getCurrentFilter(): number | null {
 		const url = new URL(document.location.href);
-		const failedAt = Number(url.searchParams.get('failed_at')) || null;
-		return failedAt ?? null;
+		const failedAt = parseInteger(url.searchParams.get('failed_at'));
+		return failedAt;
 	}
 
 	function updateUrl(): void {
@@ -57,11 +64,11 @@
 		url.searchParams.set('size', String(size));
 		fetch(url.toString())
 			.then((response) => response.json())
-			.then(({ data: recievedData, meta }) => {
+			.then(({ data: recievedData, meta }: { data: ProgressData | null; meta: RawData }) => {
 				if (recievedData) {
 					total = meta?.total ?? null;
 					data = recievedData;
-					filters = data.columns.filter(({ type }) => 'step' === type);
+					filters = recievedData.columns.filter(({ type }) => 'step' === type);
 				}
 				fetching = false;
 			})
@@ -74,8 +81,9 @@
 	});
 
 	function selectFilter(event: Event): void {
+		// Page is reset on filters, so when filtered we start from scratch, and not accidentally end up on a page that has no content
 		page = 1;
-		selectedFilter = Number((event.target as HTMLInputElement).value) || null;
+		selectedFilter = parseInteger((event.target as HTMLInputElement).value);
 	}
 </script>
 

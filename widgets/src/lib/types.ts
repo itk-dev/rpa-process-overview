@@ -12,7 +12,7 @@ export type Column = {
 };
 
 type Failure = {
-	code: Number;
+	code: number;
 	message: string;
 	occurred_at: Date;
 	retryable: Boolean;
@@ -51,10 +51,10 @@ type Item = {
 };
 
 export type RawData = {
-	page: Number;
-	pages: Number;
-	size: Number;
-	total: Number;
+	page: number;
+	pages: number;
+	size: number;
+	total: number;
 	items: Item[];
 };
 
