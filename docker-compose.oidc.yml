@@ -13,7 +13,11 @@ services:
         "--user-claims",
         '{"sub": "user", "email": "user@example.com", "roles": ["user"]}',
         "--user-claims",
-        '{"sub": "overview-manager", "email": "overview-manager@example.com", "roles": ["overview-manager"]}',
+        '{"sub": "overview-editor", "email": "overview-editor@example.com", "roles": ["overview-editor"]}',
+        "--user-claims",
+        '{"sub": "overview-viewer", "email": "overview-viewer@example.com", "roles": ["overview-viewer"]}',
+        "--user-claims",
+        '{"sub": "process-step-runner", "email": "process-step-runner@example.com", "roles": ["process-step-runner"]}',
         "--user-claims",
         '{"sub": "admin", "email": "admin@example.com", "roles": ["admin"]}',
       ]

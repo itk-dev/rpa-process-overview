@@ -134,10 +134,11 @@ For local testing of OIDC login, we use [OpenID Provider Mock](https://github.co
 
 The following users are defined in the mock (cf. [`docker-compose.oidc.yml`](docker-compose.oidc.yml)):
 
-| Username (sub)   | Roles            |
-|------------------|------------------|
-| overview-manager | overview-manager |
-| user             | user             |
+| Username (sub)      | Roles               | What they can do                              |
+|---------------------|---------------------|-----------------------------------------------|
+| overview-editor     | overview-editor     | Create and edit overviews                     |
+| overview-viewer     | overview-viewer     | View overviews                                |
+| process-step-runner | process-step-runner | View overviews and rerun failed process steps |
 
 > [!TIP]
 > Set `DOCKER_OIDC_DISABLE` to a non-empty value in `.env.local` to disable the OIDC service, e.g.
