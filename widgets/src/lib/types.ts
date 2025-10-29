@@ -79,5 +79,6 @@ export type OverviewConfig = {
 export type SearchConfig = {
 	messages: Messages;
 	search_url: string;
+	process_id: string;
 	minimum_search_query_length: number;
 };

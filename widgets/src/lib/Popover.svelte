@@ -118,7 +118,7 @@
 				<!-- For consistency, the button is always visible on failed processes, and disabled if they cannot rerun -->
 				<button
 					onclick={() => rerun()}
-					disabled={!canRerun || rerunUrl === null}
+					disabled={!canRerun}
 					type="button"
 					class="flex flex-row items-center justify-center my-3 py-1 px-3 w-full disabled:cursor-default cursor-pointer p-1 disabled:bg-gray-300 hover:disabled:bg-gray-300 rounded-xs text-white bg-violet-600 hover:bg-violet-300"
 				>

@@ -7,7 +7,7 @@ vars:
 
 tasks:
   build:
-    desc: Build widget for production
+    desc: 'Build widget for production'
     deps: [install]
     cmds:
       - rm -fr static/dist && mkdir -p static/dist
@@ -16,7 +16,7 @@ tasks:
           TASK_ARGS: run --rm node npx standalone build --all --production
 
   build:dev:
-    desc: Build widget for develoment
+    desc: 'Build widget for development'
     deps: [install]
     cmds:
       - task: compose
