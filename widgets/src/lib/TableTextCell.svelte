@@ -4,7 +4,6 @@
 	import Scissor from './Icons/Scissor.svelte';
 	import { t } from '../_standalone/ProcessOverview/config';
 	let error: boolean = $state(false);
-	let success: boolean = $state(false);
 	let feedback: string = $state('');
 	let feedbackClass: string = $state('');
 	let timer: ReturnType<typeof setTimeout>;
@@ -34,7 +33,6 @@
 			.then(({ value }) => {
 				try {
 					navigator.clipboard.writeText(value);
-					success = true;
 					showFeedback(t('Copied!'));
 					feedback = t('Copied!');
 				} catch {
