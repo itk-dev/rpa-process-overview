@@ -14,8 +14,6 @@
 
 	let filtersFailedAt: Column[] | null = $state(null);
 	let selectedFilterFailedAt: number | null = $state(getCurrentFilterFailedAt());
-	let filtersMeta: Column[] | null = $state(null);
-	let selectedFilterMeta: object | null = $state(getCurrentFilterMeta());
 
 	let data: ProgressData | null = $state(null);
 	let total: number | null = $state(null);
@@ -38,21 +36,49 @@
 		const url = new URL(document.location.href);
 		return parseInteger(url.searchParams.get('page')) ?? 1;
 	}
+
 	function getCurrentFilterFailedAt(): number | null {
 		const url = new URL(document.location.href);
 		return parseInteger(url.searchParams.get('failed_at'));
 	}
+
 	function getCurrentFilterMeta(): object {
 		const url = new URL(document.location.href);
-		const filters = {}
+		const filters = {};
 		for (const item of url.searchParams.getAll('meta_filter')) {
-			const pair = item.split(':', 2)
+			const pair = item.split(':', 2);
 			if (2 === pair.length) {
-				filters[pair[0]] = pair[1]
+				filters[pair[0]] = pair[1];
 			}
 		}
 
-		return filters
+		return filters;
+	}
+
+	function getCurrentMetaFilter(name: string): string | null {
+		const url = new URL(document.location.href);
+		for (const [key, value] of url.searchParams) {
+			if ('meta_filter' === key) {
+				const pair = value.split(':', 2);
+				if (2 === pair.length && name === pair[0]) {
+					return pair[1];
+				}
+			}
+		}
+
+		return null;
+	}
+
+	function getToggleMetaFilterUrl(name: string, value: string): string {
+		const url = new URL(document.location.href);
+		const current = getCurrentMetaFilter(name);
+		if (current) {
+			url.searchParams.delete('meta_filter', name + ':' + value);
+		} else {
+			url.searchParams.append('meta_filter', name + ':' + value);
+		}
+
+		return url.toString();
 	}
 
 	function setUrlSearchParams(url: URL) {
@@ -62,6 +88,10 @@
 		} else {
 			url.searchParams.delete('failed_at');
 		}
+		for (const [name, value] of Object.entries(getCurrentFilterMeta())) {
+			url.searchParams.append('meta_filter', name + ':' + value);
+		}
+		history.replaceState({}, '', pageUrl);
 	}
 
 	function updateUrl(): URL {
@@ -143,8 +173,8 @@
 			/>
 		</div>
 		<div class="p-4 min-h-[450px] flex flex-col justify-between">
-			<pre>{JSON.stringify([filtersMeta, selectedFilterMeta, getCurrentFilterMeta()], null, 2)}</pre>
-			<Table columns={data.columns} rows={data.rows}></Table>
+			<Table columns={data.columns} rows={data.rows} {getToggleMetaFilterUrl} {getCurrentMetaFilter}
+			></Table>
 			{#if total !== null}
 				<Pagination {total} {changePage} {size} {page} />
 			{/if}

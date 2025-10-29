@@ -39,9 +39,9 @@ App\Entity\ProcessOverview:
               replace: '-****'
           - label: Name
             data: meta.name
-          # Missing
-          # - label: Klinik
-          #   data: meta.klinik
+          - label: Klinik
+            data: meta.branch
+            is_filterable: true
       data:
         title: Failed processes
         default_query:
@@ -63,6 +63,7 @@ App\Entity\ProcessOverview:
             data: meta.name
           - label: Klinik
             data: meta.branch
+            is_filterable: true
       data:
         title: Failed processes
         page_size: 3
