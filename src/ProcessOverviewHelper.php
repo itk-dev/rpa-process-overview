@@ -50,6 +50,10 @@ class ProcessOverviewHelper
                 array_map(
                     function (array $col) use ($overview, $item) {
                         if (!isset($item['id']) && isset($item['run'])) {
+                            // The reason for the $item = $item['run'] stuff is, that the data returned from the api
+                            // differs in format. Described in this issue:
+                            // https://github.com/AAK-MBU/Process_Dashboard_API/issues/40 Todo, remove if the issue is
+                            // fixed.
                             $item = $item['run'];
                         }
 
