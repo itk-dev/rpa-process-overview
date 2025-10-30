@@ -8,7 +8,8 @@
 	import Pagination from './Pagination.svelte';
 	import FilterByFailed from './FilterByFailed.svelte';
 
-	const { page_size, data_url } = config;
+	const { page_size: pageSize, data_url: dataUrl, page_headline: pageHeadline } = config;
+
 
 	let error: boolean = $state(false);
 	let filters: Column[] | null = $state(null);
@@ -17,7 +18,7 @@
 	let total: number | null = $state(null);
 	let fetching: boolean = $state(true);
 	let errorMessage: string = $state('');
-	let size: number = $state(parseInt(page_size));
+	let size: number = $state(parseInt(pageSize));
 	let page: number = $state(getCurrentPage());
 
 	function parseInteger(int: string | null): number | null {
@@ -57,7 +58,7 @@
 		errorMessage = '';
 		error = false;
 
-		const url = new URL(data_url, document.location.href);
+		const url = new URL(dataUrl, document.location.href);
 		url.searchParams.set('page', String(page));
 
 		if (selectedFilter) {
@@ -110,7 +111,7 @@
 		>
 			<div class="flex">
 				<ExclamationMark />
-				<h2>{t('Failed processes')}</h2>
+				<h2>{pageHeadline}</h2>
 				<span
 					class="ml-2 px-2 py-0.5 text-xs font-semibold rounded-full self-center bg-rose-700 text-white"
 					>{total ?? '?'}</span

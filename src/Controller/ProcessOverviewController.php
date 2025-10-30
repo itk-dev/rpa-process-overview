@@ -57,6 +57,7 @@ final class ProcessOverviewController extends AbstractController
                     'An error occurred while fetching the data' => t('An error occurred while fetching the data'),
                 ]),
                 'page_size' => $overviewOptions['data']['page_size'] ?? 5,
+                'page_headline' => $overview->getPageHeadline(),
             ],
             'search_config' => [
                 'search_url' => $this->generateUrl('process_overview_search', [

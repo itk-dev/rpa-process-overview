@@ -24,6 +24,9 @@ class ProcessOverview
     #[ORM\Column(length: 255)]
     private ?string $label = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $pageHeadline = null;
+
     #[ORM\ManyToOne(inversedBy: 'processes')]
     #[ORM\JoinColumn(nullable: false)]
     private ?ProcessOverviewGroup $group = null;
@@ -41,6 +44,18 @@ class ProcessOverview
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getPageHeadline(): ?string
+    {
+        return $this->pageHeadline;
+    }
+
+    public function setPageHeadline(string $pageHeadline): static
+    {
+        $this->pageHeadline = $pageHeadline;
+
+        return $this;
     }
 
     public function getLabel(): ?string

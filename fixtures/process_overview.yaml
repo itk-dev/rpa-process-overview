@@ -27,6 +27,7 @@ App\Entity\ProcessOverviewGroup:
 App\Entity\ProcessOverview:
   process_overview_1:
     label: Udskrivning 22 år
+    page_headline: Fejlede processer
     group: "@process_overview_group_1"
     dataSource: "@data_source_api"
     processId: 1
@@ -51,6 +52,7 @@ App\Entity\ProcessOverview:
 
   process_overview_2:
     label: Frit valg 0-15 år
+    page_headline: Fejlede processer
     group: "@process_overview_group_1"
     dataSource: "@data_source_api"
     processId: 2
@@ -69,6 +71,7 @@ App\Entity\ProcessOverview:
 
   process_overview_3:
     label: En anden proces (failed)
+    page_headline: Fejlede processer
     group: "@process_overview_group_2"
     dataSource: "@data_source_api_2"
     processId: 3
@@ -88,6 +91,7 @@ App\Entity\ProcessOverview:
 
   process_overview_4:
     label: En anden proces (pending)
+    page_headline: Fejlede processer
     group: "@process_overview_group_2"
     dataSource: "@data_source_api_2"
     processId: 3
@@ -107,6 +111,7 @@ App\Entity\ProcessOverview:
 
   process_overview_5:
     label: En anden proces (completed)
+    page_headline: Fejlede processer
     group: "@process_overview_group_2"
     dataSource: "@data_source_api_2"
     processId: 3
@@ -126,6 +131,7 @@ App\Entity\ProcessOverview:
 
   process_overview_incomplete:
     label: Incomplete (missing process ID)
+    page_headline: Fejlede processer
     group: "@process_overview_group_1"
     dataSource: "@data_source_api"
     options: |-
