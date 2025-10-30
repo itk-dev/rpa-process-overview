@@ -7,7 +7,10 @@ vars:
   BASE_PATH: tidy_feedback
   WIDGET_URL: 'http://localhost:{{.APP_PORT}}/{{.BASE_PATH}}'
 
-  DOCKER_COMPOSE: '{{.TASK_DOCKER_COMPOSE | default "docker compose" }}'
+  # For some reason running tasks from this file from the parent Taskfile
+  # (../Taskfile.yml) does not pick up the expected docker ompose project name.
+  # Therefore we set it here.
+  # WIDGETS_DOCKER_COMPOSE: 'docker compose --project-name rpa-process-overview-widgets'
 
 tasks:
   build:
@@ -15,13 +18,17 @@ tasks:
     deps: [install]
     cmds:
       - rm -fr static/dist && mkdir -p static/dist
-      - docker compose run --rm node npx standalone build --all --production
+      - task: compose
+        vars:
+          TASK_ARGS: run --rm node npx standalone build --all --production
 
   build:dev:
     desc: Build widget for develoment
     deps: [install]
     cmds:
-      - docker compose run --rm node npx standalone build --all
+      - task: compose
+        vars:
+          TASK_ARGS: run --rm node npx standalone build --all
 
   dev:
     desc: 'Open widget dev site and start Vite dev server'
@@ -29,7 +36,9 @@ tasks:
     cmds:
       # https://stackoverflow.com/a/73821896
       # - docker compose run --env ORIGIN=http://localhost:3000 --rm --publish '{{.APP_PORT}}:{{.APP_PORT}}' node npm run dev -- --port {{.APP_PORT}} --host
-      - docker compose run --name tidy-feedback-widget --rm --publish '{{.APP_PORT}}:{{.APP_PORT}}' node npm run dev -- --port {{.APP_PORT}} --host
+      - task: compose
+        vars:
+          TASK_ARGS: run --name tidy-feedback-widget --rm --publish '{{.APP_PORT}}:{{.APP_PORT}}' node npm run dev -- --port {{.APP_PORT}} --host
 
   open:
     desc: 'Open widget dev site'
@@ -38,14 +47,18 @@ tasks:
 
   install:
     cmds:
-      - COMPOSE_PROFILES='*' docker compose pull
+      - task: compose
+        vars:
+          TASK_ARGS: --profile '*' pull
       - task npm -- install
     internal: true
 
   npm:
     desc: 'Run npm command. Example: task {{.TASK}} -- install'
     cmds:
-      - docker compose run --rm node npm {{.CLI_ARGS}}
+      - task: compose
+        vars:
+          TASK_ARGS: run --rm node npm
 
   coding-standards:apply:
     desc: 'Apply coding standards'
@@ -65,7 +78,10 @@ tasks:
   compose:
     desc: Run docker compose
     cmds:
-      - '{{.DOCKER_COMPOSE}} {{.TASK_ARGS}} {{.CLI_ARGS}}'
+      # For some reason running tasks from this file from the parent Taskfile
+      # (../Taskfile.yml) does not pick up the expected docker ompose project
+      # name. Therefore we set it explicitly here.
+      - 'docker compose --project-name rpa-process-overview-widgets {{.TASK_ARGS}} {{.CLI_ARGS}}'
     internal: true
 
   default:
