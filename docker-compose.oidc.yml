@@ -18,8 +18,6 @@ services:
         '{"sub": "overview-viewer", "email": "overview-viewer@example.com", "roles": ["overview-viewer"]}',
         "--user-claims",
         '{"sub": "process-step-runner", "email": "process-step-runner@example.com", "roles": ["process-step-runner"]}',
-        "--user-claims",
-        '{"sub": "admin", "email": "admin@example.com", "roles": ["admin"]}',
       ]
     ports:
       - "80"
