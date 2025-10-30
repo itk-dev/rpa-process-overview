@@ -12,7 +12,7 @@
 	const DEBOUNCE_DELAY: number = 500;
 	let data: ProgressData | null = $state(null);
 	let timer: ReturnType<typeof setTimeout>;
-	const { search_url, minimum_search_query_length, process_id } = config;
+	const { search_url, minimum_search_query_length } = config;
 
 	$effect(() => {
 		const parsedQuery = query.trim();
@@ -25,7 +25,6 @@
 			if (parsedQuery && parsedQuery.length >= minimum_search_query_length) {
 				const url = new URL(search_url, document.location.href);
 				url.searchParams.set('q', parsedQuery);
-				url.searchParams.set('process_id', process_id);
 				fetch(url.toString())
 					.then((response) => response.json())
 					.then(({ data: recievedData }) => {

@@ -133,6 +133,7 @@ class ProcessOverviewHelper
             }
 
             $query += $request->query->all();
+            $query['process_id'] = $processId;
             $data = $this->dataSourceHelper->search($datasource, $query);
 
             return $this->formatData($data, $options, $process, $overview, $request);
