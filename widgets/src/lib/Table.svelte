@@ -3,8 +3,8 @@
 	import Clock from './Icons/Clock.svelte';
 	import Close from './Icons/Close.svelte';
 	import { type Step, type Column } from './types';
-	import TableButtonCell from './TableButtonCell.svelte';
-	import TableTextCell from './TableTextCell.svelte';
+	import TableStepCell from './TableStepCell.svelte';
+	import TableMetaCell from './TableMetaCell.svelte';
 	import { StepStatus } from './enums';
 
 	let { columns, rows }: { columns: Column[] | null; rows: Array<Array<Step>> | null } = $props();
@@ -45,12 +45,12 @@
 					>
 						{#each row as cell, i}
 							{#if cell.status}
-								<TableButtonCell {cell} {row} {i}>
+								<TableStepCell {cell} {row} {i}>
 									{@const IconComponent = icons[cell.status]}
 									<IconComponent />
-								</TableButtonCell>
+								</TableStepCell>
 							{:else}
-								<TableTextCell {cell} />
+								<TableMetaCell {cell} />
 							{/if}
 						{/each}
 					</tr>

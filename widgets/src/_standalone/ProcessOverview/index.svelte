@@ -72,7 +72,6 @@
 				if (recievedData) {
 					total = meta?.total ?? null;
 					data = recievedData;
-					console.log(recievedData);
 					filters = recievedData.columns.filter(({ type }) => 'step' === type);
 				}
 				fetching = false;
