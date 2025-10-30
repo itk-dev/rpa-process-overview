@@ -16,8 +16,9 @@
 	});
 
 	const config = {
-		data_url: 'http://127.0.0.1:8787/group/1/overview/1/data'
+		data_url: 'http://127.0.0.1:8787/group/1/overview/1/data',
+		page_size: 10,
 	};
 </script>
 
-<div id="ProcessOverview" data-config={JSON.stringify(config)}></div>
+<div id="ProcessOverview" data-rpa-process-overview-config={JSON.stringify(config)}></div>
