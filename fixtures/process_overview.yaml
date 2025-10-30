@@ -43,6 +43,7 @@ App\Entity\ProcessOverview:
           # - label: Klinik
           #   data: meta.klinik
       data:
+        overview_headline: Failed processes
         default_query:
           run_status: failed
         page_size: 7
@@ -63,6 +64,7 @@ App\Entity\ProcessOverview:
           - label: Klinik
             data: meta.branch
       data:
+        overview_headline: Failed processes
         page_size: 3
       search:
         minimum_search_query_length: 2
@@ -79,6 +81,7 @@ App\Entity\ProcessOverview:
           - label: Name
             data: meta.name
       data:
+        overview_headline: Failed processes
         title: Failed processes
         default_query:
           run_status: failed
@@ -98,6 +101,7 @@ App\Entity\ProcessOverview:
           - label: Name
             data: meta.name
       data:
+        overview_headline: Failed processes
         title: Pending processes
         default_query:
           run_status: pending
@@ -117,6 +121,7 @@ App\Entity\ProcessOverview:
           - label: Name
             data: meta.name
       data:
+        overview_headline: Failed processes
         title: Completed processes
         default_query:
           run_status: completed
