@@ -181,6 +181,13 @@ tasks:
     desc: Load API fixtures
     prompt: Continue?
     cmds:
+      # Reset database (and IDs!) in API database
+      - task: compose
+        vars:
+          TASK_ARGS: down api-db
+      - task: compose
+        vars:
+          TASK_ARGS: up --detach
       # Install faker and load fixtures
       - task: compose
         vars:
