@@ -4,13 +4,6 @@ version: '3'
 
 vars:
   APP_PORT: 3000
-  BASE_PATH: tidy_feedback
-  WIDGET_URL: 'http://localhost:{{.APP_PORT}}/{{.BASE_PATH}}'
-
-  # For some reason running tasks from this file from the parent Taskfile
-  # (../Taskfile.yml) does not pick up the expected docker ompose project name.
-  # Therefore we set it here.
-  # WIDGETS_DOCKER_COMPOSE: 'docker compose --project-name rpa-process-overview-widgets'
 
 tasks:
   build:
@@ -35,15 +28,9 @@ tasks:
     deps: [install]
     cmds:
       # https://stackoverflow.com/a/73821896
-      # - docker compose run --env ORIGIN=http://localhost:3000 --rm --publish '{{.APP_PORT}}:{{.APP_PORT}}' node npm run dev -- --port {{.APP_PORT}} --host
       - task: compose
         vars:
-          TASK_ARGS: run --name tidy-feedback-widget --rm --publish '{{.APP_PORT}}:{{.APP_PORT}}' node npm run dev -- --port {{.APP_PORT}} --host
-
-  open:
-    desc: 'Open widget dev site'
-    cmds:
-      - open "{{.WIDGET_URL}}"
+          TASK_ARGS: run --name rpa-process-overview-widgets --rm --publish '{{.APP_PORT}}:{{.APP_PORT}}' node npm run dev -- --port {{.APP_PORT}} --host
 
   install:
     cmds:
