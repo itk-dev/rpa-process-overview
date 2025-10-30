@@ -35,7 +35,6 @@
 				try {
 					navigator.clipboard.writeText(value);
 					showFeedback(t('Copied!'));
-					feedback = t('Copied!');
 				} catch {
 					error = true;
 					showFeedback(t('Try again!'));
