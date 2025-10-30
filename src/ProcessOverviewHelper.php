@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Entity\ProcessOverview;
-use App\Entity\UserRole;
 use League\Uri\Modifier;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
