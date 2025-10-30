@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-39](https://github.com/itk-dev/rpa-process-overview/pull/39)
+  * Make search use new search endpoint
 * [PR-44](https://github.com/itk-dev/rpa-process-overview/pull/44)
   * Made copy of masked field values possible
 * [PR-43](https://github.com/itk-dev/rpa-process-overview/pull/43)

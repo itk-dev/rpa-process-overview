@@ -4,17 +4,15 @@
 	import Search from './Icons/Search.svelte';
 	import { t, config } from './config';
 	import type { ProgressData } from '$lib/types';
-	import Person from './Icons/Person.svelte';
 	import ErrorBanner from '$lib/ErrorBanner.svelte';
 
 	let query: string = $state('');
 	let errorMessage: string = $state('');
 	let error: boolean = $state(false);
 	const DEBOUNCE_DELAY: number = 500;
-	let name: string = $state('');
 	let data: ProgressData | null = $state(null);
-	const { search_url, minimum_search_query_length } = config;
 	let timer: ReturnType<typeof setTimeout>;
+	const { search_url, minimum_search_query_length, process_id } = config;
 
 	$effect(() => {
 		const parsedQuery = query.trim();
@@ -26,12 +24,13 @@
 		timer = setTimeout(() => {
 			if (parsedQuery && parsedQuery.length >= minimum_search_query_length) {
 				const url = new URL(search_url, document.location.href);
+				url.searchParams.set('q', parsedQuery);
+				url.searchParams.set('process_id', process_id);
 				fetch(url.toString())
 					.then((response) => response.json())
 					.then(({ data: recievedData }) => {
 						if (recievedData) {
 							data = recievedData;
-							name = recievedData.data?.items[0]?.meta?.name;
 						}
 					})
 					.catch((e) => {
@@ -72,29 +71,10 @@
 				{#if error}
 					<ErrorBanner {errorMessage} />
 				{/if}
-
-				{#if data}
-					<div
-						class="dark:bg-black bg-white rounded-md border border-neutral-300 dark:border-neutral-800 p-4"
-					>
-						<h3 class="dark:text-white text-gray-950 text-sm font-medium mb-2">
-							{t('Citizen information')}
-						</h3>
-						<div class="space-y-3">
-							<div class="flex items-center">
-								<Person className="dark:text-white text-gray-750 h-4 w-4 mr-2" />
-								<div>
-									<div class="text-xs dark:text-white text-gray-750 text-bold">{t('Name')}</div>
-									<div class="text-sm dark:text-white text-gray-950">{name}</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				{/if}
 			</div>
 
 			{#if data}
-				<div class="w-2/3 overflow-scroll">
+				<div class="w-2/3">
 					<Table columns={data.columns} rows={data.rows}></Table>
 				</div>
 			{/if}

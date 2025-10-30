@@ -63,6 +63,7 @@ final class ProcessOverviewController extends AbstractController
                     'group' => $group->getId(),
                     'overview' => $overview->getId(),
                 ]),
+                'process_id' => $overview->getId(),
                 'minimum_search_query_length' => $overviewOptions['search']['minimum_search_query_length'] ?? 2,
                 'messages' => array_map('strval', [
                     'Citizen search' => t('Citizen search'),
@@ -100,7 +101,7 @@ final class ProcessOverviewController extends AbstractController
     #[Route('/{overview}/search', name: 'search')]
     public function search(Request $request, ProcessOverview $overview, ProcessOverviewHelper $helper): Response
     {
-        $data = $helper->getData($request, $overview);
+        $data = $helper->search($request, $overview);
 
         return new JsonResponse($data);
     }

@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Entity\ProcessOverview;
-use App\Entity\UserRole;
 use League\Uri\Modifier;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
@@ -19,6 +18,136 @@ class ProcessOverviewHelper
         private readonly UrlGeneratorInterface $urlGenerator,
         private readonly AuthorizationCheckerInterface $authorizationChecker,
     ) {
+    }
+
+    public function formatData(array $data, array $options, array $process, ProcessOverview $overview, Request $request): array
+    {
+        $metadataColumns = [];
+        $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];
+        foreach ($metadataColumnsOptions as $column) {
+            $metadataColumns[] = $column + [
+                'type' => $column['type'] ?? 'text',
+            ];
+        }
+
+        // Add step columns
+        $stepColumns = [];
+        foreach ($process['steps'] as $step) {
+            $stepColumns[] = [
+                'label' => $step['name'],
+                'type' => 'step',
+            ];
+        }
+
+        $rows = [];
+        $items = $data['items'] ?? [];
+        foreach ($items as $item) {
+            $steps = $item['steps'] ?? null;
+            if (!$steps) {
+                break;
+            }
+            $rows[] = array_merge(
+                array_map(
+                    function (array $col) use ($overview, $item) {
+                        if (!isset($item['id']) && isset($item['run'])) {
+                            // The reason for the $item = $item['run'] stuff is, that the data returned from the api
+                            // differs in format. Described in this issue:
+                            // https://github.com/AAK-MBU/Process_Dashboard_API/issues/40 Todo, remove if the issue is
+                            // fixed.
+                            $item = $item['run'];
+                        }
+
+                        $value = $this->getArrayValue($item, $col['data']);
+                        $result = [
+                            'type' => 'text',
+                        ];
+
+                        if (isset($col['mask']['search'], $col['mask']['replace'])) {
+                            $value = @preg_replace($col['mask']['search'], $col['mask']['replace'], $value);
+
+                            $result['raw_value_url'] = $this->urlGenerator->generate('process_overview_raw_data_field',
+                                [
+                                    'group' => $overview->getGroup()->getId(),
+                                    'overview' => $overview->getId(),
+                                    'run' => $item['id'],
+                                    'field' => $col['data'],
+                                ], UrlGeneratorInterface::ABSOLUTE_URL);
+                        }
+                        $result['value'] = $value;
+
+                        return $result;
+                    },
+                    $metadataColumns
+                ),
+                array_map(
+                    function (array $step) use ($overview) {
+                        return $step + [
+                            'type' => 'step',
+                            'rerun_url' => $step['can_rerun'] ? $this->urlGenerator->generate('process_overview_rerun',
+                                [
+                                    'group' => $overview->getGroup()->getId(),
+                                    'overview' => $overview->getId(),
+                                    'run' => $step['id'],
+                                ], UrlGeneratorInterface::ABSOLUTE_URL) : null,
+                        ];
+                    },
+                    $steps
+                ),
+            );
+        }
+
+        $modifier = Modifier::from($request->getUri());
+        $page = $data['page'] ?? 1;
+        $links = [
+            'self' => $modifier->getUriString(),
+        ];
+        if ($page > 1) {
+            $links['prev'] = $modifier->mergeQueryParameters(['page' => $page - 1])->getUriString();
+        }
+        if ($page < ($data['pages'] ?? 0)) {
+            $links['next'] = $modifier->mergeQueryParameters(['page' => $page + 1])->getUriString();
+        }
+        $meta = array_filter([
+            'total' => $data['total'] ?? null,
+        ]);
+
+        return [
+            'data' => [
+                'columns' => array_merge($metadataColumns, $stepColumns),
+                'rows' => $rows,
+            ],
+            'links' => $links,
+            'meta' => $meta,
+        ];
+    }
+
+    public function search(Request $request, ProcessOverview $overview): array
+    {
+        try {
+            $datasource = $overview->getDataSource();
+            $processId = $overview->getProcessId();
+            if (empty($datasource) || empty($processId)) {
+                return [];
+            }
+
+            $options = $this->getOptions($overview);
+
+            $process = $this->dataSourceHelper->getProcess($datasource, $processId);
+
+            $query = $options['data']['default_query'] ?? null;
+
+            if (!is_array($query)) {
+                $query = [];
+            }
+
+            $query += $request->query->all();
+            $data = $this->dataSourceHelper->search($datasource, $query);
+
+            return $this->formatData($data, $options, $process, $overview, $request);
+        } catch (\Exception $exception) {
+            // @todo Log the exception
+            throw $exception;
+        }
     }
 
     public function getData(Request $request, ProcessOverview $overview): array
@@ -40,102 +169,7 @@ class ProcessOverviewHelper
             $query += $request->query->all();
             $data = $this->dataSourceHelper->getProcessRuns($datasource, $processId, $query);
 
-            $metadataColumns = [];
-            $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];
-            foreach ($metadataColumnsOptions as $column) {
-                $metadataColumns[] = $column + [
-                    'type' => $column['type'] ?? 'text',
-                ];
-            }
-
-            // Add step columns
-            $stepColumns = [];
-            foreach ($process['steps'] as $step) {
-                $stepColumns[] = [
-                    'label' => $step['name'],
-                    'id' => $step['id'],
-                    'type' => 'step',
-                ];
-            }
-
-            $rows = [];
-            $items = $data['items'] ?? [];
-            foreach ($items as $item) {
-                $steps = $item['steps'] ?? null;
-                if (!$steps) {
-                    break;
-                }
-                $rows[] = array_merge(
-                    array_map(
-                        function (array $col) use ($overview, $item) {
-                            $value = $this->getArrayValue($item, $col['data']);
-                            $result = [
-                                'type' => 'text',
-                            ];
-
-                            if (isset($col['mask']['search'], $col['mask']['replace'])) {
-                                $value = @preg_replace($col['mask']['search'], $col['mask']['replace'], $value);
-
-                                $result['raw_value_url'] = $this->urlGenerator->generate('process_overview_raw_data_field',
-                                    [
-                                        'group' => $overview->getGroup()->getId(),
-                                        'overview' => $overview->getId(),
-                                        'run' => $item['id'],
-                                        'field' => $col['data'],
-                                    ], UrlGeneratorInterface::ABSOLUTE_URL);
-                            }
-                            $result['value'] = $value;
-
-                            return $result;
-                        },
-                        $metadataColumns
-                    ),
-                    array_map(
-                        function (array $step) use ($overview) {
-                            $additionalStepData = [
-                                'type' => 'step',
-                            ];
-
-                            if ($this->authorizationChecker->isGranted(UserRole::ProcessStepRunner->value)) {
-                                $additionalStepData['rerun_url'] = $step['can_rerun']
-                                    ? $this->urlGenerator->generate('process_overview_rerun', [
-                                        'group' => $overview->getGroup()->getId(),
-                                        'overview' => $overview->getId(),
-                                        'run' => $step['id'],
-                                    ], UrlGeneratorInterface::ABSOLUTE_URL)
-                                    : null;
-                            }
-
-                            return $step + $additionalStepData;
-                        },
-                        $steps
-                    ),
-                );
-            }
-
-            $modifier = Modifier::from($request->getUri());
-            $page = $data['page'] ?? 1;
-            $links = [
-                'self' => $modifier->getUriString(),
-            ];
-            if ($page > 1) {
-                $links['prev'] = $modifier->mergeQueryParameters(['page' => $page - 1])->getUriString();
-            }
-            if ($page < ($data['pages'] ?? 0)) {
-                $links['next'] = $modifier->mergeQueryParameters(['page' => $page + 1])->getUriString();
-            }
-            $meta = array_filter([
-                'total' => $data['total'] ?? null,
-            ]);
-
-            return [
-                'data' => [
-                    'columns' => array_merge($metadataColumns, $stepColumns),
-                    'rows' => $rows,
-                ],
-                'links' => $links,
-                'meta' => $meta,
-            ];
+            return $this->formatData($data, $options, $process, $overview, $request);
         } catch (\Exception $exception) {
             // @todo Log the exception
             throw $exception;
