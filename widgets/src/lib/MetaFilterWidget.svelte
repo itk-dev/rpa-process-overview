@@ -5,12 +5,16 @@
 		column,
 		cell,
 		getToggleMetaFilterUrl,
-		getCurrentMetaFilter
+		getCurrentMetaFilter,
+		hasMetaFilter,
+		toggleMetaFilter
 	}: {
 		column: object;
 		cell: object;
 		getToggleMetaFilterUrl: Function;
 		getCurrentMetaFilter: Function;
+		hasMetaFilter: Function;
+		toggleMetaFilter: Function;
 	} = $props();
 
 	const { value_name: name, is_filterable } = column;
@@ -19,7 +23,12 @@
 </script>
 
 {#if is_filterable}
-	[<a data-sveltekit-reload href={getToggleMetaFilterUrl(name, value)}
+	<pre>{JSON.stringify({name})}</pre>
+	[<button on:click={() => toggleMetaFilter(name, value)}>
+		{hasMetaFilter(name)
+			? t('Remove filter on "{value}"', { value })
+			: t('Show only "{value}"', { value })}
+	</button>] [<a data-sveltekit-reload href={getToggleMetaFilterUrl(name, value)}
 		>{hasFilter
 			? t('Remove filter on "{value}"', { value })
 			: t('Show only "{value}"', { value })}</a

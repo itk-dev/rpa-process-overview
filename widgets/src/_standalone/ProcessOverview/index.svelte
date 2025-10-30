@@ -14,6 +14,7 @@
 
 	let filtersFailedAt: Column[] | null = $state(null);
 	let selectedFilterFailedAt: number | null = $state(getCurrentFilterFailedAt());
+	let currentMetaFilters: {[key: string]: string } = $state({})
 
 	let data: ProgressData | null = $state(null);
 	let total: number | null = $state(null);
@@ -69,6 +70,18 @@
 		return null;
 	}
 
+	function hasMetaFilter(name: string): boolean {
+		return currentMetaFilters[name]
+	}
+
+	function toggleMetaFilter(name: string, value: string ) {
+		if (hasMetaFilter(name)) {
+			delete currentMetaFilters[name];
+		} else {
+			currentMetaFilters[name] = value
+		}
+	}
+
 	function getToggleMetaFilterUrl(name: string, value: string): string {
 		const url = new URL(document.location.href);
 		const current = getCurrentMetaFilter(name);
@@ -83,15 +96,14 @@
 
 	function setUrlSearchParams(url: URL) {
 		url.searchParams.set('page', String(page));
-		if (selectedFilter) {
-			url.searchParams.set('failed_at', String(selectedFilter));
+		if (selectedFilterFailedAt) {
+			url.searchParams.set('failed_at', String(selectedFilterFailedAt));
 		} else {
 			url.searchParams.delete('failed_at');
 		}
-		for (const [name, value] of Object.entries(getCurrentFilterMeta())) {
+		for (const [name, value] of Object.entries(currentMetaFilters)) {
 			url.searchParams.append('meta_filter', name + ':' + value);
 		}
-		history.replaceState({}, '', pageUrl);
 	}
 
 	function updateUrl(): URL {
@@ -122,7 +134,7 @@
 				if (receivedData) {
 					total = meta?.total ?? null;
 					data = receivedData;
-					filters = receivedData.columns.filter(({ type }) => 'step' === type);
+					filtersFailedAt = receivedData.columns.filter(({ type }) => 'step' === type);
 				}
 				fetching = false;
 			})
@@ -173,7 +185,8 @@
 			/>
 		</div>
 		<div class="p-4 min-h-[450px] flex flex-col justify-between">
-			<Table columns={data.columns} rows={data.rows} {getToggleMetaFilterUrl} {getCurrentMetaFilter}
+			<pre>{JSON.stringify({currentMetaFilters})}</pre>
+			<Table columns={data.columns} rows={data.rows} {getToggleMetaFilterUrl} {getCurrentMetaFilter} {hasMetaFilter} {toggleMetaFilter}
 			></Table>
 			{#if total !== null}
 				<Pagination {total} {changePage} {size} {page} />

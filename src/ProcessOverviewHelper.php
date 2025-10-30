@@ -13,6 +13,9 @@ use Symfony\Component\Yaml\Yaml;
 
 class ProcessOverviewHelper
 {
+    private const string COLUMN_TYPE_META = 'meta';
+    private const string COLUMN_TYPE_STEP = 'step';
+
     public function __construct(
         private readonly PropertyAccessorInterface $propertyAccessor,
         private readonly DataSourceHelper $dataSourceHelper,
@@ -27,8 +30,11 @@ class ProcessOverviewHelper
         $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];
         foreach ($metadataColumnsOptions as $column) {
             $metadataColumns[] = $column + [
-                'type' => $column['type'] ?? 'text',
-            ];
+                    'type' => self::COLUMN_TYPE_META,
+                    'value_type' => $column['type'] ?? 'text',
+                    'value_name' => preg_replace('/^meta\./', '', $column['data']),
+                    'is_filterable' => $column['is_filterable'] ?? false,
+                ];
         }
 
         // Add step columns
@@ -53,7 +59,7 @@ class ProcessOverviewHelper
                     function (array $col) use ($overview, $item) {
                         $value = $this->getArrayValue($item, $col['data']);
                         $result = [
-                            'type' => 'text',
+                            'type' => self::COLUMN_TYPE_META,
                         ];
 
                         if (isset($col['mask']['search'], $col['mask']['replace'])) {

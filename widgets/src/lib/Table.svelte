@@ -12,12 +12,16 @@
 		columns,
 		rows,
 		getToggleMetaFilterUrl,
-		getCurrentMetaFilter
+		getCurrentMetaFilter,
+		hasMetaFilter,
+		toggleMetaFilter
 	}: {
 		columns: Column[] | null;
 		rows: Array<Array<Step>> | null;
 		getToggleMetaFilterUrl: Function;
 		getCurrentMetaFilter: Function;
+		hasMetaFilter: Function;
+		toggleMetaFilter: Function;
 	} = $props();
 
 	// Status icons
@@ -48,6 +52,7 @@
 		</thead>
 	{/if}
 	{#if columns && rows != null}
+<!--		<pre>{JSON.stringify(rows[0], null, 2)}</pre>-->
 		<tbody>
 			{#if rows.length > 0}
 				{#each rows as row}
@@ -55,7 +60,7 @@
 						class="hover:bg-neutral-300 dark:hover:bg-gray-800 border-b border-neutral-300 dark:border-neutral-800"
 					>
 						{#each row as cell, i}
-							{#if cell.status}
+							{#if 'step' === cell.type}
 								<TableStepCell {cell} {row} {i}>
 									{@const IconComponent = icons[cell.status]}
 									<IconComponent />
@@ -69,6 +74,9 @@
 										{cell}
 										{getToggleMetaFilterUrl}
 										{getCurrentMetaFilter}
+										{hasMetaFilter}
+										{toggleMetaFilter}
+									/>
 								</TableMetaCell>
 							{/if}
 						{/each}
