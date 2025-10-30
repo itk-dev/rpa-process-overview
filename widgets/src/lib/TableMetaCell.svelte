@@ -62,10 +62,10 @@
 			<div class="rounded-full bg-violet-600 p-1 mr-1 dark:hover:bg-violet-600 hover:bg-violet-300">
 				<Scissor className="h-4 w-4 text-white" />
 			</div>
-
 			{@render children()}
 		</button>
-	{:else}<div>
+	{:else}
+		<div>
 			{@render children()}
 		</div>
 	{/if}
