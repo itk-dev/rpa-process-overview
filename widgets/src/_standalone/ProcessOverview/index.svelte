@@ -38,13 +38,17 @@
 		return failedAt;
 	}
 
-	function updateUrl(): void {
+	function updateUrl(): URL {
 		const pageUrl = new URL(document.location.href);
 		pageUrl.searchParams.set('page', String(page));
 		if (selectedFilter) {
 			pageUrl.searchParams.set('failed_at', String(selectedFilter));
+		} else {
+			pageUrl.searchParams.delete('failed_at');
 		}
 		history.replaceState({}, '', pageUrl);
+
+		return pageUrl;
 	}
 
 	function changePage(index: number): void {
@@ -52,17 +56,10 @@
 	}
 
 	$effect(() => {
-		updateUrl();
+		const url = updateUrl();
 		fetching = true;
 		errorMessage = '';
 		error = false;
-
-		const url = new URL(data_url, document.location.href);
-		url.searchParams.set('page', String(page));
-
-		if (selectedFilter) {
-			url.searchParams.set('failed_at', String(selectedFilter));
-		}
 
 		url.searchParams.set('size', String(size));
 
