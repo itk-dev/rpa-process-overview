@@ -3,7 +3,8 @@
 	import Clock from './Icons/Clock.svelte';
 	import Close from './Icons/Close.svelte';
 	import { type Step, type Column } from './types';
-	import TableCell from './TableCell.svelte';
+	import TableStepCell from './TableStepCell.svelte';
+	import TableMetaCell from './TableMetaCell.svelte';
 	import { StepStatus } from './enums';
 
 	let { columns, rows }: { columns: Column[] | null; rows: Array<Array<Step>> | null } = $props();
@@ -44,24 +45,15 @@
 					>
 						{#each row as cell, i}
 							{#if cell.status}
-								<TableCell
-									{cell}
-									{row}
-									{i}
-									className={cell.status === StepStatus.SUCCESS
-										? 'bg-green-700'
-										: cell.status === StepStatus.FAILED
-											? 'bg-rose-700'
-											: 'bg-neutral-400 dark:bg-neutral-800'}
-								>
+								<TableStepCell {cell} {row} {i}>
 									{@const IconComponent = icons[cell.status]}
 									<IconComponent />
-								</TableCell>
+								</TableStepCell>
 							{:else}
-								<td class="px-3 py-4 whitespace-nowrap text-sm dark:text-gray-300 w-24 truncate">
+								<TableMetaCell rawValueUrl={cell.raw_value_url}>
 									<!-- Let's keep the little ghost -->
 									{cell.value ?? cell.status ?? '👻'}
-								</td>
+								</TableMetaCell>
 							{/if}
 						{/each}
 					</tr>

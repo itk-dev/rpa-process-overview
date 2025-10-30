@@ -19,6 +19,7 @@ type Failure = {
 };
 
 export type Step = {
+	raw_value_url: string | null;
 	type: RowColumnType;
 	value: string | null;
 	// rerun_url is not set if user cannot rerun steps.

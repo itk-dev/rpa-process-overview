@@ -39,6 +39,9 @@ final class ProcessOverviewController extends AbstractController
                     'Go to page {page}' => t('Go to page {page}'),
                     'Go to next page' => t('Go to next page'),
                     'Missing data' => t('Missing data'),
+                    'Try again!' => t('Error copying value. Try again!'),
+                    'Copied!' => t('Value copied!'),
+                    'Copy field' => t('Copy value'),
                     'Failed processes' => t('Failed processes'),
                     // We're actually showing “process runs”, but it probably makes more sense to real people to (still) call them “processes”.
                     'Showing processes failed in' => t('Showing processes failed in'),
