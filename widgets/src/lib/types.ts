@@ -73,7 +73,7 @@ export type Messages = {
 export type OverviewConfig = {
 	messages: Messages;
 	data_url: string;
-	overview_headline: string;
+	title: string;
 	page_size: string;
 };
 
