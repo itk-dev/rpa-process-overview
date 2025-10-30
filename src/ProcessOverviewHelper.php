@@ -50,6 +50,10 @@ class ProcessOverviewHelper
             $rows[] = array_merge(
                 array_map(
                     function (array $col) use ($overview, $item) {
+                        if (!isset($item['id']) && isset($item['run'])) {
+                            $item = $item['run'];
+                        }
+
                         $value = $this->getArrayValue($item, $col['data']);
                         $result = [
                             'type' => 'text',
