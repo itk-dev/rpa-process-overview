@@ -1,21 +1,23 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
-	import { type Step } from './types';
 	import Scissor from './Icons/Scissor.svelte';
 	import { t } from '../_standalone/ProcessOverview/config';
+	import type { Snippet } from 'svelte';
+
 	let error: boolean = $state(false);
 	let feedback: string = $state('');
 	let feedbackClass: string = $state('');
 	let timer: ReturnType<typeof setTimeout>;
+
 	const FEEDBACK_VISIBLE: number = 3000;
 
 	let {
-		cell
+		rawValueUrl,
+		children
 	}: {
-		cell: Step;
+		rawValueUrl: string | null;
+		children: Snippet;
 	} = $props();
-
-	const { status, raw_value_url, value } = cell;
 
 	function showFeedback(currentFeedback: string): void {
 		feedback = currentFeedback;
@@ -55,15 +57,18 @@
 <td
 	class="relative px-3 py-4 whitespace-nowrap text-sm dark:text-gray-300 w-24 truncate h-[80px] transition {feedbackClass}"
 >
-	<button class="cursor-pointer items-center flex" onclick={() => getUnmaskedValue(raw_value_url)}>
-		{#if raw_value_url}
+	{#if rawValueUrl}
+		<button class="cursor-pointer items-center flex" onclick={() => getUnmaskedValue(rawValueUrl)}>
 			<div class="rounded-full bg-violet-600 p-1 mr-1 dark:hover:bg-violet-600 hover:bg-violet-300">
 				<Scissor className="h-4 w-4 text-white" />
 			</div>
-		{/if}
-		<!-- Let's keep the little ghost -->
-		{value ?? status ?? '👻'}
-	</button>
+
+			{@render children()}
+		</button>
+	{:else}<div>
+			{@render children()}
+		</div>
+	{/if}
 	<div
 		class="absolute bottom-2 left-1/2 transform -translate-x-1/2 font-bold {error
 			? 'text-red-600'

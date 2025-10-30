@@ -50,7 +50,10 @@
 									<IconComponent />
 								</TableStepCell>
 							{:else}
-								<TableMetaCell {cell} />
+								<TableMetaCell rawValueUrl={cell.raw_value_url}>
+									<!-- Let's keep the little ghost -->
+									{cell.value ?? cell.status ?? '👻'}
+								</TableMetaCell>
 							{/if}
 						{/each}
 					</tr>
