@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 * [PR-44](https://github.com/itk-dev/rpa-process-overview/pull/44)
-  * Make copy of masked fiels possible
+  * Made copy of masked field values possible
 * [PR-43](https://github.com/itk-dev/rpa-process-overview/pull/43)
   * Refactored users and permissions
   * Handled "rerun process run step" permission
