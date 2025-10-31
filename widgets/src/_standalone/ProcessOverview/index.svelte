@@ -8,7 +8,7 @@
 	import Pagination from './Pagination.svelte';
 	import FilterByFailed from './FilterByFailed.svelte';
 
-	const { page_size: pageSize, data_url: dataUrl, title } = config;
+	const { page_size, data_url, title } = config;
 
 	let error: boolean = $state(false);
 	let filters: Column[] | null = $state(null);
