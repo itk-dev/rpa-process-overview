@@ -56,7 +56,7 @@
 			<h2>{t('Citizen search')}</h2>
 		</div>
 
-		<div class="p-4 flex flex-row gap-4 bg-gray-100 dark:bg-gray-900">
+		<div class="p-4 bg-gray-100 dark:bg-gray-900">
 			<div class="w-1/3 relative">
 				<div class="absolute left-3 top-5 transform -translate-y-1/2">
 					<Search className="h-5 w-5 mr-2 text-neutral-400" />
@@ -73,9 +73,7 @@
 			</div>
 
 			{#if data}
-				<div class="w-2/3">
-					<Table columns={data.columns} rows={data.rows}></Table>
-				</div>
+				<Table columns={data.columns} rows={data.rows}></Table>
 			{/if}
 		</div>
 	</div>
