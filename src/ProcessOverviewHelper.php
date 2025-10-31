@@ -30,11 +30,11 @@ class ProcessOverviewHelper
         $metadataColumnsOptions = $this->getArrayValue($options, 'metadata_columns') ?? [];
         foreach ($metadataColumnsOptions as $column) {
             $metadataColumns[] = $column + [
-                    'type' => self::COLUMN_TYPE_META,
-                    'value_type' => $column['type'] ?? 'text',
-                    'value_name' => preg_replace('/^meta\./', '', $column['data']),
-                    'is_filterable' => $column['is_filterable'] ?? false,
-                ];
+                'type' => self::COLUMN_TYPE_META,
+                'value_type' => $column['type'] ?? 'text',
+                'value_name' => preg_replace('/^meta\./', '', $column['data']),
+                'is_filterable' => $column['is_filterable'] ?? false,
+            ];
         }
 
         // Add step columns

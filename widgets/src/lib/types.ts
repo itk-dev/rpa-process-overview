@@ -84,3 +84,5 @@ export type SearchConfig = {
 	process_id: string;
 	minimum_search_query_length: number;
 };
+
+export type MetaFilters = { [key: string]: string };

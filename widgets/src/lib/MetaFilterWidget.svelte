@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { t } from '../_standalone/ProcessOverview/config';
+	import MetaFilterRemove from '$lib/Icons/MetaFilterRemove.svelte';
+	import MetaFilterAdd from '$lib/Icons/MetaFilterAdd.svelte';
 
 	let {
 		column,
 		cell,
-		getToggleMetaFilterUrl,
-		getCurrentMetaFilter,
 		hasMetaFilter,
 		toggleMetaFilter
 	}: {
@@ -19,18 +19,14 @@
 
 	const { value_name: name, is_filterable } = column;
 	const { value } = cell;
-	const hasFilter = value === getCurrentMetaFilter(name);
 </script>
 
 {#if is_filterable}
-	<pre>{JSON.stringify({name})}</pre>
-	[<button on:click={() => toggleMetaFilter(name, value)}>
-		{hasMetaFilter(name)
-			? t('Remove filter on "{value}"', { value })
-			: t('Show only "{value}"', { value })}
-	</button>] [<a data-sveltekit-reload href={getToggleMetaFilterUrl(name, value)}
-		>{hasFilter
-			? t('Remove filter on "{value}"', { value })
-			: t('Show only "{value}"', { value })}</a
-	>]
+	<button onclick={() => toggleMetaFilter(name, value)}>
+		{#if hasMetaFilter(name, value)}
+			<span title={t('Remove filter on "{value}"', { value })}><MetaFilterRemove /></span>
+		{:else}
+			<span title={t('Show only "{value}"', { value })}><MetaFilterAdd /></span>
+		{/if}
+	</button>
 {/if}

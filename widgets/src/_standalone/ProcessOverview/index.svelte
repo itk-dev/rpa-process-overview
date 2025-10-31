@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Spinner from './Icons/Spinner.svelte';
 	import ExclamationMark from './Icons/ExclamationMark.svelte';
-	import { type Column, type ProgressData, type RawData } from '$lib/types';
+	import { type Column, type MetaFilters, type ProgressData, type RawData } from '$lib/types';
 	import Table from '$lib/Table.svelte';
 	import { config, t } from './config';
 	import ErrorBanner from '$lib/ErrorBanner.svelte';
@@ -14,7 +14,7 @@
 
 	let filtersFailedAt: Column[] | null = $state(null);
 	let selectedFilterFailedAt: number | null = $state(getCurrentFilterFailedAt());
-	let currentMetaFilters: {[key: string]: string } = $state({})
+	let currentMetaFilters: MetaFilters = $state(getCurrentMetaFilters());
 
 	let data: ProgressData | null = $state(null);
 	let total: number | null = $state(null);
@@ -43,9 +43,9 @@
 		return parseInteger(url.searchParams.get('failed_at'));
 	}
 
-	function getCurrentFilterMeta(): object {
+	function getCurrentMetaFilters(): MetaFilters {
 		const url = new URL(document.location.href);
-		const filters = {};
+		const filters: MetaFilters = {};
 		for (const item of url.searchParams.getAll('meta_filter')) {
 			const pair = item.split(':', 2);
 			if (2 === pair.length) {
@@ -56,62 +56,64 @@
 		return filters;
 	}
 
-	function getCurrentMetaFilter(name: string): string | null {
-		const url = new URL(document.location.href);
-		for (const [key, value] of url.searchParams) {
-			if ('meta_filter' === key) {
-				const pair = value.split(':', 2);
-				if (2 === pair.length && name === pair[0]) {
-					return pair[1];
-				}
-			}
-		}
-
-		return null;
+	function hasMetaFilter(name: string, value: string): boolean {
+		return currentMetaFilters[name] === value;
 	}
 
-	function hasMetaFilter(name: string): boolean {
-		return currentMetaFilters[name]
-	}
-
-	function toggleMetaFilter(name: string, value: string ) {
-		if (hasMetaFilter(name)) {
+	function toggleMetaFilter(name: string, value: string) {
+		if (hasMetaFilter(name, value)) {
 			delete currentMetaFilters[name];
 		} else {
-			currentMetaFilters[name] = value
+			currentMetaFilters[name] = value;
 		}
 	}
 
-	function getToggleMetaFilterUrl(name: string, value: string): string {
-		const url = new URL(document.location.href);
-		const current = getCurrentMetaFilter(name);
-		if (current) {
-			url.searchParams.delete('meta_filter', name + ':' + value);
-		} else {
-			url.searchParams.append('meta_filter', name + ':' + value);
-		}
+	function setUrlSearchParams(url: URL, values: Object, useBracketsForArray: boolean = false) {
+		const setValue = (name: string, value: any) => {
+			// Remove name if value is empty
+			if (null === value) {
+				url.searchParams.delete(name);
+			} else if (Array.isArray(value)) {
+				url.searchParams.delete(name);
+				if (useBracketsForArray) {
+					name += '[]';
+				}
+				for (const val of value) {
+					{
+						url.searchParams.append(name, String(val));
+					}
+				}
+			} else {
+				url.searchParams.set(name, String(value));
+			}
+		};
 
-		return url.toString();
+		for (const [name, value] of Object.entries(values)) {
+			setValue(name, value);
+		}
 	}
 
-	function setUrlSearchParams(url: URL) {
-		url.searchParams.set('page', String(page));
-		if (selectedFilterFailedAt) {
-			url.searchParams.set('failed_at', String(selectedFilterFailedAt));
-		} else {
-			url.searchParams.delete('failed_at');
-		}
+	function setStateUrlSearchParams(url: URL, useBracketsForArray: boolean = false) {
+		const metaFilter = [];
 		for (const [name, value] of Object.entries(currentMetaFilters)) {
-			url.searchParams.append('meta_filter', name + ':' + value);
+			metaFilter.push(name + ':' + value);
 		}
+
+		setUrlSearchParams(
+			url,
+			{
+				page,
+				failed_at: selectedFilterFailedAt,
+				meta_filter: metaFilter
+			},
+			useBracketsForArray
+		);
 	}
 
-	function updateUrl(): URL {
+	function updateUrl() {
 		const pageUrl = new URL(document.location.href);
-		setUrlSearchParams(pageUrl);
+		setStateUrlSearchParams(pageUrl);
 		history.replaceState({}, '', pageUrl);
-
-		return pageUrl;
 	}
 
 	function changePage(index: number): void {
@@ -125,8 +127,8 @@
 		error = false;
 
 		const url = new URL(data_url, document.location.href);
-		setUrlSearchParams(url);
-		url.searchParams.set('size', String(size));
+		setStateUrlSearchParams(url, true);
+		setUrlSearchParams(url, { size }, true);
 
 		fetch(url.toString())
 			.then((response) => response.json())
@@ -185,9 +187,7 @@
 			/>
 		</div>
 		<div class="p-4 min-h-[450px] flex flex-col justify-between">
-			<pre>{JSON.stringify({currentMetaFilters})}</pre>
-			<Table columns={data.columns} rows={data.rows} {getToggleMetaFilterUrl} {getCurrentMetaFilter} {hasMetaFilter} {toggleMetaFilter}
-			></Table>
+			<Table columns={data.columns} rows={data.rows} {hasMetaFilter} {toggleMetaFilter}></Table>
 			{#if total !== null}
 				<Pagination {total} {changePage} {size} {page} />
 			{/if}

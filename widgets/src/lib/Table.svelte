@@ -11,15 +11,11 @@
 	let {
 		columns,
 		rows,
-		getToggleMetaFilterUrl,
-		getCurrentMetaFilter,
 		hasMetaFilter,
 		toggleMetaFilter
 	}: {
 		columns: Column[] | null;
 		rows: Array<Array<Step>> | null;
-		getToggleMetaFilterUrl: Function;
-		getCurrentMetaFilter: Function;
 		hasMetaFilter: Function;
 		toggleMetaFilter: Function;
 	} = $props();
@@ -52,7 +48,7 @@
 		</thead>
 	{/if}
 	{#if columns && rows != null}
-<!--		<pre>{JSON.stringify(rows[0], null, 2)}</pre>-->
+		<!--		<pre>{JSON.stringify(rows[0], null, 2)}</pre>-->
 		<tbody>
 			{#if rows.length > 0}
 				{#each rows as row}
@@ -69,14 +65,7 @@
 								<TableMetaCell rawValueUrl={cell.raw_value_url}>
 									<!-- Let's keep the little ghost -->
 									{cell.value ?? cell.status ?? '👻'}
-									<MetaFilterWidget
-										column={columns[i]}
-										{cell}
-										{getToggleMetaFilterUrl}
-										{getCurrentMetaFilter}
-										{hasMetaFilter}
-										{toggleMetaFilter}
-									/>
+									<MetaFilterWidget column={columns[i]} {cell} {hasMetaFilter} {toggleMetaFilter} />
 								</TableMetaCell>
 							{/if}
 						{/each}

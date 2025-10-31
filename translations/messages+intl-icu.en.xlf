@@ -145,10 +145,6 @@
         <source>Missing data</source>
         <target>Missing data</target>
       </trans-unit>
-      <trans-unit id="SGmWohz" resname="Failed processes">
-        <source>Failed processes</source>
-        <target>Failed processes</target>
-      </trans-unit>
       <trans-unit id="QOhsBcU" resname="An error occurred while fetching the data">
         <source>An error occurred while fetching the data</source>
         <target>An error occurred while fetching the data</target>
@@ -200,6 +196,34 @@
       <trans-unit id="cyzVmW2" resname="Error code: {code}">
         <source>Error code: {code}</source>
         <target>Error code: {code}</target>
+      </trans-unit>
+      <trans-unit id="BaGNK8D" resname="Error copying value. Try again!">
+        <source>Error copying value. Try again!</source>
+        <target>Error copying value. Try again!</target>
+      </trans-unit>
+      <trans-unit id="zcxbqir" resname="Value copied!">
+        <source>Value copied!</source>
+        <target>Value copied!</target>
+      </trans-unit>
+      <trans-unit id="V_uNeg." resname="Copy value">
+        <source>Copy value</source>
+        <target>Copy value</target>
+      </trans-unit>
+      <trans-unit id="xUEcQQq" resname="Showing processes failed in">
+        <source>Showing processes failed in</source>
+        <target>Showing processes failed in</target>
+      </trans-unit>
+      <trans-unit id="KHrImUJ" resname="Show all">
+        <source>Show all</source>
+        <target>Show all</target>
+      </trans-unit>
+      <trans-unit id="U_8i5Ic" resname="Remove filter on &quot;{value}&quot;">
+        <source>Remove filter on "{value}"</source>
+        <target>Remove filter on "{value}"</target>
+      </trans-unit>
+      <trans-unit id="yvrDFvv" resname="Show only &quot;{value}&quot;">
+        <source>Show only "{value}"</source>
+        <target>Show only "{value}"</target>
       </trans-unit>
     </body>
   </file>
