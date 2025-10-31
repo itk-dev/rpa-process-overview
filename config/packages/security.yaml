@@ -29,8 +29,9 @@ security:
         !php/enum App\Entity\UserRole::OverviewEditor->value:
             - !php/enum App\Entity\UserRole::Admin->value
             - !php/enum App\Entity\UserRole::OverviewViewer->value
-        !php/enum App\Entity\UserRole::ProcessStepRunner->value:
-            - !php/enum App\Entity\UserRole::OverviewViewer->value
+        !php/enum App\Entity\UserRole::OverviewViewer->value:
+            - !php/enum App\Entity\UserRole::ProcessStepRunner->value
+        !php/enum App\Entity\UserRole::OverviewSearcher->value:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
@@ -39,10 +40,7 @@ security:
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/logout, roles: !php/enum App\Entity\UserRole::User->value }
         - { path: '^/openidconnect/login(/.+)?$', role: PUBLIC_ACCESS }
-        - {
-              path: ^/,
-              roles: !php/enum App\Entity\UserRole::OverviewViewer->value,
-          }
+        - { path: ^/, roles: !php/enum App\Entity\UserRole::User->value }
 
 # During develoment it's nice to be able to easily log out, e.g. to test
 # different user roles.

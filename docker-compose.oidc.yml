@@ -17,7 +17,9 @@ services:
         "--user-claims",
         '{"sub": "overview-viewer", "email": "overview-viewer@example.com", "roles": ["overview-viewer"]}',
         "--user-claims",
-        '{"sub": "process-step-runner", "email": "process-step-runner@example.com", "roles": ["process-step-runner"]}',
+        '{"sub": "overview-searcher", "email": "overview-searcher@example.com", "roles": ["overview-searcher"]}',
+        "--user-claims",
+        '{"sub": "overview-all", "email": "overview-all@example.com", "roles": ["overview-viewer", "overview-searcher"]}',
       ]
     ports:
       - "80"
