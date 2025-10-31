@@ -145,10 +145,6 @@
         <source>Missing data</source>
         <target state="translated">Manglende data</target>
       </trans-unit>
-      <trans-unit id="SGmWohz" resname="Failed processes">
-        <source>Failed processes</source>
-        <target state="translated">Fejlede processer</target>
-      </trans-unit>
       <trans-unit id="QOhsBcU" resname="An error occurred while fetching the data">
         <source>An error occurred while fetching the data</source>
         <target state="translated">Fejl under indlæsning af data</target>
@@ -200,6 +196,34 @@
       <trans-unit id="cyzVmW2" resname="Error code: {code}">
         <source>Error code: {code}</source>
         <target state="translated">Fejlkode: {code}</target>
+      </trans-unit>
+      <trans-unit id="BaGNK8D" resname="Error copying value. Try again!">
+        <source>Error copying value. Try again!</source>
+        <target state="translated">Fejl under kopiering af værdi. Prøv igen!</target>
+      </trans-unit>
+      <trans-unit id="zcxbqir" resname="Value copied!">
+        <source>Value copied!</source>
+        <target state="translated">Værdi kopieret!</target>
+      </trans-unit>
+      <trans-unit id="V_uNeg." resname="Copy value">
+        <source>Copy value</source>
+        <target state="translated">Kopiér værdi</target>
+      </trans-unit>
+      <trans-unit id="xUEcQQq" resname="Showing processes failed in">
+        <source>Showing processes failed in</source>
+        <target state="translated">Viser processer fejlet i</target>
+      </trans-unit>
+      <trans-unit id="KHrImUJ" resname="Show all">
+        <source>Show all</source>
+        <target state="translated">Vis alle</target>
+      </trans-unit>
+      <trans-unit id="U_8i5Ic" resname="Remove filter on &quot;{value}&quot;">
+        <source>Remove filter on "{value}"</source>
+        <target state="translated">Fjern filter på "{value}"</target>
+      </trans-unit>
+      <trans-unit id="yvrDFvv" resname="Show only &quot;{value}&quot;">
+        <source>Show only "{value}"</source>
+        <target state="translated">Vis kun "{value}"</target>
       </trans-unit>
     </body>
   </file>

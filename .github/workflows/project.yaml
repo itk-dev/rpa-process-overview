@@ -1,0 +1,30 @@
+name: Project
+
+env:
+  COMPOSE_USER: root
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  coding-standards-widgets:
+    name: Widgets - Check Coding Standards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: go-task/setup-task@v1
+
+      - name: Create docker network
+        run: |
+          docker network create frontend
+
+      - run: |
+          task widgets:coding-standards:check
+
+      # Check that nothing has changed
+      - run: |
+          git diff --exit-code -- widgets

@@ -1,6 +1,6 @@
 // Not sure I've got the types, but theyll probably change when we get the proper api so I wont bother yet
 
-type RowColumnType = 'step' | 'text';
+type RowColumnType = 'meta' | 'step';
 type MetaType = 'meta.branch' | 'meta.name' | 'meta.cpr';
 export type Status = 'success' | 'failed' | 'pending';
 
@@ -9,6 +9,7 @@ export type Column = {
 	label: string;
 	id: number;
 	type: RowColumnType;
+	value_name?: string;
 };
 
 type Failure = {
@@ -83,3 +84,5 @@ export type SearchConfig = {
 	process_id: string;
 	minimum_search_query_length: number;
 };
+
+export type MetaFilters = { [key: string]: string };

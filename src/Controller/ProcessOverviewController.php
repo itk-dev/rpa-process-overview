@@ -54,6 +54,8 @@ final class ProcessOverviewController extends AbstractController
                     'Loading data …' => t('Loading data …'),
                     'Showing {from}–{to} of {total}' => t('Showing {from}–{to} of {total}'),
                     'An error occurred while fetching the data' => t('An error occurred while fetching the data'),
+                    'Remove filter on "{value}"' => t('Remove filter on "{value}"'),
+                    'Show only "{value}"' => t('Show only "{value}"'),
                 ]),
                 'page_size' => $overviewOptions['data']['page_size'] ?? 5,
                 'title' => $overviewOptions['data']['title'] ?? '',

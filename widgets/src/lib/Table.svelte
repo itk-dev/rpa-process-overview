@@ -6,8 +6,19 @@
 	import TableStepCell from './TableStepCell.svelte';
 	import TableMetaCell from './TableMetaCell.svelte';
 	import { StepStatus } from './enums';
+	import MetaFilterWidget from '$lib/MetaFilterWidget.svelte';
 
-	let { columns, rows }: { columns: Column[] | null; rows: Array<Array<Step>> | null } = $props();
+	let {
+		columns,
+		rows,
+		hasMetaFilter,
+		toggleMetaFilter
+	}: {
+		columns: Column[] | null;
+		rows: Array<Array<Step>> | null;
+		hasMetaFilter: Function;
+		toggleMetaFilter: Function;
+	} = $props();
 
 	// Status icons
 	// Todo, perhaps a "Running" status will be added
@@ -37,6 +48,7 @@
 		</thead>
 	{/if}
 	{#if columns && rows != null}
+		<!--		<pre>{JSON.stringify(rows[0], null, 2)}</pre>-->
 		<tbody>
 			{#if rows.length > 0}
 				{#each rows as row}
@@ -44,7 +56,7 @@
 						class="hover:bg-neutral-300 dark:hover:bg-gray-800 border-b border-neutral-300 dark:border-neutral-800"
 					>
 						{#each row as cell, i}
-							{#if cell.status}
+							{#if 'step' === cell.type}
 								<TableStepCell {cell} {row} {i}>
 									{@const IconComponent = icons[cell.status]}
 									<IconComponent />
@@ -53,6 +65,7 @@
 								<TableMetaCell rawValueUrl={cell.raw_value_url}>
 									<!-- Let's keep the little ghost -->
 									{cell.value ?? cell.status ?? '👻'}
+									<MetaFilterWidget column={columns[i]} {cell} {hasMetaFilter} {toggleMetaFilter} />
 								</TableMetaCell>
 							{/if}
 						{/each}

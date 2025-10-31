@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Spinner from './Icons/Spinner.svelte';
 	import ExclamationMark from './Icons/ExclamationMark.svelte';
-	import { type Column, type ProgressData, type RawData } from '$lib/types';
+	import { type Column, type MetaFilters, type ProgressData, type RawData } from '$lib/types';
 	import Table from '$lib/Table.svelte';
 	import { config, t } from './config';
 	import ErrorBanner from '$lib/ErrorBanner.svelte';
@@ -11,8 +11,11 @@
 	const { page_size, data_url, title } = config;
 
 	let error: boolean = $state(false);
-	let filters: Column[] | null = $state(null);
-	let selectedFilter: number | null = $state(getCurrentFilter());
+
+	let filtersFailedAt: Column[] | null = $state(null);
+	let selectedFilterFailedAt: number | null = $state(getCurrentFilterFailedAt());
+	let currentMetaFilters: MetaFilters = $state(getCurrentMetaFilters());
+
 	let data: ProgressData | null = $state(null);
 	let total: number | null = $state(null);
 	let fetching: boolean = $state(true);
@@ -35,26 +38,82 @@
 		return parseInteger(url.searchParams.get('page')) ?? 1;
 	}
 
-	function getCurrentFilter(): number | null {
+	function getCurrentFilterFailedAt(): number | null {
 		const url = new URL(document.location.href);
 		return parseInteger(url.searchParams.get('failed_at'));
 	}
 
-	function setUrlSearchParams(url: URL) {
-		url.searchParams.set('page', String(page));
-		if (selectedFilter) {
-			url.searchParams.set('failed_at', String(selectedFilter));
+	function getCurrentMetaFilters(): MetaFilters {
+		const url = new URL(document.location.href);
+		const filters: MetaFilters = {};
+		for (const item of url.searchParams.getAll('meta_filter')) {
+			const pair = item.split(':', 2);
+			if (2 === pair.length) {
+				filters[pair[0]] = pair[1];
+			}
+		}
+
+		return filters;
+	}
+
+	function hasMetaFilter(name: string, value: string): boolean {
+		return currentMetaFilters[name] === value;
+	}
+
+	function toggleMetaFilter(name: string, value: string) {
+		if (hasMetaFilter(name, value)) {
+			delete currentMetaFilters[name];
 		} else {
-			url.searchParams.delete('failed_at');
+			currentMetaFilters[name] = value;
 		}
 	}
 
-	function updateUrl(): URL {
-		const pageUrl = new URL(document.location.href);
-		setUrlSearchParams(pageUrl);
-		history.replaceState({}, '', pageUrl);
+	function setUrlSearchParams(url: URL, values: Object, useBracketsForArray: boolean = false) {
+		const setValue = (name: string, value: any) => {
+			// Remove name if value is empty
+			if (null === value) {
+				url.searchParams.delete(name);
+			} else if (Array.isArray(value)) {
+				url.searchParams.delete(name);
+				if (useBracketsForArray) {
+					name += '[]';
+				}
+				for (const val of value) {
+					{
+						url.searchParams.append(name, String(val));
+					}
+				}
+			} else {
+				url.searchParams.set(name, String(value));
+			}
+		};
 
-		return pageUrl;
+		for (const [name, value] of Object.entries(values)) {
+			setValue(name, value);
+		}
+	}
+
+	function setStateUrlSearchParams(url: URL, useBracketsForArray: boolean = false) {
+		const metaFilter = [];
+		for (const [name, value] of Object.entries(currentMetaFilters)) {
+			metaFilter.push(name + ':' + value);
+		}
+
+		setUrlSearchParams(
+			url,
+			{
+				page,
+				failed_at: selectedFilterFailedAt,
+				meta_filter: metaFilter
+			},
+			useBracketsForArray
+		);
+	}
+
+	function updateUrl() {
+		const pageUrl = new URL(document.location.href);
+		setStateUrlSearchParams(pageUrl);
+		history.replaceState({}, '', pageUrl);
 	}
 
 	function changePage(index: number): void {
@@ -68,8 +127,8 @@
 		error = false;
 
 		const url = new URL(data_url, document.location.href);
-		setUrlSearchParams(url);
-		url.searchParams.set('size', String(size));
+		setStateUrlSearchParams(url, true);
+		setUrlSearchParams(url, { size }, true);
 
 		fetch(url.toString())
 			.then((response) => response.json())
@@ -77,7 +136,7 @@
 				if (receivedData) {
 					total = meta?.total ?? null;
 					data = receivedData;
-					filters = receivedData.columns.filter(({ type }) => 'step' === type);
+					filtersFailedAt = receivedData.columns.filter(({ type }) => 'step' === type);
 				}
 				fetching = false;
 			})
@@ -89,10 +148,10 @@
 			});
 	});
 
-	function selectFilter(event: Event): void {
+	function selectFilterFailedAt(event: Event): void {
 		// Page is reset on filters, so when filtered we start from scratch, and not accidentally end up on a page that has no content
 		page = 1;
-		selectedFilter = parseInteger((event.target as HTMLInputElement).value);
+		selectedFilterFailedAt = parseInteger((event.target as HTMLInputElement).value);
 	}
 </script>
 
@@ -121,10 +180,14 @@
 					>{total ?? '?'}</span
 				>
 			</div>
-			<FilterByFailed {selectedFilter} {selectFilter} {filters} />
+			<FilterByFailed
+				selectedFilter={selectedFilterFailedAt}
+				selectFilter={selectFilterFailedAt}
+				filters={filtersFailedAt}
+			/>
 		</div>
 		<div class="p-4 min-h-[450px] flex flex-col justify-between">
-			<Table columns={data.columns} rows={data.rows}></Table>
+			<Table columns={data.columns} rows={data.rows} {hasMetaFilter} {toggleMetaFilter}></Table>
 			{#if total !== null}
 				<Pagination {total} {changePage} {size} {page} />
 			{/if}
