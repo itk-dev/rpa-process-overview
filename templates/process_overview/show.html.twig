@@ -5,10 +5,14 @@
 {% block content %}
     {{ include('_partials/group_header.html.twig', {group: overview.group, overview: overview}) }}
 
-    {# https://standalone.brenoliradev.com/embed.html#auto-embed-with-target #}
-    <div id="ProcessOverview" data-rpa-process-overview-config="{{ overview_config|json_encode }}"></div>
-    <script src="/widgets/ProcessOverview.min.js"></script>
+    {% if is_granted(enum('App\\Entity\\UserRole').OverviewViewer.value) %}
+        {# https://standalone.brenoliradev.com/embed.html#auto-embed-with-target #}
+        <div id="ProcessOverview" data-rpa-process-overview-config="{{ overview_config|json_encode }}"></div>
+        <script src="/widgets/ProcessOverview.min.js"></script>
+    {% endif %}
 
-    <div id="ProcessSearch" data-rpa-process-search-config="{{ search_config|json_encode }}"></div>
-    <script src="/widgets/ProcessSearch.min.js"></script>
+    {% if is_granted(enum('App\\Entity\\UserRole').OverviewSearcher.value) %}
+        <div id="ProcessSearch" data-rpa-process-search-config="{{ search_config|json_encode }}"></div>
+        <script src="/widgets/ProcessSearch.min.js"></script>
+    {% endif %}
 {% endblock %}

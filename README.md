@@ -178,10 +178,25 @@ ADMIN_OIDC_CLIENT_SECRET=…
 
 ADMIN_OIDC_REDIRECT_URI=https://rpa-process-overview.example.com/
 
+# The value must be a valid JSON object mapping an OIDC `roles` claim to a list of role names.
 ADMIN_OIDC_ROLE_MAP='{
-  "overview-manager": ["ROLE_OVERVIEW_MANAGER"]
+  "overview-editor": ["ROLE_OVERVIEW_EDITOR"],
+  "overview-viewer": ["ROLE_OVERVIEW_VIEWER"],
+  "overview-searcher": ["ROLE_OVERVIEW_SEARCHER"]
 }'
 ```
+
+### Roles
+
+As hinted at in the config above, we use three main roles:
+
+| Name                   | Permissions                                   |
+|------------------------|-----------------------------------------------|
+| ROLE_OVERVIEW_EDITOR   | Create and edit project overviews             |
+| ROLE_OVERVIEW_VIEWER   | View process runs, rerun failed process steps |
+| ROLE_OVERVIEW_SEARCHER | Search process runs                           |
+
+Internally, we use additional roles to control the actual permissions that a main role has.
 
 For local testing of OIDC login, we use [OpenID Provider Mock](https://github.com/geigerzaehler/oidc-provider-mock) (cf.
 [`docker-compose.oidc.yml`](docker-compose.oidc.yml)) and the mock is running on
@@ -189,11 +204,12 @@ For local testing of OIDC login, we use [OpenID Provider Mock](https://github.co
 
 The following users are defined in the mock (cf. [`docker-compose.oidc.yml`](docker-compose.oidc.yml)):
 
-| Username (sub)      | Roles               | What they can do                              |
-|---------------------|---------------------|-----------------------------------------------|
-| overview-editor     | overview-editor     | Create and edit overviews                     |
-| overview-viewer     | overview-viewer     | View overviews                                |
-| process-step-runner | process-step-runner | View overviews and rerun failed process steps |
+| Username (sub)    | Roles                              |
+|-------------------|------------------------------------|
+| overview-editor   | overview-editor                    |
+| overview-viewer   | overview-viewer                    |
+| overview-searcher | overview-searcher                  |
+| overview-all      | overview-viewer, overview-searcher |
 
 > [!TIP]
 > Set `DOCKER_OIDC_DISABLE` to a non-empty value in `.env.local` to disable the OIDC service, e.g.

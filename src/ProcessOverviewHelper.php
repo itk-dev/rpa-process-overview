@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Entity\ProcessOverview;
+use App\Entity\UserRole;
 use League\Uri\Modifier;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
@@ -74,15 +75,21 @@ class ProcessOverviewHelper
                 ),
                 array_map(
                     function (array $step) use ($overview) {
-                        return $step + [
+                        $additionalStepData = [
                             'type' => 'step',
-                            'rerun_url' => $step['can_rerun'] ? $this->urlGenerator->generate('process_overview_rerun',
-                                [
+                        ];
+
+                        if ($this->authorizationChecker->isGranted(UserRole::ProcessStepRunner->value)) {
+                            $additionalStepData['rerun_url'] = $step['can_rerun']
+                                ? $this->urlGenerator->generate('process_overview_rerun', [
                                     'group' => $overview->getGroup()->getId(),
                                     'overview' => $overview->getId(),
                                     'run' => $step['id'],
-                                ], UrlGeneratorInterface::ABSOLUTE_URL) : null,
-                        ];
+                                ], UrlGeneratorInterface::ABSOLUTE_URL)
+                                : null;
+                        }
+
+                        return $step + $additionalStepData;
                     },
                     $steps
                 ),
