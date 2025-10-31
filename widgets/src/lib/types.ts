@@ -15,7 +15,7 @@ type Failure = {
 	code: number;
 	message: string;
 	occurred_at: Date;
-	retryable: Boolean;
+	retryable: boolean;
 };
 
 export type Step = {
@@ -30,10 +30,10 @@ export type Step = {
 	finished_at: Date | null;
 	updated_at: Date | null;
 	failure: Failure | null;
-	id: Number | null;
-	step_id: Number | null;
-	step_index: Number | null;
-	run_id: Number | null;
+	id: number | null;
+	step_id: number | null;
+	step_index: number | null;
+	run_id: number | null;
 	status: Status;
 	can_rerun: boolean | null;
 };

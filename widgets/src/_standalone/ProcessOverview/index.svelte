@@ -20,20 +20,21 @@
 	let size: number = $state(parseInteger(page_size) || 10);
 	let page: number = $state(getCurrentPage());
 
-	function parseInteger(int: string | null): number | null {
-		if (null === int) {
+	function parseInteger(value: string | null): number | null {
+		if (null === value) {
 			return null;
 		}
 
-		const value = parseInt(int, 10);
+		const parsedValue = parseInt(value, 10);
 
-		return isNaN(value) ? null : value;
+		return isNaN(parsedValue) ? null : parsedValue;
 	}
 
 	function getCurrentPage(): number {
 		const url = new URL(document.location.href);
 		return parseInteger(url.searchParams.get('page')) ?? 1;
 	}
+
 	function getCurrentFilter(): number | null {
 		const url = new URL(document.location.href);
 		return parseInteger(url.searchParams.get('failed_at'));

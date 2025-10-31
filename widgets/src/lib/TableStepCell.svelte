@@ -20,15 +20,15 @@
 
 	let posted: boolean = $state(false);
 
-	function isTheNextStepFailed(row: Step[], stepIndex: Number | null) {
-		if (stepIndex === null) return false;
-		const indexElement = row.findIndex(({ step_index }) => step_index === stepIndex);
-		const nextElement = indexElement + 1;
-		return row[nextElement]?.status !== StepStatus.SUCCESS;
+	function isFirstStep(stepIndex: Number | null): boolean {
+		return stepIndex === 0;
 	}
 
-	function notTheLastStep(index: number, rowLength: number): boolean {
-		return index < rowLength - 1;
+	function isLastStep(index: number | null, rowLength: number | null): boolean {
+		if (rowLength) {
+			return index === rowLength - 1;
+		}
+		return false;
 	}
 
 	function updatePosted(newState: boolean): void {
@@ -50,8 +50,13 @@
 	}
 </script>
 
-<!-- relative to absolute position the stick -->
-<td class="relative [width:stretch]">
+<td
+	class="relative [width:stretch] step {StepStatus.FAILED === status
+		? 'failed'
+		: ''} {StepStatus.SUCCESS === status ? 'succeeded' : ''} {isFirstStep(step_index)
+		? 'first'
+		: ''} {isLastStep(i, row.length) ? 'last' : ''}"
+>
 	<button
 		id={`anchor-${id}`}
 		class="flex items-center justify-center [width:stretch] {status !== StepStatus.PENDING
@@ -60,7 +65,7 @@
 		popovertarget={`popover-${id}`}
 	>
 		<div
-			class="{getStatusClasses()} transition-colors motion-reduce:transition-none w-8 h-8 rounded-full flex items-center justify-center mx-auto text-white"
+			class="{getStatusClasses()} transition-colors z-1 motion-reduce:transition-none w-8 h-8 rounded-full flex items-center justify-center mx-auto text-white"
 		>
 			{#if posted}
 				<Rerun />
@@ -70,14 +75,6 @@
 			{/if}
 		</div>
 	</button>
-	<!-- The last step should not display the little stick between the round things -->
-	{#if notTheLastStep(i, row.length)}
-		<div
-			class="{isTheNextStepFailed(row, step_index)
-				? 'bg-neutral-400 dark:bg-neutral-800'
-				: 'bg-green-700'} absolute top-1/2 left-[calc(50%+16px)] h-0.5 w-[calc(100%)] -translate-y-1/2"
-		></div>
-	{/if}
 	{#if status !== StepStatus.PENDING}
 		<PopOver step={cell} {posted} {updatePosted} />
 	{/if}
