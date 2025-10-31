@@ -42,7 +42,6 @@ final class ProcessOverviewController extends AbstractController
                     'Try again!' => t('Error copying value. Try again!'),
                     'Copied!' => t('Value copied!'),
                     'Copy field' => t('Copy value'),
-                    'Failed processes' => t('Failed processes'),
                     // We're actually showing “process runs”, but it probably makes more sense to real people to (still) call them “processes”.
                     'Showing processes failed in' => t('Showing processes failed in'),
                     'Show all' => t('Show all'),
@@ -57,6 +56,7 @@ final class ProcessOverviewController extends AbstractController
                     'An error occurred while fetching the data' => t('An error occurred while fetching the data'),
                 ]),
                 'page_size' => $overviewOptions['data']['page_size'] ?? 5,
+                'title' => $overviewOptions['data']['title'] ?? '',
             ],
             'search_config' => [
                 'search_url' => $this->generateUrl('process_overview_search', [

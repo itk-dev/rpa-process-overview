@@ -8,7 +8,7 @@
 	import Pagination from './Pagination.svelte';
 	import FilterByFailed from './FilterByFailed.svelte';
 
-	const { page_size, data_url } = config;
+	const { page_size, data_url, title } = config;
 
 	let error: boolean = $state(false);
 	let filters: Column[] | null = $state(null);
@@ -114,7 +114,7 @@
 		>
 			<div class="flex">
 				<ExclamationMark />
-				<h2>{t('Failed processes')}</h2>
+				<h2>{title}</h2>
 				<span
 					class="ml-2 px-2 py-0.5 text-xs font-semibold rounded-full self-center bg-rose-700 text-white"
 					>{total ?? '?'}</span
