@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Spinner from './Icons/Spinner.svelte';
 	import ExclamationMark from './Icons/ExclamationMark.svelte';
-	import { type ProgressData, type Column, type RawData } from '$lib/types';
+	import { type Column, type ProgressData, type RawData } from '$lib/types';
 	import Table from '$lib/Table.svelte';
-	import { t, config } from './config';
+	import { config, t } from './config';
 	import ErrorBanner from '$lib/ErrorBanner.svelte';
 	import Pagination from './Pagination.svelte';
 	import FilterByFailed from './FilterByFailed.svelte';
@@ -17,35 +17,40 @@
 	let total: number | null = $state(null);
 	let fetching: boolean = $state(true);
 	let errorMessage: string = $state('');
-	let size: number = $state(parseInt(page_size));
+	let size: number = $state(parseInteger(page_size) || 10);
 	let page: number = $state(getCurrentPage());
 
 	function parseInteger(int: string | null): number | null {
-		if (int) {
-			return Number(int);
+		if (null === int) {
+			return null;
 		}
-		return null;
+
+		const value = parseInt(int, 10);
+
+		return isNaN(value) ? null : value;
 	}
 
 	function getCurrentPage(): number {
 		const url = new URL(document.location.href);
-		const page = parseInteger(url.searchParams.get('page'));
-		return page ?? 1;
+		return parseInteger(url.searchParams.get('page')) ?? 1;
 	}
 	function getCurrentFilter(): number | null {
 		const url = new URL(document.location.href);
-		const failedAt = parseInteger(url.searchParams.get('failed_at'));
-		return failedAt;
+		return parseInteger(url.searchParams.get('failed_at'));
+	}
+
+	function setUrlSearchParams(url: URL) {
+		url.searchParams.set('page', String(page));
+		if (selectedFilter) {
+			url.searchParams.set('failed_at', String(selectedFilter));
+		} else {
+			url.searchParams.delete('failed_at');
+		}
 	}
 
 	function updateUrl(): URL {
 		const pageUrl = new URL(document.location.href);
-		pageUrl.searchParams.set('page', String(page));
-		if (selectedFilter) {
-			pageUrl.searchParams.set('failed_at', String(selectedFilter));
-		} else {
-			pageUrl.searchParams.delete('failed_at');
-		}
+		setUrlSearchParams(pageUrl);
 		history.replaceState({}, '', pageUrl);
 
 		return pageUrl;
@@ -56,20 +61,22 @@
 	}
 
 	$effect(() => {
-		const url = updateUrl();
+		updateUrl();
 		fetching = true;
 		errorMessage = '';
 		error = false;
 
+		const url = new URL(data_url, document.location.href);
+		setUrlSearchParams(url);
 		url.searchParams.set('size', String(size));
 
 		fetch(url.toString())
 			.then((response) => response.json())
-			.then(({ data: recievedData, meta }: { data: ProgressData | null; meta: RawData }) => {
-				if (recievedData) {
+			.then(({ data: receivedData, meta }: { data: ProgressData | null; meta: RawData }) => {
+				if (receivedData) {
 					total = meta?.total ?? null;
-					data = recievedData;
-					filters = recievedData.columns.filter(({ type }) => 'step' === type);
+					data = receivedData;
+					filters = receivedData.columns.filter(({ type }) => 'step' === type);
 				}
 				fetching = false;
 			})

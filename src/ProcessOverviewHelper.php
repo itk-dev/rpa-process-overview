@@ -35,6 +35,7 @@ class ProcessOverviewHelper
         foreach ($process['steps'] as $step) {
             $stepColumns[] = [
                 'label' => $step['name'],
+                'id' => $step['id'],
                 'type' => 'step',
             ];
         }
@@ -49,14 +50,6 @@ class ProcessOverviewHelper
             $rows[] = array_merge(
                 array_map(
                     function (array $col) use ($overview, $item) {
-                        if (!isset($item['id']) && isset($item['run'])) {
-                            // The reason for the $item = $item['run'] stuff is, that the data returned from the api
-                            // differs in format. Described in this issue:
-                            // https://github.com/AAK-MBU/Process_Dashboard_API/issues/40 Todo, remove if the issue is
-                            // fixed.
-                            $item = $item['run'];
-                        }
-
                         $value = $this->getArrayValue($item, $col['data']);
                         $result = [
                             'type' => 'text',
@@ -141,6 +134,7 @@ class ProcessOverviewHelper
             }
 
             $query += $request->query->all();
+            $query['process_id'] = $processId;
             $data = $this->dataSourceHelper->search($datasource, $query);
 
             return $this->formatData($data, $options, $process, $overview, $request);
