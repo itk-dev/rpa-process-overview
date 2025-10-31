@@ -22,7 +22,7 @@
 </script>
 
 {#if is_filterable}
-	<button onclick={() => toggleMetaFilter(name, value)}>
+	<button class="cursor-pointer" onclick={() => toggleMetaFilter(name, value)}>
 		{#if hasMetaFilter(name, value)}
 			<span title={t('Remove filter on "{value}"', { value })}><MetaFilterRemove /></span>
 		{:else}
