@@ -3,14 +3,23 @@
 {% block title %}{{ 'Process overview groups'|trans }}{% endblock %}
 
 {% block content %}
-    <h1>{{ 'Groups'|trans }}</h1>
+    {# <h1>{{ 'Groups'|trans }}</h1> #}
 
-    <ul class="nav flex-column">
+    <ul>
         {% for group in groups %}
-            <li class="nav-item">
+            {% if group.overviews %}
+            <li>
                 <a class="nav-link"
                    href="{{ path('process_overview_group_show', {id: group.id}) }}">{{ group.label }}</a>
+                <ul>
+                    {% for overview in group.overviews %}
+                        <li class="ml-4">
+                            <a class="nav-link" href="{{ path('process_overview_show', {group: group.id, overview: overview.id}) }}">{{ overview.label }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
             </li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% endblock %}
