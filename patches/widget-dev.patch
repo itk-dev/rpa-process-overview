@@ -11,10 +11,10 @@ index f1cf2ad..818b6a7 100644
 
          return $this->assetsPathResolver->resolvePublicPath($digestedPath);
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index 03caffa..0274cf0 100644
+index ff7017c..1c781e8 100644
 --- a/config/packages/security.yaml
 +++ b/config/packages/security.yaml
-@@ -35,14 +35,6 @@ security:
+@@ -43,8 +43,3 @@ security:
      # Easy way to control access for large sections of your site
      # Note: Only the *first* access control that matches will be used
      access_control:
@@ -22,10 +22,4 @@ index 03caffa..0274cf0 100644
 -        - { path: ^/login, roles: PUBLIC_ACCESS }
 -        - { path: ^/logout, roles: !php/enum App\Entity\UserRole::User->value }
 -        - { path: '^/openidconnect/login(/.+)?$', role: PUBLIC_ACCESS }
--        - {
--              path: ^/,
--              roles: !php/enum App\Entity\UserRole::OverviewViewer->value,
--          }
-
- # During develoment it's nice to be able to easily log out, e.g. to test
- # different user roles.
+-        - { path: ^/, roles: !php/enum App\Entity\UserRole::User->value }
