@@ -69,7 +69,10 @@ class ProcessOverviewCrudController extends AbstractCrudController
     {
         yield IdField::new('id', t('ID'))
             ->onlyOnDetail();
-        yield TextField::new('label', t('Label'));
+        yield TextField::new('label', t('Label'))
+            // Needed prevent 'Expected argument of type "string", "null" given at property path "label".' exception
+            // when using Assert\NotBlank on property.
+            ->setFormTypeOption('empty_data', '');
         yield AssociationField::new('group', t('Group'));
 
         yield TextField::new('createdBy', t('Created by'))
