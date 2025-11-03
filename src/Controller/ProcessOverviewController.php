@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Yaml\Yaml;
+use Symfony\Contracts\Translation\TranslatableInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 use function Symfony\Component\Translation\t;
 
@@ -19,13 +21,14 @@ use function Symfony\Component\Translation\t;
 final class ProcessOverviewController extends AbstractController
 {
     #[Route('/{overview}', name: 'show')]
-    public function show(ProcessOverviewGroup $group, ProcessOverview $overview): Response
+    public function show(ProcessOverviewGroup $group, ProcessOverview $overview, TranslatorInterface $translator): Response
     {
         if ($group !== $overview->getGroup()) {
             throw new BadRequestHttpException();
         }
 
         $overviewOptions = Yaml::parse($overview->getOptions() ?? '');
+        $translate = static fn (TranslatableInterface $t): string => $t->trans($translator);
 
         return $this->render('process_overview/show.html.twig', [
             'overview' => $overview,
@@ -34,8 +37,8 @@ final class ProcessOverviewController extends AbstractController
                     'group' => $group->getId(),
                     'overview' => $overview->getId(),
                 ]),
-                'messages' => array_map('strval', [
-                    'Go to previous page' => strval(t('Go to previous page')),
+                'messages' => array_map($translate(...), [
+                    'Go to previous page' => t('Go to previous page'),
                     'Go to page {page}' => t('Go to page {page}'),
                     'Go to next page' => t('Go to next page'),
                     'Missing data' => t('Missing data'),
@@ -67,11 +70,12 @@ final class ProcessOverviewController extends AbstractController
                 ]),
                 'process_id' => $overview->getId(),
                 'minimum_search_query_length' => $overviewOptions['search']['minimum_search_query_length'] ?? 2,
-                'messages' => array_map('strval', [
+                'messages' => array_map($translate(...), [
                     'Citizen search' => t('Citizen search'),
                     'Citizen information' => t('Citizen information'),
                     'An error occurred while searching' => t('An error occurred while searching'),
                 ]),
+                'title' => $overviewOptions['search']['title'] ?? '',
             ],
         ]);
     }
