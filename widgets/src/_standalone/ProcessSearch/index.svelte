@@ -12,7 +12,7 @@
 	const DEBOUNCE_DELAY: number = 500;
 	let data: ProgressData | null = $state(null);
 	let timer: ReturnType<typeof setTimeout>;
-	const { search_url, minimum_search_query_length } = config;
+	const { search_url, minimum_search_query_length, title } = config;
 
 	$effect(() => {
 		const parsedQuery = query.trim();
@@ -53,7 +53,7 @@
 			class="p-3 dark:text-white font-medium bg-gray-200 dark:bg-gray-800 flex items-center border-b border-neutral-300 dark:border-neutral-800"
 		>
 			<Search />
-			<h2>{t('Citizen search')}</h2>
+			<h2>{title}</h2>
 		</div>
 
 		<div class="p-4 bg-gray-100 dark:bg-gray-900">
