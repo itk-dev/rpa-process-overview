@@ -66,7 +66,12 @@
 									<!-- Let's keep the little ghost -->
 									{cell.value ?? cell.status ?? '👻'}
 									{#if hasMetaFilter && toggleMetaFilter}
-										<MetaFilterWidget column={columns[i]} {cell} {hasMetaFilter} {toggleMetaFilter} />
+										<MetaFilterWidget
+											column={columns[i]}
+											{cell}
+											{hasMetaFilter}
+											{toggleMetaFilter}
+										/>
 									{/if}
 								</TableMetaCell>
 							{/if}
