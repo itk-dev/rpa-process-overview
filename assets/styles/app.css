@@ -9,91 +9,25 @@
   --succeeded-color-bg: oklch(52.7% 0.154 150.069);
 
   --connector-width: 0.2em;
+
+  --step-width: 8em;
+  --meta-max-width: 12em;
+}
+
+th.meta,
+td.meta {
+  text-align: left;
+  max-width: var(--meta-max-width);
+}
+
+th.step,
+td.step {
+  text-align: center;
+  width: var(--step-width);
+  /* Setting only width does not seem to work. */
+  max-width: var(--step-width);
 }
 
 td.step {
   position: relative;
-
-  &::before {
-    width: 100%;
-    height: var(--connector-width);
-    background: linear-gradient(
-      90deg,
-      var(--pending-color-bg) 0%,
-      var(--pending-color-bg) 50%,
-      var(--pending-color-bg) 50%,
-      var(--pending-color-bg) 100%
-    );
-    display: block;
-    position: absolute;
-    top: calc(50% - var(--connector-width) / 2);
-    left: 0;
-    content: "";
-  }
-
-  &.succeeded {
-    &::before {
-      background: var(--succeeded-color-bg);
-    }
-
-    &:has(+ .failed)::before {
-      background: linear-gradient(
-        90deg,
-        var(--succeeded-color-bg) 0%,
-        var(--succeeded-color-bg) 50%,
-        var(--pending-color-bg) 50%,
-        var(--pending-color-bg) 100%
-      );
-    }
-
-    &.first::before {
-      background: linear-gradient(
-        90deg,
-        var(--no-color) 0%,
-        var(--no-color) 50%,
-        var(--succeeded-color-bg) 50%,
-        var(--succeeded-color-bg) 100%
-      );
-    }
-
-    &.first:has(+ .failed)::before {
-      background: linear-gradient(
-        90deg,
-        var(--no-color) 0%,
-        var(--no-color) 50%,
-        var(--pending-color-bg) 50%,
-        var(--pending-color-bg) 100%
-      );
-    }
-
-    &.last::before {
-      background: linear-gradient(
-        90deg,
-        var(--succeeded-color-bg) 0%,
-        var(--succeeded-color-bg) 50%,
-        var(--no-color) 50%,
-        var(--no-color) 100%
-      );
-    }
-  }
-
-  &.first::before {
-    background: linear-gradient(
-      90deg,
-      var(--no-color) 0%,
-      var(--no-color) 50%,
-      var(--pending-color-bg) 50%,
-      var(--pending-color-bg) 100%
-    );
-  }
-
-  &.last::before {
-    background: linear-gradient(
-      90deg,
-      var(--pending-color-bg) 0%,
-      var(--pending-color-bg) 50%,
-      var(--no-color) 50%,
-      var(--no-color) 100%
-    );
-  }
 }

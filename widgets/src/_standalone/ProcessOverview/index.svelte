@@ -166,18 +166,16 @@
 {:else if null === data}
 	<h2 class="text-neutral-900 dark:text-white my-3 mb-5">{t('Missing data')}</h2>
 {:else}
-	<div
-		class="flex flex-col border bg-gray-100 dark:bg-gray-900 border-neutral-300 dark:border-neutral-800 rounded-md mb-5"
-	>
+	<div class="rounded-md h-full border border-neutral-300 dark:border-neutral-800">
 		<div
-			class="p-4 dark:text-white justify-between font-medium bg-gray-200 dark:bg-gray-800 flex items-center border-b border-neutral-300 dark:border-neutral-800"
+			class="p-3 dark:text-white font-medium bg-gray-200 dark:bg-gray-800 flex justify-between items-center border-b border-neutral-300 dark:border-neutral-800"
 		>
-			<div class="flex">
+			<div class="flex items-center">
 				<ExclamationMark />
 				<h2>{title}</h2>
 				<span
 					class="ml-2 px-2 py-0.5 text-xs font-semibold rounded-full self-center bg-rose-700 text-white"
-					>{total ?? '?'}</span
+					>{total ?? ''}</span
 				>
 			</div>
 			<FilterByFailed
@@ -186,7 +184,7 @@
 				filters={filtersFailedAt}
 			/>
 		</div>
-		<div class="p-4 min-h-[450px] flex flex-col justify-between">
+		<div>
 			<Table columns={data.columns} rows={data.rows} {hasMetaFilter} {toggleMetaFilter}></Table>
 			{#if total !== null}
 				<Pagination {total} {changePage} {size} {page} />

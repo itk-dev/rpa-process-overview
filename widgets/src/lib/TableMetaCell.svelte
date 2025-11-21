@@ -55,7 +55,7 @@
 </script>
 
 <td
-	class="relative px-3 py-4 whitespace-nowrap text-sm dark:text-gray-300 w-24 truncate h-[80px] transition {feedbackClass}"
+	class="meta relative px-3 py-4 whitespace-nowrap text-sm dark:text-gray-300 w-24 truncate h-[80px] transition {feedbackClass}"
 >
 	{#if rawValueUrl}
 		<button class="cursor-pointer items-center flex" onclick={() => getUnmaskedValue(rawValueUrl)}>

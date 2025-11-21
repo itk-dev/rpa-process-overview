@@ -48,12 +48,14 @@
 </script>
 
 <div class="grid grid-cols-1 gap-6">
-	<div class="rounded-md overflow-hidden h-full border border-neutral-300 dark:border-neutral-800">
+	<div class="rounded-md h-full border border-neutral-300 dark:border-neutral-800">
 		<div
-			class="p-3 dark:text-white font-medium bg-gray-200 dark:bg-gray-800 flex items-center border-b border-neutral-300 dark:border-neutral-800"
+			class="p-3 dark:text-white font-medium bg-gray-200 dark:bg-gray-800 flex justify-between items-center border-b border-neutral-300 dark:border-neutral-800"
 		>
-			<Search />
-			<h2>{title}</h2>
+			<div class="flex items-center">
+				<Search />
+				<h2>{title}</h2>
+			</div>
 		</div>
 
 		<div class="p-4 bg-gray-100 dark:bg-gray-900">
@@ -71,10 +73,10 @@
 					<ErrorBanner {errorMessage} />
 				{/if}
 			</div>
-
-			{#if data}
-				<Table columns={data.columns} rows={data.rows}></Table>
-			{/if}
 		</div>
+
+		{#if data}
+			<Table columns={data.columns} rows={data.rows}></Table>
+		{/if}
 	</div>
 </div>

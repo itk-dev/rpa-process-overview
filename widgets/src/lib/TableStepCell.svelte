@@ -51,17 +51,28 @@
 </script>
 
 <td
-	class="relative [width:stretch] step {StepStatus.FAILED === status
-		? 'failed'
-		: ''} {StepStatus.SUCCESS === status ? 'succeeded' : ''} {isFirstStep(step_index)
-		? 'first'
-		: ''} {isLastStep(i, row.length) ? 'last' : ''}"
+	class={[
+		'step',
+		'relative',
+		{
+			failed: StepStatus.FAILED === status,
+			succeeded: StepStatus.SUCCESS === status,
+			first: isFirstStep(step_index),
+			last: isLastStep(i, row.length)
+		}
+	]}
 >
 	<button
 		id={`anchor-${id}`}
-		class="flex items-center justify-center [width:stretch] {status !== StepStatus.PENDING
-			? 'cursor-pointer'
-			: ''}"
+		class={[
+			// 'flex',
+			// 'items-center',
+			// 'justify-center',
+			// '[width:stretch]',
+			{
+				'cursor-pointer': status !== StepStatus.PENDING
+			}
+		]}
 		popovertarget={`popover-${id}`}
 	>
 		<div
