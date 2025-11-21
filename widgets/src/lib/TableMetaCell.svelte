@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
-	import Scissor from './Icons/Scissor.svelte';
+	import CopyValue from './Icons/CopyValue.svelte';
 	import { t } from '../_standalone/ProcessOverview/config';
 	import type { Snippet } from 'svelte';
 
@@ -60,7 +60,7 @@
 	{#if rawValueUrl}
 		<button class="cursor-pointer items-center flex" onclick={() => getUnmaskedValue(rawValueUrl)}>
 			<div class="rounded-full bg-violet-600 p-1 mr-1 dark:hover:bg-violet-600 hover:bg-violet-300">
-				<Scissor className="h-4 w-4 text-white" />
+				<CopyValue className="h-4 w-4 text-white" />
 			</div>
 			{@render children()}
 		</button>
