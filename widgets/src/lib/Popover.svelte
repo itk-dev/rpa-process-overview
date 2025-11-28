@@ -97,9 +97,11 @@
 				<div class="py-1 font-bold">
 					{failure.message}
 				</div>
-				<div class="py-1 font-thin">
-					{t('Error code: {code}', { code: failure.code })}
-				</div>
+				{#if failure.code}
+					<div class="py-1 font-thin">
+						{t('Error code: {code}', { code: failure.code })}
+					</div>
+				{/if}
 			{/if}
 
 			{#if finishedAt}
