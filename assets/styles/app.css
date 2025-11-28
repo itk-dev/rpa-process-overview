@@ -31,3 +31,14 @@ td.step {
 td.step {
   position: relative;
 }
+
+.step-information-popover {
+  max-width: 30em;
+  position-area: bottom;
+  position-try-fallbacks: top;
+  position-try-fallbacks: flip-block, flip-inline;
+}
+
+[popovertarget]:has(+ div:popover-open) {
+  /* @todo Highlight the current popover target */
+}

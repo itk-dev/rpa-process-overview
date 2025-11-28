@@ -63,7 +63,6 @@
 	]}
 >
 	<button
-		id={`anchor-${id}`}
 		class={[
 			// 'flex',
 			// 'items-center',
@@ -74,6 +73,7 @@
 			}
 		]}
 		popovertarget={`popover-${id}`}
+		style:anchor-name={`--anchor-${id}`}
 	>
 		<div
 			class="{getStatusClasses()} transition-colors z-1 motion-reduce:transition-none w-8 h-8 rounded-full flex items-center justify-center mx-auto text-white"

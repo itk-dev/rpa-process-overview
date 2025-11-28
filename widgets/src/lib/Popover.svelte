@@ -79,11 +79,10 @@
 
 <div
 	id={`popover-${id}`}
-	class="anchor-position transition-all motion-reduce:transition-none top-[anchor(bottom)] [justify-self:anchor-center] bg-transparent [&:popover-open]:flex items-center flex-col"
-	anchor={`anchor-${id}`}
+	class="step-information-popover anchor-position transition-all motion-reduce:transition-none top-[anchor(bottom)] [justify-self:anchor-center] bg-transparent [&:popover-open]:flex items-center flex-col"
+	style:position-anchor={`--anchor-${id}`}
 	popover
 >
-	<DecorationalArrow {getStatusClasses} />
 	<div
 		class="{getStatusClasses()} border border-2 rounded-md p-4 dark:bg-gray-900 dark:text-white bg-white"
 	>
