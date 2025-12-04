@@ -3,9 +3,12 @@
 namespace App;
 
 use App\Entity\DataSource;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+
+use function Symfony\Component\String\u;
 
 class DataSourceHelper
 {
@@ -13,6 +16,7 @@ class DataSourceHelper
 
     public function __construct(
         private readonly HttpClientInterface $httpClient,
+        private readonly Security $token,
     ) {
     }
 
@@ -36,9 +40,9 @@ class DataSourceHelper
         return $this->get($dataSource, 'runs/search/', $query);
     }
 
-    public function getProcessRun(DataSource $dataSource, string $processId, string $runId): array
+    public function getProcessRun(DataSource $dataSource, string $processId, string $runId, ?string $action = null): array
     {
-        return $this->get($dataSource, 'runs/'.$runId);
+        return $this->get($dataSource, 'runs/'.$runId, action: $action);
     }
 
     public function rerun(DataSource $dataSource, string $runId): array
@@ -46,22 +50,44 @@ class DataSourceHelper
         return $this->post($dataSource, 'step-runs/'.$runId.'/rerun');
     }
 
-    private function get(DataSource $dataSource, string $path, array $query = []): array
+    private function get(DataSource $dataSource, string $path, array $query = [], ?string $action = null): array
     {
         $url = $this->buildUrl($dataSource, $path, $query);
-        $options = $this->buildOptions($dataSource);
+        $options = $this->buildOptions($dataSource, action: $action ?? $this->getActionName());
         $response = $this->httpClient->request(Request::METHOD_GET, $url, $options);
 
         return $response->toArray();
     }
 
-    private function post(DataSource $dataSource, string $path, array $query = []): array
+    private function post(DataSource $dataSource, string $path, array $query = [], ?string $action = null): array
     {
         $url = $this->buildUrl($dataSource, $path, $query);
-        $options = $this->buildOptions($dataSource);
+        $options = $this->buildOptions($dataSource, action: $action ?? $this->getActionName());
         $response = $this->httpClient->request(Request::METHOD_POST, $url, $options);
 
         return $response->toArray();
+    }
+
+    /**
+     * Get action name based on current call stack.
+     *
+     * @param int $offset the call stack offset
+     *
+     * @return string|null the action name if any
+     */
+    private function getActionName(int $offset = 3): ?string
+    {
+        $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, $offset);
+        if ($offset !== count($trace)) {
+            return null;
+        }
+        $frame = array_pop($trace);
+        $function = $frame['function'] ?? null;
+        if (null === $function) {
+            return null;
+        }
+
+        return $function;
     }
 
     private function buildUrl(DataSource $dataSource, string $path, array $query): string
@@ -82,13 +108,18 @@ class DataSourceHelper
         return $url;
     }
 
-    private function buildOptions(DataSource $dataSource): array
+    private function buildOptions(DataSource $dataSource, ?string $action): array
     {
         $options = [];
 
         $dataSourceOptions = $this->getOptions($dataSource);
         if ($clientOptions = ($dataSourceOptions['client_options'] ?? null)) {
             $options += $clientOptions;
+        }
+
+        $options['headers']['x-user'] = $this->token->getUser()?->getUserIdentifier();
+        if (null !== $action) {
+            $options['headers']['x-action'] = u($action)->kebab()->toString();
         }
 
         return $options;
