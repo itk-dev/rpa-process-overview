@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+project_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
+
+git_tag=${1:-}
+if [ -z "$git_tag" ]; then
+  (>&2 echo "Usage: $0 git-tag-or-branch")
+  exit
+fi
+
+cd "$project_dir" || exit
+
+git_remote=origin
+git fetch "$git_remote"
+
+# https://stackoverflow.com/a/30524983
+if git ls-remote --exit-code --heads "$git_remote" "refs/heads/$git_tag" > /dev/null 2>&1; then
+    echo "Deploying branch $git_tag"
+    git_remote_tag="$git_remote/$git_tag"
+elif git ls-remote --exit-code --tags "$git_remote" "refs/tags/$git_tag" > /dev/null 2>&1; then
+    echo "Deploying tag $git_tag"
+    git_remote_tag="$git_tag"
+else
+    (>&2 echo "Invalid tag or branch name: $git_tag")
+    exit 1
+fi
+
+#git clean -d --force > /dev/null 2>&1
+git checkout --force "$git_tag" > /dev/null 2>&1
+git reset --hard "$git_remote_tag" > /dev/null 2>&1
+
+function compose() {
+    itkdev-docker-compose-server "$@"
+}
+
+function console() {
+    compose exec phpfpm bin/console "$@"
+}
+
+git submodule update --init
+git -C api checkout .
+git -C api apply < patches/Process_Dashboard_API.patch
+
+itkdev-docker-compose-server pull
+itkdev-docker-compose-server up --detach --build
+
+itkdev-docker-compose-server exec phpfpm composer install --no-dev --classmap-authoritative
+
+console doctrine:migrations:migrate --no-interaction
+console tailwind:build
+console asset-map:compile
+console cache:clear
+
+mkdir -p widgets/static/ public/widgets
+sudo chmod -Rv a+w widgets/static/ public/widgets
+rm -fr widgets/static/ public/widgets
+task widgets:deploy
+git clean -dfX widgets/
+
+find public/widgets
+
+console asset-map:compile
+console cache:clear

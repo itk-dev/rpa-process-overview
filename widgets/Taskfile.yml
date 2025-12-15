@@ -4,6 +4,7 @@ version: '3'
 
 vars:
   APP_PORT: 3000
+  COMPOSE_PROJECT_NAME: '{{.COMPOSE_PROJECT_NAME | default "rpa-process-overview"}}-widgets'
 
 tasks:
   build:
@@ -68,7 +69,7 @@ tasks:
       # For some reason running tasks from this file from the parent Taskfile
       # (../Taskfile.yml) does not pick up the expected docker ompose project
       # name. Therefore we set it explicitly here.
-      - 'docker compose --project-name rpa-process-overview-widgets {{.TASK_ARGS}} {{.CLI_ARGS}}'
+      - 'docker compose --project-name {{.COMPOSE_PROJECT_NAME}} {{.TASK_ARGS}} {{.CLI_ARGS}}'
     internal: true
 
   default:
