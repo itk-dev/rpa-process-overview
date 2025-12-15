@@ -17,6 +17,9 @@ security:
                 - ItkDev\OpenIdConnectBundle\Security\CliLoginTokenAuthenticator
             entry_point: App\Security\OidcAuthenticator
 
+            logout:
+                path: /logout
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
@@ -24,6 +27,10 @@ security:
             # switch_user: true
 
     role_hierarchy:
+        !php/enum App\Entity\UserRole::SuperAdmin->value:
+            - !php/enum App\Entity\UserRole::OverviewEditor->value
+            - !php/enum App\Entity\UserRole::OverviewViewer->value
+            - !php/enum App\Entity\UserRole::OverviewSearcher->value
         !php/enum App\Entity\UserRole::Admin->value:
             - !php/enum App\Entity\UserRole::OverviewViewer->value
         !php/enum App\Entity\UserRole::OverviewEditor->value:
@@ -41,12 +48,3 @@ security:
         - { path: ^/logout, roles: !php/enum App\Entity\UserRole::User->value }
         - { path: '^/openidconnect/login(/.+)?$', role: PUBLIC_ACCESS }
         - { path: ^/, roles: !php/enum App\Entity\UserRole::User->value }
-
-# During develoment it's nice to be able to easily log out, e.g. to test
-# different user roles.
-when@dev:
-    security:
-        firewalls:
-            main:
-                logout:
-                    path: /logout

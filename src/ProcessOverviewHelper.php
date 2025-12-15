@@ -192,7 +192,7 @@ class ProcessOverviewHelper
             return [];
         }
 
-        $data = $this->dataSourceHelper->getProcessRun($datasource, $processId, $run);
+        $data = $this->dataSourceHelper->getProcessRun($datasource, $processId, $run, action: 'get-raw-value-'.$field);
 
         return [
             'field' => $field,

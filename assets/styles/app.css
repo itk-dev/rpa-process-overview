@@ -9,91 +9,57 @@
   --succeeded-color-bg: oklch(52.7% 0.154 150.069);
 
   --connector-width: 0.2em;
+
+  --step-width: 8em;
+  --meta-max-width: 12em;
+}
+
+th.meta,
+td.meta {
+  text-align: left;
+  max-width: var(--meta-max-width);
+}
+
+th.step,
+td.step {
+  text-align: center;
+  width: var(--step-width);
+  /* Setting only width does not seem to work. */
+  max-width: var(--step-width);
 }
 
 td.step {
   position: relative;
+}
 
-  &::before {
-    width: 100%;
-    height: var(--connector-width);
-    background: linear-gradient(
-      90deg,
-      var(--pending-color-bg) 0%,
-      var(--pending-color-bg) 50%,
-      var(--pending-color-bg) 50%,
-      var(--pending-color-bg) 100%
-    );
-    display: block;
-    position: absolute;
-    top: calc(50% - var(--connector-width) / 2);
-    left: 0;
-    content: "";
+.step-information-popover {
+  max-width: 30em;
+  position-area: bottom;
+  position-try-fallbacks: top;
+  position-try-fallbacks: flip-block, flip-inline;
+}
+
+[popovertarget]:has(+ div:popover-open) {
+  div {
+    /* Highlight the current popover target */
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 2px;
   }
+}
 
-  &.succeeded {
-    &::before {
-      background: var(--succeeded-color-bg);
-    }
-
-    &:has(+ .failed)::before {
-      background: linear-gradient(
-        90deg,
-        var(--succeeded-color-bg) 0%,
-        var(--succeeded-color-bg) 50%,
-        var(--pending-color-bg) 50%,
-        var(--pending-color-bg) 100%
-      );
-    }
-
-    &.first::before {
-      background: linear-gradient(
-        90deg,
-        var(--no-color) 0%,
-        var(--no-color) 50%,
-        var(--succeeded-color-bg) 50%,
-        var(--succeeded-color-bg) 100%
-      );
-    }
-
-    &.first:has(+ .failed)::before {
-      background: linear-gradient(
-        90deg,
-        var(--no-color) 0%,
-        var(--no-color) 50%,
-        var(--pending-color-bg) 50%,
-        var(--pending-color-bg) 100%
-      );
-    }
-
-    &.last::before {
-      background: linear-gradient(
-        90deg,
-        var(--succeeded-color-bg) 0%,
-        var(--succeeded-color-bg) 50%,
-        var(--no-color) 50%,
-        var(--no-color) 100%
-      );
+.failed {
+  [popovertarget]:has(+ div:popover-open) {
+    div {
+      outline-color: var(--failed-color-bg);
     }
   }
+}
 
-  &.first::before {
-    background: linear-gradient(
-      90deg,
-      var(--no-color) 0%,
-      var(--no-color) 50%,
-      var(--pending-color-bg) 50%,
-      var(--pending-color-bg) 100%
-    );
-  }
-
-  &.last::before {
-    background: linear-gradient(
-      90deg,
-      var(--pending-color-bg) 0%,
-      var(--pending-color-bg) 50%,
-      var(--no-color) 50%,
-      var(--no-color) 100%
-    );
+.succeeded {
+  [popovertarget]:has(+ div:popover-open) {
+    div {
+      outline-color: var(--succeeded-color-bg);
+    }
   }
 }

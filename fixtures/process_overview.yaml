@@ -48,6 +48,7 @@ App\Entity\ProcessOverview:
           run_status: failed
         page_size: 7
       search:
+        title: Citizen search
         minimum_search_query_length: 3
 
   process_overview_2:
@@ -68,6 +69,7 @@ App\Entity\ProcessOverview:
         title: Failed processes
         page_size: 3
       search:
+        title: Citizen search
         minimum_search_query_length: 2
 
   process_overview_3:
@@ -87,6 +89,7 @@ App\Entity\ProcessOverview:
           run_status: failed
         page_size: 3
       search:
+        title: Citizen search
         minimum_search_query_length: 2
 
   process_overview_4:
@@ -106,6 +109,7 @@ App\Entity\ProcessOverview:
           run_status: pending
         page_size: 5
       search:
+        title: Citizen search
         minimum_search_query_length: 3
 
   process_overview_5:
@@ -125,6 +129,7 @@ App\Entity\ProcessOverview:
           run_status: completed
         page_size: 5
       search:
+        title: Search
         minimum_search_query_length: 3
 
   process_overview_incomplete:

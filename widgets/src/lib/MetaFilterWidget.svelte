@@ -11,8 +11,6 @@
 	}: {
 		column: object;
 		cell: object;
-		getToggleMetaFilterUrl: Function;
-		getCurrentMetaFilter: Function;
 		hasMetaFilter: Function;
 		toggleMetaFilter: Function;
 	} = $props();

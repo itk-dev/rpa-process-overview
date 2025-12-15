@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
-	import Scissor from './Icons/Scissor.svelte';
+	import CopyValue from './Icons/CopyValue.svelte';
 	import { t } from '../_standalone/ProcessOverview/config';
 	import type { Snippet } from 'svelte';
 
@@ -55,12 +55,12 @@
 </script>
 
 <td
-	class="relative px-3 py-4 whitespace-nowrap text-sm dark:text-gray-300 w-24 truncate h-[80px] transition {feedbackClass}"
+	class="meta relative px-3 py-4 whitespace-nowrap text-sm dark:text-gray-300 w-24 truncate h-[80px] transition {feedbackClass}"
 >
 	{#if rawValueUrl}
 		<button class="cursor-pointer items-center flex" onclick={() => getUnmaskedValue(rawValueUrl)}>
 			<div class="rounded-full bg-violet-600 p-1 mr-1 dark:hover:bg-violet-600 hover:bg-violet-300">
-				<Scissor className="h-4 w-4 text-white" />
+				<CopyValue className="h-4 w-4 text-white" />
 			</div>
 			{@render children()}
 		</button>

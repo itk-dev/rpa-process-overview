@@ -16,8 +16,8 @@
 	}: {
 		columns: Column[] | null;
 		rows: Array<Array<Step>> | null;
-		hasMetaFilter: Function;
-		toggleMetaFilter: Function;
+		hasMetaFilter?: Function | null;
+		toggleMetaFilter?: Function | null;
 	} = $props();
 
 	// Status icons
@@ -35,20 +35,19 @@
 			class="bg-gray-200 dark:bg-gray-800 border-neutral-300 dark:border-neutral-800 dark:bg-gray-800 border-b"
 		>
 			<tr>
-				{#each columns as { label }}
-					<th class="px-1 py-3">
-						<span
-							class="max-w-[140px] whitespace-prewrap overflow-hidden text-ellipsis text-center text-xs font-medium dark:text-gray-400"
+				{#each columns as { type, label }}
+					<th class="{type} px-3 py-3">
+						<p
+							class="whitespace-pre overflow-hidden text-ellipsis text-xs font-medium dark:text-gray-400"
 						>
 							{label}
-						</span>
+						</p>
 					</th>
 				{/each}
 			</tr>
 		</thead>
 	{/if}
 	{#if columns && rows != null}
-		<!--		<pre>{JSON.stringify(rows[0], null, 2)}</pre>-->
 		<tbody>
 			{#if rows.length > 0}
 				{#each rows as row}
@@ -65,7 +64,14 @@
 								<TableMetaCell rawValueUrl={cell.raw_value_url}>
 									<!-- Let's keep the little ghost -->
 									{cell.value ?? cell.status ?? '👻'}
-									<MetaFilterWidget column={columns[i]} {cell} {hasMetaFilter} {toggleMetaFilter} />
+									{#if hasMetaFilter && toggleMetaFilter}
+										<MetaFilterWidget
+											column={columns[i]}
+											{cell}
+											{hasMetaFilter}
+											{toggleMetaFilter}
+										/>
+									{/if}
 								</TableMetaCell>
 							{/if}
 						{/each}
