@@ -1,11 +1,11 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index b3adc84..f92da38 100644
+index 453f9ac..746347c 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -22,6 +22,7 @@ dependencies = [
-     "python-multipart>=0.0.6",
+@@ -23,6 +23,7 @@ dependencies = [
      "python-jose[cryptography]>=3.3.0",
      "fastapi-pagination>=0.14.3",
+     "httpx>=0.24.0",
 +    "pymysql>=1.1.2",
  ]
  
