@@ -19,47 +19,61 @@ final class ProcessOverviewOptionsValidator extends ConstraintValidator
             return;
         }
 
-        $resolver = (new OptionsResolver())
-            ->setRequired('metadata_columns')
-            ->setAllowedTypes('metadata_columns', ['array'])
-            ->setOptions('metadata_columns', function (OptionsResolver $metadataColumnsResolver) {
-                $metadataColumnsResolver
-                    ->setPrototype(true)
-                    ->setRequired('label')
-                    ->setRequired('data')
-                    ->setDefault('mask', [])
+        $resolver = new OptionsResolver();
+        $resolver->define('metadata_columns')
+            ->required()
+            ->allowedTypes('array')
+            ->options(function (OptionsResolver $metadataColumnsResolver) {
+                $metadataColumnsResolver->setPrototype(true);
+
+                $metadataColumnsResolver->define('label')
+                    ->required()
+                    ->allowedTypes('string');
+
+                $metadataColumnsResolver->define('data')
+                    ->required()
+                    ->allowedTypes('string');
+
+                $metadataColumnsResolver->define('mask')
                     // https://github.com/symfony/symfony/issues/39569#issuecomment-748504986
                     // https://symfony.com/doc/current/components/options_resolver.html#nested-options
-                    ->setAllowedTypes('mask', ['array'])
-                    ->setOptions('mask', function (OptionsResolver $maskOptions) {
-                        $maskOptions
-                            ->setDefault('search', null)
-                            ->setAllowedTypes('search', ['null', 'string'])
-                            ->setDefault('replace', null)
-                            ->setAllowedTypes('replace', ['null', 'string']);
+                    ->allowedTypes('array')
+                    ->options(function (OptionsResolver $maskOptions) {
+                        $maskOptions->define('search')
+                            ->allowedTypes('null', 'string');
+
+                        $maskOptions->define('replace')
+                            ->allowedTypes('null', 'string');
                     })
-                    ->setDefault('is_filterable', false)
-                    ->setAllowedTypes('is_filterable', ['bool'])
-                ;
-            })
+                    ->default([]);
 
-            ->setRequired('data')
-            ->setAllowedTypes('data', ['array'])
-            ->setOptions('data', function (OptionsResolver $dataResolver) {
-                $dataResolver
-                    ->setRequired('title')
-                    ->setAllowedTypes('title', ['string'])
-                    ->setDefault('page_size', 10)
-                    ->setAllowedTypes('page_size', ['integer'])
-                    ->setDefault('default_query', [])
-                    ->setAllowedTypes('default_query', ['array'])
-                    ->setAllowedValues('default_query', static fn (array $value) => !array_is_list($value))
-                ;
-            })
+                $metadataColumnsResolver->define('is_filterable')
+                    ->allowedTypes('bool')
+                    ->default(false);
+            });
 
-            ->setRequired('search')
-            ->setAllowedTypes('search', ['array'])
-            ->setOptions('search', function (OptionsResolver $clientOptionsResolver) {
+        $resolver->define('data')
+            ->required()
+            ->allowedTypes('array')
+            ->options(function (OptionsResolver $dataResolver) {
+                $dataResolver->define('title')
+                    ->allowedTypes('string')
+                    ->default(10);
+
+                $dataResolver->define('page_size')
+                    ->allowedTypes('integer')
+                    ->default(10);
+
+                $dataResolver->define('default_query')
+                    ->allowedTypes('array')
+                    ->default([])
+                    ->allowedValues(static fn (array $value) => !array_is_list($value));
+            });
+
+        $resolver->define('search')
+            ->required()
+            ->allowedTypes('array')
+            ->options(function (OptionsResolver $clientOptionsResolver) {
                 $clientOptionsResolver
                     ->setRequired('title')
                     ->setAllowedTypes('title', ['string'])

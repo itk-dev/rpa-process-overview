@@ -19,14 +19,20 @@ final class DataSourceOptionsValidator extends ConstraintValidator
             return;
         }
 
-        $resolver = (new OptionsResolver())
-            ->setRequired('client_options')
-            ->setAllowedTypes('client_options', ['array'])
-            ->setOptions('client_options', function (OptionsResolver $clientOptionsResolver) {
-                $clientOptionsResolver
-                    ->setDefault('headers', [])
-                    ->setAllowedTypes('headers', ['array'])
-                    ->setAllowedValues('headers', static fn (array $headers): bool => !array_is_list($headers));
+        $resolver = new OptionsResolver();
+        $resolver->define('client_options')
+            ->required()
+            ->allowedTypes('array')
+            ->options(function (OptionsResolver $clientOptionsResolver) {
+                $clientOptionsResolver->define('headers')
+                    ->default([])
+                    ->allowedTypes('array')
+                    ->allowedValues(static fn (array $headers): bool => !array_is_list($headers));
+
+                $clientOptionsResolver->define('verify_peer')
+                    ->allowedTypes('bool');
+                $clientOptionsResolver->define('verify_host')
+                    ->allowedTypes('bool');
             });
 
         try {
