@@ -11,15 +11,15 @@ services:
         "--port",
         "80",
         "--user-claims",
-        '{"sub": "user", "email": "user@example.com", "roles": ["user"]}',
+        '{"sub": "user", "email": "user@example.com", "role": ["user"]}',
         "--user-claims",
-        '{"sub": "overview-editor", "email": "overview-editor@example.com", "roles": ["overview-editor"]}',
+        '{"sub": "overview-editor", "email": "overview-editor@example.com", "role": ["overview-editor"]}',
         "--user-claims",
-        '{"sub": "overview-viewer", "email": "overview-viewer@example.com", "roles": ["overview-viewer"]}',
+        '{"sub": "overview-viewer", "email": "overview-viewer@example.com", "role": ["overview-viewer"]}',
         "--user-claims",
-        '{"sub": "overview-searcher", "email": "overview-searcher@example.com", "roles": ["overview-searcher"]}',
+        '{"sub": "overview-searcher", "email": "overview-searcher@example.com", "role": ["overview-searcher"]}',
         "--user-claims",
-        '{"sub": "overview-all", "email": "overview-all@example.com", "roles": ["overview-viewer", "overview-searcher"]}',
+        '{"sub": "overview-all", "email": "overview-all@example.com", "role": ["overview-viewer", "overview-searcher"]}',
       ]
     ports:
       - "80"

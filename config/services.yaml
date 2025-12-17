@@ -23,4 +23,5 @@ services:
     App\Security\OidcAuthenticator:
         arguments:
             $options:
+                roles_claim: '%env(ADMIN_OIDC_ROLES_CLAIM)%'
                 role_map: '%env(json:ADMIN_OIDC_ROLE_MAP)%'

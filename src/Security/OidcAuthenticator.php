@@ -39,8 +39,8 @@ final class OidcAuthenticator extends OpenIdLoginAuthenticator
 
             // Extract properties from claims
             $email = $claims['email'] ?? $claims['upn'] ?? null;
-            $roles = $claims['roles'] ?? $claims['groups'] ?? [];
-
+            $rolesClaim = $this->options['roles_claim'] ?? 'roles';
+            $roles = $claims[$rolesClaim] ?? [];
             // Check if user already exists already or create a new one.
             $user = $this->userRepository->findOneBy(['email' => $email]) ?? new User();
 
