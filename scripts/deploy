@@ -53,7 +53,11 @@ console cache:clear
 mkdir -p widgets/static/ public/widgets
 sudo chmod -Rv a+w widgets/static/ public/widgets
 rm -fr widgets/static/ public/widgets
+
 task widgets:deploy
+
+# Clean up
+sudo chown -R "$USER" widgets
 git clean -dfX widgets/
 
 find public/widgets
