@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-57](https://github.com/itk-dev/rpa-process-overview/pull/57)
+  Fixed issue with stale cell property values
 * [PR-59](https://github.com/itk-dev/rpa-process-overview/pull/59)
   Added widget assets to asset mapper
 * [PR-58](https://github.com/itk-dev/rpa-process-overview/pull/58)
