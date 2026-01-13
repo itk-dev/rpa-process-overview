@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProcessOverviewRepository;
+use App\Validator\ProcessOverviewOptions;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
@@ -31,7 +32,7 @@ class ProcessOverview
     private ?ProcessOverviewGroup $group = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Assert\Yaml]
+    #[ProcessOverviewOptions]
     private ?string $options = null;
 
     #[ORM\ManyToOne(inversedBy: 'processOverviews')]
