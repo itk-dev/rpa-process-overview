@@ -67,3 +67,14 @@ td.step {
 .admin-menu {
   float: right;
 }
+
+.info-bar {
+  background: #9a3412;
+  color: #ffedd5;
+  margin: 0 0 1em;
+  padding: 1em;
+
+  a {
+    text-decoration: underline;
+  }
+}

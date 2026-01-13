@@ -11,7 +11,7 @@ use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: ProcessOverviewGroupRepository::class)]
-class ProcessOverviewGroup
+class ProcessOverviewGroup implements Publishable
 {
     use BlameableEntity;
     use TimestampableEntity;

@@ -85,6 +85,10 @@
         <source>action.close</source>
         <target>Close</target>
       </trans-unit>
+      <trans-unit id="sWw5MDD" resname="action.toggle_dropdown">
+        <source>action.toggle_dropdown</source>
+        <target>Toggle dropdown</target>
+      </trans-unit>
       <trans-unit id="IvOrJqD" resname="batch_action_modal.title">
         <source>batch_action_modal.title</source>
         <target>You are going to apply the "%action_name%" action to %num_items% item(s).</target>

@@ -257,9 +257,13 @@
         <source>The options must contain &lt;code&gt;metadata_columns&lt;/code&gt;, &lt;code&gt;data&lt;/code&gt; and &lt;code&gt;search&lt;/code&gt; values, e.g.
 
 {example_options}</source>
-        <target><![CDATA[__The options must contain <code>metadata_columns</code>, <code>data</code> and <code>search</code> values, e.g.
+        <target state="translated"><![CDATA[Indstillingerne skal indeholde <code>metadata_columns</code>-, <code>data</code>- og <code>search</code>-værdier, fx
 
 {example_options}]]></target>
+      </trans-unit>
+      <trans-unit id="LCVkixz" resname="This overview is not published. &lt;a href=&quot;{edit_url}&quot;&gt;Edit overview&lt;/a&gt;.">
+        <source>This overview is not published. &lt;a href="{edit_url}"&gt;Edit overview&lt;/a&gt;.</source>
+        <target state="translated"><![CDATA[Dette overblik er ikke udgivet. <a href="{edit_url}">Redigér overblik</a>.]]></target>
       </trans-unit>
     </body>
   </file>

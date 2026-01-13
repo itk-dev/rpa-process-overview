@@ -85,6 +85,10 @@
         <source>action.close</source>
         <target>Luk</target>
       </trans-unit>
+      <trans-unit id="sWw5MDD" resname="action.toggle_dropdown">
+        <source>action.toggle_dropdown</source>
+        <target>Skift rullemenu</target>
+      </trans-unit>
       <trans-unit id="IvOrJqD" resname="batch_action_modal.title">
         <source>batch_action_modal.title</source>
         <target>Du vil anvende "%action_name%" handlingen på %num_items% element(er).</target>

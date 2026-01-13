@@ -2,7 +2,7 @@
 
 namespace App\Security\Voter;
 
-use App\Entity\ProcessOverview;
+use App\Entity\Publishable;
 use App\Entity\User;
 use App\Entity\UserRole;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -10,20 +10,20 @@ use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface
 use Symfony\Component\Security\Core\Authorization\Voter\Vote;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
-final class ProcessOverviewVoter extends Voter
+final class PublishableEntityVoter extends Voter
 {
     public const EDIT = 'PROCESS_OVERVIEW_EDIT';
     public const VIEW = 'PROCESS_OVERVIEW_VIEW';
 
     public function __construct(
-        private AccessDecisionManagerInterface $accessDecisionManager,
+        private readonly AccessDecisionManagerInterface $accessDecisionManager,
     ) {
     }
 
     protected function supports(string $attribute, mixed $subject): bool
     {
         return in_array($attribute, [self::EDIT, self::VIEW])
-            && $subject instanceof ProcessOverview;
+            && $subject instanceof Publishable;
     }
 
     protected function voteOnAttribute(
@@ -40,27 +40,27 @@ final class ProcessOverviewVoter extends Voter
             return false;
         }
 
-        /** @var ProcessOverview $overview */
-        $overview = $subject;
+        /** @var Publishable $entity */
+        $entity = $subject;
 
         return match ($attribute) {
-            self::VIEW => $this->canView($overview, $token),
-            self::EDIT => $this->canEdit($overview, $token, $vote),
+            self::VIEW => $this->canView($entity, $token),
+            self::EDIT => $this->canEdit($entity, $token, $vote),
             default => throw new \LogicException('This code should not be reached!'),
         };
     }
 
-    private function canView(ProcessOverview $overview, TokenInterface $token): bool
+    private function canView(Publishable $entity, TokenInterface $token): bool
     {
         // if they can edit, they can view
-        if ($this->canEdit($overview, $token, null)) {
+        if ($this->canEdit($entity, $token, null)) {
             return true;
         }
 
-        return $overview->isPublished();
+        return $entity->isPublished();
     }
 
-    private function canEdit(ProcessOverview $overview, TokenInterface $token, ?Vote $vote): bool
+    private function canEdit(Publishable $entity, TokenInterface $token, ?Vote $vote): bool
     {
         if ($this->accessDecisionManager->decide($token, [UserRole::Admin->value])) {
             return true;

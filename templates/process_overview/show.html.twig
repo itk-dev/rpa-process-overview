@@ -5,6 +5,14 @@
 {% block content %}
     {{ include('_partials/group_header.html.twig', {group: overview.group, overview: overview}) }}
 
+    {% if not overview.published %}
+        <div class="info-bar">
+            {{ 'This overview is not published. <a href="{edit_url}">Edit overview</a>.'|trans({
+                edit_url: path('process_overview_admin_process_overview_edit', {entityId: overview.id}),
+            })|raw }}
+        </div>
+    {% endif %}
+
     {% if is_granted(enum('App\\Entity\\UserRole').OverviewViewer.value) %}
         {# https://standalone.brenoliradev.com/embed.html#auto-embed-with-target #}
         <div id="ProcessOverview" data-rpa-process-overview-config="{{ overview_config|json_encode }}"></div>
