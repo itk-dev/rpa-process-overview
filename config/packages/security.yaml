@@ -28,11 +28,11 @@ security:
 
     role_hierarchy:
         !php/enum App\Entity\UserRole::SuperAdmin->value:
+            - !php/enum App\Entity\UserRole::Admin->value
+        !php/enum App\Entity\UserRole::Admin->value:
             - !php/enum App\Entity\UserRole::OverviewEditor->value
             - !php/enum App\Entity\UserRole::OverviewViewer->value
             - !php/enum App\Entity\UserRole::OverviewSearcher->value
-        !php/enum App\Entity\UserRole::Admin->value:
-            - !php/enum App\Entity\UserRole::OverviewViewer->value
         !php/enum App\Entity\UserRole::OverviewEditor->value:
             - !php/enum App\Entity\UserRole::Admin->value
             - !php/enum App\Entity\UserRole::OverviewViewer->value

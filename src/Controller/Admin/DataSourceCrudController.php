@@ -13,7 +13,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 use function Symfony\Component\Translation\t;
 
-#[IsGranted(UserRole::SuperAdmin->value)]
+#[IsGranted(UserRole::Admin->value)]
 class DataSourceCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string

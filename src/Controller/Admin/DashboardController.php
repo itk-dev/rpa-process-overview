@@ -48,7 +48,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud(t('Process overview'), null, ProcessOverview::class)
             ->setPermission(UserRole::OverviewEditor->value);
         yield MenuItem::linkToCrud(t('Data source'), null, DataSource::class)
-            ->setPermission(UserRole::SuperAdmin->value);
+            ->setPermission(UserRole::Admin->value);
 
         yield MenuItem::section();
         yield MenuItem::linkToRoute(t('Home'), null, 'app_default');
