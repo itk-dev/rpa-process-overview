@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: ProcessOverviewRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class ProcessOverview
+class ProcessOverview implements Publishable
 {
     use BlameableEntity;
     use TimestampableEntity;

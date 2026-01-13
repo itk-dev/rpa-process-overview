@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-60](https://github.com/itk-dev/rpa-process-overview/pull/60)
+  Improved permissions handling
 * [PR-57](https://github.com/itk-dev/rpa-process-overview/pull/57)
   Fixed issue with stale cell property values
 * [PR-59](https://github.com/itk-dev/rpa-process-overview/pull/59)

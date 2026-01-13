@@ -261,6 +261,10 @@
 
 {example_options}]]></target>
       </trans-unit>
+      <trans-unit id="LCVkixz" resname="This overview is not published. &lt;a href=&quot;{edit_url}&quot;&gt;Edit overview&lt;/a&gt;.">
+        <source>This overview is not published. &lt;a href="{edit_url}"&gt;Edit overview&lt;/a&gt;.</source>
+        <target><![CDATA[This overview is not published. <a href="{edit_url}">Edit overview</a>.]]></target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

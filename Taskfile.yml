@@ -258,3 +258,10 @@ tasks:
         task: api:get
         vars:
           API_PATH: "{{.ITEM}}"
+
+  tailwind:build:
+    desc: Build Tailwind stuff. Use `task {{.TASK}} -- --watch` to watch for changes.
+    cmds:
+      - task: console
+        vars:
+          TASK_ARGS: tailwind:build
