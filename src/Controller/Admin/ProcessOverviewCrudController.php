@@ -142,10 +142,10 @@ class ProcessOverviewCrudController extends AbstractCrudController
         if ($process) {
             $exampleOptions = <<<OPTIONS
 metadata_columns:
-    - label: Barn
-      data: meta.cpr
-    - label: Name
-      data: meta.name
+  - label: Barn
+    data: meta.cpr
+  - label: Name
+    data: meta.name
 data:
   title: Failed processes
   default_query:
