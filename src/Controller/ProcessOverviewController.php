@@ -5,12 +5,14 @@ namespace App\Controller;
 use App\Entity\ProcessOverview;
 use App\Entity\ProcessOverviewGroup;
 use App\ProcessOverviewHelper;
+use App\Security\Voter\ProcessOverviewVoter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Contracts\Translation\TranslatableInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -21,6 +23,7 @@ use function Symfony\Component\Translation\t;
 final class ProcessOverviewController extends AbstractController
 {
     #[Route('/{overview}', name: 'show')]
+    #[IsGranted(ProcessOverviewVoter::VIEW, 'overview')]
     public function show(ProcessOverviewGroup $group, ProcessOverview $overview, TranslatorInterface $translator): Response
     {
         if ($group !== $overview->getGroup()) {
@@ -81,6 +84,7 @@ final class ProcessOverviewController extends AbstractController
     }
 
     #[Route('/{overview}/data', name: 'data')]
+    #[IsGranted(ProcessOverviewVoter::VIEW, 'overview')]
     public function data(Request $request, ProcessOverview $overview, ProcessOverviewHelper $helper): Response
     {
         $data = $helper->getData($request, $overview);
@@ -89,6 +93,7 @@ final class ProcessOverviewController extends AbstractController
     }
 
     #[Route('/{overview}/data/{run}/raw-data/{field}', name: 'raw_data_field')]
+    #[IsGranted(ProcessOverviewVoter::VIEW, 'overview')]
     public function getRawRunFieldValue(Request $request, ProcessOverview $overview, string $run, string $field, ProcessOverviewHelper $helper): Response
     {
         $data = $helper->getRawRunFieldValue($request, $overview, $run, $field);
@@ -97,6 +102,7 @@ final class ProcessOverviewController extends AbstractController
     }
 
     #[Route('/{overview}/runs/{run}/rerun', name: 'rerun', methods: [Request::METHOD_POST])]
+    #[IsGranted(ProcessOverviewVoter::VIEW, 'overview')]
     public function rerun(Request $request, ProcessOverview $overview, string $run, ProcessOverviewHelper $helper): Response
     {
         $data = $helper->rerun($request, $overview, $run);
@@ -105,6 +111,7 @@ final class ProcessOverviewController extends AbstractController
     }
 
     #[Route('/{overview}/search', name: 'search')]
+    #[IsGranted(ProcessOverviewVoter::VIEW, 'overview')]
     public function search(Request $request, ProcessOverview $overview, ProcessOverviewHelper $helper): Response
     {
         $data = $helper->search($request, $overview);

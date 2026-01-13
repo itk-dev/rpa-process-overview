@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\ProcessOverviewRepository;
+use App\Trait\PublishableEntity;
+use App\Validator\ProcessOverviewOptions;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: ProcessOverviewRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -16,6 +18,7 @@ class ProcessOverview
 {
     use BlameableEntity;
     use TimestampableEntity;
+    use PublishableEntity;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -23,7 +26,7 @@ class ProcessOverview
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
+    #[NotBlank]
     private ?string $label = null;
 
     #[ORM\ManyToOne(inversedBy: 'processes')]
@@ -31,7 +34,8 @@ class ProcessOverview
     private ?ProcessOverviewGroup $group = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Assert\Yaml]
+    #[NotBlank]
+    #[ProcessOverviewOptions]
     private ?string $options = null;
 
     #[ORM\ManyToOne(inversedBy: 'processOverviews')]

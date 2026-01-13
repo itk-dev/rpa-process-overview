@@ -225,6 +225,42 @@
         <source>Show only "{value}"</source>
         <target state="translated">Vis kun "{value}"</target>
       </trans-unit>
+      <trans-unit id="f3eCtaE" resname="The options must contain a &lt;code&gt;client_options&lt;/code&gt; value with options for an &lt;a href=&quot;https://symfony.com/doc/current/http_client.html&quot;&gt;HTTP Client&lt;/a&gt;, e.g.&#10;&#10;{example_options}">
+        <source>The options must contain a &lt;code&gt;client_options&lt;/code&gt; value with options for an &lt;a href="https://symfony.com/doc/current/http_client.html"&gt;HTTP Client&lt;/a&gt;, e.g.
+
+{example_options}</source>
+        <target state="translated"><![CDATA[Indstillingerne skal indeholde en <code>client_options</code>-værdi med indstillinger for en <a href="https://symfony.com/doc/current/http_client.html">HTTP-klient</a>, fx
+
+{example_options}]]></target>
+      </trans-unit>
+      <trans-unit id="EcROJY4" resname="Unable to load processes: {message}">
+        <source>Unable to load processes: {message}</source>
+        <target state="translated">Fejl under hentning af processer: {message}</target>
+      </trans-unit>
+      <trans-unit id="L6P4A3j" resname="Ping data source">
+        <source>Ping data source</source>
+        <target state="translated">Tjek forbindelse til datakilde</target>
+      </trans-unit>
+      <trans-unit id="Tzd6e0B" resname="Data source successfully pinged">
+        <source>Data source successfully pinged</source>
+        <target state="translated">Forbindelse til datakilde kan oprettes</target>
+      </trans-unit>
+      <trans-unit id="5vwBhci" resname="Unable to ping data source: {message}">
+        <source>Unable to ping data source: {message}</source>
+        <target state="translated">Fejl under oprettelse af forbindelse til datakilde: {message}</target>
+      </trans-unit>
+      <trans-unit id="IB44qB2" resname="Published at">
+        <source>Published at</source>
+        <target state="translated">Udgivet</target>
+      </trans-unit>
+      <trans-unit id="TzuD8hF" resname="The options must contain &lt;code&gt;metadata_columns&lt;/code&gt;, &lt;code&gt;data&lt;/code&gt; and &lt;code&gt;search&lt;/code&gt; values, e.g.&#10;&#10;{example_options}">
+        <source>The options must contain &lt;code&gt;metadata_columns&lt;/code&gt;, &lt;code&gt;data&lt;/code&gt; and &lt;code&gt;search&lt;/code&gt; values, e.g.
+
+{example_options}</source>
+        <target><![CDATA[__The options must contain <code>metadata_columns</code>, <code>data</code> and <code>search</code> values, e.g.
+
+{example_options}]]></target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
