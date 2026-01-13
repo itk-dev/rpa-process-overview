@@ -57,6 +57,18 @@ class ProcessOverviewGroup
     }
 
     /**
+     * Get public overviews.
+     *
+     * A public overview is both ready and published.
+     *
+     * @return Collection<int, ProcessOverview>
+     */
+    public function getPublicOverviews(): Collection
+    {
+        return $this->overviews->filter(static fn (ProcessOverview $overview) => $overview->isReady());
+    }
+
+    /**
      * @return Collection<int, ProcessOverview>
      */
     public function getOverviews(): Collection

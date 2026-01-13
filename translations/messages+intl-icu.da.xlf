@@ -233,6 +233,22 @@
 
 {example_options}]]></target>
       </trans-unit>
+      <trans-unit id="EcROJY4" resname="Unable to load processes: {message}">
+        <source>Unable to load processes: {message}</source>
+        <target state="translated">Fejl under hentning af processer: {message}</target>
+      </trans-unit>
+      <trans-unit id="L6P4A3j" resname="Ping data source">
+        <source>Ping data source</source>
+        <target state="translated">Tjek forbindelse til datakilde</target>
+      </trans-unit>
+      <trans-unit id="Tzd6e0B" resname="Data source successfully pinged">
+        <source>Data source successfully pinged</source>
+        <target state="translated">Forbindelse til datakilde kan oprettes</target>
+      </trans-unit>
+      <trans-unit id="5vwBhci" resname="Unable to ping data source: {message}">
+        <source>Unable to ping data source: {message}</source>
+        <target state="translated">Fejl under oprettelse af forbindelse til datakilde: {message}</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

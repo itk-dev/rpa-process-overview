@@ -8,17 +8,20 @@
     <ul>
         {% for group in groups %}
             {% if group.overviews %}
-            <li>
-                <a class="nav-link"
-                   href="{{ path('process_overview_group_show', {id: group.id}) }}">{{ group.label }}</a>
-                <ul>
-                    {% for overview in group.overviews %}
-                        <li class="ml-4">
-                            <a class="nav-link" href="{{ path('process_overview_show', {group: group.id, overview: overview.id}) }}">{{ overview.label }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </li>
+                {% set overviews = group.publicOverviews %}
+                {% if overviews is not empty %}
+                    <li>
+                        <a class="nav-link"
+                           href="{{ path('process_overview_group_show', {id: group.id}) }}">{{ group.label }}</a>
+                        <ul>
+                            {% for overview in overviews %}
+                                <li class="ml-4">
+                                    <a class="nav-link" href="{{ path('process_overview_show', {group: group.id, overview: overview.id}) }}">{{ overview.label }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
             {% endif %}
         {% endfor %}
     </ul>

@@ -9,7 +9,7 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: ProcessOverviewRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -24,7 +24,7 @@ class ProcessOverview
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
+    #[NotBlank]
     private ?string $label = null;
 
     #[ORM\ManyToOne(inversedBy: 'processes')]
@@ -32,6 +32,7 @@ class ProcessOverview
     private ?ProcessOverviewGroup $group = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[NotBlank]
     #[ProcessOverviewOptions]
     private ?string $options = null;
 

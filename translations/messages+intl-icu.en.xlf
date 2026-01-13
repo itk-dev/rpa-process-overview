@@ -233,6 +233,22 @@
 
 {example_options}]]></target>
       </trans-unit>
+      <trans-unit id="EcROJY4" resname="Unable to load processes: {message}">
+        <source>Unable to load processes: {message}</source>
+        <target>Unable to load processes: {message}</target>
+      </trans-unit>
+      <trans-unit id="L6P4A3j" resname="Ping data source">
+        <source>Ping data source</source>
+        <target>Ping data source</target>
+      </trans-unit>
+      <trans-unit id="Tzd6e0B" resname="Data source successfully pinged">
+        <source>Data source successfully pinged</source>
+        <target>Data source successfully pinged</target>
+      </trans-unit>
+      <trans-unit id="5vwBhci" resname="Unable to ping data source: {message}">
+        <source>Unable to ping data source: {message}</source>
+        <target>Unable to ping data source: {message}</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

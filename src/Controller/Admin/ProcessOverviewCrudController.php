@@ -112,11 +112,17 @@ class ProcessOverviewCrudController extends AbstractCrudController
                 ->setFormTypeOptions([
                     // @todo Add search for process
                     'choice_loader' => new CallbackChoiceLoader(function () use ($dataSource): array {
-                        $processes = $this->dataSourceHelper->getProcesses($dataSource)['items'] ?? [];
-                        $options = array_combine(
-                            array_column($processes, 'name'),
-                            array_column($processes, 'id'),
-                        );
+                        $options = [];
+
+                        try {
+                            $processes = $this->dataSourceHelper->getProcesses($dataSource)['items'] ?? [];
+                            $options = array_combine(
+                                array_column($processes, 'name'),
+                                array_column($processes, 'id'),
+                            );
+                        } catch (\Exception $exception) {
+                            $this->addFlash('error', t('Unable to load processes: {message}', ['message' => $exception->getMessage()]));
+                        }
 
                         return $options;
                     }),
