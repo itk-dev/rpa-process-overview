@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-58](https://github.com/itk-dev/rpa-process-overview/pull/58)
+  Admin improvements
 * [PR-55](https://github.com/itk-dev/rpa-process-overview/pull/55)
   * Made Danish translations for widgets work
   * Removed filtering from Search widget
