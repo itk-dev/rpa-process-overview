@@ -153,22 +153,22 @@ tasks:
 
       - task: widgets:build
 
-      # Copy result into public folder
+      # Copy result into assets folder (cf. mapping in importmap.php)
       - task: compose
         vars:
-          TASK_ARGS: exec phpfpm rm -fr {{.PUBLIC_DIR}}
+          TASK_ARGS: exec phpfpm rm -fr {{.ASSETS_DIR}}
       - task: compose
         vars:
-          # rsync is weird when it comes to including and excluding files …
-          # https://stackoverflow.com/a/11111793
-          TASK_ARGS: exec phpfpm rsync -azv {{.BUILD_DIR}} --include '*/' --include '**/*.css' --include '**/*.js' --exclude '*' --delete {{.PUBLIC_DIR}}
+          TASK_ARGS: exec phpfpm mkdir -p {{.ASSETS_DIR}}
       - task: compose
         vars:
-          TASK_ARGS: exec phpfpm find {{.PUBLIC_DIR}} -type f
-
+          TASK_ARGS: exec phpfpm cp {{.BUILD_DIR}}/*.min.js {{.ASSETS_DIR}}
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm find {{.ASSETS_DIR}} -type f
     vars:
       BUILD_DIR: widgets/static/dist/
-      PUBLIC_DIR: public/widgets
+      ASSETS_DIR: assets/widgets/
 
   api:create:api-keys:
     desc: Create API keys

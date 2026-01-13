@@ -30,7 +30,7 @@
 .idea
 
 # Generated widget code
-/public/widgets/
+/assets/widgets/
 
 # Release assets
 checksum.txt
