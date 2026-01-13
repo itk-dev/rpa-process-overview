@@ -54,9 +54,6 @@ console cache:clear
 BUILD_DIR=widgets/static/dist/
 ASSETS_DIR=assets/widgets/
 
-mkdir -p $BUILD_DIR $ASSETS_DIR
-sudo chmod -Rv a+w $BUILD_DIR $ASSETS_DIR
-rm -fr $BUILD_DIR $ASSETS_DIR
 
 task widgets:deploy
 
