@@ -16,8 +16,6 @@
 		children: Snippet;
 	} = $props();
 
-	const { status, id, step_index } = cell;
-
 	let posted: boolean = $state(false);
 
 	function isFirstStep(stepIndex: Number | null): boolean {
@@ -36,7 +34,7 @@
 	}
 
 	// tailwind soo verbose
-	function getStatusClasses() {
+	function getStatusClasses(status: String) {
 		if (posted) return 'bg-violet-600';
 
 		switch (status) {
@@ -55,9 +53,10 @@
 		'step',
 		'relative',
 		{
-			failed: StepStatus.FAILED === status,
-			succeeded: StepStatus.SUCCESS === status,
-			first: isFirstStep(step_index),
+			pending: StepStatus.PENDING === cell.status,
+			failed: StepStatus.FAILED === cell.status,
+			succeeded: StepStatus.SUCCESS === cell.status,
+			first: isFirstStep(cell.step_index),
 			last: isLastStep(i, row.length)
 		}
 	]}
@@ -69,14 +68,16 @@
 			// 'justify-center',
 			// '[width:stretch]',
 			{
-				'cursor-pointer': status !== StepStatus.PENDING
+				'cursor-pointer': cell.status !== StepStatus.PENDING
 			}
 		]}
-		popovertarget={`popover-${id}`}
-		style:anchor-name={`--anchor-${id}`}
+		popovertarget={`popover-${cell.id}`}
+		style:anchor-name={`--anchor-${cell.id}`}
 	>
 		<div
-			class="{getStatusClasses()} transition-colors z-1 motion-reduce:transition-none w-8 h-8 rounded-full flex items-center justify-center mx-auto text-white"
+			class="{getStatusClasses(
+				cell.status
+			)} transition-colors z-1 motion-reduce:transition-none w-8 h-8 rounded-full flex items-center justify-center mx-auto text-white"
 		>
 			{#if posted}
 				<Rerun />
@@ -86,7 +87,7 @@
 			{/if}
 		</div>
 	</button>
-	{#if status !== StepStatus.PENDING}
+	{#if cell.status !== StepStatus.PENDING}
 		<PopOver step={cell} {posted} {updatePosted} />
 	{/if}
 </td>
