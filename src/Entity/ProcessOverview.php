@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProcessOverviewRepository;
+use App\Trait\PublishableEntity;
 use App\Validator\ProcessOverviewOptions;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
@@ -17,6 +18,7 @@ class ProcessOverview
 {
     use BlameableEntity;
     use TimestampableEntity;
+    use PublishableEntity;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

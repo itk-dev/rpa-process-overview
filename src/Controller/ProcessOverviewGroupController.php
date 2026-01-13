@@ -14,7 +14,7 @@ final class ProcessOverviewGroupController extends AbstractController
     #[Route('', name: 'index')]
     public function index(ProcessOverviewGroupRepository $repository): Response
     {
-        $groups = $repository->findAll();
+        $groups = $repository->findPublished();
 
         return $this->render('process_overview_group/index.html.twig', [
             'groups' => $groups,

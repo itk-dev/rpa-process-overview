@@ -225,7 +225,7 @@
         <source>Show only "{value}"</source>
         <target state="translated">Vis kun "{value}"</target>
       </trans-unit>
-      <trans-unit id="f3eCtaE" resname="The options must contain a &lt;code&gt;client_options&lt;/code&gt; value with options for an &lt;a href=&quot;https://symfony.com/doc/current/http_client.html&quot;&gt;HTTP Client&lt;/a&gt;, e.g.&#10;&#10;{example_options}">
+      <trans-unit id="f3eCtaE" resname="The options must contain a &lt;code>client_options&lt;/code> value with options for an &lt;a href=&quot;https://symfony.com/doc/current/http_client.html&quot;>HTTP Client&lt;/a>, e.g.&#10;&#10;{example_options}">
         <source>The options must contain a &lt;code&gt;client_options&lt;/code&gt; value with options for an &lt;a href="https://symfony.com/doc/current/http_client.html"&gt;HTTP Client&lt;/a&gt;, e.g.
 
 {example_options}</source>
@@ -248,6 +248,10 @@
       <trans-unit id="5vwBhci" resname="Unable to ping data source: {message}">
         <source>Unable to ping data source: {message}</source>
         <target state="translated">Fejl under oprettelse af forbindelse til datakilde: {message}</target>
+      </trans-unit>
+      <trans-unit id="IB44qB2" resname="Published at">
+        <source>Published at</source>
+        <target state="translated">Udgivet</target>
       </trans-unit>
     </body>
   </file>

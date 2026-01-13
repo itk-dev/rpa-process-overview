@@ -12,6 +12,8 @@ abstract class AbstractCrudController extends BaseAbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return parent::configureCrud($crud)
+            ->setTimezone($this->getParameter('datetime_view_timezone'))
+            ->hideNullValues(true)
             ->showEntityActionsInlined();
     }
 

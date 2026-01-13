@@ -79,6 +79,8 @@ class ProcessOverviewCrudController extends AbstractCrudController
             ->hideOnForm();
         yield DateTimeField::new('createdAt', t('Created at'))
             ->hideOnForm();
+        yield DateTimeField::new('publishedAt', t('Published at'))
+            ->renderAsNativeWidget(false);
 
         /** @var ProcessOverview $entity */
         $entity = $this->getContext()->getEntity()->getInstance();

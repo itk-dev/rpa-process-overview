@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProcessOverviewGroupRepository;
+use App\Trait\PublishableEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -14,6 +15,7 @@ class ProcessOverviewGroup
 {
     use BlameableEntity;
     use TimestampableEntity;
+    use PublishableEntity;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -65,7 +67,7 @@ class ProcessOverviewGroup
      */
     public function getPublicOverviews(): Collection
     {
-        return $this->overviews->filter(static fn (ProcessOverview $overview) => $overview->isReady());
+        return $this->overviews->filter(static fn (ProcessOverview $overview) => $overview->isReady() && $overview->isPublished());
     }
 
     /**

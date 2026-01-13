@@ -15,4 +15,12 @@ class ProcessOverviewGroupRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, ProcessOverviewGroup::class);
     }
+
+    public function findPublished(array $criteria = [], ?array $orderBy = null, ?int $limit = null, ?int $offset = null): array
+    {
+        // @todo Use a query for this …
+        $items = $this->findBy($criteria, $orderBy, $limit, $offset);
+
+        return array_filter($items, fn (ProcessOverviewGroup $item) => $item->isPublished());
+    }
 }

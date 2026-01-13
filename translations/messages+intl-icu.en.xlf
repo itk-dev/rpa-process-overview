@@ -249,6 +249,10 @@
         <source>Unable to ping data source: {message}</source>
         <target>Unable to ping data source: {message}</target>
       </trans-unit>
+      <trans-unit id="IB44qB2" resname="Published at">
+        <source>Published at</source>
+        <target>Published at</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
