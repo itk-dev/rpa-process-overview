@@ -63,3 +63,7 @@ td.step {
     }
   }
 }
+
+.admin-menu {
+  float: right;
+}
