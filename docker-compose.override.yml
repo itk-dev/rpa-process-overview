@@ -5,16 +5,6 @@ include:
 services:
   phpfpm:
     image: itkdev/php8.4-fpm:latest
-    build:
-      # We need rsync to copy built widget files.
-      dockerfile_inline: |
-        FROM itkdev/php8.4-fpm:latest
-
-        USER root
-        RUN apt-get update && \
-            apt-get --yes install rsync
-
-        USER deploy
 
   nginx:
     ports: !override

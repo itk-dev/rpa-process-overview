@@ -16,4 +16,12 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
+    'widget_process_overview' => [
+        'path' => './assets/widgets/ProcessOverview.min.js',
+        'entrypoint' => true,
+    ],
+    'widget_process_search' => [
+        'path' => './assets/widgets/ProcessSearch.min.js',
+        'entrypoint' => true,
+    ],
 ];

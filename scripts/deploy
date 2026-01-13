@@ -50,17 +50,18 @@ console tailwind:build
 console asset-map:compile
 console cache:clear
 
-mkdir -p widgets/static/ public/widgets
-sudo chmod -Rv a+w widgets/static/ public/widgets
-rm -fr widgets/static/ public/widgets
+# Prepare for building widget assets
+BUILD_DIR=widgets/static/dist/
+ASSETS_DIR=assets/widgets/
+
 
 task widgets:deploy
 
-# Clean up
+# Clean up widget assets
 sudo chown -R "$USER" widgets
 git clean -dfX widgets/
 
-find public/widgets
+find $ASSETS_DIR
 
 console asset-map:compile
 console cache:clear
