@@ -225,6 +225,14 @@
         <source>Show only "{value}"</source>
         <target>Show only "{value}"</target>
       </trans-unit>
+      <trans-unit id="f3eCtaE" resname="The options must contain a &lt;code&gt;client_options&lt;/code&gt; value with options for an &lt;a href=&quot;https://symfony.com/doc/current/http_client.html&quot;&gt;HTTP Client&lt;/a&gt;, e.g.&#10;&#10;{example_options}">
+        <source>The options must contain a &lt;code&gt;client_options&lt;/code&gt; value with options for an &lt;a href="https://symfony.com/doc/current/http_client.html"&gt;HTTP Client&lt;/a&gt;, e.g.
+
+{example_options}</source>
+        <target><![CDATA[The options must contain a <code>client_options</code> value with options for an <a href="https://symfony.com/doc/current/http_client.html">HTTP Client</a>, e.g.
+
+{example_options}]]></target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

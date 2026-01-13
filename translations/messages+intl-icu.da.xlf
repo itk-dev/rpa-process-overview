@@ -225,6 +225,14 @@
         <source>Show only "{value}"</source>
         <target state="translated">Vis kun "{value}"</target>
       </trans-unit>
+      <trans-unit id="f3eCtaE" resname="The options must contain a &lt;code&gt;client_options&lt;/code&gt; value with options for an &lt;a href=&quot;https://symfony.com/doc/current/http_client.html&quot;&gt;HTTP Client&lt;/a&gt;, e.g.&#10;&#10;{example_options}">
+        <source>The options must contain a &lt;code&gt;client_options&lt;/code&gt; value with options for an &lt;a href="https://symfony.com/doc/current/http_client.html"&gt;HTTP Client&lt;/a&gt;, e.g.
+
+{example_options}</source>
+        <target state="translated"><![CDATA[Indstillingerne skal indeholde en <code>client_options</code>-værdi med indstillinger for en <a href="https://symfony.com/doc/current/http_client.html">HTTP-klient</a>, fx
+
+{example_options}]]></target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
