@@ -79,8 +79,12 @@ class ProcessOverviewCrudController extends AbstractCrudController
             ->hideOnForm();
         yield DateTimeField::new('createdAt', t('Created at'))
             ->hideOnForm();
-        yield DateTimeField::new('publishedAt', t('Published at'))
-            ->renderAsNativeWidget(false);
+
+        $overview = $this->getContext()->getEntity()->getInstance();
+        if (Crud::PAGE_INDEX === $pageName || (null !== $overview && $overview->isReady())) {
+            yield DateTimeField::new('publishedAt', t('Published at'))
+                ->renderAsNativeWidget(false);
+        }
 
         /** @var ProcessOverview $entity */
         $entity = $this->getContext()->getEntity()->getInstance();
@@ -136,12 +140,33 @@ class ProcessOverviewCrudController extends AbstractCrudController
         yield EaFormField::addFieldset(t('Process options'), propertySuffix: 'process_options');
 
         if ($process) {
+            $exampleOptions = <<<OPTIONS
+metadata_columns:
+    - label: Barn
+      data: meta.cpr
+    - label: Name
+      data: meta.name
+data:
+  title: Failed processes
+  default_query:
+    run_status: failed
+  page_size: 3
+search:
+  title: Citizen search
+  minimum_search_query_length: 2
+OPTIONS;
+            $help = t(<<<'HELP'
+The options must contain <code>metadata_columns</code>, <code>data</code> and <code>search</code> values, e.g.
+
+{example_options}
+HELP, ['example_options' => '<code><pre>'.$exampleOptions.'</pre></code>']);
             yield CodeEditorField::new('options', t('Options'))
                 ->setLanguage('yaml')
                 ->setColumns(6)
                 ->setFormTypeOptions([
                     'empty_data' => '',
                 ])
+                ->setHelp($help)
             ;
             yield FormField::addTemplateView('admin/crud/process_overview/options_details.html.twig', [
                 'process' => $process,

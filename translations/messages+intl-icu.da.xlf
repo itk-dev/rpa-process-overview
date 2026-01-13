@@ -225,7 +225,7 @@
         <source>Show only "{value}"</source>
         <target state="translated">Vis kun "{value}"</target>
       </trans-unit>
-      <trans-unit id="f3eCtaE" resname="The options must contain a &lt;code>client_options&lt;/code> value with options for an &lt;a href=&quot;https://symfony.com/doc/current/http_client.html&quot;>HTTP Client&lt;/a>, e.g.&#10;&#10;{example_options}">
+      <trans-unit id="f3eCtaE" resname="The options must contain a &lt;code&gt;client_options&lt;/code&gt; value with options for an &lt;a href=&quot;https://symfony.com/doc/current/http_client.html&quot;&gt;HTTP Client&lt;/a&gt;, e.g.&#10;&#10;{example_options}">
         <source>The options must contain a &lt;code&gt;client_options&lt;/code&gt; value with options for an &lt;a href="https://symfony.com/doc/current/http_client.html"&gt;HTTP Client&lt;/a&gt;, e.g.
 
 {example_options}</source>
@@ -252,6 +252,14 @@
       <trans-unit id="IB44qB2" resname="Published at">
         <source>Published at</source>
         <target state="translated">Udgivet</target>
+      </trans-unit>
+      <trans-unit id="TzuD8hF" resname="The options must contain &lt;code&gt;metadata_columns&lt;/code&gt;, &lt;code&gt;data&lt;/code&gt; and &lt;code&gt;search&lt;/code&gt; values, e.g.&#10;&#10;{example_options}">
+        <source>The options must contain &lt;code&gt;metadata_columns&lt;/code&gt;, &lt;code&gt;data&lt;/code&gt; and &lt;code&gt;search&lt;/code&gt; values, e.g.
+
+{example_options}</source>
+        <target><![CDATA[__The options must contain <code>metadata_columns</code>, <code>data</code> and <code>search</code> values, e.g.
+
+{example_options}]]></target>
       </trans-unit>
     </body>
   </file>
