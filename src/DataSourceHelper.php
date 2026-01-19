@@ -37,7 +37,7 @@ class DataSourceHelper
 
     public function search(DataSource $dataSource, array $query): array
     {
-        return $this->get($dataSource, 'runs/search/', $query);
+        return $this->get($dataSource, 'runs/search', $query);
     }
 
     public function getProcessRun(DataSource $dataSource, string $processId, string $runId, ?string $action = null): array
