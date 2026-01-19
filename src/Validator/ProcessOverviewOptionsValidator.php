@@ -84,7 +84,7 @@ final class ProcessOverviewOptionsValidator extends ConstraintValidator
         ;
 
         try {
-            $options = Yaml::parse($value);
+            $options = (array) Yaml::parse($value);
             $resolver->resolve($options);
         } catch (ParseException $parseException) {
             $this->context->buildViolation($constraint->invalidYamlMessage)
