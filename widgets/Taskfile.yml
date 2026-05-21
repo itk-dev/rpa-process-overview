@@ -1,0 +1,78 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  APP_PORT: 3000
+  COMPOSE_PROJECT_NAME: '{{.COMPOSE_PROJECT_NAME | default "rpa-process-overview"}}-widgets'
+
+tasks:
+  build:
+    desc: 'Build widget for production'
+    deps: [install]
+    cmds:
+      - rm -fr static/dist && mkdir -p static/dist
+      - task: compose
+        vars:
+          TASK_ARGS: run --rm node npx standalone build --all --production
+
+  build:dev:
+    desc: 'Build widget for development'
+    deps: [install]
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: run --rm node npx standalone build --all
+
+  dev:
+    desc: 'Open widget dev site and start Vite dev server'
+    deps: [install]
+    cmds:
+      # https://stackoverflow.com/a/73821896
+      - task: compose
+        vars:
+          TASK_ARGS: run --name rpa-process-overview-widgets --rm --publish '{{.APP_PORT}}:{{.APP_PORT}}' node npm run dev -- --port {{.APP_PORT}} --host
+
+  install:
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: --profile '*' pull
+      - task npm -- install
+    internal: true
+
+  npm:
+    desc: 'Run npm command. Example: task {{.TASK}} -- install'
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: run --rm node npm
+
+  coding-standards:apply:
+    desc: 'Apply coding standards'
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: run --rm prettier . --write
+
+  coding-standards:check:
+    desc: 'Apply and check coding standards'
+    cmds:
+      - task: coding-standards:apply
+      - task: compose
+        vars:
+          TASK_ARGS: run --rm prettier . --check
+
+  compose:
+    desc: Run docker compose
+    cmds:
+      # For some reason running tasks from this file from the parent Taskfile
+      # (../Taskfile.yml) does not pick up the expected docker ompose project
+      # name. Therefore we set it explicitly here.
+      - 'docker compose --project-name {{.COMPOSE_PROJECT_NAME}} {{.TASK_ARGS}} {{.CLI_ARGS}}'
+    internal: true
+
+  default:
+    cmds:
+      - task --list
+    silent: true

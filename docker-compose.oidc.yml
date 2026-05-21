@@ -1,0 +1,30 @@
+services:
+  oidc-idp:
+    profiles:
+      - ${DOCKER_OIDC_DISABLE:-}
+    # Let this container be accessible both internally and externally on the same domain.
+    container_name: idp.${COMPOSE_DOMAIN}
+    image: ghcr.io/geigerzaehler/oidc-provider-mock:latest
+    # https://docs.docker.com/reference/compose-file/services/#command
+    command:
+      [
+        "--port",
+        "80",
+        "--user-claims",
+        '{"sub": "viewer", "email": "viewer@example.com", "role": ["viewer"]}',
+        "--user-claims",
+        '{"sub": "searcher", "email": "searcher@example.com", "role": ["searcher"]}',
+        "--user-claims",
+        '{"sub": "viewer+searcher", "email": "viewer+searcher@example.com", "role": ["viewer", "searcher"]}',
+        "--user-claims",
+        '{"sub": "admin", "email": "admin@example.com", "role": ["admin"]}',
+      ]
+    ports:
+      - "80"
+    networks:
+      - app
+      - frontend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=frontend"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-idp.rule=Host(`idp.${COMPOSE_DOMAIN}`)"

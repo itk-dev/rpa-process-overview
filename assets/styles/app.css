@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* The sticks between the round buttons  */
+:root {
+  --no-color: rgba(0, 0, 0, 0);
+  /* The following three are copy pasted from tailwind, this could probably be done in a cleverer way */
+  --failed-color-bg: oklch(51.4% 0.222 16.935);
+  --pending-color-bg: oklch(26.9% 0 0);
+  --succeeded-color-bg: oklch(52.7% 0.154 150.069);
+
+  --connector-width: 0.2em;
+
+  --step-width: 8em;
+  --meta-max-width: 12em;
+}
+
+th.meta,
+td.meta {
+  text-align: left;
+  max-width: var(--meta-max-width);
+}
+
+th.step,
+td.step {
+  text-align: center;
+  width: var(--step-width);
+  /* Setting only width does not seem to work. */
+  max-width: var(--step-width);
+}
+
+td.step {
+  position: relative;
+}
+
+.step-information-popover {
+  max-width: 30em;
+  position-area: bottom;
+  position-try-fallbacks: top;
+  position-try-fallbacks: flip-block, flip-inline;
+}
+
+[popovertarget]:has(+ div:popover-open) {
+  div {
+    /* Highlight the current popover target */
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 2px;
+  }
+}
+
+.failed {
+  [popovertarget]:has(+ div:popover-open) {
+    div {
+      outline-color: var(--failed-color-bg);
+    }
+  }
+}
+
+.succeeded {
+  [popovertarget]:has(+ div:popover-open) {
+    div {
+      outline-color: var(--succeeded-color-bg);
+    }
+  }
+}
+
+.admin-menu {
+  float: right;
+}
+
+.info-bar {
+  background: #9a3412;
+  color: #ffedd5;
+  margin: 0 0 1em;
+  padding: 1em;
+
+  a {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Group {label}'|trans({label: group.label}) }}{% endblock %}
+
+{% block content %}
+    {{ include('_partials/group_header.html.twig', {group: group}) }}
+{% endblock %}

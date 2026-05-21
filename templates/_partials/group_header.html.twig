@@ -1,0 +1,16 @@
+<div class="group-header">
+    <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">{{ group.label }}</h1>
+
+    {# https://getbootstrap.com/docs/5.3/components/navs-tabs/#tabs #}
+    <div class="border-b border-neutral-200 dark:border-neutral-800 mb-6">
+    <ul class="flex flex-wrap {{ overview is defined ? 'nav-tabs' }}">
+        {% set overviews = is_granted(enum('App\\Entity\\UserRole').Admin.value) ? group.overviews : group.publicOverviews %}
+        {% for overview in overviews %}
+            {% set is_active = overview == loop.parent.overview|default(null) %}
+            <li class="cursor-pointer transition-all duration-200 border-b-2 px-4 border-gray-300 py-2 hover:border-gray-600 dark:text-gray-400 text-gray-800 hover:text-gray-600 dark:hover:text-gray-200 {{ is_active ? 'text-black dark:text-white border-violet-600' }}">
+                <a class="flex items-center text-sm font-medium {{ is_active ? 'active' }}" {{ is_active ? 'aria-current="page"' }} href="{{ path('process_overview_show', {group: group.id, overview: overview.id}) }}">{{ overview.label }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+</div>

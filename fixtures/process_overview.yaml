@@ -1,0 +1,139 @@
+App\Entity\DataSource:
+  data_source_api:
+    label: API mock
+    url: http://api:8000
+    options: |-
+      client_options:
+        headers:
+          x-api-key: a-not-so-secret-key
+
+  data_source_api_2:
+    label: API mock (the same, but another)
+    url: http://api:8000
+    options: |-
+      client_options:
+        headers:
+          x-api-key: a-not-so-secret-key
+        verify_peer: false
+        verify_host: false
+
+App\Entity\ProcessOverviewGroup:
+  process_overview_group_1:
+    label: Tandpleje - Udskrivningsprocesser
+
+  process_overview_group_2:
+    label: Nogle andre processer
+
+App\Entity\ProcessOverview:
+  process_overview_1:
+    label: Udskrivning 22 år
+    group: "@process_overview_group_1"
+    dataSource: "@data_source_api"
+    processId: 1
+    options: |-
+      metadata_columns:
+          - label: Borger
+            data: meta.cpr
+            mask:
+              search: '/\d{4}$/'
+              replace: '-****'
+          - label: Name
+            data: meta.name
+          - label: Klinik
+            data: meta.branch
+            is_filterable: true
+      data:
+        title: Failed processes
+        default_query:
+          run_status: failed
+        page_size: 7
+      search:
+        title: Citizen search
+        minimum_search_query_length: 3
+
+  process_overview_2:
+    label: Frit valg 0-15 år
+    group: "@process_overview_group_1"
+    dataSource: "@data_source_api"
+    processId: 2
+    options: |-
+      metadata_columns:
+          - label: Barn
+            data: meta.cpr
+          - label: Name
+            data: meta.name
+          - label: Klinik
+            data: meta.branch
+            is_filterable: true
+      data:
+        title: Failed processes
+        page_size: 3
+      search:
+        title: Citizen search
+        minimum_search_query_length: 2
+
+  process_overview_3:
+    label: En anden proces (failed)
+    group: "@process_overview_group_2"
+    dataSource: "@data_source_api_2"
+    processId: 3
+    options: |-
+      metadata_columns:
+          - label: Barn
+            data: meta.cpr
+          - label: Name
+            data: meta.name
+      data:
+        title: Failed processes
+        default_query:
+          run_status: failed
+        page_size: 3
+      search:
+        title: Citizen search
+        minimum_search_query_length: 2
+
+  process_overview_4:
+    label: En anden proces (pending)
+    group: "@process_overview_group_2"
+    dataSource: "@data_source_api_2"
+    processId: 3
+    options: |-
+      metadata_columns:
+          - label: Barn
+            data: meta.cpr
+          - label: Name
+            data: meta.name
+      data:
+        title: Pending processes
+        default_query:
+          run_status: pending
+        page_size: 5
+      search:
+        title: Citizen search
+        minimum_search_query_length: 3
+
+  process_overview_5:
+    label: En anden proces (completed)
+    group: "@process_overview_group_2"
+    dataSource: "@data_source_api_2"
+    processId: 3
+    options: |-
+      metadata_columns:
+          - label: Barn
+            data: meta.cpr
+          - label: Name
+            data: meta.name
+      data:
+        title: Completed processes
+        default_query:
+          run_status: completed
+        page_size: 5
+      search:
+        title: Search
+        minimum_search_query_length: 3
+
+  process_overview_incomplete:
+    label: Incomplete (missing process ID)
+    group: "@process_overview_group_1"
+    dataSource: "@data_source_api"
+    options: |-

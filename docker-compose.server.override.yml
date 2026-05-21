@@ -1,0 +1,3 @@
+services:
+  phpfpm:
+    image: itkdev/php8.4-fpm:alpine

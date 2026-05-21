@@ -1,0 +1,267 @@
+# https://taskfile.dev
+
+version: '3'
+
+# https://taskfile.dev/usage/#env-files
+dotenv: ['.env.local', '.env']
+
+vars:
+  DOCKER_COMPOSE: '{{.TASK_DOCKER_COMPOSE | default "docker compose" }}'
+  COMPOSER_INSTALL_ARGS: '{{.TASK_COMPOSER_INSTALL_ARGS | default "" }}'
+
+includes:
+  coding-standards: ./task/Taskfile.coding-standards.yml
+  widgets:
+    # https://taskfile.dev/usage/#directory-of-included-taskfile
+    taskfile: ./widgets/Taskfile.yml
+    dir: ./widgets
+
+tasks:
+  default:
+    - task: help
+
+  help:
+    desc: Outputs this help screen
+    cmds:
+      - task --list
+    silent: true
+
+  compose:
+    desc: Run docker compose
+    cmds:
+      - '{{.DOCKER_COMPOSE}} {{.TASK_ARGS}} {{.CLI_ARGS}}'
+
+  start:
+    desc: Pull images and start service
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: pull
+
+      # Additional setup if API service is enabled.
+      - cmd: |
+          if [ -n "{{.API_ENABLED}}" ]; then
+            git -C api checkout .
+            git submodule update --init
+            # Apply a patch to support MySQL in the API and make building it work.
+            git -C api apply < patches/Process_Dashboard_API.patch
+          fi
+
+      - task: compose
+        vars:
+          TASK_ARGS: up --build --detach --wait
+
+      # Unpatch API if API service is enabled.
+      - cmd: |
+          if [ -n "{{.API_ENABLED}}" ]; then
+            git -C api checkout .
+          fi
+
+    vars:
+      API_ENABLED:
+        # Check if the api service is enabled.
+        sh: (task --silent compose -- config --services  | grep "^api$") || true
+
+  logs:
+    desc: Show live logs
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: logs --tail=0 --follow
+
+  shell:
+    desc: Run shell command inside PHP service
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm bash
+
+  composer:
+    desc: 'Run composer, example: task {{.TASK}} -- req symfony/orm-pack'
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm composer {{.TASK_ARGS}}
+
+  console:
+    desc: 'Run Sumfony console command, example: task {{.TASK}} -- cache:clear'
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm bin/console {{.TASK_ARGS}}
+
+  site:update:
+    desc: Update site
+    deps: [start]
+    cmds:
+      - task: composer
+        vars:
+          TASK_ARGS: install {{.COMPOSER_INSTALL_ARGS}}
+      - task: console
+        vars:
+          TASK_ARGS: doctrine:migrations:migrate --no-interaction
+      - task: console
+        vars:
+          TASK_ARGS: cache:clear
+      - task: widgets:deploy
+      - task: console
+        vars:
+          TASK_ARGS: tailwind:build
+
+  app:fixtures:load:
+    desc: Load app fixtures
+    prompt: This will reset your database. Continue?
+    cmds:
+      # Reset database (and IDs!) by migrating down and up.
+      - task: console
+        vars:
+          TASK_ARGS: doctrine:migrations:migrate first --no-interaction
+      - task: console
+        vars:
+          TASK_ARGS: doctrine:migrations:migrate --no-interaction
+      - task: console
+        vars:
+          TASK_ARGS: hautelook:fixtures:load --no-interaction
+
+  fixtures:load:
+    desc: Load all fixtures
+    prompt: This will reset your databases. Continue?
+    cmds:
+      - task: api:fixtures:load
+      - task: app:fixtures:load
+
+  translations:extract:
+    cmds:
+      - task: script
+        vars:
+          TASK_ARGS: '{{.TASK}}'
+    silent: true
+
+  script:
+    cmds:
+      - task: compose
+        vars:
+          TASK_ARGS: run --rm phpfpm task/scripts/{{.TASK_ARGS}}
+    internal: true
+
+  widgets:deploy:
+    desc: Build widgets for production and copy to public folder
+    cmds:
+      - task: console
+        vars:
+          TASK_ARGS: tailwind:build
+
+      - task: widgets:build
+
+      # Copy result into assets folder (cf. mapping in importmap.php)
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm rm -fr {{.ASSETS_DIR}}
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm mkdir -p {{.ASSETS_DIR}}
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm cp {{.BUILD_DIR}}/*.min.js {{.ASSETS_DIR}}
+      - task: compose
+        vars:
+          TASK_ARGS: exec phpfpm find {{.ASSETS_DIR}} -type f
+    vars:
+      BUILD_DIR: widgets/static/dist/
+      ASSETS_DIR: assets/widgets/
+
+  api:create:api-keys:
+    desc: Create API keys
+    cmds:
+      - task: api:script:run
+        vars:
+          SCRIPT_PATH: scripts/api/create_api_keys.py
+
+  api:fixtures:load:
+    desc: Load API fixtures
+    prompt: Continue?
+    cmds:
+      # Reset database (and IDs!) in API database
+      - task: compose
+        vars:
+          TASK_ARGS: down api-db
+      - task: compose
+        vars:
+          TASK_ARGS: up --detach
+      # Install faker and load fixtures
+      - task: compose
+        vars:
+          TASK_ARGS: exec api uv add --dev faker
+      - task: api:create:api-keys
+      - task: api:script:run
+        vars:
+          SCRIPT_PATH: scripts/api/fixtures.py
+
+  api:update:
+    desc: Update API to latest version (https://github.com/AAK-MBU/Process_Dashboard_API/tree/main)
+    prompt: Really?
+    cmds:
+      - git -C api checkout .
+      - git -C api checkout main
+      - git -C api pull
+      - git -C api log --oneline -10
+      # Check that our patch can be applied.
+      - git -C api apply --check < patches/Process_Dashboard_API.patch
+
+  api:script:run:
+    desc: 'Run script inside API service container, example: `task {{.TASK}} SCRIPT_PATH=test/load_data.py'
+    silent: true
+    cmds:
+      - echo "Running {{.SCRIPT_PATH}} inside API service"
+      - task: compose
+        vars:
+          TASK_ARGS: cp {{.SCRIPT_PATH}} api:/app/scripts
+      - task: compose
+        vars:
+          TASK_ARGS: exec api python scripts/$(basename {{.SCRIPT_PATH}})
+    requires:
+      vars: [SCRIPT_PATH]
+    preconditions:
+      - sh: test -f {{.SCRIPT_PATH}}
+        msg: '{{.SCRIPT_PATH}} does not exist'
+
+  api:get:
+    desc: 'Perform a GET request to an API endpoint, examples: `task {{.TASK}} API_PATH=/api/v1/auth/me`, `task {{.TASK}} API_PATH=/api/v1/auth/me API_KEY=my-api-key`'
+    cmds:
+      - |-
+        task compose -- exec phpfpm curl --silent --verbose --header 'x-api-key: {{.API_KEY}}' '{{.API_BASE_URL}}{{.API_PATH}}' | docker run --rm --interactive ghcr.io/jqlang/jq:latest
+    requires:
+      vars: [API_PATH]
+    vars:
+      API_BASE_URL: http://api:8000
+      # Cf. scripts/api/create_api_keys.py
+      API_KEY: '{{ .API_KEY | default "user-api-key" }}'
+    silent: true
+
+  api:test:
+    cmds:
+      - for:
+          - /api/v1/auth/me
+          - /api/v1/processes/
+          - /api/v1/processes/1
+          - /api/v1/runs/?process_id=1&run_status=failed
+          - /api/v1/runs/?process_id=1&failed_at=2
+          - /api/v1/runs/?process_id=1
+          - /api/v1/processes/1/filter-metadata
+          - /api/v1/runs/?process_id=1&run_status=failed
+          - /api/v1/runs/
+          - /api/v1/runs/?process_id=1
+          - /api/v1/runs/?process_id=1&meta_filter=branch%3AHall-Nelson
+          - /api/v1/runs/?process_id=1&meta_filter=branch%3ABlackwell-Butler
+          - /api/v1/runs/?process_id=1&meta_filter=branch%3AHall-Nelson&meta_filter=branch%3ABlackwell-Butler
+          - /api/v1/runs/?process_id=1&meta_filter=branch%3ATorres%2C%20Dixon%20and%20Marshallk&meta_filter=branch%3ATorres%2C%20Dixon%20and%20Marshal
+        task: api:get
+        vars:
+          API_PATH: '{{.ITEM}}'
+
+  tailwind:build:
+    desc: Build Tailwind stuff. Use `task {{.TASK}} -- --watch` to watch for changes.
+    cmds:
+      - task: console
+        vars:
+          TASK_ARGS: tailwind:build

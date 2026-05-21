@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="da" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="nRSzgzm" resname="page_title.exception">
+        <source>page_title.exception</source>
+        <target>Fejl|Fejl</target>
+      </trans-unit>
+      <trans-unit id="GTjPPy9" resname="datagrid.hidden_results">
+        <source>datagrid.hidden_results</source>
+        <target>Nogle resultater kan ikke vises fordi du ikke har nok rettigheder</target>
+      </trans-unit>
+      <trans-unit id="CO0E0pU" resname="datagrid.no_results">
+        <source>datagrid.no_results</source>
+        <target>Intet resultat.</target>
+      </trans-unit>
+      <trans-unit id="ANpWHHW" resname="paginator.previous">
+        <source>paginator.previous</source>
+        <target>Forrige</target>
+      </trans-unit>
+      <trans-unit id="SaZbUiU" resname="paginator.next">
+        <source>paginator.next</source>
+        <target>Næste</target>
+      </trans-unit>
+      <trans-unit id="ZsypGha" resname="paginator.results">
+        <source>paginator.results</source>
+        <target><![CDATA[{0} Ingen resultater|{1} <strong>1</strong> resultat|]1,Inf] <strong>%count%</strong> resultater]]></target>
+      </trans-unit>
+      <trans-unit id="S2q7CDj" resname="label.empty">
+        <source>label.empty</source>
+        <target>Tom</target>
+      </trans-unit>
+      <trans-unit id="fAVSIIs" resname="label.null">
+        <source>label.null</source>
+        <target>Null</target>
+      </trans-unit>
+      <trans-unit id="0EqWTob" resname="label.inaccessible">
+        <source>label.inaccessible</source>
+        <target>Utilgængelig</target>
+      </trans-unit>
+      <trans-unit id="OLmlP81" resname="label.inaccessible.explanation">
+        <source>label.inaccessible.explanation</source>
+        <target>Der findes ingen getter metode for dette felt eller også er det ikke et tilgængeligt felt</target>
+      </trans-unit>
+      <trans-unit id="MJQ4k4D" resname="field.code_editor.view_code">
+        <source>field.code_editor.view_code</source>
+        <target>Vis kode</target>
+      </trans-unit>
+      <trans-unit id="11gUR_y" resname="field.text_editor.view_content">
+        <source>field.text_editor.view_content</source>
+        <target>Vis indhold</target>
+      </trans-unit>
+      <trans-unit id="FI_qUZL" resname="action.entity_actions">
+        <source>action.entity_actions</source>
+        <target>Handlinger</target>
+      </trans-unit>
+      <trans-unit id="tKPecTw" resname="action.search">
+        <source>action.search</source>
+        <target>Søg</target>
+      </trans-unit>
+      <trans-unit id="Cd4XVNn" resname="action.delete">
+        <source>action.delete</source>
+        <target>Slet</target>
+      </trans-unit>
+      <trans-unit id="wPEuKmL" resname="action.cancel">
+        <source>action.cancel</source>
+        <target>Afbryd</target>
+      </trans-unit>
+      <trans-unit id="ecFC4Sv" resname="action.add_new_item">
+        <source>action.add_new_item</source>
+        <target>Tilføj nyt emne</target>
+      </trans-unit>
+      <trans-unit id="b5M9sxm" resname="action.remove_item">
+        <source>action.remove_item</source>
+        <target>Slet emnet</target>
+      </trans-unit>
+      <trans-unit id="Yy_rDAt" resname="action.choose_file">
+        <source>action.choose_file</source>
+        <target>Vælg fil</target>
+      </trans-unit>
+      <trans-unit id="PO_UHtX" resname="action.close">
+        <source>action.close</source>
+        <target>Luk</target>
+      </trans-unit>
+      <trans-unit id="sWw5MDD" resname="action.toggle_dropdown">
+        <source>action.toggle_dropdown</source>
+        <target>Skift rullemenu</target>
+      </trans-unit>
+      <trans-unit id="IvOrJqD" resname="batch_action_modal.title">
+        <source>batch_action_modal.title</source>
+        <target>Du vil anvende "%action_name%" handlingen på %num_items% element(er).</target>
+      </trans-unit>
+      <trans-unit id="HzIn9A_" resname="batch_action_modal.content">
+        <source>batch_action_modal.content</source>
+        <target>Du kan ikke fortryde denne handling.</target>
+      </trans-unit>
+      <trans-unit id="1QzA7HJ" resname="batch_action_modal.action">
+        <source>batch_action_modal.action</source>
+        <target>Udfør handling</target>
+      </trans-unit>
+      <trans-unit id=".DbNkeY" resname="delete_modal.title">
+        <source>delete_modal.title</source>
+        <target>Er du sikker på du vil slette dette element?</target>
+      </trans-unit>
+      <trans-unit id="O8SUipq" resname="delete_modal.content">
+        <source>delete_modal.content</source>
+        <target>Denne operation kan ikke fortrydes.</target>
+      </trans-unit>
+      <trans-unit id="VH1tHkH" resname="filter.title">
+        <source>filter.title</source>
+        <target>Filtre</target>
+      </trans-unit>
+      <trans-unit id="GapHtez" resname="filter.button.clear">
+        <source>filter.button.clear</source>
+        <target>Ryd</target>
+      </trans-unit>
+      <trans-unit id="F7_Hyy1" resname="filter.button.apply">
+        <source>filter.button.apply</source>
+        <target>Aktiver</target>
+      </trans-unit>
+      <trans-unit id="3VqDiBO" resname="form.tab.error_badge_title">
+        <source>form.tab.error_badge_title</source>
+        <target>En ugyldig indtastning|%count% ugyldige indtastninger</target>
+      </trans-unit>
+      <trans-unit id="kgatv6N" resname="user.logged_in_as">
+        <source>user.logged_in_as</source>
+        <target>Logget ind som</target>
+      </trans-unit>
+      <trans-unit id=".eqAPKs" resname="user.anonymous">
+        <source>user.anonymous</source>
+        <target>Anonym bruger</target>
+      </trans-unit>
+      <trans-unit id="JBbrEd7" resname="settings.appearance.label">
+        <source>settings.appearance.label</source>
+        <target>Udseende</target>
+      </trans-unit>
+      <trans-unit id="vxKYCsn" resname="settings.appearance.light">
+        <source>settings.appearance.light</source>
+        <target>Lys</target>
+      </trans-unit>
+      <trans-unit id="h3pBR4_" resname="settings.appearance.dark">
+        <source>settings.appearance.dark</source>
+        <target>Mørk</target>
+      </trans-unit>
+      <trans-unit id="8ViDiWx" resname="settings.appearance.auto">
+        <source>settings.appearance.auto</source>
+        <target>Automatisk</target>
+      </trans-unit>
+      <trans-unit id="E5cimFA" resname="settings.locale">
+        <source>settings.locale</source>
+        <target>Sprog</target>
+      </trans-unit>
+      <trans-unit id="iFP0IOu" resname="login_page.username">
+        <source>login_page.username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="uxJWiMn" resname="login_page.password">
+        <source>login_page.password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="eiGmhDt" resname="login_page.sign_in">
+        <source>login_page.sign_in</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="IsDUuMi" resname="login_page.forgot_password">
+        <source>login_page.forgot_password</source>
+        <target>Glemt din adgangskode?</target>
+      </trans-unit>
+      <trans-unit id="GNqK_5o" resname="login_page.remember_me">
+        <source>login_page.remember_me</source>
+        <target>Husk mig</target>
+      </trans-unit>
+      <trans-unit id="dc37768" resname="autocomplete.no-results-found">
+        <source>autocomplete.no-results-found</source>
+        <target>Ingen resultater fundet</target>
+      </trans-unit>
+      <trans-unit id="_EDCsYO" resname="autocomplete.loading-more-results">
+        <source>autocomplete.loading-more-results</source>
+        <target>Indlæser flere resultater…</target>
+      </trans-unit>
+      <trans-unit id="Mi9fRIF" resname="autocomplete.no-more-results">
+        <source>autocomplete.no-more-results</source>
+        <target state="translated">Ikke flere resultater</target>
+      </trans-unit>
+      <trans-unit id="3Mq5DeM" resname="files">
+        <source>files</source>
+        <target state="translated">Filer</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

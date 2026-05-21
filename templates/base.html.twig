@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ site_title }}{% endblock %}</title>
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body class="bg-white dark:bg-gray-950 w-full min-h-screen">
+<div class="mx-auto px-4 py-6 dark:text-white">
+    {% block body %}
+        {% if is_granted(enum('App\\Entity\\UserRole').Admin.value) %}
+            <div class="admin-menu">
+                <a href="{{ path('process_overview_admin') }}">{{ 'Admin'|trans }}</a>
+            </div>
+        {% endif %}
+        {% block header %}
+            {{ include('_partials/main_header.html.twig') }}
+        {% endblock %}
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+</div>
+</body>
+</html>

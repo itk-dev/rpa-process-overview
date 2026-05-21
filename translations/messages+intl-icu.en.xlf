@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="Qg4MLJh" resname="Show process overview">
+        <source>Show process overview</source>
+        <target>Show process overview</target>
+      </trans-unit>
+      <trans-unit id="zSLE5ho" resname="Process overview">
+        <source>Process overview</source>
+        <target>Process overview</target>
+      </trans-unit>
+      <trans-unit id="ZqmQ97D" resname="Group">
+        <source>Group</source>
+        <target>Group</target>
+      </trans-unit>
+      <trans-unit id="5BaLM8U" resname="Overview {label}">
+        <source>Overview {label}</source>
+        <target>Overview {label}</target>
+      </trans-unit>
+      <trans-unit id="RNJQIxA" resname="Process overview groups">
+        <source>Process overview groups</source>
+        <target>Process overview groups</target>
+      </trans-unit>
+      <trans-unit id="uQW8fpJ" resname="Group {label}">
+        <source>Group {label}</source>
+        <target>Group {label}</target>
+      </trans-unit>
+      <trans-unit id="tfHGWb6" resname="Groups">
+        <source>Groups</source>
+        <target>Groups</target>
+      </trans-unit>
+      <trans-unit id=".uTfHVh" resname="Show group">
+        <source>Show group</source>
+        <target>Show group</target>
+      </trans-unit>
+      <trans-unit id="37wivZ3" resname="ID">
+        <source>ID</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="NJouBgC" resname="Label">
+        <source>Label</source>
+        <target>Label</target>
+      </trans-unit>
+      <trans-unit id="OneE1vG" resname="Process overviews">
+        <source>Process overviews</source>
+        <target>Process overviews</target>
+      </trans-unit>
+      <trans-unit id="IkIkCgL" resname="Options">
+        <source>Options</source>
+        <target>Options</target>
+      </trans-unit>
+      <trans-unit id="ExFLJqx" resname="Home">
+        <source>Home</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="kIqhHtP" resname="Admin">
+        <source>Admin</source>
+        <target>Admin</target>
+      </trans-unit>
+      <trans-unit id="FC.YH9X" resname="Toggle navigation">
+        <source>Toggle navigation</source>
+        <target>Toggle navigation</target>
+      </trans-unit>
+      <trans-unit id=".pEQgOp" resname="Data source">
+        <source>Data source</source>
+        <target>Data source</target>
+      </trans-unit>
+      <trans-unit id="RwpY.69" resname="Data sources">
+        <source>Data sources</source>
+        <target>Data sources</target>
+      </trans-unit>
+      <trans-unit id="26bqdzX" resname="URL">
+        <source>URL</source>
+        <target>URL</target>
+      </trans-unit>
+      <trans-unit id="87uOfkU" resname="Process">
+        <source>Process</source>
+        <target>Process</target>
+      </trans-unit>
+      <trans-unit id="QXrccnc" resname="Metadata">
+        <source>Metadata</source>
+        <target>Metadata</target>
+      </trans-unit>
+      <trans-unit id="8mOVCwE" resname="Example use in &quot;{options}&quot;">
+        <source>Example use in "{options}"</source>
+        <target>Example use in "{options}"</target>
+      </trans-unit>
+      <trans-unit id="AOEC242" resname="Steps">
+        <source>Steps</source>
+        <target>Steps</target>
+      </trans-unit>
+      <trans-unit id="DHnPBuj" resname="Process options">
+        <source>Process options</source>
+        <target>Process options</target>
+      </trans-unit>
+      <trans-unit id="UAABDvd" resname="Use data source">
+        <source>Use data source</source>
+        <target>Use data source</target>
+      </trans-unit>
+      <trans-unit id="Q7w68gQ" resname="Use process">
+        <source>Use process</source>
+        <target>Use process</target>
+      </trans-unit>
+      <trans-unit id="bk5A_r0" resname="Details for {process}">
+        <source>Details for {process}</source>
+        <target>Details for {process}</target>
+      </trans-unit>
+      <trans-unit id="FnYEvwc" resname="You must select and use a data source before you can select a process.">
+        <source>You must select and use a data source before you can select a process.</source>
+        <target>You must select and use a data source before you can select a process.</target>
+      </trans-unit>
+      <trans-unit id="eyneDsx" resname="You must select and use a data source and a process before you can define options.">
+        <source>You must select and use a data source and a process before you can define options.</source>
+        <target>You must select and use a data source and a process before you can define options.</target>
+      </trans-unit>
+      <trans-unit id="BD_hWKF" resname="Data source ({label})">
+        <source>Data source ({label})</source>
+        <target>Data source ({label})</target>
+      </trans-unit>
+      <trans-unit id="2DkQNvu" resname="Process ({label})">
+        <source>Process ({label})</source>
+        <target>Process ({label})</target>
+      </trans-unit>
+      <trans-unit id="P9_Y7yU" resname="Created by">
+        <source>Created by</source>
+        <target>Created by</target>
+      </trans-unit>
+      <trans-unit id="LVVWz4T" resname="Created at">
+        <source>Created at</source>
+        <target>Created at</target>
+      </trans-unit>
+      <trans-unit id="ZHIlC6b" resname="Go to previous page">
+        <source>Go to previous page</source>
+        <target>Go to previous page</target>
+      </trans-unit>
+      <trans-unit id="YiuzkhO" resname="Go to next page">
+        <source>Go to next page</source>
+        <target>Go to next page</target>
+      </trans-unit>
+      <trans-unit id="ICfdxrk" resname="Missing data">
+        <source>Missing data</source>
+        <target>Missing data</target>
+      </trans-unit>
+      <trans-unit id="QOhsBcU" resname="An error occurred while fetching the data">
+        <source>An error occurred while fetching the data</source>
+        <target>An error occurred while fetching the data</target>
+      </trans-unit>
+      <trans-unit id="eF09fJD" resname="Citizen search">
+        <source>Citizen search</source>
+        <target>Citizen search</target>
+      </trans-unit>
+      <trans-unit id="tx702.d" resname="Citizen information">
+        <source>Citizen information</source>
+        <target>Citizen information</target>
+      </trans-unit>
+      <trans-unit id="XPwqrmY" resname="An error occurred while searching">
+        <source>An error occurred while searching</source>
+        <target>An error occurred while searching</target>
+      </trans-unit>
+      <trans-unit id="M.iCN3v" resname="Go to page {page}">
+        <source>Go to page {page}</source>
+        <target>Go to page {page}</target>
+      </trans-unit>
+      <trans-unit id="KXqovG." resname="Loading data …">
+        <source>Loading data …</source>
+        <target>Loading data …</target>
+      </trans-unit>
+      <trans-unit id="iMqbR_1" resname="Showing {from}–{to} of {total}">
+        <source>Showing {from}–{to} of {total}</source>
+        <target>Showing {from}–{to} of {total}</target>
+      </trans-unit>
+      <trans-unit id="rogeeu2" resname="The process was restarted">
+        <source>The process was restarted</source>
+        <target>The process was restarted</target>
+      </trans-unit>
+      <trans-unit id="U5QT.Nm" resname="An error occurred when trying to restart the process">
+        <source>An error occurred when trying to restart the process</source>
+        <target>An error occurred when trying to restart the process</target>
+      </trans-unit>
+      <trans-unit id="tIp4N7k" resname="Rerun step">
+        <source>Rerun step</source>
+        <target>Rerun step</target>
+      </trans-unit>
+      <trans-unit id="wmAX68g" resname="Finished at {finishedAt}">
+        <source>Finished at {finishedAt}</source>
+        <target>Finished at {finishedAt}</target>
+      </trans-unit>
+      <trans-unit id="jmp.PI_" resname="Failed at {failedAt}">
+        <source>Failed at {failedAt}</source>
+        <target>Failed at {failedAt}</target>
+      </trans-unit>
+      <trans-unit id="cyzVmW2" resname="Error code: {code}">
+        <source>Error code: {code}</source>
+        <target>Error code: {code}</target>
+      </trans-unit>
+      <trans-unit id="BaGNK8D" resname="Error copying value. Try again!">
+        <source>Error copying value. Try again!</source>
+        <target>Error copying value. Try again!</target>
+      </trans-unit>
+      <trans-unit id="zcxbqir" resname="Value copied!">
+        <source>Value copied!</source>
+        <target>Value copied!</target>
+      </trans-unit>
+      <trans-unit id="V_uNeg." resname="Copy value">
+        <source>Copy value</source>
+        <target>Copy value</target>
+      </trans-unit>
+      <trans-unit id="xUEcQQq" resname="Showing processes failed in">
+        <source>Showing processes failed in</source>
+        <target>Showing processes failed in</target>
+      </trans-unit>
+      <trans-unit id="KHrImUJ" resname="Show all">
+        <source>Show all</source>
+        <target>Show all</target>
+      </trans-unit>
+      <trans-unit id="U_8i5Ic" resname="Remove filter on &quot;{value}&quot;">
+        <source>Remove filter on "{value}"</source>
+        <target>Remove filter on "{value}"</target>
+      </trans-unit>
+      <trans-unit id="yvrDFvv" resname="Show only &quot;{value}&quot;">
+        <source>Show only "{value}"</source>
+        <target>Show only "{value}"</target>
+      </trans-unit>
+      <trans-unit id="f3eCtaE" resname="The options must contain a &lt;code&gt;client_options&lt;/code&gt; value with options for an &lt;a href=&quot;https://symfony.com/doc/current/http_client.html&quot;&gt;HTTP Client&lt;/a&gt;, e.g.&#10;&#10;{example_options}">
+        <source>The options must contain a &lt;code&gt;client_options&lt;/code&gt; value with options for an &lt;a href="https://symfony.com/doc/current/http_client.html"&gt;HTTP Client&lt;/a&gt;, e.g.
+
+{example_options}</source>
+        <target><![CDATA[The options must contain a <code>client_options</code> value with options for an <a href="https://symfony.com/doc/current/http_client.html">HTTP Client</a>, e.g.
+
+{example_options}]]></target>
+      </trans-unit>
+      <trans-unit id="EcROJY4" resname="Unable to load processes: {message}">
+        <source>Unable to load processes: {message}</source>
+        <target>Unable to load processes: {message}</target>
+      </trans-unit>
+      <trans-unit id="L6P4A3j" resname="Ping data source">
+        <source>Ping data source</source>
+        <target>Ping data source</target>
+      </trans-unit>
+      <trans-unit id="Tzd6e0B" resname="Data source successfully pinged">
+        <source>Data source successfully pinged</source>
+        <target>Data source successfully pinged</target>
+      </trans-unit>
+      <trans-unit id="5vwBhci" resname="Unable to ping data source: {message}">
+        <source>Unable to ping data source: {message}</source>
+        <target>Unable to ping data source: {message}</target>
+      </trans-unit>
+      <trans-unit id="IB44qB2" resname="Published at">
+        <source>Published at</source>
+        <target>Published at</target>
+      </trans-unit>
+      <trans-unit id="TzuD8hF" resname="The options must contain &lt;code&gt;metadata_columns&lt;/code&gt;, &lt;code&gt;data&lt;/code&gt; and &lt;code&gt;search&lt;/code&gt; values, e.g.&#10;&#10;{example_options}">
+        <source>The options must contain &lt;code&gt;metadata_columns&lt;/code&gt;, &lt;code&gt;data&lt;/code&gt; and &lt;code&gt;search&lt;/code&gt; values, e.g.
+
+{example_options}</source>
+        <target><![CDATA[The options must contain <code>metadata_columns</code>, <code>data</code> and <code>search</code> values, e.g.
+
+{example_options}]]></target>
+      </trans-unit>
+      <trans-unit id="LCVkixz" resname="This overview is not published. &lt;a href=&quot;{edit_url}&quot;&gt;Edit overview&lt;/a&gt;.">
+        <source>This overview is not published. &lt;a href="{edit_url}"&gt;Edit overview&lt;/a&gt;.</source>
+        <target><![CDATA[This overview is not published. <a href="{edit_url}">Edit overview</a>.]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

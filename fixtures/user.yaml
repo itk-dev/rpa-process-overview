@@ -1,0 +1,20 @@
+App\Entity\User:
+  super-admin:
+    email: super-admin@example.com
+    roles:
+      - ROLE_SUPER_ADMIN
+
+  overview-manager:
+    email: overview-manager@example.com
+    roles:
+      - ROLE_OVERVIEW_MANAGER
+
+  overview-viewer:
+    email: overview-viewer@example.com
+    roles:
+      - ROLE_OVERVIEW_VIEWER
+
+  process-step-runner:
+    email: process-step-runner@example.com
+    roles:
+      - ROLE_PROCESS_STEP_RUNNER

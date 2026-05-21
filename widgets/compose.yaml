@@ -1,0 +1,38 @@
+services:
+  node:
+    image: node:24
+    # https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#handling-kernel-signals
+    # https://docs.docker.com/reference/compose-file/services/#init
+    init: true
+    working_dir: /app
+    volumes:
+      - .:/app
+    profiles:
+      - dev
+    ports:
+      - '3000:3000'
+
+  prettier:
+    # Prettier does not (yet, fcf.
+    # https://github.com/prettier/prettier/issues/15206) have an official
+    # docker image.
+    # https://hub.docker.com/r/jauderho/prettier is good candidate (cf. https://hub.docker.com/search?q=prettier&sort=updated_at&order=desc)
+    # image: jauderho/prettier
+    build:
+      # Custom image to include https://github.com/sveltejs/prettier-plugin-svelte
+      dockerfile_inline: |
+        # https://github.com/jauderho/dockerfiles/blob/main/prettier/Dockerfile
+        FROM node:24
+
+        RUN npm install --global prettier prettier-plugin-svelte
+
+        WORKDIR /work
+
+        # Help prettier find our globally installed plugin
+        # (cf. https://github.com/prettier/prettier/issues/15141#issuecomment-2624767782)
+        ENTRYPOINT ["prettier", "--plugin", "/usr/local/lib/node_modules/prettier-plugin-svelte/plugin.js"]
+        CMD ["--help"]
+    volumes:
+      - ./:/work
+    profiles:
+      - dev
