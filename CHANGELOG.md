@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-05-21
+
+* [PR-61](https://github.com/itk-dev/rpa-process-overview/pull/61)
+  * Security update
+  * Symfony 7.4
 * [PR-60](https://github.com/itk-dev/rpa-process-overview/pull/60)
   Improved permissions handling
 * [PR-57](https://github.com/itk-dev/rpa-process-overview/pull/57)
@@ -93,4 +98,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * [PR-2](https://github.com/rimi-itk/rpa-process-overview/pull/2)
   Svelte
 
-[Unreleased]: https://github.com/rimi-itk/rpa-process-overview
+[Unreleased]: https://github.com/rimi-itk/rpa-process-overview/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/rimi-itk/rpa-process-overview/releases/tag/1.0.0
