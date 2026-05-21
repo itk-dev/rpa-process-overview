@@ -1,118 +1,118 @@
-version: "3"
+version: '3'
 
 tasks:
-  coding-standards:apply:
-    desc: "Apply coding standards"
+  apply:
+    desc: 'Apply coding standards'
     cmds:
-      - task: coding-standards:assets:apply
-      - task: coding-standards:composer:apply
-      - task: coding-standards:markdown:apply
-      - task: coding-standards:php:apply
-      - task: coding-standards:twig:apply
-      - task: coding-standards:yaml:apply
+      - task: assets:apply
+      - task: composer:apply
+      - task: markdown:apply
+      - task: php:apply
+      - task: twig:apply
+      - task: yaml:apply
     silent: true
 
-  coding-standards:check:
-    desc: "Apply coding standards"
+  check:
+    desc: 'Apply coding standards'
     cmds:
-      - task: coding-standards:assets:check
-      - task: coding-standards:composer:check
-      - task: coding-standards:markdown:check
-      - task: coding-standards:php:check
-      - task: coding-standards:twig:check
-      - task: coding-standards:yaml:check
+      - task: assets:check
+      - task: composer:check
+      - task: markdown:check
+      - task: php:check
+      - task: twig:check
+      - task: yaml:check
     silent: true
 
-  coding-standards:assets:apply:
-    desc: "Apply coding standards for assets"
+  assets:apply:
+    desc: 'Apply coding standards for assets'
     cmds:
       - task: compose
         vars:
           TASK_ARGS: run --rm prettier 'assets/**' --write
 
-  coding-standards:assets:check:
-    desc: "Apply and check coding standards for assets"
+  assets:check:
+    desc: 'Apply and check coding standards for assets'
     cmds:
-      - task: coding-standards:assets:apply
+      - task: assets:apply
       - task: compose
         vars:
           TASK_ARGS: run --rm prettier 'assets/**' --check
 
-  coding-standards:composer:apply:
-    desc: "Apply coding standards for composer"
+  composer:apply:
+    desc: 'Apply coding standards for composer'
     cmds:
       - task: compose
         vars:
           TASK_ARGS: exec phpfpm composer normalize
 
-  coding-standards:composer:check:
-    desc: "Apply and check coding standards for composer"
+  composer:check:
+    desc: 'Apply and check coding standards for composer'
     cmds:
-      - task: coding-standards:composer:apply
+      - task: composer:apply
       - task: compose
         vars:
           TASK_ARGS: exec phpfpm composer normalize --dry-run
 
-  coding-standards:markdown:apply:
-    desc: "Apply coding standards for Markdown"
+  markdown:apply:
+    desc: 'Apply coding standards for Markdown'
     cmds:
       - task: compose
         vars:
           TASK_ARGS: run --rm markdownlint markdownlint '**/*.md' --fix
 
-  coding-standards:markdown:check:
-    desc: "Apply and check coding standards for Markdown"
+  markdown:check:
+    desc: 'Apply and check coding standards for Markdown'
     cmds:
-      - task: coding-standards:markdown:apply
+      - task: markdown:apply
       - task: compose
         vars:
           TASK_ARGS: run --rm markdownlint markdownlint '**/*.md'
 
-  coding-standards:php:apply:
-    desc: "Apply coding standards for PHP"
+  php:apply:
+    desc: 'Apply coding standards for PHP'
     cmds:
       - task: compose
         vars:
           TASK_ARGS: exec --env PHP_CS_FIXER_IGNORE_ENV=1 phpfpm vendor/bin/php-cs-fixer fix
     silent: true
 
-  coding-standards:php:check:
-    desc: "Apply and check coding standards for PHP"
+  php:check:
+    desc: 'Apply and check coding standards for PHP'
     cmds:
-      - task: coding-standards:php:apply
+      - task: php:apply
       - task: compose
         vars:
           TASK_ARGS: exec --env PHP_CS_FIXER_IGNORE_ENV=1 phpfpm vendor/bin/php-cs-fixer check
     silent: true
 
-  coding-standards:twig:apply:
-    desc: "Apply coding standards for Twig"
+  twig:apply:
+    desc: 'Apply coding standards for Twig'
     cmds:
       - task: compose
         vars:
           TASK_ARGS: exec phpfpm vendor/bin/twig-cs-fixer fix
     silent: true
 
-  coding-standards:twig:check:
-    desc: "Apply and check coding standards for Twig"
+  twig:check:
+    desc: 'Apply and check coding standards for Twig'
     cmds:
-      - task: coding-standards:twig:apply
+      - task: twig:apply
       - task: compose
         vars:
           TASK_ARGS: exec phpfpm vendor/bin/twig-cs-fixer lint
     silent: true
 
-  coding-standards:yaml:apply:
-    desc: "Apply coding standards for YAML"
+  yaml:apply:
+    desc: 'Apply coding standards for YAML'
     cmds:
       - task: compose
         vars:
           TASK_ARGS: run --rm prettier '**/*.{yml,yaml}' --write
 
-  coding-standards:yaml:check:
-    desc: "Apply and check coding standards for YAML"
+  yaml:check:
+    desc: 'Apply and check coding standards for YAML'
     cmds:
-      - task: coding-standards:yaml:apply
+      - task: yaml:apply
       - task: compose
         vars:
           TASK_ARGS: run --rm prettier '**/*.{yml,yaml}' --check
@@ -124,5 +124,5 @@ tasks:
       # (Apart from https://github.com/go-task/task/issues/161#issuecomment-460008510)
       - task: :compose
         vars:
-          TASK_ARGS: "{{.TASK_ARGS}}"
+          TASK_ARGS: '{{.TASK_ARGS}}'
     internal: true

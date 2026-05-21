@@ -19,14 +19,6 @@
 		hasMetaFilter?: Function | null;
 		toggleMetaFilter?: Function | null;
 	} = $props();
-
-	// Status icons
-	// Todo, perhaps a "Running" status will be added
-	const icons = {
-		[StepStatus.PENDING]: Clock,
-		[StepStatus.SUCCESS]: CheckMark,
-		[StepStatus.FAILED]: Close
-	};
 </script>
 
 <table class="min-w-full">
@@ -57,8 +49,13 @@
 						{#each row as cell, i}
 							{#if 'step' === cell.type}
 								<TableStepCell {cell} {row} {i}>
-									{@const IconComponent = icons[cell.status]}
-									<IconComponent />
+									{#if cell.status === StepStatus.PENDING}
+										<Clock />
+									{:else if cell.status === StepStatus.SUCCESS}
+										<CheckMark />
+									{:else if cell.status === StepStatus.FAILED}
+										<Close />
+									{/if}
 								</TableStepCell>
 							{:else}
 								<TableMetaCell rawValueUrl={cell.raw_value_url}>

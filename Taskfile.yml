@@ -1,9 +1,9 @@
 # https://taskfile.dev
 
-version: "3"
+version: '3'
 
 # https://taskfile.dev/usage/#env-files
-dotenv: [".env.local", ".env"]
+dotenv: ['.env.local', '.env']
 
 vars:
   DOCKER_COMPOSE: '{{.TASK_DOCKER_COMPOSE | default "docker compose" }}'
@@ -29,7 +29,7 @@ tasks:
   compose:
     desc: Run docker compose
     cmds:
-      - "{{.DOCKER_COMPOSE}} {{.TASK_ARGS}} {{.CLI_ARGS}}"
+      - '{{.DOCKER_COMPOSE}} {{.TASK_ARGS}} {{.CLI_ARGS}}'
 
   start:
     desc: Pull images and start service
@@ -77,14 +77,14 @@ tasks:
           TASK_ARGS: exec phpfpm bash
 
   composer:
-    desc: "Run composer, example: task {{.TASK}} -- req symfony/orm-pack"
+    desc: 'Run composer, example: task {{.TASK}} -- req symfony/orm-pack'
     cmds:
       - task: compose
         vars:
           TASK_ARGS: exec phpfpm composer {{.TASK_ARGS}}
 
   console:
-    desc: "Run Sumfony console command, example: task {{.TASK}} -- cache:clear"
+    desc: 'Run Sumfony console command, example: task {{.TASK}} -- cache:clear'
     cmds:
       - task: compose
         vars:
@@ -134,7 +134,7 @@ tasks:
     cmds:
       - task: script
         vars:
-          TASK_ARGS: "{{.TASK}}"
+          TASK_ARGS: '{{.TASK}}'
     silent: true
 
   script:
@@ -209,7 +209,7 @@ tasks:
       - git -C api apply --check < patches/Process_Dashboard_API.patch
 
   api:script:run:
-    desc: "Run script inside API service container, example: `task {{.TASK}} SCRIPT_PATH=test/load_data.py"
+    desc: 'Run script inside API service container, example: `task {{.TASK}} SCRIPT_PATH=test/load_data.py'
     silent: true
     cmds:
       - echo "Running {{.SCRIPT_PATH}} inside API service"
@@ -223,10 +223,10 @@ tasks:
       vars: [SCRIPT_PATH]
     preconditions:
       - sh: test -f {{.SCRIPT_PATH}}
-        msg: "{{.SCRIPT_PATH}} does not exist"
+        msg: '{{.SCRIPT_PATH}} does not exist'
 
   api:get:
-    desc: "Perform a GET request to an API endpoint, examples: `task {{.TASK}} API_PATH=/api/v1/auth/me`, `task {{.TASK}} API_PATH=/api/v1/auth/me API_KEY=my-api-key`"
+    desc: 'Perform a GET request to an API endpoint, examples: `task {{.TASK}} API_PATH=/api/v1/auth/me`, `task {{.TASK}} API_PATH=/api/v1/auth/me API_KEY=my-api-key`'
     cmds:
       - |-
         task compose -- exec phpfpm curl --silent --verbose --header 'x-api-key: {{.API_KEY}}' '{{.API_BASE_URL}}{{.API_PATH}}' | docker run --rm --interactive ghcr.io/jqlang/jq:latest
@@ -257,7 +257,7 @@ tasks:
           - /api/v1/runs/?process_id=1&meta_filter=branch%3ATorres%2C%20Dixon%20and%20Marshallk&meta_filter=branch%3ATorres%2C%20Dixon%20and%20Marshal
         task: api:get
         vars:
-          API_PATH: "{{.ITEM}}"
+          API_PATH: '{{.ITEM}}'
 
   tailwind:build:
     desc: Build Tailwind stuff. Use `task {{.TASK}} -- --watch` to watch for changes.
