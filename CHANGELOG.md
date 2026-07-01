@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 * [PR-62](https://github.com/itk-dev/rpa-process-overview/pull/62)
-  Security update
+  System update
 
 ## [1.0.0] - 2026-05-21
 

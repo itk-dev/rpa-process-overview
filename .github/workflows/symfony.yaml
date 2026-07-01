@@ -8,6 +8,7 @@ on:
     paths: &paths
       - "composer.json"
       - "composer.lock"
+      - "symfony.lock"
   push:
     branches:
       - main
