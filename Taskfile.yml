@@ -2,19 +2,19 @@
 
 version: '3'
 
-# https://taskfile.dev/usage/#env-files
-dotenv: ['.env.local', '.env']
+includes:
+  coding-standards: ./task/coding-standards/Taskfile.yml
+  widgets:
+    # https://taskfile.dev/usage/#directory-of-included-taskfile
+    taskfile: ./widgets/Taskfile.yml
+    dir: ./widgets
 
 vars:
   DOCKER_COMPOSE: '{{.TASK_DOCKER_COMPOSE | default "docker compose" }}'
   COMPOSER_INSTALL_ARGS: '{{.TASK_COMPOSER_INSTALL_ARGS | default "" }}'
 
-includes:
-  coding-standards: ./task/Taskfile.coding-standards.yml
-  widgets:
-    # https://taskfile.dev/usage/#directory-of-included-taskfile
-    taskfile: ./widgets/Taskfile.yml
-    dir: ./widgets
+# https://taskfile.dev/usage/#env-files
+dotenv: ['.env.local', '.env']
 
 tasks:
   default:

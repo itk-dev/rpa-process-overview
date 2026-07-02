@@ -5,7 +5,7 @@
 overrides:
   # https://taskfile.dev/docs/styleguide
   - files:
-      - "Taskfile*.{yml,yaml}"
+      - "Taskfile.{yml,yaml}"
     options:
       tabWidth: 2
       singleQuote: true
