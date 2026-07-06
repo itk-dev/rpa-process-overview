@@ -1,0 +1,38 @@
+name: Symfony
+
+env:
+  COMPOSE_USER: runner
+
+on:
+  pull_request:
+    paths: &paths
+      - "composer.json"
+      - "composer.lock"
+      - "symfony.lock"
+  push:
+    branches:
+      - main
+      - develop
+    paths: *paths
+
+jobs:
+  recipes:
+    name: Check that all recipes are updated
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Create docker network
+        run: |
+          docker network create frontend
+
+      - run: |
+          docker compose run --rm phpfpm composer install
+
+      # Complain if a recipe is not updated (by looking for the string '(update available)')
+      # @todo Find a better way to do this.
+      - run: |
+          if docker compose run --quiet --rm phpfpm composer recipes --outdated | grep --quiet '(update available)'; then
+            docker compose run --quiet --rm phpfpm composer recipes --outdated
+            return 1
+          fi

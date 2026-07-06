@@ -9,6 +9,10 @@ $finder = new PhpCsFixer\Finder();
 $finder->in(__DIR__);
 // … that are not ignored by VCS
 $finder->ignoreVCSIgnored(true);
+// Exclude auto-generated stuff.
+$finder->notPath([
+    'config/reference.php',
+]);
 
 $config = new PhpCsFixer\Config();
 $config->setFinder($finder);
