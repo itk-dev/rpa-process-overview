@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* [PR-65](https://github.com/itk-dev/rpa-process-overview/pull/65)
+  * Applied security updates
+  * Updated some packages
+
 ## [1.1.1] - 2026-10-27
 
 * [PR-64](https://github.com/itk-dev/rpa-process-overview/pull/64)
