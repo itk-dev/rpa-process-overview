@@ -38,7 +38,7 @@
         "symfony/maker-bundle": "^1.68",
         "symfony/stopwatch": "^7.4.8",
         "symfony/web-profiler-bundle": "^7.4.23",
-        "vincentlanglet/twig-cs-fixer": "^3.14"
+        "vincentlanglet/twig-cs-fixer": "^4.1"
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
