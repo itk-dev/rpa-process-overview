@@ -12,7 +12,7 @@
         "doctrine/orm": "^3.7.6",
         "easycorp/easyadmin-bundle": "^4.29.16",
         "itk-dev/openid-connect-bundle": "^4.2",
-        "league/uri-components": "^7.9.1",
+        "league/uri-components": "^7.10.0",
         "stof/doctrine-extensions-bundle": "^1.15.3",
         "symfony/asset": "^7.4.8",
         "symfony/asset-mapper": "^7.4.23",
@@ -30,8 +30,8 @@
         "twig/twig": "^2.12 || ^3.30.0"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "^2.56.0",
-        "friendsofphp/php-cs-fixer": "^3.95.27",
+        "ergebnis/composer-normalize": "^2.56.1",
+        "friendsofphp/php-cs-fixer": "^3.95.30",
         "hautelook/alice-bundle": "^2.17.3",
         "nelmio/cors-bundle": "^2.6.1",
         "symfony/debug-bundle": "^7.4.8",
