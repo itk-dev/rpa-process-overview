@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.2] - 2026-11-11
+
 * [PR-65](https://github.com/itk-dev/rpa-process-overview/pull/65)
   * Applied security updates
   * Updated some packages
@@ -112,7 +114,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * [PR-2](https://github.com/rimi-itk/rpa-process-overview/pull/2)
   Svelte
 
-[Unreleased]: https://github.com/rimi-itk/rpa-process-overview/compare/1.1.1...HEAD
+[Unreleased]: https://github.com/rimi-itk/rpa-process-overview/compare/1.1.2...HEAD
+[1.1.2]: https://github.com/rimi-itk/rpa-process-overview/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/rimi-itk/rpa-process-overview/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/rimi-itk/rpa-process-overview/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/rimi-itk/rpa-process-overview/releases/tag/1.0.0
