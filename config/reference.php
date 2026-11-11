@@ -415,7 +415,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         log_channel?: scalar|Param|null, // The channel of log message. Null to let Symfony decide. // Default: null
  *     }>,
  *     web_link?: bool|array{ // Web links configuration
- *         enabled?: bool|Param, // Default: true
+ *         enabled?: bool|Param, // Default: false
  *     },
  *     lock?: Param|bool|string|array{ // Lock configuration
  *         enabled?: bool|Param, // Default: false
@@ -1359,27 +1359,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     enable_profiler?: bool|Param, // Whether or not to enable the profiler collector to calculate and visualize migration status. This adds some queries overhead. // Default: false
  *     transactional?: bool|Param, // Whether or not to wrap migrations in a single transaction. // Default: true
  * }
- * @psalm-type MercureConfig = array{
- *     hubs?: array<string, array{ // Default: []
- *         url?: scalar|Param|null, // URL of the hub's publish endpoint
- *         public_url?: scalar|Param|null, // URL of the hub's public endpoint // Default: null
- *         jwt?: Param|string|array{ // JSON Web Token configuration.
- *             value?: scalar|Param|null, // JSON Web Token to use to publish to this hub.
- *             provider?: scalar|Param|null, // The ID of a service to call to provide the JSON Web Token.
- *             factory?: scalar|Param|null, // The ID of a service to call to create the JSON Web Token.
- *             publish?: list<scalar|Param|null>,
- *             subscribe?: list<scalar|Param|null>,
- *             secret?: scalar|Param|null, // The JWT Secret to use.
- *             passphrase?: scalar|Param|null, // The JWT secret passphrase. // Default: ""
- *             algorithm?: scalar|Param|null, // The algorithm to use to sign the JWT // Default: "hmac.sha256"
- *         },
- *         jwt_provider?: scalar|Param|null, // Deprecated: The child node "jwt_provider" at path "mercure.hubs..jwt_provider" is deprecated, use "jwt.provider" instead. // The ID of a service to call to generate the JSON Web Token.
- *         bus?: scalar|Param|null, // Name of the Messenger bus where the handler for this hub must be registered. Default to the default bus if Messenger is enabled.
- *     }>,
- *     default_hub?: scalar|Param|null,
- *     default_cookie_lifetime?: int|Param, // Default lifetime of the cookie containing the JWT, in seconds. Defaults to the value of "framework.session.cookie_lifetime". // Default: null
- *     enable_profiler?: bool|Param, // Deprecated: The child node "enable_profiler" at path "mercure.enable_profiler" is deprecated. // Enable Symfony Web Profiler integration.
- * }
  * @psalm-type NelmioAliceConfig = array{
  *     locale?: scalar|Param|null, // Default locale for the Faker Generator // Default: "en_US"
  *     seed?: scalar|Param|null, // Value used make sure Faker generates data consistently across runs, set to null to disable. // Default: 1
@@ -1544,7 +1523,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     security?: SecurityConfig,
  *     doctrine?: DoctrineConfig,
  *     doctrine_migrations?: DoctrineMigrationsConfig,
- *     mercure?: MercureConfig,
  *     symfonycasts_tailwind?: SymfonycastsTailwindConfig,
  *     stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
  *     itkdev_openid_connect?: ItkdevOpenidConnectConfig,
@@ -1560,7 +1538,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         security?: SecurityConfig,
  *         doctrine?: DoctrineConfig,
  *         doctrine_migrations?: DoctrineMigrationsConfig,
- *         mercure?: MercureConfig,
  *         nelmio_alice?: NelmioAliceConfig,
  *         fidry_alice_data_fixtures?: FidryAliceDataFixturesConfig,
  *         hautelook_alice?: HautelookAliceConfig,
@@ -1582,7 +1559,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         security?: SecurityConfig,
  *         doctrine?: DoctrineConfig,
  *         doctrine_migrations?: DoctrineMigrationsConfig,
- *         mercure?: MercureConfig,
  *         symfonycasts_tailwind?: SymfonycastsTailwindConfig,
  *         stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
  *         itkdev_openid_connect?: ItkdevOpenidConnectConfig,
@@ -1598,7 +1574,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         security?: SecurityConfig,
  *         doctrine?: DoctrineConfig,
  *         doctrine_migrations?: DoctrineMigrationsConfig,
- *         mercure?: MercureConfig,
  *         nelmio_alice?: NelmioAliceConfig,
  *         fidry_alice_data_fixtures?: FidryAliceDataFixturesConfig,
  *         hautelook_alice?: HautelookAliceConfig,
